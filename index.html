@@ -1,358 +1,451 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadatos del documento HTML -->
+  <!-- Define el conjunto de caracteres utilizado y la configuración de la vista para dispositivos móviles -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título de la página que aparece en la pestaña del navegador -->
   <title>Portafolio Profesional | Jesús Gerardo Garza García</title>
+
+  <!-- Enlaces a hojas de estilo externas -->
+  <!-- Font Awesome: Librería de iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts: Tipografías personalizadas para el sitio -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Slick Carousel: Librería para carruseles de imágenes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+  <!-- AOS (Animate On Scroll): Librería para animaciones al hacer scroll -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Hoja de estilo personalizada para el sitio -->
   <link href="styles.css" rel="stylesheet" id="theme-style">
-  
 </head>
 
 <body>
-  <!-- Header -->
+  <!-- Encabezado de la página -->
   <header id="header">
     <div class="container header-container">
+      <!-- Logo personal -->
       <a href="#" class="logo">
         <span>JGGG</span>
       </a>
 
-     <nav class="nav-menu">
-  <a href="#hero" class="nav-link active" data-i18n="home">Inicio</a>
-  <a href="#about" class="nav-link" data-i18n="about">Sobre mí</a>
-  <a href="#education" class="nav-link" data-i18n="education">Formación</a>
-  <a href="#skills" class="nav-link" data-i18n="skills">Habilidades</a>
-  <a href="#projects" class="nav-link" data-i18n="projectsh">Proyect</a>
-  <a href="#recognitions" class="nav-link" data-i18n="recognitions">Reconocimientos</a>
-  <a href="#contact" class="nav-link" data-i18n="contact">Contacto</a>
-</nav>
+      <!-- Menú de navegación principal -->
+      <nav class="nav-menu">
+        <a href="#hero" class="nav-link active" data-i18n="home">Inicio</a>
+        <a href="#about" class="nav-link" data-i18n="about">Sobre mí</a>
+        <a href="#education" class="nav-link" data-i18n="education">Formación</a>
+        <a href="#skills" class="nav-link" data-i18n="skills">Habilidades</a>
+        <a href="#projects" class="nav-link" data-i18n="projectsh">Proyectos</a>
+        <a href="#recognitions" class="nav-link" data-i18n="recognitions">Reconocimientos</a>
+        <a href="#contact" class="nav-link" data-i18n="contact">Contacto</a>
+      </nav>
 
-<div class="language-switcher">
-  <button class="language-btn active" data-lang="es">
-    <img src="https://flagcdn.com/w20/mx.png" alt="Español" width="20">
-  </button>
-  <button class="language-btn" data-lang="en">
-    <img src="https://flagcdn.com/w20/us.png" alt="English" width="20">
-  </button>
-</div>
-<button class="theme-btn" id="themeToggle" title="Toggle theme">
-  <i class="fas fa-sun"></i>  <!-- Ícono sol para cambiar a día -->
-</button>
+      <!-- Selector de idioma para cambiar entre español e inglés -->
+      <div class="language-switcher">
+        <button class="language-btn active" data-lang="es">
+          <img src="https://flagcdn.com/w20/mx.png" alt="Español" width="20">
+        </button>
+        <button class="language-btn" data-lang="en">
+          <img src="https://flagcdn.com/w20/us.png" alt="English" width="20">
+        </button>
+      </div>
 
-  
+      <!-- Botón para cambiar el tema visual entre claro y oscuro -->
+      <button class="theme-btn" id="themeToggle" title="Toggle theme">
+        <i class="fas fa-sun"></i> <!-- Icono de sol para el tema claro -->
+      </button>
+
+      <!-- Botón de menú hamburguesa para dispositivos móviles -->
       <button class="hamburger" id="hamburger">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Sección Hero: Presentación principal -->
   <section id="hero" class="section">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
-
-        <h1 class="hero-title">
-          <span data-i18n="hello">Hola, soy</span> 
-          <span class="text-gradient">Jesús Garza</span>
-        </h1>
-
-        <h2 class="hero-subtitle" data-i18n="fullstack">Desarrollador Full Stack</h2>
-
-        <p class="hero-description" data-i18n="hero_desc">
-          Apasionado por crear soluciones digitales innovadoras y eficientes.
-          Combino habilidades técnicas con creatividad para desarrollar aplicaciones web impactantes.
-        </p>
-
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary" data-i18n="contact_me">Contáctame <i class="fas fa-arrow-right"></i></a>
-          <a href="#projects" class="btn btn-outline" data-i18n="view_projects">Ver proyectos</a>
-        </div>
-
-        <div class="social-links">
-          <a href="https://github.com/JesusGGGGit" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-
-      </div>
-
-      <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
-        <img src="assets/images/yo.png" alt="Jesús Gerardo Garza García">
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- About Section -->
- <section id="about" class="section">
-  <div class="container">
-    <h2 class="section-title" data-i18n="about" data-aos="fade-up">Sobre mí</h2>
-
-    <div class="about-content">
-      <div class="about-image" data-aos="fade-right">
-        <img src="assets/images/yo2.png" alt="Jesús Gerardo Garza García">
-      </div>
-
-      <div class="about-text" data-aos="fade-left">
-        <h3 data-i18n="about_title">Desarrollador con pasión por la innovación</h3>
-
-<p data-i18n="about_desc1">
-  Soy un desarrollador apasionado con experiencia en HTML, CSS, Java, Python y manejo de control de versiones con Git. Me gusta crear soluciones prácticas y eficientes, aprendiendo constantemente nuevas tecnologías para mejorar mis proyectos y aportar valor en cada desafío.
-</p>
-
-
-        <p data-i18n="about_desc2">
-          Mi enfoque combina el diseño atractivo con la funcionalidad sólida, asegurando que cada proyecto
-          no solo se vea bien, sino que también ofrezca una experiencia de usuario excepcional y un rendimiento óptimo.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<!-- Education Section -->
-<section id="education" class="section">
-  <div class="container">
-    <h2 class="section-title" data-i18n="education"data-aos="fade-right">Formación</h2>
-
-    <div class="education-content">
-      <!-- Carrera universitaria -->
-      <div class="education-item" data-aos="fade-up">
-        <div class="education-header">
-          <div class="education-logos">
-            <a href="https://www.uanl.mx/" target="_blank" rel="noopener">
-              <img src="assets/images/Uanl.png" alt="UANL" class="education-logo uanl-logo">
-            </a>
-            <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener">
-              <img src="assets/images/logofcfmpng.png" alt="FCFM" class="education-logo fcfm-logo">
-            </a>
-          </div>
-          <div class="education-details">
-            <h3 data-i18n="degree">Licenciatura en Ciencias Computacionales</h3>
-            <p class="education-institution" data-i18n="university">Universidad Autónoma de Nuevo León, Facultad de Ciencias Físico Matemáticas</p>
-            <p class="education-period">2021 - 2025</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certificaciones Técnicas -->
-      <h3 class="subsection-title" data-aos="fade-up" data-i18n="certifications">Certificaciones Técnicas</h3>
-
-      <!-- Certificado RH124 -->
-      <div class="compact-card" data-aos="fade-up" data-aos-delay="100">
-        <button class="card-toggle">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fab fa-redhat"></i>
-            </div>
-            <h3 data-i18n="rh124">Certificado RH124</h3>
-            <span class="card-year">2024</span>
-          </div>
-        </button>
-        <div class="card-content">
-          <div class="card-preview">
-            <a href="assets/certificados/RH124.pdf" target="_blank">
-              <img src="assets/images/124.jpg" alt="Certificado RH124" class="certificate-thumb">
-            </a>
-          </div>
-          <p class="certificate-desc" data-i18n="rh124_desc">Curso Red Hat System Administration I</p>
-          <div class="card-actions">
-            <a href="assets/certificados/RH124.pdf" target="_blank" class="btn btn-outline">
-              <i class="fas fa-file-pdf"></i> <span data-i18n="view_certificate">Ver Certificado</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certificado RH134 -->
-      <div class="compact-card" data-aos="fade-up" data-aos-delay="200">
-        <button class="card-toggle">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fab fa-redhat"></i>
-            </div>
-            <h3 data-i18n="rh134">Certificado RH134</h3>
-            <span class="card-year">2024</span>
-          </div>
-        </button>
-        <div class="card-content">
-          <div class="card-preview">
-            <a href="assets/certificados/RH134.pdf" target="_blank">
-              <img src="assets/images/134.jpg" alt="Certificado RH134" class="certificate-thumb">
-            </a>
-          </div>
-          <p class="certificate-desc" data-i18n="rh134_desc">Curso Red Hat System Administration II</p>
-          <div class="card-actions">
-            <a href="assets/certificados/RH134.pdf" target="_blank" class="btn btn-outline">
-              <i class="fas fa-file-pdf"></i> <span data-i18n="view_certificate">Ver Certificado</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certificado RH294 -->
-      <div class="compact-card" data-aos="fade-up" data-aos-delay="300">
-        <button class="card-toggle">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fab fa-redhat"></i>
-            </div>
-            <h3 data-i18n="rh294">Certificado RH294</h3>
-            <span class="card-year">2024</span>
-          </div>
-        </button>
-        <div class="card-content">
-          <div class="card-preview">
-            <a href="assets/certificados/RH294.pdf" target="_blank">
-              <img src="assets/images/294.jpg" alt="Certificado RH294" class="certificate-thumb">
-            </a>
-          </div>
-          <p class="certificate-desc" data-i18n="rh294_desc">Red Hat Enterprise Linux Automation with Ansible</p>
-          <div class="card-actions">
-            <a href="assets/certificados/RH294.pdf" target="_blank" class="btn btn-outline">
-              <i class="fas fa-file-pdf"></i> <span data-i18n="view_certificate">Ver Certificado</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
- <!-- Skills Section -->
-<section id="skills" class="section">
-  <div class="container">
-    <h2 class="section-title" data-i18n="skills" data-aos="fade-right">Habilidades</h2>
-
-    <div class="skills-container">
-      <!-- Lenguajes de Programación -->
-      <div class="skill-category" data-aos="fade-up">
-        <h4><i class="fas fa-code"></i> <span data-i18n="programming_languages">Lenguajes de Programación</span></h4>
-        <div class="skills-grid">
-          <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="skill-icon">
-              <i class="fab fa-python"></i>
-            </div>
-            <div class="skill-info">
-              <h5>Python</h5>
-           
-              <div class="skill-frameworks">
-                <span>Flask</span>
-                <span>Pandas</span>
-                <span>NumPy</span>
-                <span>Openpyxl </span>
-                <span>APScheduler </span>
-                <span>dotenv </span>
-                <span>threading </span>
-                <span>tkinter </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="skill-icon">
-              <i class="fas fa-database"></i>
-            </div>
-            <div class="skill-info">
-              <h5>SQL</h5>
-          
-              <div class="skill-frameworks">
-                <span>MySQL</span>
-                <span>SQL Server</span>
-                <span>SQLite</span>
-                <span>MySQL Workbench</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Desarrollo Web -->
-      <div class="skill-category" data-aos="fade-up">
-        <h4><i class="fas fa-globe"></i> <span data-i18n="web_development">Desarrollo Web</span></h4>
-        <div class="skills-grid">
-          <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="skill-icon">
-              <i class="fab fa-html5"></i>
-            </div>
-            <div class="skill-info">
-              <h5>HTML5</h5>
-          <div class="skill-frameworks">
-                <span>Angular</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-item" data-aos="fade-up" data-aos-delay="150">
-            <div class="skill-icon">
-              <i class="fab fa-css3-alt"></i>
-            </div>
-            <div class="skill-info">
-              <h5>CSS3</h5>
-          
-              <div class="skill-frameworks">
-              </div>
-            </div>
-          </div>
- <div class="skill-item" data-aos="fade-up" data-aos-delay="150">
-            <div class="skill-icon">
-              <i class="fab fa-js"></i>
-            </div>
-            <div class="skill-info">
-              <h5>JavaScript</h5>
-           
-              <div class="skill-frameworks">
-              </div>
-            </div>
-          </div>
-      
-        </div>
-      </div>
-
-      <!-- DevOps y Herramientas -->
-      <div class="skill-category" data-aos="fade-up">
-        <h4><i class="fas fa-server"></i> <span data-i18n="devops_tools">DevOps & Herramientas</span></h4>
-        <div class="skills-grid">
-          <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="skill-icon">
-              <i class="fab fa-git-alt"></i>
-            </div>
-            <div class="skill-info">
-              <h5>Git</h5>       
-            </div>
-          </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Projects Section -->
-<section id="projects" class="section">
-  <div class="container">
-    <h2 class="section-title" data-i18n="projects" data-aos="fade-right">Proyectos</h2>
-    <div class="projects-grid">
-
-      <!-- Proyecto 1 -->
-      <div class="project-card" data-aos="fade-right" data-aos-delay="100">
-        <div class="project-image">
-          <img src="assets/images/acervo.jpg" alt="Gestión de Libros">
-        </div>
-        <div class="project-content">
-          <h3 class="project-title" data-i18n="book_management">Gestión de Libros de Acervo</h3>
-          <p class="project-description" data-i18n="book_desc">
-            Sistema completo para administrar el inventario de libros...
+    <div class="container">
+      <div class="hero-content">
+        <!-- Texto de presentación -->
+        <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
+          <h1 class="hero-title">
+            <span data-i18n="hello">Hola, soy</span>
+            <span class="text-gradient">Jesús Garza</span>
+          </h1>
+          <h2 class="hero-subtitle" data-i18n="fullstack">Desarrollador Full Stack</h2>
+          <p class="hero-description" data-i18n="hero_desc">
+            Apasionado por crear soluciones digitales innovadoras y eficientes.
+            Combino habilidades técnicas con creatividad para desarrollar aplicaciones web impactantes.
           </p>
+          <!-- Botones de llamada a la acción -->
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary" data-i18n="contact_me">Contáctame <i class="fas fa-arrow-right"></i></a>
+            <a href="#projects" class="btn btn-outline" data-i18n="view_projects">Ver proyectos</a>
+          </div>
+          <!-- Enlaces a redes sociales -->
+          <div class="social-links">
+            <a href="https://github.com/JesusGGGGit" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <!-- Imagen de presentación -->
+        <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
+          <img src="assets/images/yo.png" alt="Jesús Gerardo Garza García">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Sobre mí: Información personal y profesional -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about" data-aos="fade-up">Sobre mí</h2>
+      <div class="about-content">
+        <!-- Imagen personal -->
+        <div class="about-image" data-aos="fade-right">
+          <img src="assets/images/yo2.png" alt="Jesús Gerardo Garza García">
+        </div>
+        <!-- Texto descriptivo -->
+        <div class="about-text" data-aos="fade-left">
+          <h3 data-i18n="about_title">Desarrollador con pasión por la innovación</h3>
+          <p data-i18n="about_desc1">
+            Soy un desarrollador apasionado con experiencia en HTML, CSS, Java, Python y manejo de control de versiones con Git.
+            Me gusta crear soluciones prácticas y eficientes, aprendiendo constantemente nuevas tecnologías para mejorar mis proyectos y aportar valor en cada desafío.
+          </p>
+          <p data-i18n="about_desc2">
+            Mi enfoque combina el diseño atractivo con la funcionalidad sólida, asegurando que cada proyecto
+            no solo se vea bien, sino que también ofrezca una experiencia de usuario excepcional y un rendimiento óptimo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Formación: Educación y certificaciones -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="education" data-aos="fade-right">Formación</h2>
+      <div class="education-content">
+        <!-- Información sobre la carrera universitaria -->
+        <div class="education-item" data-aos="fade-up">
+          <div class="education-header">
+            <div class="education-logos">
+              <!-- Logos de las instituciones educativas -->
+              <a href="https://www.uanl.mx/" target="_blank" rel="noopener">
+                <img src="assets/images/Uanl.png" alt="UANL" class="education-logo uanl-logo">
+              </a>
+              <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener">
+                <img src="assets/images/logofcfmpng.png" alt="FCFM" class="education-logo fcfm-logo">
+              </a>
+            </div>
+            <div class="education-details">
+              <h3 data-i18n="degree">Licenciatura en Ciencias Computacionales</h3>
+              <p class="education-institution" data-i18n="university">Universidad Autónoma de Nuevo León, Facultad de Ciencias Físico Matemáticas</p>
+              <p class="education-period">2021 - 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subsección de certificaciones técnicas -->
+        <h3 class="subsection-title" data-aos="fade-up" data-i18n="certifications">Certificaciones Técnicas</h3>
+
+        <!-- Certificado RH124 -->
+        <div class="compact-card" data-aos="fade-up" data-aos-delay="100">
+          <button class="card-toggle">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fab fa-redhat"></i>
+              </div>
+              <h3 data-i18n="rh124">Certificado RH124</h3>
+              <span class="card-year">2024</span>
+            </div>
+          </button>
+          <div class="card-content">
+            <div class="card-preview">
+              <!-- Vista previa del certificado -->
+              <a href="assets/certificados/RH124.pdf" target="_blank">
+                <img src="assets/images/124.jpg" alt="Certificado RH124" class="certificate-thumb">
+              </a>
+            </div>
+            <p class="certificate-desc" data-i18n="rh124_desc">Curso Red Hat System Administration I</p>
+            <div class="card-actions">
+              <!-- Enlace para ver el certificado completo -->
+              <a href="assets/certificados/RH124.pdf" target="_blank" class="btn btn-outline">
+                <i class="fas fa-file-pdf"></i> <span data-i18n="view_certificate">Ver Certificado</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificado RH134 -->
+        <div class="compact-card" data-aos="fade-up" data-aos-delay="200">
+          <button class="card-toggle">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fab fa-redhat"></i>
+              </div>
+              <h3 data-i18n="rh134">Certificado RH134</h3>
+              <span class="card-year">2024</span>
+            </div>
+          </button>
+          <div class="card-content">
+            <div class="card-preview">
+              <a href="assets/certificados/RH134.pdf" target="_blank">
+                <img src="assets/images/134.jpg" alt="Certificado RH134" class="certificate-thumb">
+              </a>
+            </div>
+            <p class="certificate-desc" data-i18n="rh134_desc">Curso Red Hat System Administration II</p>
+            <div class="card-actions">
+              <a href="assets/certificados/RH134.pdf" target="_blank" class="btn btn-outline">
+                <i class="fas fa-file-pdf"></i> <span data-i18n="view_certificate">Ver Certificado</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificado RH294 -->
+        <div class="compact-card" data-aos="fade-up" data-aos-delay="300">
+          <button class="card-toggle">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fab fa-redhat"></i>
+              </div>
+              <h3 data-i18n="rh294">Certificado RH294</h3>
+              <span class="card-year">2024</span>
+            </div>
+          </button>
+          <div class="card-content">
+            <div class="card-preview">
+              <a href="assets/certificados/RH294.pdf" target="_blank">
+                <img src="assets/images/294.jpg" alt="Certificado RH294" class="certificate-thumb">
+              </a>
+            </div>
+            <p class="certificate-desc" data-i18n="rh294_desc">Red Hat Enterprise Linux Automation with Ansible</p>
+            <div class="card-actions">
+              <a href="assets/certificados/RH294.pdf" target="_blank" class="btn btn-outline">
+                <i class="fas fa-file-pdf"></i> <span data-i18n="view_certificate">Ver Certificado</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Habilidades: Competencias técnicas -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="skills" data-aos="fade-right">Habilidades</h2>
+      <div class="skills-container">
+        <!-- Lenguajes de Programación -->
+        <div class="skill-category" data-aos="fade-up">
+          <h4><i class="fas fa-code"></i> <span data-i18n="programming_languages">Lenguajes de Programación</span></h4>
+          <div class="skills-grid">
+            <!-- Python -->
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+              <div class="skill-icon">
+                <i class="fab fa-python"></i>
+              </div>
+              <div class="skill-info">
+                <h5>Python</h5>
+                <div class="skill-frameworks">
+                  <span>Flask</span>
+                  <span>Pandas</span>
+                  <span>NumPy</span>
+                  <span>Openpyxl</span>
+                  <span>APScheduler</span>
+                  <span>dotenv</span>
+                  <span>threading</span>
+                  <span>tkinter</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SQL -->
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+              <div class="skill-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="skill-info">
+                <h5>SQL</h5>
+                <div class="skill-frameworks">
+                  <span>MySQL</span>
+                  <span>SQL Server</span>
+                  <span>SQLite</span>
+                  <span>MySQL Workbench</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desarrollo Web -->
+        <div class="skill-category" data-aos="fade-up">
+          <h4><i class="fas fa-globe"></i> <span data-i18n="web_development">Desarrollo Web</span></h4>
+          <div class="skills-grid">
+            <!-- HTML5 -->
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+              <div class="skill-icon">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="skill-info">
+                <h5>HTML5</h5>
+                <div class="skill-frameworks">
+                  <span>Angular</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CSS3 -->
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="150">
+              <div class="skill-icon">
+                <i class="fab fa-css3-alt"></i>
+              </div>
+              <div class="skill-info">
+                <h5>CSS3</h5>
+              </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="150">
+              <div class="skill-icon">
+                <i class="fab fa-js"></i>
+              </div>
+              <div class="skill-info">
+                <h5>JavaScript</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DevOps y Herramientas -->
+        <div class="skill-category" data-aos="fade-up">
+          <h4><i class="fas fa-server"></i> <span data-i18n="devops_tools">DevOps & Herramientas</span></h4>
+          <div class="skills-grid">
+            <!-- Git -->
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+              <div class="skill-icon">
+                <i class="fab fa-git-alt"></i>
+              </div>
+              <div class="skill-info">
+                <h5>Git</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Proyectos: Trabajos realizados -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="projects" data-aos="fade-right">Proyectos</h2>
+      <div class="projects-grid">
+        <!-- Proyecto 1: Gestión de Libros de Acervo -->
+        <div class="project-card" data-aos="fade-right" data-aos-delay="100">
+          <div class="project-image">
+            <img src="assets/images/acervo.jpg" alt="Gestión de Libros">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title" data-i18n="book_management">Gestión de Libros de Acervo</h3>
+            <p class="project-description" data-i18n="book_desc">
+              Sistema completo para administrar el inventario de libros...
+            </p>
+            <div class="project-tech">
+              <span class="tech-item">Python</span>
+              <span class="tech-item">Flask</span>
+              <span class="tech-item">SQL Server</span>
+              <span class="tech-item">Pandas</span>
+            </div>
+            <div class="container_btn--proyectos">
+              <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank">
+                <button class="btn_demo"><i class="fas fa-eye"></i> <span data-i18n="demo">DEMO</span></button>
+              </a>
+              <a href="https://github.com/JesusGGGGit/Gestion_de_libros_de_acervo" target="_blank">
+                <button class="btn_repo"><i class="fab fa-github"></i> <span data-i18n="code">CÓDIGO</span></button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 2: Registro de Asistencias -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-image">
+            <img src="assets/images/asistencias.jpg" alt="Registro de Asistencias">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title" data-i18n="attendance">Registro de Asistencias</h3>
+            <p class="project-description" data-i18n="attendance_desc">
+              Aplicación web para registrar asistencias y controlar fechas...
+            </p>
+            <div class="project-tech">
+              <span class="tech-item">Python</span>
+              <span class="tech-item">Flask</span>
+              <span class="tech-item">Sqlite3</span>
+              <span class="tech-item">Pandas</span>
+            </div>
+            <div class="container_btn--proyectos">
+              <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank">
+                <button class="btn_demo"><i class="fas fa-eye"></i> <span data-i18n="demo">DEMO</span></button>
+              </a>
+              <a href="https://github.com/JesusGGGGit/Registros_Entradas_Salidas" target="_blank">
+                <button class="btn_repo"><i class="fab fa-github"></i> <span data-i18n="code">CÓDIGO</span></button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 3: Inventario de Libros -->
+        <div class="project-card" data-aos="fade-left" data-aos-delay="300">
+          <div class="project-image">
+            <img src="assets/images/inventario.jpg" alt="Automatización con Ansible">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title" data-i18n="automation">Inventario de Libros</h3>
+            <p class="project-description" data-i18n="automation_desc">
+              Playbooks de Ansible para automatizar despliegues y configuraciones...
+            </p>
+            <div class="project-tech">
+              <span class="tech-item">Python</span>
+              <span class="tech-item">Sqlite3</span>
+              <span class="tech-item">Tkinter</span>
+            </div>
+            <div class="container_btn--proyectos">
+              <a href="assets/demo/demo.mp4" target="_blank">
+                <button class="btn_demo"><i class="fas fa-eye"></i> <span data-i18n="demo">DEMO</span></button>
+              </a>
+              <a href="https://github.com/JesusGGGGit/Inventario_Libros/tree/main" target="_blank">
+                <button class="btn_repo"><i class="fab fa-github"></i> <span data-i18n="code">CÓDIGO</span></button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carrusel de Proyectos: Más trabajos realizados -->
+  <div class="carrusel-proyectos">
+    <h2 class="carrusel-title" data-i18n="more-projects" data-aos="fade-up" style="margin-top: -100px;"><span data-i18n="more_projects">Más proyectos</span></h2>
+    <div class="cards_container--proyectos" data-aos="zoom-in">
+      <!-- Proyecto 1: Registro de Libros de Acervo -->
+      <div>
+        <div class="cards--proyectos">
+          <div class="container_imgCard--proyectos">
+            <img src="assets/images/acervo.jpg" alt="Registro de Libros">
+          </div>
+          <div class="container_textCard--proyectos">
+            <h2 data-i18n="book_register">Registro de Libros de Acervo</h2>
+            <p data-i18n="book_register_desc">Sistema para el registro y gestión...</p>
+          </div>
           <div class="project-tech">
             <span class="tech-item">Python</span>
             <span class="tech-item">Flask</span>
@@ -370,16 +463,16 @@
         </div>
       </div>
 
-      <!-- Proyecto 2 -->
-      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="project-image">
-          <img src="assets/images/asistencias.jpg" alt="Registro de Asistencias">
-        </div>
-        <div class="project-content">
-          <h3 class="project-title" data-i18n="attendance">Registro de Asistencias</h3>
-          <p class="project-description" data-i18n="attendance_desc">
-            Aplicación web para registrar asistencias y controlar fechas...
-          </p>
+      <!-- Proyecto 2: Entrada y Salida -->
+      <div>
+        <div class="cards--proyectos">
+          <div class="container_imgCard--proyectos">
+            <img src="assets/images/asistencias.jpg" alt="Entradas y Salidas">
+          </div>
+          <div class="container_textCard--proyectos">
+            <h2 data-i18n="entry_system">Entrada y salida</h2>
+            <p data-i18n="entry_desc">Sistema para gestionar el registro de entradas...</p>
+          </div>
           <div class="project-tech">
             <span class="tech-item">Python</span>
             <span class="tech-item">Flask</span>
@@ -397,20 +490,20 @@
         </div>
       </div>
 
-      <!-- Proyecto 3 -->
-      <div class="project-card" data-aos="fade-left" data-aos-delay="300">
-        <div class="project-image">
-          <img src="assets/images/inventario.jpg" alt="Automatización con Ansible">
-        </div>
-        <div class="project-content">
-          <h3 class="project-title" data-i18n="automation">Inventario de Libros</h3>
-          <p class="project-description" data-i18n="automation_desc">
-            Playbooks de Ansible para automatizar despliegues y configuraciones...
-          </p>
+      <!-- Proyecto 3: Inventario de Libros -->
+      <div>
+        <div class="cards--proyectos">
+          <div class="container_imgCard--proyectos">
+            <img src="assets/images/inventario.jpg" alt="Inventario de Libros">
+          </div>
+          <div class="container_textCard--proyectos">
+            <h2 data-i18n="inventory">Inventario de Libros</h2>
+            <p data-i18n="inventory_desc">Sistema de inventario para gestión de libros.</p>
+          </div>
           <div class="project-tech">
             <span class="tech-item">Python</span>
-            <span class="tech-item">Sqlite3</span>
             <span class="tech-item">Tkinter</span>
+            <span class="tech-item">Sqlite3</span>
           </div>
           <div class="container_btn--proyectos">
             <a href="assets/demo/demo.mp4" target="_blank">
@@ -423,310 +516,191 @@
         </div>
       </div>
 
+      <!-- Proyecto 4: Portafolio -->
+      <div>
+        <div class="cards--proyectos">
+          <div class="container_imgCard--proyectos">
+            <img src="assets/images/portafolio.jpg" alt="Portafolio">
+          </div>
+          <div class="container_textCard--proyectos">
+            <h2 data-i18n="portafolio">Portafolio</h2>
+            <p data-i18n="portafolio_desc">Portafolio personal con todos mis proyectos y habilidades de programación.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-item">HTML 5</span>
+            <span class="tech-item">CSS</span>
+            <span class="tech-item">JavaScript</span>
+          </div>
+          <div class="container_btn--proyectos">
+            <a href="#" target="_blank">
+              <button class="btn_demo"><i class="fas fa-eye"></i> <span data-i18n="demo">DEMO</span></button>
+            </a>
+            <a href="https://github.com/JesusGGGGit/Portafolio" target="_blank">
+              <button class="btn_repo"><i class="fab fa-github"></i> <span data-i18n="code">CÓDIGO</span></button>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- Carrusel de Proyectos -->
-<div class="carrusel-proyectos">
-  <h2 class="carrusel-title" data-i18n="more-projects" data-aos="fade-up" style="margin-top: -100px;"><span data-i18n="more_projects">Mas proyectos</span></h2>
-  <div class="cards_container--proyectos" data-aos="zoom-in">
+  <!-- Sección Reconocimientos: Logros y premios -->
+  <section id="recognitions" class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="recognitions" data-aos="fade-right">Reconocimientos</h2>
+      <div class="recognitions-row">
+        <!-- Carta de Recomendación -->
+        <article class="recognition-card" data-aos="fade-right">
+          <div class="card-icon">
+            <i class="fas fa-envelope-open-text"></i>
+          </div>
+          <div class="card-info">
+            <h3 data-i18n="recommendation">Carta de Recomendación <span class="card-year">2025</span></h3>
+            <p data-i18n="recommendation_desc">
+              Reconocimiento por la elaboración de los sistemas: Entradas y Salidas, Registro de Libros de Acervo e Inventario de Libros.
+            </p>
+            <a href="assets/certificados/carta.pdf" target="_blank" class="btn-link">
+              <img src="assets/images/carta.jpg" alt="Carta de Recomendación" class="certificate-thumb">
+              <span data-i18n="view_letter">Ver Carta</span> <i class="fas fa-file-pdf"></i>
+            </a>
+          </div>
+        </article>
 
-  
-
-    <!-- Proyecto 1 -->
-    <div>
-      <div class="cards--proyectos">
-        <div class="container_imgCard--proyectos">
-          <img src="assets/images/acervo.jpg" alt="Registro de Libros">
-        </div>
-        <div class="container_textCard--proyectos">
-          <h2 data-i18n="book_register">Registro de Libros de Acervo</h2>
-          <p data-i18n="book_register_desc">Sistema para el registro y gestión...</p>
-        </div>
-        <div class="project-tech">
-         <span class="tech-item">Python</span>
-          <span class="tech-item">Flask</span>
-          <span class="tech-item">SQL Server</span>
-          <span class="tech-item">Pandas</span>
-        </div>
-        <div class="container_btn--proyectos">
-          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank">
-            <button class="btn_demo"><i class="fas fa-eye"></i> <span data-i18n="demo">DEMO</span></button>
-          </a>
-          <a href="https://github.com/JesusGGGGit/Gestion_de_libros_de_acervo" target="_blank">
-            <button class="btn_repo"><i class="fab fa-github"></i> <span data-i18n="code">CÓDIGO</span></button>
-          </a>
-        </div>
+        <!-- Reconocimiento EGEL-CENEVAL -->
+        <article class="recognition-card" data-aos="fade-left">
+          <div class="card-icon award">
+            <i class="fas fa-award"></i>
+          </div>
+          <div class="card-info">
+            <h3 data-i18n="egel_award">EGEL-CENEVAL</h3>
+            <p data-i18n="egel_desc">
+              Testimonio de Desempeño Sobresaliente en el EGEL de Ciencias Computacionales, otorgado por CENEVAL.
+            </p>
+            <a href="assets/certificados/EGEL.pdf" target="_blank" class="btn-link">
+              <img src="assets/images/EGEL.jpg" alt="Reconocimiento CENEVAL" class="certificate-thumb">
+              <span data-i18n="view_certificate">Ver Reconocimiento</span> <i class="fas fa-file-pdf"></i>
+            </a>
+          </div>
+        </article>
       </div>
     </div>
-  <!-- Proyecto 2 -->
-    <div>
-      <div class="cards--proyectos">
-        <div class="container_imgCard--proyectos">
-          <img src="assets/images/asistencias.jpg" alt="Entradas y Salidas">
-        </div>
-        <div class="container_textCard--proyectos">
-          <h2 data-i18n="entry_system">Entreada y salida</h2>
-          <p data-i18n="entry_desc">Sistema para gestionar el registro de entradas...</p>
-        </div>
-        <div class="project-tech">
-        <span class="tech-item">Python</span>
-          <span class="tech-item">Flask</span>
-          <span class="tech-item">Sqlite3</span>
-          <span class="tech-item">Pandas</span>
-        </div>
-        <div class="container_btn--proyectos">
-          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank">
-            <button class="btn_demo"><i class="fas fa-eye"></i> <span data-i18n="demo">DEMO</span></button>
-          </a>
-          <a href="https://github.com/JesusGGGGit/Registros_Entradas_Salidas" target="_blank">
-            <button class="btn_repo"><i class="fab fa-github"></i> <span data-i18n="code">CÓDIGO</span></button>
-          </a>
-        </div>
-      </div>
-    </div>
-    <!-- Proyecto 3 -->
-    <div>
-      <div class="cards--proyectos">
-        <div class="container_imgCard--proyectos">
-          <img src="assets/images/inventario.jpg" alt="Inventario de Libros">
-        </div>
-        <div class="container_textCard--proyectos">
-          <h2 data-i18n="inventory">Inventario de Libros</h2>
-          <p data-i18n="inventory_desc">Sistema de inventario para gestión de libros.</p>
-        </div>
-        <div class="project-tech">
-          <span class="tech-item">Python</span>
-          <span class="tech-item">Tkinter</span>
-          <span class="tech-item">Sqlite3</span>
-        </div>
-        <div class="container_btn--proyectos">
-          <a href="assets/demo/demo.mp4" target="_blank">
-            <button class="btn_demo"><i class="fas fa-eye"></i> <span data-i18n="demo">DEMO</span></button>
-          </a>
-          <a href="https://github.com/JesusGGGGit/Inventario_Libros/tree/main" target="_blank">
-            <button class="btn_repo"><i class="fab fa-github"></i> <span data-i18n="code">CÓDIGO</span></button>
-          </a>
-        </div>
-      </div>
-    </div>
+  </section>
 
-    <!-- Proyecto 4 -->
-    <div>
-      <div class="cards--proyectos">
-        <div class="container_imgCard--proyectos">
-          <img src="assets/images/portafolio.jpg" alt="Portafolio">
-        </div>
-        <div class="container_textCard--proyectos">
-          <h2 data-i18n="portafolio">Portafolio</h2>
-          <p data-i18n="portafolio_desc">Portafolio personal con todos mis proyectos y habilidades de programacion.</p>
-        </div>
-        <div class="project-tech">
-          <span class="tech-item">HTML 5</span>
-          <span class="tech-item">CSS</span>
-          <span class="tech-item">JavaScript</span>
-        </div>
-        <div class="container_btn--proyectos">
-          <a href="#" target="_blank">
-            <button class="btn_demo"><i class="fas fa-eye"></i> <span data-i18n="demo">DEMO</span></button>
-          </a>
-          <a href="https://github.com/JesusGGGGit/Portafolio" target="_blank">
-            <button class="btn_repo"><i class="fab fa-github"></i> <span data-i18n="code">CÓDIGO</span></button>
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- Reconocimientos -->
-<section id="recognitions" class="section">
-  <div class="container">
-    <h2 class="section-title" data-i18n="recognitions"data-aos="fade-right">Reconocimientos</h2>
-
-    <div class="recognitions-row">
-      <article class="recognition-card" data-aos="fade-right">
-        <div class="card-icon">
-          <i class="fas fa-envelope-open-text"></i>
-        </div>
-        <div class="card-info">
-          <h3 data-i18n="recommendation">Carta de Recomendación <span class="card-year">2025</span></h3>
-          <p data-i18n="recommendation_desc">
-            Reconocimiento por la elaboración de los sistemas: Entradas y Salidas, Registro de Libros de Acervo e Inventario de Libros.
-          </p>
-          <a href="assets/certificados/carta.pdf" target="_blank" class="btn-link">
-            <img src="assets/images/carta.jpg" alt="Carta de Recomendación" class="certificate-thumb">
-            <span data-i18n="view_letter">Ver Carta</span> <i class="fas fa-file-pdf"></i>
-          </a>
-        </div>
-      </article>
-
-      <article class="recognition-card" data-aos="fade-left">
-        <div class="card-icon award">
-          <i class="fas fa-award"></i>
-        </div>
-        <div class="card-info">
-          <h3 data-i18n="egel_award">EGEL-CENEVAL</h3>
-          <p data-i18n="egel_desc">
-            Testimonio de Desempeño Sobresaliente en el EGEL de Ciencias Computacionales, otorgado por CENEVAL.
-          </p>
-          <a href="assets/certificados/EGEL.pdf" target="_blank" class="btn-link">
-            <img src="assets/images/EGEL.jpg" alt="Reconocimiento CENEVAL" class="certificate-thumb">
-            <span data-i18n="view_certificate">Ver Reconocimiento</span> <i class="fas fa-file-pdf"></i>
-          </a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.compact-card');
-    
-    cards.forEach(card => {
-      const toggle = card.querySelector('.card-toggle');
-      toggle.addEventListener('click', () => {
-        card.classList.toggle('active');
-        
-        // // Cerrar otros acordeones al abrir uno nuevo (opcional)
-        // if(card.classList.contains('active')) {
-        //   cards.forEach(otherCard => {
-        //     if(otherCard !== card && otherCard.classList.contains('active')) {
-        //       otherCard.classList.remove('active');
-        //     }
-        //   });
-        // }
+  <!-- Script para manejar los acordeones de certificaciones -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.compact-card');
+      cards.forEach(card => {
+        const toggle = card.querySelector('.card-toggle');
+        toggle.addEventListener('click', () => {
+          card.classList.toggle('active');
+        });
       });
     });
-  });
-</script>
+  </script>
 
-<!-- Contact Section -->
-<section id="contact" class="section" style="background-color: var(--darker);">
-  <div class="container">
-    <h2 class="section-title" data-i18n="contact">Contacto</h2>
-
-    <div class="contact-container">
-      <!-- Datos de contacto -->
-      <div class="contact-info" data-aos="fade-right">
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-          <div class="contact-text">
-            <h3 data-i18n="email">Email</h3>
-            <a href="mailto:jesusgarzacia@hotmail.com">jesusgarzacia@hotmail.com</a>
+  <!-- Sección Contacto: Información y formulario de contacto -->
+  <section id="contact" class="section" style="background-color: var(--darker);">
+    <div class="container">
+      <h2 class="section-title" data-i18n="contact">Contacto</h2>
+      <div class="contact-container">
+        <!-- Información de contacto -->
+        <div class="contact-info" data-aos="fade-right">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-text">
+              <h3 data-i18n="email">Email</h3>
+              <a href="mailto:jesusgarzacia@hotmail.com">jesusgarzacia@hotmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div class="contact-text">
+              <h3 data-i18n="github">GitHub</h3>
+              <a href="https://github.com/JesusGGGGit" target="_blank">https://github.com/JesusGGGGit</a>
+            </div>
           </div>
         </div>
 
-        <!-- <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-          <div class="contact-text">
-            <h3 data-i18n="phone">Teléfono</h3>
-            <a href="tel:+521234567890">+52 123 456 7890</a>
-          </div>
-        </div> -->
-
-        <!-- <div class="contact-item">
-          <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
-          <div class="contact-text">
-            <h3 data-i18n="linkedin">LinkedIn</h3>
-            <a href="#" target="_blank"></a>
-          </div>
-        </div> -->
-
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fab fa-github"></i></div>
-          <div class="contact-text">
-            <h3 data-i18n="github">GitHub</h3>
-            <a href="https://github.com/JesusGGGGit" target="_blank">https://github.com/JesusGGGGit</a>
-          </div>
+        <!-- Formulario de contacto -->
+        <div class="contact-form" data-aos="fade-left">
+          <form id="form-contacto" action="https://formspree.io/f/xzzgdodw" method="POST" onsubmit="return showConfirmation();">
+            <div class="form-group">
+              <label for="nombre" class="form-label" data-i18n="name">Nombre</label>
+              <input type="text" id="nombre" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label" data-i18n="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="asunto" class="form-label" data-i18n="subject">Asunto</label>
+              <input type="text" id="asunto" name="affair" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="mensaje" class="form-label" data-i18n="message">Mensaje</label>
+              <textarea id="mensaje" name="message" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              <span data-i18n="send_message">Enviar Mensaje</span> <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Formulario con Formspree -->
-      <div class="contact-form" data-aos="fade-left">
-        <form id="form-contacto" action="https://formspree.io/f/xzzgdodw" method="POST" onsubmit="return showConfirmation();">
-          <div class="form-group">
-            <label for="nombre" class="form-label" data-i18n="name">Nombre</label>
-            <input type="text" id="nombre" name="name" class="form-control" required>
-          </div>
-      
-     <div class="form-group">
-            <label for="email" class="form-label" data-i18n="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <label for="asunto" class="form-label" data-i18n="subject">Asunto</label>
-            <input type="text" id="asunto" name="affair" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <label for="mensaje" class="form-label" data-i18n="message">Mensaje</label>
-            <textarea id="mensaje" name="message" class="form-control" required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width: 100%;">
-            <span data-i18n="send_message">Enviar Mensaje</span> <i class="fas fa-paper-plane"></i>
-          </button>
-        </form>
+  <!-- Pie de página: Información final y derechos de autor -->
+  <footer>
+    <div class="container" style="background-color: var(--darker);">
+      <!-- Logo en el pie de página -->
+      <a href="#" class="footer-logo">JGGG</a>
+      <!-- Enlaces rápidos a las secciones del sitio -->
+      <div class="footer-links">
+        <a href="#hero" class="footer-link" data-i18n="footer-home">Inicio</a>
+        <a href="#about" class="footer-link" data-i18n="footer-about">Sobre mí</a>
+        <a href="#skills" class="footer-link" data-i18n="footer-skills">Habilidades</a>
+        <a href="#education" class="footer-link" data-i18n="footer-education">Formación</a>
+        <a href="#projects" class="footer-link" data-i18n="footer-projects">Proyectos</a>
+        <a href="#recognitions" class="footer-link" data-i18n="footer-recognitions">Reconocimientos</a>
+        <a href="#contact" class="footer-link" data-i18n="footer-contact">Contacto</a>
       </div>
+      <!-- Enlaces a redes sociales -->
+      <div class="footer-social">
+        <a href="https://github.com/JesusGGGGit" class="footer-social-link" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+      <!-- Declaración de derechos de autor -->
+      <p class="copyright" data-i18n="rights">
+        2025 Jesús Gerardo Garza García. Todos los derechos reservados.
+      </p>
     </div>
-  </div>
-</section>
+  </footer>
 
-
-<!-- Footer -->
-<footer>
-  <div class="container" style="background-color: var(--darker);">
-    <a href="#" class="footer-logo">JGGG</a>
-    <div class="footer-links">
-      <a href="#hero" class="footer-link" data-i18n="footer-home">Inicio</a>
-      <a href="#about" class="footer-link" data-i18n="footer-about">Sobre mí</a>
-      <a href="#skills" class="footer-link" data-i18n="footer-skills">Habilidades</a>
-      <a href="#education" class="footer-link" data-i18n="footer-education">Formación</a>
-      <a href="#projects" class="footer-link" data-i18n="footer-projects">Proyectos</a>
-      <a href="#recognitions" class="footer-link" data-i18n="footer-recognitions">Reconocimientos</a>
-      <a href="#contact" class="footer-link" data-i18n="footer-contact">Contacto</a>
-    </div>
-
-    <div class="footer-social">
-      <a href="https://github.com/JesusGGGGit" class="footer-social-link" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="#" class="footer-social-link" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-    </div>
-
-    <p class="copyright" data-i18n="rights">
-      2025 Jesús Gerardo Garza García. Todos los derechos reservados.
-    </p>
-  </div>
-</footer>
-
-
-  <!-- Botón para ir arriba -->
+  <!-- Botón para volver al inicio de la página -->
   <div class="go-top-container">
     <button class="go-top-button">
       <i class="fas fa-arrow-up"></i>
     </button>
   </div>
 
-  <!-- JS Libraries -->
+  <!-- Librerías JavaScript externas -->
+  <!-- jQuery: Librería para simplificar la manipulación del DOM -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Slick Carousel: Script para el carrusel de proyectos -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+  <!-- AOS: Script para las animaciones al hacer scroll -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
- 
+
+  <!-- Scripts personalizados para funcionalidades específicas del sitio -->
   <script src="idiomas.js"></script>
   <script src="script.js"></script>
   <script src="cursor.js"></script>
-
 </body>
 </html>
