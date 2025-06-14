@@ -118,32 +118,38 @@ window.addEventListener('load', () => {
     return true; 
   }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = themeToggle.querySelector('i');
-  const themeStyle = document.getElementById('theme-style');
-  
+  const body = document.body;
+
   const currentTheme = localStorage.getItem('theme') || 'night';
-  
+
+  // Mostrar el icono del modo AL QUE PUEDES CAMBIAR (inverso al actual)
   if (currentTheme === 'day') {
-    themeStyle.href = 'day.css';
+    body.classList.add('light');
     themeIcon.classList.remove('fa-moon');
-    themeIcon.classList.add('fa-sun');
+    themeIcon.classList.add('fa-moon'); // Mostrar luna para cambiar a noche
+  } else {
+    body.classList.remove('light');
+    themeIcon.classList.remove('fa-sun');
+    themeIcon.classList.add('fa-sun'); // Mostrar sol para cambiar a día
   }
-  
-  themeToggle.addEventListener('click', function() {
-    if (themeStyle.href.includes('night.css')) {
-      themeStyle.href = 'day.css';
-      themeIcon.classList.remove('fa-moon');
-      themeIcon.classList.add('fa-sun');
-      localStorage.setItem('theme', 'day');
-    } else {
-      themeStyle.href = 'night.css';
+
+  themeToggle.addEventListener('click', function () {
+    const isLight = body.classList.toggle('light');
+
+    if (isLight) {
+      // Estamos en modo día, mostrar icono de luna (para cambiar a noche)
       themeIcon.classList.remove('fa-sun');
       themeIcon.classList.add('fa-moon');
+      localStorage.setItem('theme', 'day');
+    } else {
+      // Estamos en modo noche, mostrar icono de sol (para cambiar a día)
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
       localStorage.setItem('theme', 'night');
     }
   });
 });
-  
 
