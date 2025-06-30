@@ -11,7 +11,7 @@ const translations = {
     // About Section
     "about": "Sobre mí",
     "about_title": "Desarrollador con pasión por la innovación",
-    "about_desc1": " Soy un desarrollador apasionado con experiencia en HTML, CSS, JavaScript, Python y manejo de control de versiones con Git. Me gusta crear soluciones prácticas y eficientes, aprendiendo constantemente nuevas tecnologías para mejorar mis proyectos y aportar valor en cada desafío.",
+    "about_desc1": " Soy un desarrollador apasionado con experiencia en HTML, CSS, JavaScript, Python, SQL y manejo de control de versiones con Git. Me gusta crear soluciones prácticas y eficientes, aprendiendo constantemente nuevas tecnologías para mejorar mis proyectos y aportar valor en cada desafío.",
     "about_desc2": "Mi enfoque combina el diseño atractivo con la funcionalidad sólida, asegurando que cada proyecto no solo se vea bien, sino que también ofrezca una experiencia de usuario excepcional y un rendimiento óptimo.",
     
     // Skills Section
@@ -33,8 +33,8 @@ const translations = {
     "book_desc": "Aplicacion Web para administrar los prestamos de libros y computadoras de una biblioteca con funciones de registro, búsqueda avanzada y actualización de estados.",
     "attendance": "Registro de Asistencias",
     "attendance_desc": "Aplicación Web para registrar asistencias, con informes estadísticos y exportación a Excel.",
-    "automation": "Inventario de Libros",
-    "automation_desc": "Aplicación de escritorio para simplificar el inventario de libros y detectar ejemplares perdidos.",
+    "automation": "Cronómetro para Cubo Rubik",
+    "automation_desc": "Aplicación web creada con React que simula un cronómetro profesional para resolver el cubo Rubik. Incluye tiempos de inspección, estadísticas, visualización del cubo en 2D, personalización de apariencia y sesiones.",
     "entry_system": "Registro de Asistencias",
     "entry_desc": "Aplicación web para registrar asistencias, con informes estadísticos y exportación a Excel.",
     "book_register": "Gestión de Libros de Acervo",
@@ -43,6 +43,7 @@ const translations = {
     "inventory_desc": "Aplicación de escritorio para simplificar el inventario de libros y detectar ejemplares perdidos.",
     "portafolio": "Portafolio",
     "portafolio_desc": "Portafolio personal con todos mis proyectos y habilidades de programacion.",
+    "timer-desc":"Cronómetro web en React para speedcubing con inspección, estadísticas, visualización 2D y personalización",
     "demo": "DEMO",
     "code": "CÓDIGO",
     
@@ -95,7 +96,7 @@ const translations = {
     // About Section
     "about": "About Me",
     "about_title": "Developer with a passion for innovation",
-    "about_desc1": " I am a passionate developer with experience in HTML, CSS, Java, Python, and version control using Git. I enjoy creating practical and efficient solutions, constantly learning new technologies to improve my projects and add value to every challenge.",
+    "about_desc1": " I am a passionate developer with experience in HTML, CSS, JavaScript, Python, SQL, and version control using Git. I enjoy creating practical and efficient solutions, constantly learning new technologies to improve my projects and add value to every challenge.",
     "about_desc2": "My approach combines attractive design with solid functionality, ensuring that each project not only looks good but also delivers an exceptional user experience and optimal performance.",
     
     // Skills Section
@@ -118,8 +119,8 @@ const translations = {
     "book_desc": "Web application  to manage library book inventory and computers with registration functions, advanced search and status updates.",
     "attendance": "Attendance Register",
     "attendance_desc": "Web application to record attendance and control school event dates with statistical reports and Excel export.",
-    "automation": "Book Inventory",
-    "automation_desc": "Desktop application to simplify book inventory management and identify lost books.",
+    "automation": "Rubik's Cube Timer",
+    "automation_desc": "Web application built with React that simulates a professional timer for solving the Rubik's Cube. Includes inspection time, statistics, 2D cube visualization, appearance customization, and session tracking.",
     "entry_system": "Entry and Exit System",
     "entry_desc": "System to manage staff entry and exit records.",
     "book_register": "Book Collection Register",
@@ -127,6 +128,7 @@ const translations = {
     "inventory": "Book Inventory",
     "inventory_desc": "Inventory system for book management.",
     "portafolio": "Portfolio",
+    "timer-desc":"React web timer for speedcubing with inspection, stats, 2D visualization, and customization.",
     "portafolio_desc": "Personal portfolio with all my projects and programming skills.",
     "code": "CODE",
     
