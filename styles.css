@@ -1017,6 +1017,62 @@
       }
     }
 
+
+#testimonials {
+  background-color: var(--darkerj);
+  padding: 80px 0;
+}
+
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background-color: var(--dark);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+}
+
+.quote-icon {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  color: var(--light);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.author-info h4 {
+  margin: 0;
+  color: var(--light);
+  font-weight: 600;
+}
+
+.author-title {
+  margin: 5px 0 0;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+
+
 /* contacto */
     #contact {
       background-color: var(--dark);

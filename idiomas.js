@@ -58,7 +58,11 @@ const translations = {
     "rh134_desc": "Red Hat System Administration II",
     "rh294": "Red Hat Enterprise Linux Automation with Ansible(RH294)",
     "rh294_desc": "Red Hat Enterprise Linux Automation with Ansible",
-    
+    // testimonial
+    "testimonials":"Testimonios",
+    "testimonial1_text": "Jesús Garza demostró ser un elemento muy valioso por su gran responsabilidad y atención al detalle. Su iniciativa y compromiso superaron las expectativas, logrando mejoras significativas en los procesos internos de nuestra Biblioteca.",
+    "testimonial1_name": "Dra. Aleida Magdalena Gil González",
+    "testimonial1_position": "Subdirectora de Calidad e Innovación Educativa, FCFM - UANL",
 
   "contact": "Contacto",
   "email": "Email",
@@ -143,8 +147,14 @@ const translations = {
     "rh294": "Red Hat Enterprise Linux Automation with Ansible(RH294)",
     "rh294_desc": "Red Hat Enterprise Linux Automation with Ansible",
     
-    // Contact Section
+    // Testimonial
+    "testimonials":"Testimonials",
+    "testimonial1_text": "Jesús Garza proved to be a valuable asset due to his great responsibility and attention to detail. His initiative and commitment exceeded expectations, resulting in significant improvements in our library’s internal processes.",
+    "testimonial1_name": "Dr. Aleida Magdalena Gil González",
+    "testimonial1_position": "Deputy Director of Educational Quality and Innovation, FCFM - UANL",
 
+
+    // Contact Section
   "contact": "Contact",
   "email": "Email",
   "phone": "Phone",
