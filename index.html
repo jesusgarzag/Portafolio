@@ -42,9 +42,10 @@
             <span class="status-dot"></span>
             <span data-i18n="status_available">Disponible para trabajar</span>
           </div>
+          <a href="mailto:jesusgarzacia@hotmail.com" class="panel-email">
+            <i class="fas fa-envelope"></i> jesusgarzacia@hotmail.com
+          </a>
         </div>
-
-        <!-- Middle: Nav -->
         <nav class="panel-nav" id="panelNav">
           <a href="#about" class="panel-nav-link active" data-section="about">
             <span class="nav-indicator"></span>
@@ -125,6 +126,23 @@
         <a href="#education" class="mobile-nav-link" data-i18n="education">Formación</a>
         <a href="#contact" class="mobile-nav-link" data-i18n="contact">Contacto</a>
       </nav>
+    </div>
+
+    <!-- MOBILE HERO (visible only on mobile) -->
+    <div class="mobile-hero">
+      <h1 class="mobile-hero-name">Jesús Garza<span class="accent">.</span></h1>
+      <h2 class="mobile-hero-title" data-i18n="backend_dev">Desarrollador Backend</h2>
+      <p class="mobile-hero-desc" data-i18n="hero_desc">
+        Especializado en crear soluciones robustas y escalables.
+        Desarrollo de módulos, APIs e integraciones con Python y PostgreSQL.
+      </p>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span data-i18n="status_available">Disponible para trabajar</span>
+      </div>
+      <a href="mailto:jesusgarzacia@hotmail.com" class="panel-email">
+        <i class="fas fa-envelope"></i> jesusgarzacia@hotmail.com
+      </a>
     </div>
 
     <!-- RIGHT PANEL (Scrolls) -->
@@ -372,13 +390,8 @@
             <span class="skill-chip"><i class="fas fa-flask-vial"></i> Flask</span>
             <span class="skill-chip"><i class="fas fa-database"></i> PostgreSQL</span>
             <span class="skill-chip"><i class="fas fa-database"></i> SQL Server</span>
-            <span class="skill-chip"><i class="fas fa-database"></i> MySQL</span>
-            <span class="skill-chip"><i class="fas fa-database"></i> SQLite</span>
-            <span class="skill-chip"><i class="fas fa-table"></i> Pandas</span>
             <span class="skill-chip"><i class="fas fa-plug"></i> XML-RPC</span>
-            <span class="skill-chip"><i class="fas fa-file-excel"></i> Openpyxl</span>
-            <span class="skill-chip"><i class="fas fa-clock"></i> APScheduler</span>
-            <span class="skill-chip"><i class="fas fa-eye"></i> Watchdog</span>
+            <span class="skill-chip"><i class="fas fa-table"></i> Pandas</span>
           </div>
         </div>
 
@@ -389,12 +402,8 @@
             <span class="skill-chip"><i class="fab fa-css3-alt"></i> CSS3</span>
             <span class="skill-chip"><i class="fab fa-js"></i> JavaScript</span>
             <span class="skill-chip"><i class="fab fa-react"></i> React</span>
-            <span class="skill-chip"><i class="fas fa-paint-brush"></i> QWeb</span>
             <span class="skill-chip"><i class="fas fa-feather"></i> Owl</span>
-            <span class="skill-chip"><i class="fas fa-file-pdf"></i> ReportLab</span>
-            <span class="skill-chip"><i class="fas fa-chart-bar"></i> Chart.js</span>
-            <span class="skill-chip"><i class="fas fa-window-maximize"></i> Tkinter</span>
-            <span class="skill-chip"><i class="fas fa-calculator"></i> NumPy</span>
+            <span class="skill-chip"><i class="fas fa-paint-brush"></i> QWeb</span>
           </div>
         </div>
 
@@ -406,11 +415,6 @@
             <span class="skill-chip"><i class="fab fa-linux"></i> Linux</span>
             <span class="skill-chip"><i class="fab fa-redhat"></i> Red Hat</span>
             <span class="skill-chip"><i class="fas fa-cogs"></i> Ansible</span>
-            <span class="skill-chip"><i class="fas fa-file-invoice"></i> CFDI</span>
-            <span class="skill-chip"><i class="fas fa-box"></i> PyInstaller</span>
-            <span class="skill-chip"><i class="fas fa-server"></i> Waitress</span>
-            <span class="skill-chip"><i class="fas fa-file-csv"></i> xlsxwriter</span>
-            <span class="skill-chip"><i class="fas fa-lock"></i> bcrypt</span>
           </div>
         </div>
       </section>
@@ -557,8 +561,20 @@
 
       <!-- Footer -->
       <footer class="panel-footer">
-        <p class="copyright" data-i18n="rights">© 2025 Jesús Gerardo Garza García. Todos los derechos reservados.</p>
+        <div class="mobile-footer-social">
+          <a href="https://github.com/JesusGGGGit" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/jesus-garza-garcia" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        <p class="copyright" data-i18n="rights"></p>
       </footer>
+      <script>document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Jesús Gerardo Garza García. Todos los derechos reservados.`;</script>
 
     </main>
   </div>
@@ -579,87 +595,68 @@
       </div>
     </button>
 
-    <!-- Expanded portal overlay -->
+    <!-- Expanded portal -->
     <div class="portal-expanded" id="portalExpanded">
-      <!-- Canvas wormhole background -->
-      <canvas class="portal-canvas" id="portalCanvas"></canvas>
+      <!-- Dimming backdrop -->
+      <div class="portal-backdrop" id="portalBackdrop"></div>
 
-      <!-- Circular opening mask -->
-      <div class="portal-mask" id="portalMask"></div>
+      <!-- Portal stage — positions everything relative to the circle -->
+      <div class="portal-stage">
+        <!-- Arcane rotating rings -->
+        <div class="portal-arcane portal-arcane-1"></div>
+        <div class="portal-arcane portal-arcane-2"></div>
+        <div class="portal-arcane portal-arcane-3"></div>
 
-      <div class="portal-content">
+        <!-- Circular clipping container (clips canvas) -->
+        <div class="portal-circle">
+          <canvas class="portal-canvas" id="portalCanvas"></canvas>
+          <div class="portal-inner-glow"></div>
+        </div>
+
+        <!-- Close button -->
         <button class="portal-close" id="portalClose"><i class="fas fa-times"></i></button>
+
+        <!-- Title -->
         <h3 class="portal-title" data-i18n="portal_title">Explora mis proyectos</h3>
-        <p class="portal-subtitle" data-i18n="portal_subtitle">Haz click para entrar</p>
 
-        <div class="portal-dimensions">
-          <!-- Dimension 1 -->
-          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank" class="dimension-card" style="--dim-hue: 160; --dim-delay: 0.3s;">
-            <div class="dimension-window">
-              <div class="dimension-stars"></div>
-              <div class="dimension-planet"></div>
-              <i class="dimension-icon fas fa-book"></i>
-            </div>
-            <div class="dimension-info">
-              <span class="dimension-name" data-i18n="book_management">Gestión de Libros</span>
-              <span class="dimension-tech">Flask · SQL Server</span>
-            </div>
-            <div class="dimension-enter"><i class="fas fa-arrow-right"></i></div>
+        <!-- Center glow -->
+        <div class="portal-center-glow"></div>
+
+        <!-- Orbital project nodes -->
+        <div class="portal-orbit">
+          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank"
+             class="portal-node" style="--node-angle: 0deg; --dim-hue: 160;">
+            <i class="fas fa-book"></i>
+            <span class="portal-node-label" data-i18n="book_management">Gestión de Libros</span>
+            <span class="portal-node-tech">Flask · SQL Server</span>
           </a>
 
-          <!-- Dimension 2 -->
-          <a href="https://jesusggggit.github.io/Rubiks-Timer/" target="_blank" class="dimension-card" style="--dim-hue: 280; --dim-delay: 0.4s;">
-            <div class="dimension-window">
-              <div class="dimension-stars"></div>
-              <div class="dimension-planet"></div>
-              <i class="dimension-icon fas fa-stopwatch"></i>
-            </div>
-            <div class="dimension-info">
-              <span class="dimension-name" data-i18n="timer-title">Rubik's Timer</span>
-              <span class="dimension-tech">React · JavaScript</span>
-            </div>
-            <div class="dimension-enter"><i class="fas fa-arrow-right"></i></div>
+          <a href="https://jesusggggit.github.io/Rubiks-Timer/" target="_blank"
+             class="portal-node" style="--node-angle: 72deg; --dim-hue: 280;">
+            <i class="fas fa-stopwatch"></i>
+            <span class="portal-node-label" data-i18n="timer-title">Rubik's Timer</span>
+            <span class="portal-node-tech">React · JavaScript</span>
           </a>
 
-          <!-- Dimension 3 -->
-          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank" class="dimension-card" style="--dim-hue: 200; --dim-delay: 0.5s;">
-            <div class="dimension-window">
-              <div class="dimension-stars"></div>
-              <div class="dimension-planet"></div>
-              <i class="dimension-icon fas fa-clipboard-check"></i>
-            </div>
-            <div class="dimension-info">
-              <span class="dimension-name" data-i18n="attendance">Entradas y Salidas</span>
-              <span class="dimension-tech">Flask · bcrypt</span>
-            </div>
-            <div class="dimension-enter"><i class="fas fa-arrow-right"></i></div>
+          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank"
+             class="portal-node" style="--node-angle: 144deg; --dim-hue: 200;">
+            <i class="fas fa-clipboard-check"></i>
+            <span class="portal-node-label" data-i18n="attendance">Entradas y Salidas</span>
+            <span class="portal-node-tech">Flask · bcrypt</span>
           </a>
 
-          <!-- Dimension 4 -->
-          <a href="assets/demo/demo.mp4" target="_blank" class="dimension-card" style="--dim-hue: 30; --dim-delay: 0.6s;">
-            <div class="dimension-window">
-              <div class="dimension-stars"></div>
-              <div class="dimension-planet"></div>
-              <i class="dimension-icon fas fa-barcode"></i>
-            </div>
-            <div class="dimension-info">
-              <span class="dimension-name" data-i18n="inventory">Inventario de Libros</span>
-              <span class="dimension-tech">Tkinter · SQLite</span>
-            </div>
-            <div class="dimension-enter"><i class="fas fa-arrow-right"></i></div>
+          <a href="assets/demo/demo.mp4" target="_blank"
+             class="portal-node" style="--node-angle: 216deg; --dim-hue: 30;">
+            <i class="fas fa-barcode"></i>
+            <span class="portal-node-label" data-i18n="inventory">Inventario de Libros</span>
+            <span class="portal-node-tech">Tkinter · SQLite</span>
           </a>
 
-          <!-- All Projects -->
-          <a href="https://github.com/JesusGGGGit" target="_blank" class="dimension-card dimension-all" style="--dim-hue: 0; --dim-delay: 0.7s;">
-            <div class="dimension-window dimension-window-all">
-              <div class="dimension-stars"></div>
-              <i class="dimension-icon fab fa-github"></i>
-            </div>
-            <div class="dimension-info">
-              <span class="dimension-name" data-i18n="more_projects">Todos mis proyectos</span>
-              <span class="dimension-tech">GitHub</span>
-            </div>
-            <div class="dimension-enter"><i class="fas fa-arrow-right"></i></div>
+          <a href="https://github.com/JesusGGGGit" target="_blank"
+             class="portal-node" style="--node-angle: 288deg; --dim-hue: 0;">
+            <i class="fab fa-github"></i>
+            <span class="portal-node-label" data-i18n="more_projects">Todos mis proyectos</span>
+            <span class="portal-node-tech">GitHub</span>
           </a>
         </div>
       </div>

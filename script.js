@@ -193,24 +193,6 @@ document.querySelectorAll('.panel-nav-link, .mobile-nav-link').forEach((link) =>
 });
 
 // ============================================
-// SPOTLIGHT EFFECT (follows cursor on right panel)
-// ============================================
-const panelRight = document.getElementById('panelRight');
-
-if (panelRight && window.innerWidth > 768) {
-  panelRight.addEventListener('mousemove', (e) => {
-    const rect = panelRight.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    panelRight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(16, 185, 129, 0.03), transparent 40%)`;
-  });
-
-  panelRight.addEventListener('mouseleave', () => {
-    panelRight.style.background = '';
-  });
-}
-
-// ============================================
 // MAGIC PORTAL — Wormhole Canvas + Interactions
 // ============================================
 const portalTrigger = document.getElementById('portalTrigger');
@@ -220,17 +202,18 @@ const portalCanvas = document.getElementById('portalCanvas');
 
 let portalAnimationId = null;
 
-// Wormhole / starfield animation on canvas
+// Wormhole / starfield animation on canvas (sized to circular portal)
 function initWormhole(canvas) {
   const ctx = canvas.getContext('2d');
-  let w = canvas.width = window.innerWidth;
-  let h = canvas.height = window.innerHeight;
+  const container = canvas.closest('.portal-circle');
+  let w = canvas.width = container ? container.offsetWidth : 520;
+  let h = canvas.height = container ? container.offsetHeight : 520;
   const cx = () => w / 2;
   const cy = () => h / 2;
 
   const stars = [];
-  const STAR_COUNT = 300;
-  const SPEED = 8;
+  const STAR_COUNT = 200;
+  const SPEED = 6;
 
   for (let i = 0; i < STAR_COUNT; i++) {
     stars.push({
@@ -243,8 +226,10 @@ function initWormhole(canvas) {
   }
 
   function resizeCanvas() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
+    if (container) {
+      w = canvas.width = container.offsetWidth;
+      h = canvas.height = container.offsetHeight;
+    }
   }
   window.addEventListener('resize', resizeCanvas);
 
@@ -290,16 +275,16 @@ function initWormhole(canvas) {
     }
 
     // Center glow (wormhole mouth)
-    const gradient = ctx.createRadialGradient(cx(), cy(), 0, cx(), cy(), 200);
-    gradient.addColorStop(0, 'rgba(16, 185, 129, 0.06)');
-    gradient.addColorStop(0.4, 'rgba(16, 185, 129, 0.02)');
+    const gradient = ctx.createRadialGradient(cx(), cy(), 0, cx(), cy(), 120);
+    gradient.addColorStop(0, 'rgba(16, 185, 129, 0.08)');
+    gradient.addColorStop(0.4, 'rgba(16, 185, 129, 0.03)');
     gradient.addColorStop(1, 'transparent');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, w, h);
 
     // Concentric rings
     for (let i = 1; i <= 4; i++) {
-      const radius = 60 + i * 50 + Math.sin(Date.now() * 0.001 + i) * 15;
+      const radius = 30 + i * 30 + Math.sin(Date.now() * 0.001 + i) * 10;
       ctx.beginPath();
       ctx.arc(cx(), cy(), radius, 0, Math.PI * 2);
       ctx.strokeStyle = `rgba(16, 185, 129, ${0.05 - i * 0.01})`;
@@ -356,7 +341,7 @@ if (portalTrigger && portalExpanded) {
   portalClose.addEventListener('click', closePortal);
 
   portalExpanded.addEventListener('click', (e) => {
-    if (e.target === portalExpanded || e.target === portalCanvas || e.target.classList.contains('portal-mask')) {
+    if (e.target.classList.contains('portal-backdrop')) {
       closePortal();
     }
   });

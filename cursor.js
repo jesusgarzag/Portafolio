@@ -2,140 +2,88 @@ document.addEventListener('DOMContentLoaded', function () {
   const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
   if (!hasFinePointer) return;
 
-  const config = {
-    trailLength: 15,
-    trailDelay: 25,
-    trailColor: 'rgba(16, 185, 129, 0.5)',
-    trailWidth: 3,
-    fadeDuration: 500,
-    clickableElements: 'a, button, [role="button"], [onclick], [href], label, input, select, textarea, .clickable, .btn',
-    hoverColor: 'rgba(52, 211, 153, 0.7)',
-    clickEffectDuration: 250,
-    clickEffectColor: 'rgba(16, 185, 129, 0.6)'
-  };
+  // ---- Config ----
+  const LERP_GLOW = 0.35;
 
-  const trailCanvas = document.createElement('canvas');
-  trailCanvas.id = 'cursorTrail';
-  document.body.appendChild(trailCanvas);
+  // ---- Glow canvas — soft ambient light following cursor ----
+  const glowCanvas = document.createElement('canvas');
+  glowCanvas.id = 'cursorGlow';
+  document.body.appendChild(glowCanvas);
+  const gCtx = glowCanvas.getContext('2d');
 
-  const ctx = trailCanvas.getContext('2d');
-  let mouseX = 0, mouseY = 0;
-  let trailPoints = [];
-  let lastTimestamp = 0;
-  let isOverClickable = false;
-  let clickEffectTime = 0;
-
-  const customCursor = document.createElement('div');
-  customCursor.id = 'customCursor';
-  document.body.appendChild(customCursor);
-
-  function resize() {
-    trailCanvas.width = window.innerWidth;
-    trailCanvas.height = window.innerHeight;
+  function resizeGlow() {
+    glowCanvas.width = window.innerWidth;
+    glowCanvas.height = window.innerHeight;
   }
-  resize();
-  window.addEventListener('resize', resize);
+  resizeGlow();
+  window.addEventListener('resize', resizeGlow);
 
-  function isClickable(element) {
-    if (!element) return false;
-    if (element.matches && element.matches(config.clickableElements)) return true;
-    const style = window.getComputedStyle(element);
-    return style.cursor === 'pointer';
-  }
+  // ---- State ----
+  let mx = -400, my = -400;
+  let gx = -400, gy = -400;
+  let hidden = true;
+  let velocity = 0;
+  let prevMx = 0, prevMy = 0;
 
+  // ---- Events ----
   document.addEventListener('mousemove', function (e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    mx = e.clientX;
+    my = e.clientY;
 
-    const el = document.elementFromPoint(e.clientX, e.clientY);
-    const nowClickable = el ? isClickable(el) : false;
+    velocity = Math.min(Math.hypot(mx - prevMx, my - prevMy), 80);
+    prevMx = mx;
+    prevMy = my;
 
-    if (nowClickable !== isOverClickable) {
-      isOverClickable = nowClickable;
-      if (isOverClickable) {
-        customCursor.style.width = '18px';
-        customCursor.style.height = '18px';
-        customCursor.style.opacity = '0.8';
-      } else {
-        customCursor.style.width = '14px';
-        customCursor.style.height = '14px';
-        customCursor.style.opacity = '1';
-      }
-    }
-
-    const now = Date.now();
-    if (now - lastTimestamp > config.trailDelay) {
-      trailPoints.push({ x: mouseX, y: mouseY, time: now, hover: isOverClickable });
-      lastTimestamp = now;
-      if (trailPoints.length > config.trailLength) trailPoints.shift();
+    if (hidden) {
+      hidden = false;
+      glowCanvas.style.opacity = '1';
     }
   });
 
-  document.addEventListener('mousedown', function () {
-    clickEffectTime = Date.now();
-    customCursor.style.transform = 'translate(-50%, -50%) scale(0.7)';
+  document.addEventListener('mouseleave', function () {
+    hidden = true;
+    glowCanvas.style.opacity = '0';
   });
 
-  document.addEventListener('mouseup', function () {
-    customCursor.style.transform = 'translate(-50%, -50%) scale(1)';
-  });
+  // ---- Draw ----
+  function tick() {
+    gx += (mx - gx) * LERP_GLOW;
+    gy += (my - gy) * LERP_GLOW;
 
-  function animate() {
-    ctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
-    const now = Date.now();
+    const w = glowCanvas.width;
+    const h = glowCanvas.height;
+    gCtx.clearRect(0, 0, w, h);
 
-    for (let i = 0; i < trailPoints.length; i++) {
-      const p = trailPoints[i];
-      const age = now - p.time;
-      const opacity = Math.max(0, 1 - age / config.fadeDuration);
-      if (opacity <= 0) continue;
+    if (!hidden) {
+      const isLight = document.body.classList.contains('light');
 
-      const color = p.hover ? config.hoverColor : config.trailColor;
-      const c = color.replace(/[\d.]+\)$/, opacity.toFixed(2) + ')');
+      // Outer ambient glow — very large, very soft fade
+      const baseAlpha = isLight ? 0.03 : 0.05;
+      const velBoost = velocity * 0.0003;
+      const alpha = Math.min(baseAlpha + velBoost, 0.09);
+      const radius = 600;
 
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, config.trailWidth, 0, Math.PI * 2);
-      ctx.fillStyle = c;
-      ctx.fill();
+      const g1 = gCtx.createRadialGradient(gx, gy, 0, gx, gy, radius);
+      g1.addColorStop(0, `rgba(16, 185, 129, ${alpha})`);
+      g1.addColorStop(0.25, `rgba(16, 185, 129, ${alpha * 0.55})`);
+      g1.addColorStop(0.5, `rgba(16, 185, 129, ${alpha * 0.2})`);
+      g1.addColorStop(0.75, `rgba(16, 185, 129, ${alpha * 0.06})`);
+      g1.addColorStop(1, 'transparent');
+      gCtx.fillStyle = g1;
+      gCtx.fillRect(0, 0, w, h);
 
-      if (i < trailPoints.length - 1) {
-        const next = trailPoints[i + 1];
-        const nextAge = now - next.time;
-        const nextOp = Math.max(0, 1 - nextAge / config.fadeDuration);
-        if (nextOp > 0) {
-          const lc = (next.hover ? config.hoverColor : config.trailColor)
-            .replace(/[\d.]+\)$/, Math.min(opacity, nextOp).toFixed(2) + ')');
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(next.x, next.y);
-          ctx.lineWidth = config.trailWidth;
-          ctx.strokeStyle = lc;
-          ctx.stroke();
-        }
-      }
+      // Inner focused highlight
+      const innerAlpha = isLight ? 0.02 : 0.035;
+      const g2 = gCtx.createRadialGradient(gx, gy, 0, gx, gy, 140);
+      g2.addColorStop(0, `rgba(16, 185, 129, ${innerAlpha})`);
+      g2.addColorStop(0.5, `rgba(16, 185, 129, ${innerAlpha * 0.3})`);
+      g2.addColorStop(1, 'transparent');
+      gCtx.fillStyle = g2;
+      gCtx.fillRect(0, 0, w, h);
     }
 
-    if (clickEffectTime > 0) {
-      const clickAge = now - clickEffectTime;
-      if (clickAge < config.clickEffectDuration) {
-        const co = 1 - clickAge / config.clickEffectDuration;
-        const r = config.trailWidth * 3 * (clickAge / config.clickEffectDuration);
-        ctx.beginPath();
-        ctx.arc(mouseX, mouseY, r, 0, Math.PI * 2);
-        ctx.fillStyle = config.clickEffectColor.replace(/[\d.]+\)$/, co.toFixed(2) + ')');
-        ctx.fill();
-      } else {
-        clickEffectTime = 0;
-      }
-    }
-
-    customCursor.style.left = mouseX + 'px';
-    customCursor.style.top = mouseY + 'px';
-
-    trailPoints = trailPoints.filter(p => now - p.time < config.fadeDuration);
-    requestAnimationFrame(animate);
+    requestAnimationFrame(tick);
   }
 
-  document.body.style.cursor = 'none';
-  animate();
+  tick();
 });

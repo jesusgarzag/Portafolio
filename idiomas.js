@@ -13,8 +13,8 @@ const translations = {
     // About
     "about": "Sobre mí",
     "about_title": "Desarrollador Backend con enfoque en Python",
-    "about_desc1": "Soy un desarrollador backend especializado en Python con experiencia en el desarrollo de módulos personalizados para Odoo, integraciones mediante XML-RPC, automatización de procesos y manejo de bases de datos con PostgreSQL. Mi nivel de inglés es C1, lo que me permite colaborar eficazmente en entornos internacionales.",
-    "about_desc2": "Cuento con formación en administración de sistemas Linux (Red Hat) y automatización con Ansible. Mi enfoque se centra en escribir código limpio, eficiente y mantenible que resuelva problemas reales de negocio.",
+    "about_desc1": "Desarrollador backend Python con experiencia en módulos Odoo, integraciones XML-RPC y bases de datos PostgreSQL. Inglés C1.",
+    "about_desc2": "Formación en administración Linux (Red Hat) y automatización con Ansible. Enfocado en código limpio que resuelva problemas reales.",
     "highlight_python": "Python & Odoo",
     "highlight_python_desc": "Módulos personalizados",
     "highlight_db": "PostgreSQL",
@@ -29,17 +29,17 @@ const translations = {
     "experience_title": "Experiencia Profesional",
     "exp_odoo_title": "Desarrollador Backend Odoo",
     "exp_odoo_subtitle": "Odoo 17/18 · Python · PostgreSQL · ORM · Owl · XML-RPC",
-    "exp_odoo_desc": "Desarrollo de módulos de producción para múltiples clientes, incluyendo un sistema de reabastecimiento en cascada multi-almacén, un módulo de postnómina con dashboard interactivo Owl, y un sistema de integración de datos en tiempo real con Watchdog y XML-RPC.",
-    "exp_odoo_1": "Módulo de reabastecimiento en cascada: sourcing parcial desde 3 almacenes priorizados, stock mínimo configurable, transferencias consolidadas batch y notificaciones BUS en tiempo real",
-    "exp_odoo_2": "Dashboard interactivo de postnómina con componente Owl: 3 modos de vista, gauges SVG, tracking de dispersión en 6 pasos, filtrado avanzado y paginación",
-    "exp_odoo_3": "Sistema de integración con Watchdog: monitoreo de directorios en tiempo real, parseo de XML/CSV/JSON, creación automática de clientes, productos y facturas en Odoo vía XML-RPC",
-    "exp_odoo_4": "Integración CFDI: timbrado automático de facturas, detección inteligente de bancos mexicanos con 8 patrones regex, generación de layouts CELEX/Banregio y comprobantes SPEI en PDF",
-    "exp_odoo_5": "Reportes avanzados: Póliza con Conceptos (60+ conceptos de nómina agrupados por departamento/sucursal), reportes QWeb de facturación con CFDI, y reportes de dispersión multi-concepto",
-    "exp_odoo_6": "Detección automática de contactos bancarios: normalización Unicode, extracción de RFC, matching difuso de nombres y 8 patrones regex para números de cuenta/CLABE",
-    "exp_odoo_7": "Override de procurement core (_run_pull): algoritmo de cascada con resolución dinámica de almacenes, encadenamiento de movimientos en tránsito y gestión de orderpoints",
-    "exp_odoo_8": "API REST personalizada con 3 endpoints para dashboard, reconciliación de pagos con matching por UUID/folio, y generación batch de PDFs de comprobantes",
-    "exp_odoo_9": "Migración de módulos entre versiones de Odoo (v17 → v18), adaptando modelos, vistas, controladores y componentes Owl",
-    "exp_odoo_10": "Herencia de 6+ modelos estándar (account.move, hr.payslip.run, stock.rule, account.payment, bank.statement.line, stock.picking) con lógica de negocio personalizada",
+    "exp_odoo_desc": "Módulos en producción para múltiples clientes: reabastecimiento multi-almacén, postnómina con dashboard Owl e integración de datos en tiempo real.",
+    "exp_odoo_1": "Reabastecimiento en cascada multi-almacén con sourcing parcial, stock mínimo configurable y transferencias batch",
+    "exp_odoo_2": "Dashboard de postnómina con Owl: vistas múltiples, gauges SVG, tracking de dispersión y filtrado avanzado",
+    "exp_odoo_3": "Integración con Watchdog: monitoreo de directorios, parseo XML/CSV/JSON y creación automática de registros vía XML-RPC",
+    "exp_odoo_4": "Integración CFDI: timbrado automático, detección de bancos mexicanos, layouts bancarios y comprobantes SPEI",
+    "exp_odoo_5": "Reportes QWeb avanzados: pólizas de nómina por departamento, facturación CFDI y dispersión multi-concepto",
+    "exp_odoo_6": "Detección automática de contactos bancarios con normalización Unicode, extracción de RFC y matching difuso",
+    "exp_odoo_7": "Override de procurement core (_run_pull) con resolución dinámica de almacenes y encadenamiento de movimientos",
+    "exp_odoo_8": "API REST con endpoints de dashboard, reconciliación de pagos y generación batch de PDFs",
+    "exp_odoo_9": "Migración de módulos Odoo v17 → v18, adaptando modelos, vistas y componentes Owl",
+    "exp_odoo_10": "Herencia de 6+ modelos estándar (account.move, hr.payslip.run, stock.rule, etc.) con lógica personalizada",
 
     // Experience - Odoo Metrics
     "metric_odoo_1": "Multi-almacén",
@@ -52,14 +52,14 @@ const translations = {
     // Experience - Social Service
     "exp_ss_title": "Programador Full Stack — Servicio Social",
     "exp_ss_subtitle": "Biblioteca FCFM-UANL · Flask · SQL Server · 3 Sistemas en Producción",
-    "exp_ss_desc": "Diseño, desarrollo e implementación de 3 sistemas completos para la biblioteca de la FCFM-UANL, digitalizando procesos manuales. Incluye arquitectura dual de bases de datos (SQLite + SQL Server), autenticación con bcrypt, dashboards analíticos con Chart.js, generación de reportes PDF/Excel, y tareas programadas en segundo plano. Sistemas compilados como ejecutables (.exe) y desplegados en producción.",
-    "exp_ss_1": "Sistema de préstamos de libros y computadoras: 13+ endpoints, monitoreo en tiempo real con AJAX, dashboard analítico con Chart.js, y cierre automático de sesiones con APScheduler",
-    "exp_ss_2": "Sistema de registro de entradas y salidas: autenticación con bcrypt, control de acceso por roles (Admin/Usuario), paginación avanzada y recuperación de contraseña con preguntas de seguridad",
-    "exp_ss_3": "Sistema de inventario de libros: app de escritorio con Tkinter, escaneo de código de barras, búsqueda con normalización Unicode, merge de múltiples bases de datos con detección de conflictos",
-    "exp_ss_4": "Generación de reportes profesionales en PDF (ReportLab) y Excel (openpyxl/xlsxwriter) con formato avanzado, gráficos y análisis de datos con Pandas",
-    "exp_ss_5": "Arquitectura dual de bases de datos (SQLite + SQL Server) con la misma lógica de aplicación, queries parametrizadas y prevención de SQL injection",
-    "exp_ss_6": "Importación masiva de datos desde Excel/CSV con validación, mapeo de columnas y resolución de conflictos",
-    "exp_ss_7": "Despliegue en producción con Waitress (WSGI), compilación a ejecutables con PyInstaller, y documentación completa de usuario y código",
+    "exp_ss_desc": "3 sistemas para la biblioteca FCFM-UANL: préstamos, control de asistencia e inventario. Arquitectura dual de BD, dashboards y reportes. Desplegados en producción.",
+    "exp_ss_1": "Sistema de préstamos: monitoreo en tiempo real, dashboard analítico con Chart.js y cierre automático de sesiones",
+    "exp_ss_2": "Registro de entradas y salidas: autenticación bcrypt, control por roles y reportes de asistencia",
+    "exp_ss_3": "Inventario de libros: app de escritorio con escaneo de código de barras y merge de bases de datos",
+    "exp_ss_4": "Reportes PDF y Excel con formato avanzado y análisis de datos con Pandas",
+    "exp_ss_5": "Arquitectura dual SQLite + SQL Server con queries parametrizadas",
+    "exp_ss_6": "Importación masiva desde Excel/CSV con validación y resolución de conflictos",
+    "exp_ss_7": "Despliegue en producción con Waitress y compilación a ejecutables con PyInstaller",
 
     // Experience - SS Metrics
     "metric_ss_1": "3 Sistemas",
@@ -144,7 +144,7 @@ const translations = {
     "portal_subtitle": "Haz click para entrar",
 
     // Footer
-    "rights": "© 2025 Jesús Gerardo Garza García. Todos los derechos reservados."
+    "rights": `© ${new Date().getFullYear()} Jesús Gerardo Garza García. Todos los derechos reservados.`
   },
 
   en: {
@@ -161,8 +161,8 @@ const translations = {
     // About
     "about": "About Me",
     "about_title": "Backend Developer focused on Python",
-    "about_desc1": "I'm a backend developer specialized in Python with experience building custom Odoo modules, XML-RPC integrations, process automation, and database management with PostgreSQL. My English level is C1, enabling effective collaboration in international environments.",
-    "about_desc2": "I have training in Linux system administration (Red Hat) and automation with Ansible. My approach focuses on writing clean, efficient, and maintainable code that solves real business problems.",
+    "about_desc1": "Python backend developer experienced in Odoo modules, XML-RPC integrations, and PostgreSQL databases. C1 English level.",
+    "about_desc2": "Trained in Linux administration (Red Hat) and Ansible automation. Focused on clean code that solves real problems.",
     "highlight_python": "Python & Odoo",
     "highlight_python_desc": "Custom modules",
     "highlight_db": "PostgreSQL",
@@ -177,17 +177,17 @@ const translations = {
     "experience_title": "Professional Experience",
     "exp_odoo_title": "Odoo Backend Developer",
     "exp_odoo_subtitle": "Odoo 17/18 · Python · PostgreSQL · ORM · Owl · XML-RPC",
-    "exp_odoo_desc": "Development of production modules for multiple clients, including a multi-warehouse cascading replenishment system, a post-payroll module with interactive Owl dashboard, and a real-time data integration system with Watchdog and XML-RPC.",
-    "exp_odoo_1": "Cascading replenishment module: partial sourcing from 3 prioritized warehouses, configurable minimum stock, consolidated batch transfers, and real-time BUS notifications",
-    "exp_odoo_2": "Interactive post-payroll dashboard with Owl component: 3 view modes, SVG gauges, 6-step dispersal tracking, advanced filtering, and pagination",
-    "exp_odoo_3": "Watchdog integration system: real-time directory monitoring, XML/CSV/JSON parsing, automatic creation of customers, products, and invoices in Odoo via XML-RPC",
-    "exp_odoo_4": "CFDI integration: automatic invoice stamping, smart Mexican bank detection with 8 regex patterns, CELEX/Banregio layout generation, and SPEI PDF payment proofs",
-    "exp_odoo_5": "Advanced reports: Poliza con Conceptos (60+ payroll concepts grouped by department/branch), QWeb invoice reports with CFDI, and multi-concept dispersal reports",
-    "exp_odoo_6": "Automatic bank contact detection: Unicode normalization, RFC extraction, fuzzy name matching, and 8 regex patterns for account/CLABE number detection",
-    "exp_odoo_7": "Core procurement override (_run_pull): cascade algorithm with dynamic warehouse resolution, transit movement chaining, and orderpoint management",
-    "exp_odoo_8": "Custom REST API with 3 dashboard endpoints, payment reconciliation with UUID/folio matching, and batch PDF receipt generation",
-    "exp_odoo_9": "Module migration across Odoo versions (v17 → v18), adapting models, views, controllers, and Owl components",
-    "exp_odoo_10": "Inheritance of 6+ standard models (account.move, hr.payslip.run, stock.rule, account.payment, bank.statement.line, stock.picking) with custom business logic",
+    "exp_odoo_desc": "Production modules for multiple clients: multi-warehouse replenishment, post-payroll Owl dashboard, and real-time data integration.",
+    "exp_odoo_1": "Multi-warehouse cascading replenishment with partial sourcing, configurable minimum stock, and batch transfers",
+    "exp_odoo_2": "Post-payroll Owl dashboard: multiple views, SVG gauges, dispersal tracking, and advanced filtering",
+    "exp_odoo_3": "Watchdog integration: directory monitoring, XML/CSV/JSON parsing, and automatic record creation via XML-RPC",
+    "exp_odoo_4": "CFDI integration: automatic invoice stamping, Mexican bank detection, bank layouts, and SPEI proofs",
+    "exp_odoo_5": "Advanced QWeb reports: payroll policies by department, CFDI invoicing, and multi-concept dispersal",
+    "exp_odoo_6": "Automatic bank contact detection with Unicode normalization, RFC extraction, and fuzzy matching",
+    "exp_odoo_7": "Core procurement override (_run_pull) with dynamic warehouse resolution and movement chaining",
+    "exp_odoo_8": "REST API with dashboard endpoints, payment reconciliation, and batch PDF generation",
+    "exp_odoo_9": "Module migration Odoo v17 → v18, adapting models, views, and Owl components",
+    "exp_odoo_10": "Inheritance of 6+ standard models (account.move, hr.payslip.run, stock.rule, etc.) with custom logic",
 
     // Experience - Odoo Metrics
     "metric_odoo_1": "Multi-warehouse",
@@ -200,14 +200,14 @@ const translations = {
     // Experience - Social Service
     "exp_ss_title": "Full Stack Developer — Social Service",
     "exp_ss_subtitle": "FCFM-UANL Library · Flask · SQL Server · 3 Production Systems",
-    "exp_ss_desc": "Design, development, and deployment of 3 complete systems for the FCFM-UANL library, digitizing manual processes. Includes dual database architecture (SQLite + SQL Server), bcrypt authentication, Chart.js analytics dashboards, PDF/Excel report generation, and background scheduled tasks. Systems compiled as executables (.exe) and deployed in production.",
-    "exp_ss_1": "Book and computer lending system: 13+ endpoints, real-time monitoring with AJAX, Chart.js analytics dashboard, and automatic session closure with APScheduler",
-    "exp_ss_2": "Entry and exit registration system: bcrypt authentication, role-based access control (Admin/User), advanced pagination, and password recovery with security questions",
-    "exp_ss_3": "Book inventory system: Tkinter desktop app, barcode scanning, Unicode-normalized search, multi-database merge with conflict detection",
-    "exp_ss_4": "Professional PDF (ReportLab) and Excel (openpyxl/xlsxwriter) report generation with advanced formatting, charts, and Pandas data analysis",
-    "exp_ss_5": "Dual database architecture (SQLite + SQL Server) with shared application logic, parameterized queries, and SQL injection prevention",
-    "exp_ss_6": "Bulk data import from Excel/CSV with validation, column mapping, and conflict resolution",
-    "exp_ss_7": "Production deployment with Waitress (WSGI), PyInstaller executable compilation, and comprehensive user and code documentation",
+    "exp_ss_desc": "3 systems for the FCFM-UANL library: lending, attendance control, and inventory. Dual DB architecture, dashboards, and reports. Deployed in production.",
+    "exp_ss_1": "Lending system: real-time monitoring, Chart.js analytics dashboard, and automatic session closure",
+    "exp_ss_2": "Entry and exit register: bcrypt authentication, role-based access, and attendance reports",
+    "exp_ss_3": "Book inventory: desktop app with barcode scanning and multi-database merge",
+    "exp_ss_4": "PDF and Excel reports with advanced formatting and Pandas data analysis",
+    "exp_ss_5": "Dual SQLite + SQL Server architecture with parameterized queries",
+    "exp_ss_6": "Bulk import from Excel/CSV with validation and conflict resolution",
+    "exp_ss_7": "Production deployment with Waitress and PyInstaller executable compilation",
 
     // Experience - SS Metrics
     "metric_ss_1": "3 Systems",
@@ -292,7 +292,7 @@ const translations = {
     "portal_subtitle": "Click to enter",
 
     // Footer
-    "rights": "© 2025 Jesús Gerardo Garza García. All rights reserved."
+    "rights": `© ${new Date().getFullYear()} Jesús Gerardo Garza García. All rights reserved.`
   }
 };
 
