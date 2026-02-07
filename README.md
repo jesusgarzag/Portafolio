@@ -21,6 +21,14 @@ Soy desarrollador backend con experiencia en desarrollo de modulos para Odoo, in
 - Arquitectura CSS modular.
 - i18n con archivos JSON.
 
+## Habilidades
+
+- Backend: Python, Odoo, PostgreSQL, APIs REST, ORM.
+- Datos: diseno de esquemas, optimizacion de consultas, reportes.
+- DevOps: Linux, despliegues.
+- Integraciones: XML-RPC, automatizacion de procesos.
+- Buenas practicas: codigo limpio, pruebas basicas, documentacion.
+
 ## Vista previa
 
 ![Vista previa](assets/images/portafolio.jpg)
@@ -66,6 +74,14 @@ I am a backend developer with experience building Odoo modules, XML-RPC integrat
 - HTML5, CSS3, JavaScript.
 - Modular CSS architecture.
 - JSON-based i18n.
+
+## Skills
+
+- Backend: Python, Odoo, PostgreSQL, REST APIs, ORM.
+- Data: schema design, query optimization, reporting.
+- DevOps: Linux, basic deployments.
+- Integrations: XML-RPC, process automation.
+- Good practices: clean code, basic testing, documentation.
 
 ## Preview
 
