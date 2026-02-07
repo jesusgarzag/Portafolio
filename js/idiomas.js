@@ -47,8 +47,10 @@ function applyTranslations(lang, translations) {
 
   // Update CV download links
   const cvFile = lang === 'en' ? 'assets/certificados/cv_en.pdf' : 'assets/certificados/cv_es.pdf';
+  const cvName = lang === 'en' ? 'Jesus_Garza_Resume.pdf' : 'Jesus_Garza_CV.pdf';
   document.querySelectorAll('.btn-cv').forEach((btn) => {
     btn.href = cvFile;
+    btn.setAttribute('download', cvName);
   });
 
   // Update expand/collapse buttons
