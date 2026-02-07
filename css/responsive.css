@@ -1,0 +1,226 @@
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .panel-left {
+    padding: 4rem 2rem 2rem 3rem;
+  }
+
+  .panel-right {
+    padding: 4rem 2.5rem 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Switch to single column */
+  .layout {
+    flex-direction: column;
+  }
+
+  .panel-left {
+    display: none;
+  }
+
+  /* Show mobile header */
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(10, 10, 11, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 1.5rem;
+    transition: all var(--transition);
+  }
+
+  body.light .mobile-header {
+    background-color: rgba(250, 250, 250, 0.9);
+  }
+
+  .logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hamburger {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.3rem;
+  }
+
+  /* Mobile nav overlay */
+  .mobile-nav-overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: var(--bg);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .mobile-nav-link {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--accent);
+  }
+
+  /* Mobile hero */
+  .mobile-hero {
+    display: block;
+    padding: 5rem 1.5rem 1.5rem;
+    text-align: center;
+  }
+
+  .mobile-hero-name {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+  }
+
+  .mobile-hero-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .mobile-hero-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mobile-hero .status-badge {
+    justify-content: center;
+  }
+
+  .panel-right {
+    padding: 2rem 1.5rem 2rem;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .project-card {
+    flex-direction: column;
+  }
+
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
+
+  .project-image {
+    height: 160px;
+  }
+
+  .education-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .education-logos {
+    justify-content: center;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    font-size: 1.4rem;
+  }
+
+  .mobile-footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .mobile-footer-social a {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    transition: all var(--transition);
+  }
+
+  .mobile-footer-social a:hover {
+    color: var(--text);
+    transform: translateY(-2px);
+  }
+
+  .panel-footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel-right {
+    padding: 4.5rem 1.25rem 1.5rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .experience-card {
+    flex-direction: column;
+  }
+
+  .exp-accent {
+    width: 100%;
+    height: 3px;
+  }
+}

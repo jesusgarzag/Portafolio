@@ -1,0 +1,657 @@
+/* ============================================
+   MAGIC PORTAL
+   ============================================ */
+.portal-wrapper {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9000;
+}
+
+/* Floating Trigger */
+.portal-trigger {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.portal-trigger:hover {
+  transform: scale(1.15);
+}
+
+.portal-core {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4),
+              0 0 60px rgba(16, 185, 129, 0.15);
+}
+
+/* Rotating rings */
+.portal-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+.portal-ring-1 {
+  width: 56px;
+  height: 56px;
+  border-top-color: var(--accent);
+  border-right-color: rgba(16, 185, 129, 0.3);
+  animation: portalSpin 3s linear infinite;
+}
+
+.portal-ring-2 {
+  width: 68px;
+  height: 68px;
+  border-bottom-color: var(--accent-hover);
+  border-left-color: rgba(52, 211, 153, 0.2);
+  animation: portalSpin 5s linear infinite reverse;
+}
+
+.portal-ring-3 {
+  width: 80px;
+  height: 80px;
+  border-top-color: rgba(16, 185, 129, 0.15);
+  border-right-color: rgba(52, 211, 153, 0.1);
+  animation: portalSpin 7s linear infinite;
+}
+
+@keyframes portalSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Floating particles */
+.portal-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.portal-particles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+.portal-particles span:nth-child(1) { top: -8px; left: 50%; animation-delay: 0s; }
+.portal-particles span:nth-child(2) { top: 50%; right: -8px; animation-delay: 0.4s; }
+.portal-particles span:nth-child(3) { bottom: -8px; left: 50%; animation-delay: 0.8s; }
+.portal-particles span:nth-child(4) { top: 50%; left: -8px; animation-delay: 1.2s; }
+.portal-particles span:nth-child(5) { top: 5px; right: 5px; animation-delay: 1.6s; }
+.portal-particles span:nth-child(6) { bottom: 5px; right: 5px; animation-delay: 2s; }
+.portal-particles span:nth-child(7) { bottom: 5px; left: 5px; animation-delay: 2.4s; }
+.portal-particles span:nth-child(8) { top: 5px; left: 5px; animation-delay: 2.8s; }
+
+@keyframes particleFloat {
+  0% { opacity: 0; transform: scale(0) translateY(0); }
+  50% { opacity: 1; transform: scale(1.2) translateY(-12px); }
+  100% { opacity: 0; transform: scale(0) translateY(-24px); }
+}
+
+/* Tooltip on hover */
+.portal-trigger::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.7rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.portal-trigger:hover::after {
+  opacity: 1;
+}
+
+/* ============================================
+   PORTAL EXPANDED OVERLAY
+   ============================================ */
+.portal-expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  cursor: auto !important;
+}
+
+.portal-expanded * {
+  cursor: auto !important;
+}
+
+.portal-expanded a, .portal-expanded button {
+  cursor: pointer !important;
+}
+
+.portal-expanded.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hide glow when portal is open */
+body.portal-open #cursorGlow {
+  display: none !important;
+}
+
+body.portal-open {
+  cursor: auto !important;
+}
+
+/* Backdrop — dims the page behind the portal */
+.portal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+body.light .portal-backdrop {
+  background: rgba(250, 250, 250, 0.7);
+}
+
+/* ============================================
+   PORTAL STAGE — positions everything relative
+   to the circular portal
+   ============================================ */
+.portal-stage {
+  position: relative;
+  width: 720px;
+  height: 720px;
+  z-index: 1;
+  transform: scale(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-expanded.active .portal-stage {
+  transform: scale(1);
+}
+
+/* Halo glow behind the circle */
+.portal-stage::before {
+  content: '';
+  position: absolute;
+  inset: -80px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.1) 0%,
+    rgba(16, 185, 129, 0.03) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: portalHalo 4s ease-in-out infinite;
+}
+
+@keyframes portalHalo {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ============================================
+   CIRCULAR PORTAL — clips the canvas
+   ============================================ */
+.portal-circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow:
+    0 0 60px rgba(16, 185, 129, 0.3),
+    0 0 120px rgba(16, 185, 129, 0.15),
+    inset 0 0 60px rgba(16, 185, 129, 0.08);
+}
+
+body.light .portal-circle {
+  box-shadow:
+    0 0 60px rgba(16, 185, 129, 0.2),
+    0 0 120px rgba(16, 185, 129, 0.1),
+    inset 0 0 40px rgba(16, 185, 129, 0.05);
+}
+
+.portal-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Inner glow ring on the portal edge */
+.portal-inner-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  box-shadow: inset 0 0 40px rgba(16, 185, 129, 0.15);
+  pointer-events: none;
+}
+
+body.light .portal-inner-glow {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* ============================================
+   ARCANE ROTATING RINGS
+   ============================================ */
+.portal-arcane {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Ring 1 — dashed, close to edge */
+.portal-arcane-1 {
+  inset: -18px;
+  border: 1.5px dashed rgba(16, 185, 129, 0.3);
+  animation: arcaneRotate 25s linear infinite;
+}
+
+/* Rune marks on ring 1 */
+.portal-arcane-1::before,
+.portal-arcane-1::after {
+  content: '✦';
+  position: absolute;
+  font-size: 10px;
+  color: rgba(16, 185, 129, 0.6);
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.portal-arcane-1::before {
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.portal-arcane-1::after {
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Ring 2 — segmented conic gradient */
+.portal-arcane-2 {
+  inset: -34px;
+  background-image: repeating-conic-gradient(
+    from 0deg,
+    rgba(16, 185, 129, 0.2) 0deg 4deg,
+    transparent 4deg 24deg
+  );
+  -webkit-mask: radial-gradient(transparent calc(100% - 2px), black calc(100% - 2px));
+  mask: radial-gradient(transparent calc(100% - 2px), black calc(100% - 2px));
+  animation: arcaneRotate 40s linear infinite reverse;
+}
+
+.portal-arcane-2::before,
+.portal-arcane-2::after {
+  content: '◇';
+  position: absolute;
+  font-size: 8px;
+  color: rgba(16, 185, 129, 0.4);
+  text-shadow: 0 0 6px rgba(16, 185, 129, 0.3);
+}
+
+.portal-arcane-2::before {
+  top: 50%;
+  left: -4px;
+  transform: translateY(-50%);
+}
+
+.portal-arcane-2::after {
+  top: 50%;
+  right: -4px;
+  transform: translateY(-50%);
+}
+
+/* Ring 3 — outermost, subtle */
+.portal-arcane-3 {
+  inset: -48px;
+  border: 1px dotted rgba(16, 185, 129, 0.12);
+  animation: arcaneRotate 60s linear infinite;
+}
+
+@keyframes arcaneRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   PORTAL CLOSE BUTTON
+   ============================================ */
+.portal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  cursor: pointer !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+body.light .portal-close {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.portal-close:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(90deg) scale(1.1);
+  background: rgba(16, 185, 129, 0.2);
+}
+
+/* ============================================
+   PORTAL TITLE
+   ============================================ */
+.portal-title {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+  white-space: nowrap;
+  z-index: 10;
+  letter-spacing: 1.5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+body.light .portal-title {
+  color: var(--text);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* ============================================
+   CENTER GLOW
+   ============================================ */
+.portal-center-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.15) 0%,
+    rgba(16, 185, 129, 0.05) 40%,
+    transparent 70%
+  );
+  z-index: 7;
+  pointer-events: none;
+  animation: centerPulse 3s ease-in-out infinite;
+}
+
+@keyframes centerPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   ORBITAL PROJECT NODES
+   ============================================ */
+.portal-orbit {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+}
+
+.portal-node {
+  --orbit-radius: 155px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1.5px solid hsla(var(--dim-hue), 70%, 55%, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: hsla(var(--dim-hue), 70%, 70%, 1);
+  font-size: 1.3rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 18px hsla(var(--dim-hue), 70%, 55%, 0.2),
+    inset 0 0 12px hsla(var(--dim-hue), 70%, 55%, 0.05);
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--node-angle))
+    translateY(calc(-1 * var(--orbit-radius)))
+    rotate(calc(-1 * var(--node-angle)));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  scale: 0;
+  opacity: 0;
+}
+
+body.light .portal-node {
+  background: rgba(255, 255, 255, 0.75);
+  color: hsla(var(--dim-hue), 60%, 40%, 1);
+  border-color: hsla(var(--dim-hue), 50%, 50%, 0.4);
+}
+
+/* Stagger entrance per node */
+.portal-node:nth-child(1) { --node-index: 0; }
+.portal-node:nth-child(2) { --node-index: 1; }
+.portal-node:nth-child(3) { --node-index: 2; }
+.portal-node:nth-child(4) { --node-index: 3; }
+.portal-node:nth-child(5) { --node-index: 4; }
+
+.portal-expanded.active .portal-node {
+  scale: 1;
+  opacity: 1;
+  transition-delay: calc(0.4s + var(--node-index) * 0.08s);
+}
+
+/* Subtle floating bob */
+.portal-expanded.active .portal-node {
+  animation: nodeBob 4s ease-in-out infinite;
+  animation-delay: calc(var(--node-index) * 0.7s);
+}
+
+@keyframes nodeBob {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -5px; }
+}
+
+.portal-node:hover {
+  scale: 1.25;
+  border-color: hsla(var(--dim-hue), 70%, 65%, 0.9);
+  box-shadow:
+    0 0 30px hsla(var(--dim-hue), 70%, 55%, 0.4),
+    0 0 60px hsla(var(--dim-hue), 70%, 55%, 0.2),
+    inset 0 0 20px hsla(var(--dim-hue), 70%, 55%, 0.1);
+  background: rgba(0, 0, 0, 0.75);
+}
+
+body.light .portal-node:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================
+   NODE LABELS (tooltip on hover)
+   ============================================ */
+.portal-node-label {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.65);
+  padding: 3px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+body.light .portal-node-label {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.8);
+  text-shadow: none;
+}
+
+.portal-node-tech {
+  position: absolute;
+  bottom: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.05s;
+  pointer-events: none;
+}
+
+body.light .portal-node-tech {
+  color: var(--text-secondary);
+}
+
+.portal-node:hover .portal-node-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.portal-node:hover .portal-node-tech {
+  opacity: 1;
+}
+
+/* ============================================
+   PORTAL RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .portal-wrapper {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .portal-trigger {
+    width: 50px;
+    height: 50px;
+  }
+
+  .portal-core {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .portal-ring-1 { width: 46px; height: 46px; }
+  .portal-ring-2 { width: 56px; height: 56px; }
+  .portal-ring-3 { width: 66px; height: 66px; }
+
+  .portal-stage {
+    width: 320px;
+    height: 320px;
+  }
+
+  .portal-node {
+    --orbit-radius: 100px;
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .portal-title {
+    font-size: 0.75rem;
+    top: 28px;
+  }
+
+  .portal-close {
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+
+  .portal-arcane-1 { inset: -12px; }
+  .portal-arcane-2 { inset: -22px; }
+  .portal-arcane-3 { inset: -30px; }
+
+  .portal-node-label {
+    font-size: 0.55rem;
+    bottom: -26px;
+  }
+
+  .portal-node-tech {
+    display: none;
+  }
+
+  .portal-stage::before {
+    inset: -50px;
+  }
+
+  .portal-center-glow {
+    width: 50px;
+    height: 50px;
+  }
+}
