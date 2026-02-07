@@ -27,9 +27,9 @@ body.light {
   --border: rgba(0, 0, 0, 0.08);
   --text: #18181b;
   --text-secondary: #52525b;
-  --accent: #059669;
-  --accent-hover: #10b981;
-  --accent-dim: rgba(5, 150, 105, 0.08);
+  --accent: #000000;
+  --accent-hover: #2d9674;
+  --accent-dim: rgba(4, 120, 87, 0.12);
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
 }
