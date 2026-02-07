@@ -6,7 +6,7 @@ Portafolio web personal de Jesus Garza, backend developer con enfoque en Python,
 
 ## Sobre mi
 
-Soy desarrollador backend con experiencia en desarrollo de modulos para Odoo, integraciones XML-RPC y automatizacion de procesos. He trabajado con Python, PostgreSQL y Linux, y me enfoco en codigo limpio, mantenible y orientado a resolver problemas reales. Nivel de ingles C1.
+Soy desarrollador backend con experiencia en desarrollo de modulos para Odoo, integraciones XML-RPC y automatizacion de procesos. He trabajado con Python, PostgreSQL y Linux, y me enfoco en codigo limpio, mantenible y orientado a resolver problemas reales. Nivel de ingles avanzado.
 
 ## Lo que incluye
 
@@ -60,7 +60,7 @@ Personal web portfolio of Jesus Garza, a backend developer focused on Python, Po
 
 ## About me
 
-I am a backend developer with experience building Odoo modules, XML-RPC integrations, and process automation. I have worked with Python, PostgreSQL, and Linux, and I focus on clean, maintainable code that solves real problems. C1 English level.
+I am a backend developer with experience building Odoo modules, XML-RPC integrations, and process automation. I have worked with Python, PostgreSQL, and Linux, and I focus on clean, maintainable code that solves real problems.
 
 ## What is included
 
