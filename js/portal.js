@@ -116,139 +116,7 @@
 
   let stopWormhole = null;
 
-  // ============================================
-  // INTERACTIVE RAINBOW FLUID BACKGROUND
-  // Cursor paints colorful swirl trails that fade
-  // ============================================
-  let dimensionAnimId = null;
-
-  function initDimensionBackground(canvas) {
-    const ctx = canvas.getContext('2d');
-    let w, h;
-
-    function resize() {
-      // Save current content before resize
-      const imageData = ctx.getImageData(0, 0, w || 1, h || 1);
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-      // Restore (stretches, but better than losing everything)
-      if (imageData.width > 1) {
-        ctx.putImageData(imageData, 0, 0);
-      }
-    }
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-
-    const resizeHandler = () => resize();
-    window.addEventListener('resize', resizeHandler);
-
-    // Start with white canvas
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, w, h);
-
-    // Track mouse
-    let mouseX = w / 2;
-    let mouseY = h / 2;
-    let prevMouseX = mouseX;
-    let prevMouseY = mouseY;
-    let hue = 0;
-    let isMoving = false;
-    let moveTimer = null;
-
-    function onMouseMove(e) {
-      prevMouseX = mouseX;
-      prevMouseY = mouseY;
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      isMoving = true;
-      clearTimeout(moveTimer);
-      moveTimer = setTimeout(() => { isMoving = false; }, 100);
-    }
-
-    function onTouchMove(e) {
-      if (e.touches.length > 0) {
-        prevMouseX = mouseX;
-        prevMouseY = mouseY;
-        mouseX = e.touches[0].clientX;
-        mouseY = e.touches[0].clientY;
-        isMoving = true;
-        clearTimeout(moveTimer);
-        moveTimer = setTimeout(() => { isMoving = false; }, 100);
-      }
-    }
-
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('touchmove', onTouchMove, { passive: true });
-
-    function draw() {
-      // Slowly fade everything toward white (trails dissipate)
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.008)';
-      ctx.fillRect(0, 0, w, h);
-
-      if (isMoving) {
-        const dx = mouseX - prevMouseX;
-        const dy = mouseY - prevMouseY;
-        const speed = Math.hypot(dx, dy);
-
-        if (speed > 1) {
-          // Advance hue based on movement
-          hue = (hue + speed * 0.5) % 360;
-
-          const radius = Math.min(120, 30 + speed * 1.5);
-
-          // Draw multiple layered soft circles along the path
-          const steps = Math.max(1, Math.floor(speed / 4));
-          for (let s = 0; s <= steps; s++) {
-            const t = s / steps;
-            const px = prevMouseX + dx * t;
-            const py = prevMouseY + dy * t;
-            const localHue = (hue + s * 8) % 360;
-
-            // Main color blob
-            const grad = ctx.createRadialGradient(px, py, 0, px, py, radius);
-            grad.addColorStop(0, `hsla(${localHue}, 80%, 80%, 0.15)`);
-            grad.addColorStop(0.3, `hsla(${localHue + 30}, 70%, 85%, 0.1)`);
-            grad.addColorStop(0.6, `hsla(${localHue + 60}, 60%, 90%, 0.05)`);
-            grad.addColorStop(1, 'hsla(0, 0%, 100%, 0)');
-
-            ctx.fillStyle = grad;
-            ctx.fillRect(px - radius, py - radius, radius * 2, radius * 2);
-
-            // Second layer slightly offset for swirl depth
-            const offset = speed * 0.3;
-            const angle = Math.atan2(dy, dx) + Math.PI / 2;
-            const ox = px + Math.cos(angle) * offset;
-            const oy = py + Math.sin(angle) * offset;
-
-            const grad2 = ctx.createRadialGradient(ox, oy, 0, ox, oy, radius * 0.7);
-            grad2.addColorStop(0, `hsla(${(localHue + 120) % 360}, 75%, 82%, 0.12)`);
-            grad2.addColorStop(0.5, `hsla(${(localHue + 150) % 360}, 65%, 88%, 0.06)`);
-            grad2.addColorStop(1, 'hsla(0, 0%, 100%, 0)');
-
-            ctx.fillStyle = grad2;
-            ctx.fillRect(ox - radius, oy - radius, radius * 2, radius * 2);
-          }
-        }
-      }
-
-      dimensionAnimId = requestAnimationFrame(draw);
-    }
-
-    draw();
-
-    return () => {
-      if (dimensionAnimId) {
-        cancelAnimationFrame(dimensionAnimId);
-        dimensionAnimId = null;
-      }
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('resize', resizeHandler);
-      clearTimeout(moveTimer);
-    };
-  }
-
-  let stopDimensionBg = null;
+  // Fluid simulation is handled by js/fluid.js (FluidSimulation global)
 
   // ============================================
   // PORTAL OPEN / CLOSE
@@ -320,9 +188,11 @@
           document.body.classList.add('dimension-mode');
           document.body.style.overflow = '';
 
-          // Start colorful background
-          if (dimensionBg && !stopDimensionBg) {
-            stopDimensionBg = initDimensionBackground(dimensionBg);
+          // Start WebGL fluid simulation
+          if (dimensionBg) {
+            dimensionBg.width = window.innerWidth;
+            dimensionBg.height = window.innerHeight;
+            try { FluidSimulation.start(dimensionBg); } catch(e) { console.warn('Fluid simulation failed:', e); }
           }
 
           // Fade out warp overlay
@@ -348,10 +218,7 @@
       dimensionExit.addEventListener('click', () => {
         document.body.classList.remove('dimension-mode');
 
-        if (stopDimensionBg) {
-          stopDimensionBg();
-          stopDimensionBg = null;
-        }
+        try { FluidSimulation.stop(); } catch(e) {}
 
         window.scrollTo({ top: 0, behavior: 'auto' });
       });

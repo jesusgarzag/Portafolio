@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ---- Config ----
   const LERP_GLOW = 0.35;
-  const LERP_BLOB = 0.15;
 
   // ---- Glow canvas — soft ambient light following cursor ----
   const glowCanvas = document.createElement('canvas');
@@ -19,13 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
   resizeGlow();
   window.addEventListener('resize', resizeGlow);
 
-  // ---- Blob cursor element ----
-  const blobCursor = document.getElementById('blobCursor');
-
   // ---- State ----
   let mx = -400, my = -400;
   let gx = -400, gy = -400;
-  let bx = -400, by = -400;
   let hidden = true;
   let velocity = 0;
   let prevMx = 0, prevMy = 0;
@@ -48,17 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('mouseleave', function () {
     hidden = true;
     glowCanvas.style.opacity = '0';
-  });
-
-  // ---- Blob hover detection ----
-  document.addEventListener('mouseover', function (e) {
-    if (!blobCursor) return;
-    const target = e.target.closest('a, button, input, textarea, [role="button"]');
-    if (target) {
-      blobCursor.classList.add('hover');
-    } else {
-      blobCursor.classList.remove('hover');
-    }
   });
 
   // ---- Draw ----
@@ -98,14 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
         gCtx.fillStyle = g2;
         gCtx.fillRect(0, 0, w, h);
       }
-    }
-
-    // Blob cursor (only in dimension mode)
-    if (isDimensionMode && blobCursor && !hidden) {
-      bx += (mx - bx) * LERP_BLOB;
-      by += (my - by) * LERP_BLOB;
-      blobCursor.style.left = bx + 'px';
-      blobCursor.style.top = by + 'px';
     }
 
     requestAnimationFrame(tick);

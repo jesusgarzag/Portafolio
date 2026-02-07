@@ -573,6 +573,10 @@ body.light .dimension-subtitle {
   opacity: 0;
 }
 
+body.light .warp-flash {
+  background: #1a1a2e;
+}
+
 .warp-overlay.active .warp-flash {
   animation: warpFlash 1.2s ease forwards;
 }
@@ -585,11 +589,13 @@ body.light .dimension-subtitle {
 }
 
 /* ============================================
-   DIMENSION MODE BACKGROUND CANVAS
+   DIMENSION MODE BACKGROUND CANVAS (WebGL Fluid)
    ============================================ */
 .dimension-bg {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   pointer-events: none;
   opacity: 0;
@@ -602,55 +608,317 @@ body.dimension-mode .dimension-bg {
   opacity: 1;
 }
 
-/* ============================================
-   BLOB CURSOR (dimension mode only)
-   ============================================ */
-.blob-cursor {
-  position: fixed;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #fff;
-  mix-blend-mode: difference;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease;
-  display: none;
-  will-change: transform;
-}
-
-body.dimension-mode .blob-cursor {
-  display: block;
-}
-
-body.dimension-mode .blob-cursor.hover {
-  width: 60px;
-  height: 60px;
-}
+/* Blob cursor removed — the fluid simulation IS the cursor effect */
 
 /* ============================================
-   DIMENSION MODE — visual overrides
+   DIMENSION MODE — visual overrides (DARK)
    ============================================ */
 body.dimension-mode {
-  cursor: none;
-  --bg: #ffffff;
-  --bg-secondary: #f8f8fa;
-  --bg-tertiary: #f0f0f3;
+  --bg: rgba(8, 8, 12, 0.35);
+  --bg-secondary: rgba(18, 18, 24, 0.3);
+  --bg-tertiary: rgba(28, 28, 36, 0.25);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f0f0f8;
+  --text-secondary: #b0b0c0;
+  --accent: #a855f7;
+  --accent-hover: #c084fc;
+  --accent-dim: rgba(168, 85, 247, 0.15);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+  background: #050508;
+}
+
+/* ============================================
+   DIMENSION MODE — visual overrides (LIGHT)
+   ============================================ */
+body.light.dimension-mode {
+  --bg: rgba(255, 255, 255, 0.25);
+  --bg-secondary: rgba(245, 245, 250, 0.3);
+  --bg-tertiary: rgba(235, 235, 242, 0.25);
   --border: rgba(0, 0, 0, 0.08);
   --text: #1a1a2e;
-  --text-secondary: #6b6b80;
+  --text-secondary: #52525b;
   --accent: #7c3aed;
   --accent-hover: #a855f7;
-  --accent-dim: rgba(124, 58, 237, 0.08);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+  --accent-dim: rgba(124, 58, 237, 0.1);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+  background: #f8f8fc;
 }
 
 /* Hide the normal dot grid and grain in dimension mode */
 body.dimension-mode::before,
 body.dimension-mode::after {
   display: none;
+}
+
+/* Ensure layout content sits above fluid canvas */
+body.dimension-mode .layout {
+  position: relative;
+  z-index: 2;
+}
+
+/* Panel backgrounds become glass so fluid shows through */
+body.dimension-mode .panel-left {
+  background: rgba(8, 8, 12, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+body.light.dimension-mode .panel-left {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+body.dimension-mode .content-right {
+  background: transparent;
+}
+
+/* Cards and sections become frosted glass — fluid visible through them */
+body.dimension-mode .content-section {
+  background: transparent;
+}
+
+body.dimension-mode .experience-card,
+body.dimension-mode .project-card,
+body.dimension-mode .education-card,
+body.dimension-mode .contact-form,
+body.dimension-mode .skills-group {
+  background: rgba(12, 12, 18, 0.35);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-color: rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+body.light.dimension-mode .experience-card,
+body.light.dimension-mode .project-card,
+body.light.dimension-mode .education-card,
+body.light.dimension-mode .contact-form,
+body.light.dimension-mode .skills-group {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.dimension-mode .skills-group {
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.light.dimension-mode .skills-group {
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.dimension-mode .skill-chip {
+  background: rgba(20, 20, 30, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.light.dimension-mode .skill-chip {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.dimension-mode .cert-card {
+  background: rgba(12, 12, 18, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.light.dimension-mode .cert-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.dimension-mode .stat-item {
+  background: rgba(12, 12, 18, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+body.light.dimension-mode .stat-item {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dimension-mode .about-stats {
+  background: rgba(12, 12, 18, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.light.dimension-mode .about-stats {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dimension-mode .metric-chip {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+}
+
+body.light.dimension-mode .metric-chip {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.15);
+  color: #7c3aed;
+}
+
+body.dimension-mode .contact-link-item:hover {
+  background: rgba(20, 20, 30, 0.4);
+}
+
+body.light.dimension-mode .contact-link-item:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+body.dimension-mode .form-group input,
+body.dimension-mode .form-group textarea {
+  background: rgba(8, 8, 14, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.light.dimension-mode .form-group input,
+body.light.dimension-mode .form-group textarea {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.dimension-mode .section-header {
+  color: var(--text);
+}
+
+body.dimension-mode .panel-footer {
+  background: transparent;
+}
+
+/* Accent overrides for purple theme */
+body.dimension-mode .experience-card:hover,
+body.dimension-mode .project-card:hover,
+body.dimension-mode .education-card:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.1);
+}
+
+body.light.dimension-mode .experience-card:hover,
+body.light.dimension-mode .project-card:hover,
+body.light.dimension-mode .education-card:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.08);
+}
+
+body.dimension-mode .status-dot {
+  background: #a855f7;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+}
+
+body.light.dimension-mode .status-dot {
+  background: #7c3aed;
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.4);
+}
+
+body.dimension-mode .panel-name .accent {
+  color: #a855f7;
+}
+
+body.light.dimension-mode .panel-name .accent {
+  color: #7c3aed;
+}
+
+body.dimension-mode .experience-card::before {
+  background: linear-gradient(135deg, transparent 40%, #a855f7 50%, transparent 60%);
+}
+
+body.light.dimension-mode .experience-card::before {
+  background: linear-gradient(135deg, transparent 40%, #7c3aed 50%, transparent 60%);
+}
+
+body.dimension-mode .nav-indicator {
+  background: #a855f7;
+}
+
+body.light.dimension-mode .nav-indicator {
+  background: #7c3aed;
+}
+
+body.dimension-mode .panel-nav-link.active .nav-text {
+  color: var(--text);
+}
+
+body.dimension-mode .panel-nav-link.active .nav-indicator {
+  width: 60px;
+  background: #a855f7;
+}
+
+body.light.dimension-mode .panel-nav-link.active .nav-indicator {
+  background: #7c3aed;
+}
+
+body.dimension-mode .expand-toggle {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dimension-mode .expand-toggle:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(168, 85, 247, 0.1);
+  color: #c084fc;
+}
+
+body.light.dimension-mode .expand-toggle:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+}
+
+body.dimension-mode .exp-tags span {
+  background: rgba(168, 85, 247, 0.1);
+  color: #c084fc;
+}
+
+body.light.dimension-mode .exp-tags span {
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+}
+
+body.dimension-mode .exp-subtitle {
+  color: #c084fc;
+}
+
+body.light.dimension-mode .exp-subtitle {
+  color: #7c3aed;
+}
+
+body.dimension-mode .btn-submit {
+  background: #a855f7;
+}
+
+body.dimension-mode .btn-submit:hover {
+  background: #9333ea;
+}
+
+body.light.dimension-mode .btn-submit {
+  background: #7c3aed;
+}
+
+body.light.dimension-mode .btn-submit:hover {
+  background: #6d28d9;
 }
 
 /* Hide portal trigger in dimension mode */
@@ -663,32 +931,24 @@ body.dimension-mode #cursorGlow {
   display: none !important;
 }
 
-/* Links and buttons should trigger blob hover */
-body.dimension-mode a,
-body.dimension-mode button,
-body.dimension-mode input,
-body.dimension-mode textarea {
-  cursor: none;
-}
-
 /* Exit dimension button */
 .dimension-exit {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   z-index: 9000;
-  background: rgba(124, 58, 237, 0.1);
-  border: 1px solid rgba(124, 58, 237, 0.3);
-  color: #7c3aed;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c084fc;
   font-family: var(--font);
   font-size: 0.75rem;
   padding: 0.5rem 1rem;
   border-radius: 50px;
-  cursor: none;
+  cursor: pointer;
   transition: all 0.3s ease;
   display: none;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 body.dimension-mode .dimension-exit {
@@ -698,8 +958,28 @@ body.dimension-mode .dimension-exit {
 }
 
 .dimension-exit:hover {
-  background: rgba(124, 58, 237, 0.2);
-  border-color: rgba(124, 58, 237, 0.6);
+  background: rgba(168, 85, 247, 0.25);
+  border-color: rgba(168, 85, 247, 0.6);
+}
+
+body.light.dimension-mode .dimension-exit {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.25);
+  color: #7c3aed;
+}
+
+body.light.dimension-mode .dimension-exit:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.5);
+}
+
+/* Scroll progress bar in dimension mode */
+body.dimension-mode .scroll-progress {
+  background: #a855f7;
+}
+
+body.light.dimension-mode .scroll-progress {
+  background: #7c3aed;
 }
 
 /* ============================================
@@ -763,22 +1043,6 @@ body.dimension-mode .dimension-exit {
   .portal-center-glow {
     width: 50px;
     height: 50px;
-  }
-
-  /* Blob cursor is hidden on touch devices */
-  .blob-cursor {
-    display: none !important;
-  }
-
-  body.dimension-mode {
-    cursor: auto;
-  }
-
-  body.dimension-mode a,
-  body.dimension-mode button,
-  body.dimension-mode input,
-  body.dimension-mode textarea {
-    cursor: auto;
   }
 
   .dimension-exit {
