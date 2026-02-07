@@ -31,7 +31,7 @@ Soy desarrollador backend con experiencia en desarrollo de modulos para Odoo, in
 
 ## Vista previa
 
-![Vista previa](assets/images/portafolio.jpg)
+![Vista previa](assets/images/portafolio_es.jpg)
 
 ## Estructura
 
@@ -85,7 +85,7 @@ I am a backend developer with experience building Odoo modules, XML-RPC integrat
 
 ## Preview
 
-![Preview](assets/images/portafolio.jpg)
+![Preview](assets/images/portafolio_en.jpg)
 
 ## Structure
 
