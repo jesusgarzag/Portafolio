@@ -587,12 +587,12 @@
   <!-- MAGIC PORTAL -->
   <div class="portal-wrapper" id="portalWrapper">
     <!-- Floating trigger button -->
-    <button class="portal-trigger" id="portalTrigger" aria-label="Explorar proyectos">
+    <button class="portal-trigger" id="portalTrigger" aria-label="Explorar dimensión">
       <div class="portal-ring portal-ring-1"></div>
       <div class="portal-ring portal-ring-2"></div>
       <div class="portal-ring portal-ring-3"></div>
       <div class="portal-core">
-        <i class="fas fa-code"></i>
+        <i class="fas fa-bolt"></i>
       </div>
       <div class="portal-particles">
         <span></span><span></span><span></span><span></span>
@@ -600,19 +600,17 @@
       </div>
     </button>
 
-    <!-- Expanded portal -->
+    <!-- Expanded portal — dimension gateway -->
     <div class="portal-expanded" id="portalExpanded">
-      <!-- Dimming backdrop -->
       <div class="portal-backdrop" id="portalBackdrop"></div>
 
-      <!-- Portal stage — positions everything relative to the circle -->
       <div class="portal-stage">
         <!-- Arcane rotating rings -->
         <div class="portal-arcane portal-arcane-1"></div>
         <div class="portal-arcane portal-arcane-2"></div>
         <div class="portal-arcane portal-arcane-3"></div>
 
-        <!-- Circular clipping container (clips canvas) -->
+        <!-- Circular wormhole -->
         <div class="portal-circle">
           <canvas class="portal-canvas" id="portalCanvas"></canvas>
           <div class="portal-inner-glow"></div>
@@ -621,52 +619,44 @@
         <!-- Close button -->
         <button class="portal-close" id="portalClose"><i class="fas fa-times"></i></button>
 
-        <!-- Title -->
-        <h3 class="portal-title" data-i18n="portal_title">Explora mis proyectos</h3>
+        <!-- Dimension invitation -->
+        <div class="dimension-invite">
+          <h3 class="dimension-title" data-i18n="dimension_title">¿Quieres viajar a una dimensión paralela?</h3>
+          <p class="dimension-subtitle" data-i18n="dimension_subtitle">Haz click en el portal para entrar</p>
+        </div>
 
         <!-- Center glow -->
         <div class="portal-center-glow"></div>
 
-        <!-- Orbital project nodes -->
-        <div class="portal-orbit">
-          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank"
-             class="portal-node" style="--node-angle: 0deg; --dim-hue: 160;">
-            <i class="fas fa-book"></i>
-            <span class="portal-node-label" data-i18n="book_management">Gestión de Libros</span>
-            <span class="portal-node-tech">Flask · SQL Server</span>
-          </a>
-
-          <a href="https://jesusggggit.github.io/Rubiks-Timer/" target="_blank"
-             class="portal-node" style="--node-angle: 72deg; --dim-hue: 280;">
-            <i class="fas fa-stopwatch"></i>
-            <span class="portal-node-label" data-i18n="timer-title">Rubik's Timer</span>
-            <span class="portal-node-tech">React · JavaScript</span>
-          </a>
-
-          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank"
-             class="portal-node" style="--node-angle: 144deg; --dim-hue: 200;">
-            <i class="fas fa-clipboard-check"></i>
-            <span class="portal-node-label" data-i18n="attendance">Entradas y Salidas</span>
-            <span class="portal-node-tech">Flask · bcrypt</span>
-          </a>
-
-          <a href="assets/demo/demo.mp4" target="_blank"
-             class="portal-node" style="--node-angle: 216deg; --dim-hue: 30;">
-            <i class="fas fa-barcode"></i>
-            <span class="portal-node-label" data-i18n="inventory">Inventario de Libros</span>
-            <span class="portal-node-tech">Tkinter · SQLite</span>
-          </a>
-
-          <a href="https://github.com/JesusGGGGit" target="_blank"
-             class="portal-node" style="--node-angle: 288deg; --dim-hue: 0;">
-            <i class="fab fa-github"></i>
-            <span class="portal-node-label" data-i18n="more_projects">Todos mis proyectos</span>
-            <span class="portal-node-tech">GitHub</span>
-          </a>
-        </div>
+        <!-- Clickable enter zone -->
+        <button class="dimension-enter" id="dimensionEnter" aria-label="Entrar al portal">
+          <span data-i18n="dimension_enter">Entrar</span>
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- Warp overlay (for Mario 64 transition effect) -->
+  <div class="warp-overlay" id="warpOverlay">
+    <div class="warp-rings">
+      <div class="warp-ring"></div>
+      <div class="warp-ring"></div>
+      <div class="warp-ring"></div>
+    </div>
+    <div class="warp-flash"></div>
+  </div>
+
+  <!-- Dimension mode background (colorful swirls) -->
+  <canvas class="dimension-bg" id="dimensionBg"></canvas>
+
+  <!-- Blob cursor (dimension mode only) -->
+  <div class="blob-cursor" id="blobCursor"></div>
+
+  <!-- Exit dimension button -->
+  <button class="dimension-exit" id="dimensionExit">
+    <i class="fas fa-arrow-left"></i>
+    <span data-i18n="dimension_exit_btn">Volver</span>
+  </button>
 
   <script src="js/idiomas.js"></script>
   <script src="js/theme.js"></script>

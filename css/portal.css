@@ -174,7 +174,7 @@ body.portal-open {
   cursor: auto !important;
 }
 
-/* Backdrop — dims the page behind the portal */
+/* Backdrop */
 .portal-backdrop {
   position: absolute;
   inset: 0;
@@ -188,8 +188,7 @@ body.light .portal-backdrop {
 }
 
 /* ============================================
-   PORTAL STAGE — positions everything relative
-   to the circular portal
+   PORTAL STAGE
    ============================================ */
 .portal-stage {
   position: relative;
@@ -204,7 +203,6 @@ body.light .portal-backdrop {
   transform: scale(1);
 }
 
-/* Halo glow behind the circle */
 .portal-stage::before {
   content: '';
   position: absolute;
@@ -226,7 +224,7 @@ body.light .portal-backdrop {
 }
 
 /* ============================================
-   CIRCULAR PORTAL — clips the canvas
+   CIRCULAR PORTAL
    ============================================ */
 .portal-circle {
   position: absolute;
@@ -252,7 +250,6 @@ body.light .portal-circle {
   display: block;
 }
 
-/* Inner glow ring on the portal edge */
 .portal-inner-glow {
   position: absolute;
   inset: 0;
@@ -275,17 +272,15 @@ body.light .portal-inner-glow {
   pointer-events: none;
 }
 
-/* Ring 1 — dashed, close to edge */
 .portal-arcane-1 {
   inset: -18px;
   border: 1.5px dashed rgba(16, 185, 129, 0.3);
   animation: arcaneRotate 25s linear infinite;
 }
 
-/* Rune marks on ring 1 */
 .portal-arcane-1::before,
 .portal-arcane-1::after {
-  content: '✦';
+  content: '\2726';
   position: absolute;
   font-size: 10px;
   color: rgba(16, 185, 129, 0.6);
@@ -304,7 +299,6 @@ body.light .portal-inner-glow {
   transform: translateX(-50%);
 }
 
-/* Ring 2 — segmented conic gradient */
 .portal-arcane-2 {
   inset: -34px;
   background-image: repeating-conic-gradient(
@@ -319,7 +313,7 @@ body.light .portal-inner-glow {
 
 .portal-arcane-2::before,
 .portal-arcane-2::after {
-  content: '◇';
+  content: '\25C7';
   position: absolute;
   font-size: 8px;
   color: rgba(16, 185, 129, 0.4);
@@ -338,7 +332,6 @@ body.light .portal-inner-glow {
   transform: translateY(-50%);
 }
 
-/* Ring 3 — outermost, subtle */
 .portal-arcane-3 {
   inset: -48px;
   border: 1px dotted rgba(16, 185, 129, 0.12);
@@ -388,32 +381,59 @@ body.light .portal-close {
 }
 
 /* ============================================
-   PORTAL TITLE
+   DIMENSION INVITATION (replaces old title)
    ============================================ */
-.portal-title {
+.dimension-invite {
   position: absolute;
-  top: 40px;
+  bottom: -100px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  color: #fff;
-  text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
-  white-space: nowrap;
+  text-align: center;
   z-index: 10;
-  letter-spacing: 1.5px;
-  margin: 0;
-  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.5s forwards;
 }
 
-body.light .portal-title {
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+.dimension-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+  white-space: nowrap;
+  margin: 0 0 0.5rem;
+}
+
+body.light .dimension-title {
   color: var(--text);
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  text-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
 }
 
-/* ============================================
-   CENTER GLOW
-   ============================================ */
+.dimension-subtitle {
+  font-family: var(--font);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  animation: subtitlePulse 2s ease-in-out infinite;
+}
+
+body.light .dimension-subtitle {
+  color: var(--text-secondary);
+}
+
+@keyframes subtitlePulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Center glow */
 .portal-center-glow {
   position: absolute;
   top: 50%;
@@ -445,143 +465,241 @@ body.light .portal-title {
 }
 
 /* ============================================
-   ORBITAL PROJECT NODES
+   DIMENSION ENTER BUTTON
    ============================================ */
-.portal-orbit {
-  position: absolute;
-  inset: 0;
-  z-index: 8;
-}
-
-.portal-node {
-  --orbit-radius: 155px;
+.dimension-enter {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1.5px solid hsla(var(--dim-hue), 70%, 55%, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: hsla(var(--dim-hue), 70%, 70%, 1);
-  font-size: 1.3rem;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  background: rgba(16, 185, 129, 0.15);
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.8rem 2.5rem;
+  border-radius: 50px;
+  cursor: pointer !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow:
-    0 0 18px hsla(var(--dim-hue), 70%, 55%, 0.2),
-    inset 0 0 12px hsla(var(--dim-hue), 70%, 55%, 0.05);
-  transform:
-    translate(-50%, -50%)
-    rotate(var(--node-angle))
-    translateY(calc(-1 * var(--orbit-radius)))
-    rotate(calc(-1 * var(--node-angle)));
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  scale: 0;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   opacity: 0;
+  animation: enterBtnAppear 0.6s ease 0.8s forwards;
 }
 
-body.light .portal-node {
-  background: rgba(255, 255, 255, 0.75);
-  color: hsla(var(--dim-hue), 60%, 40%, 1);
-  border-color: hsla(var(--dim-hue), 50%, 50%, 0.4);
+@keyframes enterBtnAppear {
+  to { opacity: 1; }
 }
 
-/* Stagger entrance per node */
-.portal-node:nth-child(1) { --node-index: 0; }
-.portal-node:nth-child(2) { --node-index: 1; }
-.portal-node:nth-child(3) { --node-index: 2; }
-.portal-node:nth-child(4) { --node-index: 3; }
-.portal-node:nth-child(5) { --node-index: 4; }
-
-.portal-expanded.active .portal-node {
-  scale: 1;
-  opacity: 1;
-  transition-delay: calc(0.4s + var(--node-index) * 0.08s);
-}
-
-/* Subtle floating bob */
-.portal-expanded.active .portal-node {
-  animation: nodeBob 4s ease-in-out infinite;
-  animation-delay: calc(var(--node-index) * 0.7s);
-}
-
-@keyframes nodeBob {
-  0%, 100% { margin-top: 0; }
-  50% { margin-top: -5px; }
-}
-
-.portal-node:hover {
-  scale: 1.25;
-  border-color: hsla(var(--dim-hue), 70%, 65%, 0.9);
-  box-shadow:
-    0 0 30px hsla(var(--dim-hue), 70%, 55%, 0.4),
-    0 0 60px hsla(var(--dim-hue), 70%, 55%, 0.2),
-    inset 0 0 20px hsla(var(--dim-hue), 70%, 55%, 0.1);
-  background: rgba(0, 0, 0, 0.75);
-}
-
-body.light .portal-node:hover {
-  background: rgba(255, 255, 255, 0.9);
+.dimension-enter:hover {
+  background: rgba(16, 185, 129, 0.3);
+  border-color: rgba(16, 185, 129, 0.7);
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.3),
+              0 0 80px rgba(16, 185, 129, 0.15);
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 /* ============================================
-   NODE LABELS (tooltip on hover)
+   WARP OVERLAY (Mario 64 transition)
    ============================================ */
-.portal-node-label {
-  position: absolute;
-  bottom: -32px;
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  font-family: var(--font-heading);
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.warp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
   pointer-events: none;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
-  background: rgba(0, 0, 0, 0.65);
-  padding: 3px 10px;
-  border-radius: 4px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-body.light .portal-node-label {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.8);
-  text-shadow: none;
-}
-
-.portal-node-tech {
-  position: absolute;
-  bottom: -48px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.55rem;
-  color: rgba(255, 255, 255, 0.45);
-  white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.3s ease 0.05s;
+  visibility: hidden;
+}
+
+.warp-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.warp-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.warp-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(16, 185, 129, 0.6);
+  transform: translate(-50%, -50%);
+}
+
+.warp-overlay.active .warp-ring {
+  animation: warpRingExpand 0.8s ease-out forwards;
+}
+
+.warp-overlay.active .warp-ring:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.warp-overlay.active .warp-ring:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes warpRingExpand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    border-width: 4px;
+  }
+  100% {
+    width: 300vmax;
+    height: 300vmax;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+.warp-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+}
+
+.warp-overlay.active .warp-flash {
+  animation: warpFlash 1.2s ease forwards;
+}
+
+@keyframes warpFlash {
+  0% { opacity: 0; }
+  40% { opacity: 0; }
+  60% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* ============================================
+   DIMENSION MODE BACKGROUND CANVAS
+   ============================================ */
+.dimension-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: none;
 }
 
-body.light .portal-node-tech {
-  color: var(--text-secondary);
-}
-
-.portal-node:hover .portal-node-label {
+body.dimension-mode .dimension-bg {
+  display: block;
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
 
-.portal-node:hover .portal-node-tech {
-  opacity: 1;
+/* ============================================
+   BLOB CURSOR (dimension mode only)
+   ============================================ */
+.blob-cursor {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  display: none;
+  will-change: transform;
+}
+
+body.dimension-mode .blob-cursor {
+  display: block;
+}
+
+body.dimension-mode .blob-cursor.hover {
+  width: 60px;
+  height: 60px;
+}
+
+/* ============================================
+   DIMENSION MODE — visual overrides
+   ============================================ */
+body.dimension-mode {
+  cursor: none;
+  --bg: #ffffff;
+  --bg-secondary: #f8f8fa;
+  --bg-tertiary: #f0f0f3;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #1a1a2e;
+  --text-secondary: #6b6b80;
+  --accent: #7c3aed;
+  --accent-hover: #a855f7;
+  --accent-dim: rgba(124, 58, 237, 0.08);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide the normal dot grid and grain in dimension mode */
+body.dimension-mode::before,
+body.dimension-mode::after {
+  display: none;
+}
+
+/* Hide portal trigger in dimension mode */
+body.dimension-mode .portal-wrapper {
+  display: none;
+}
+
+/* Hide the normal cursor glow in dimension mode */
+body.dimension-mode #cursorGlow {
+  display: none !important;
+}
+
+/* Links and buttons should trigger blob hover */
+body.dimension-mode a,
+body.dimension-mode button,
+body.dimension-mode input,
+body.dimension-mode textarea {
+  cursor: none;
+}
+
+/* Exit dimension button */
+.dimension-exit {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9000;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: #7c3aed;
+  font-family: var(--font);
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  cursor: none;
+  transition: all 0.3s ease;
+  display: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+body.dimension-mode .dimension-exit {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dimension-exit:hover {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.6);
 }
 
 /* ============================================
@@ -613,16 +731,17 @@ body.light .portal-node-tech {
     height: 320px;
   }
 
-  .portal-node {
-    --orbit-radius: 100px;
-    width: 48px;
-    height: 48px;
+  .dimension-title {
     font-size: 1rem;
   }
 
-  .portal-title {
-    font-size: 0.75rem;
-    top: 28px;
+  .dimension-invite {
+    bottom: -80px;
+  }
+
+  .dimension-enter {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.8rem;
   }
 
   .portal-close {
@@ -637,15 +756,6 @@ body.light .portal-node-tech {
   .portal-arcane-2 { inset: -22px; }
   .portal-arcane-3 { inset: -30px; }
 
-  .portal-node-label {
-    font-size: 0.55rem;
-    bottom: -26px;
-  }
-
-  .portal-node-tech {
-    display: none;
-  }
-
   .portal-stage::before {
     inset: -50px;
   }
@@ -653,5 +763,25 @@ body.light .portal-node-tech {
   .portal-center-glow {
     width: 50px;
     height: 50px;
+  }
+
+  /* Blob cursor is hidden on touch devices */
+  .blob-cursor {
+    display: none !important;
+  }
+
+  body.dimension-mode {
+    cursor: auto;
+  }
+
+  body.dimension-mode a,
+  body.dimension-mode button,
+  body.dimension-mode input,
+  body.dimension-mode textarea {
+    cursor: auto;
+  }
+
+  .dimension-exit {
+    cursor: pointer;
   }
 }

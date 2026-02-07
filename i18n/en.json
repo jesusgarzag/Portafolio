@@ -108,7 +108,10 @@
   "subject": "Subject",
   "message": "Message",
   "send_message": "Send Message",
-  "portal_title": "Explore my projects",
-  "portal_subtitle": "Click to enter",
+  "dimension_title": "Do you want to travel to a parallel dimension?",
+  "dimension_subtitle": "Click the portal to enter",
+  "dimension_enter": "Enter",
+  "dimension_exit_btn": "Go back",
+  "portal_title": "Parallel dimension",
   "rights": "© {year} Jesús Gerardo Garza García. All rights reserved."
 }

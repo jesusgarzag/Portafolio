@@ -41,7 +41,7 @@ function applyTranslations(lang, translations) {
   // Update portal tooltip
   const portalTrigger = document.getElementById('portalTrigger');
   if (portalTrigger) {
-    const tooltip = translations.portal_title || (lang === 'en' ? 'Explore projects' : 'Explorar proyectos');
+    const tooltip = translations.portal_title || (lang === 'en' ? 'Parallel dimension' : 'Dimensión paralela');
     portalTrigger.setAttribute('data-tooltip', tooltip);
   }
 
