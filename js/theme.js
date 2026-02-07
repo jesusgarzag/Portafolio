@@ -50,4 +50,5 @@
 
   setupThemeToggle(document.getElementById('themeToggle'));
   setupThemeToggle(document.getElementById('themeToggleMobile'));
+  setupThemeToggle(document.getElementById('themeToggleDimension'));
 })();

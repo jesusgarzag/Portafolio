@@ -365,10 +365,21 @@
     if (dimensionExit) {
       dimensionExit.addEventListener('click', () => {
         document.body.classList.remove('dimension-mode');
+        document.body.classList.remove('zen-mode');
 
         try { FluidSimulation.stop(); } catch(e) {}
 
         window.scrollTo({ top: 0, behavior: 'auto' });
+      });
+    }
+
+    // ============================================
+    // ZEN MODE (hide UI, fluid canvas only)
+    // ============================================
+    const dimensionZen = document.getElementById('dimensionZen');
+    if (dimensionZen) {
+      dimensionZen.addEventListener('click', () => {
+        document.body.classList.toggle('zen-mode');
       });
     }
   }

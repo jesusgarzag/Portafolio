@@ -1406,6 +1406,133 @@ body.light.dimension-mode .dimension-exit:hover {
   border-color: rgba(124, 58, 237, 0.5);
 }
 
+/* Zen mode toggle button */
+.dimension-zen {
+  position: fixed;
+  bottom: 2rem;
+  right: 9rem;
+  z-index: 9000;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c084fc;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.dimension-mode .dimension-zen {
+  display: flex;
+}
+
+.dimension-zen:hover {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: rgba(168, 85, 247, 0.6);
+}
+
+body.light.dimension-mode .dimension-zen {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.25);
+  color: #7c3aed;
+}
+
+body.light.dimension-mode .dimension-zen:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.5);
+}
+
+/* Theme toggle in dimension mode */
+.dimension-theme {
+  position: fixed;
+  bottom: 2rem;
+  right: 11.5rem;
+  z-index: 9000;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c084fc;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.dimension-mode .dimension-theme {
+  display: flex;
+}
+
+.dimension-theme:hover {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: rgba(168, 85, 247, 0.6);
+}
+
+body.light.dimension-mode .dimension-theme {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.25);
+  color: #7c3aed;
+}
+
+body.light.dimension-mode .dimension-theme:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.5);
+}
+
+/* Zen mode active — hide everything except canvas and controls */
+body.zen-mode .layout,
+body.zen-mode .scroll-progress,
+body.zen-mode .mobile-header,
+body.zen-mode .portal-wrapper {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.4s ease;
+}
+
+body.zen-mode .dimension-bg {
+  pointer-events: auto !important;
+}
+
+body.zen-mode .dimension-zen i::before {
+  content: "\f066";
+}
+
+body.zen-mode .dimension-exit,
+body.zen-mode .dimension-theme {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+body.zen-mode:hover .dimension-exit,
+body.zen-mode:hover .dimension-zen,
+body.zen-mode:hover .dimension-theme {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.zen-mode .dimension-zen,
+body.zen-mode .dimension-theme {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+body.zen-mode:hover .dimension-zen,
+body.zen-mode:hover .dimension-theme {
+  opacity: 1;
+}
+
 /* Scroll progress bar in dimension mode */
 body.dimension-mode .scroll-progress {
   background: #a855f7;
