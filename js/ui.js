@@ -92,4 +92,172 @@
       }
     });
   });
+
+  // ============================================
+  // MOBILE PROJECTS CAROUSEL (centered, looping)
+  // ============================================
+  function setupProjectsCarousel() {
+    const list = document.querySelector('.projects-list');
+    if (!list) return;
+
+    if (typeof list._carouselCleanup === 'function') {
+      list._carouselCleanup();
+    }
+
+    const originalCards = Array.from(list.querySelectorAll('.project-card'));
+    if (originalCards.length < 2) return;
+
+    const beforeFragment = document.createDocumentFragment();
+    const afterFragment = document.createDocumentFragment();
+    originalCards.forEach((card) => {
+      const beforeClone = card.cloneNode(true);
+      beforeClone.classList.add('project-clone');
+      beforeFragment.appendChild(beforeClone);
+
+      const afterClone = card.cloneNode(true);
+      afterClone.classList.add('project-clone');
+      afterFragment.appendChild(afterClone);
+    });
+
+    list.insertBefore(beforeFragment, originalCards[0]);
+    list.appendChild(afterFragment);
+    list.dataset.carouselReady = 'true';
+
+    const allCards = Array.from(list.querySelectorAll('.project-card'));
+    let setWidth = 0;
+    let startOffset = 0;
+    let endOffset = 0;
+    let isAdjusting = false;
+
+    function getGap() {
+      const styles = getComputedStyle(list);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0');
+      return Number.isNaN(gap) ? 0 : gap;
+    }
+
+    function updateMetrics() {
+      const gap = getGap();
+      setWidth = originalCards.reduce((sum, card) => sum + card.offsetWidth, 0);
+      if (originalCards.length > 1) {
+        setWidth += gap * (originalCards.length - 1);
+      }
+      startOffset = setWidth;
+      endOffset = startOffset + setWidth;
+    }
+
+    function centerOffset(card) {
+      return card.offsetLeft - (list.clientWidth - card.clientWidth) / 2;
+    }
+
+    function snapToCard(card) {
+      list.scrollTo({ left: centerOffset(card), behavior: 'auto' });
+    }
+
+    function adjustLoop() {
+      if (isAdjusting || setWidth === 0) return;
+      const threshold = setWidth * 0.15;
+
+      if (list.scrollLeft < startOffset - threshold) {
+        isAdjusting = true;
+        list.classList.add('is-adjusting');
+        list.scrollLeft += setWidth;
+        requestAnimationFrame(() => {
+          list.classList.remove('is-adjusting');
+          isAdjusting = false;
+        });
+        return;
+      }
+
+      if (list.scrollLeft > endOffset + threshold) {
+        isAdjusting = true;
+        list.classList.add('is-adjusting');
+        list.scrollLeft -= setWidth;
+        requestAnimationFrame(() => {
+          list.classList.remove('is-adjusting');
+          isAdjusting = false;
+        });
+      }
+    }
+
+    requestAnimationFrame(() => {
+      updateMetrics();
+      snapToCard(originalCards[0]);
+    });
+
+    const controller = new AbortController();
+    const signal = controller.signal;
+    let scrollTimeout = null;
+    let isPointerDown = false;
+
+    list.addEventListener('touchstart', () => {
+      isPointerDown = true;
+    }, { passive: true, signal });
+
+    list.addEventListener('touchend', () => {
+      isPointerDown = false;
+      adjustLoop();
+    }, { passive: true, signal });
+
+    list.addEventListener('mousedown', () => {
+      isPointerDown = true;
+    }, { signal });
+
+    list.addEventListener('mouseup', () => {
+      isPointerDown = false;
+      adjustLoop();
+    }, { signal });
+
+    list.addEventListener('scroll', () => {
+      if (isPointerDown) return;
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(() => {
+        adjustLoop();
+      }, 120);
+    }, { passive: true, signal });
+
+    if ('onscrollend' in window) {
+      list.addEventListener('scrollend', () => {
+        if (!isPointerDown) {
+          adjustLoop();
+        }
+      }, { signal });
+    }
+
+    window.addEventListener('resize', () => {
+      const active = allCards.find((card) => !card.classList.contains('project-clone')) || originalCards[0];
+      updateMetrics();
+      snapToCard(active);
+    }, { signal });
+
+    list._carouselCleanup = () => {
+      controller.abort();
+      list.classList.remove('is-adjusting');
+      list.querySelectorAll('.project-clone').forEach((clone) => clone.remove());
+      delete list.dataset.carouselReady;
+      list.scrollLeft = 0;
+    };
+  }
+
+  function teardownProjectsCarousel() {
+    const list = document.querySelector('.projects-list');
+    if (!list) return;
+    if (typeof list._carouselCleanup === 'function') {
+      list._carouselCleanup();
+      list._carouselCleanup = null;
+    }
+  }
+
+  const projectsMedia = window.matchMedia('(max-width: 768px)');
+  const handleProjectsMedia = () => {
+    if (projectsMedia.matches) {
+      setupProjectsCarousel();
+    } else {
+      teardownProjectsCarousel();
+    }
+  };
+
+  handleProjectsMedia();
+  projectsMedia.addEventListener('change', handleProjectsMedia);
 })();

@@ -157,11 +157,46 @@
   }
 
   .projects-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
+    gap: 0.9rem;
+    overflow-x: auto;
+    padding-inline: 9%;
+    padding-bottom: 0.75rem;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 9%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .projects-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projects-list.is-adjusting {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+
+
+  .project-card {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
   .project-image {
-    height: 160px;
+    height: 140px;
+  }
+
+  .project-desc {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .project-tech {
+    gap: 0.25rem;
   }
 
   .education-header {
