@@ -1013,7 +1013,12 @@ const FluidSimulation = (() => {
   // PUBLIC API
   // ============================================
   function start(canvasEl) {
-    if (animationId) return; // Already running
+    // Stop any existing instance first
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+    unbindEvents();
 
     canvas = canvasEl;
     const ctx = getWebGLContext(canvas);
@@ -1053,10 +1058,6 @@ const FluidSimulation = (() => {
       animationId = null;
     }
     unbindEvents();
-    // Clean up GL resources
-    if (gl) {
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    }
     gl = null;
     ext = null;
     canvas = null;
