@@ -45,6 +45,12 @@ function applyTranslations(lang, translations) {
     portalTrigger.setAttribute('data-tooltip', tooltip);
   }
 
+  // Update CV download links
+  const cvFile = lang === 'en' ? 'assets/certificados/cv_en.pdf' : 'assets/certificados/cv_es.pdf';
+  document.querySelectorAll('.btn-cv').forEach((btn) => {
+    btn.href = cvFile;
+  });
+
   // Update expand/collapse buttons
   document.querySelectorAll('.expand-toggle').forEach((btn) => {
     const span = btn.querySelector('span');
