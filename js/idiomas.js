@@ -41,9 +41,17 @@ function applyTranslations(lang, translations) {
   // Update portal tooltip
   const portalTrigger = document.getElementById('portalTrigger');
   if (portalTrigger) {
-    const tooltip = translations.portal_title || (lang === 'en' ? 'Explore projects' : 'Explorar proyectos');
+    const tooltip = translations.portal_title || (lang === 'en' ? 'Parallel dimension' : 'Dimensión paralela');
     portalTrigger.setAttribute('data-tooltip', tooltip);
   }
+
+  // Update CV download links
+  const cvFile = lang === 'en' ? 'assets/certificados/cv_en.pdf' : 'assets/certificados/cv_es.pdf';
+  const cvName = lang === 'en' ? 'Jesus_Garza_Resume.pdf' : 'Jesus_Garza_CV.pdf';
+  document.querySelectorAll('.btn-cv').forEach((btn) => {
+    btn.href = cvFile;
+    btn.setAttribute('download', cvName);
+  });
 
   // Update expand/collapse buttons
   document.querySelectorAll('.expand-toggle').forEach((btn) => {

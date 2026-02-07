@@ -802,21 +802,21 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.7rem 1.5rem;
-  background-color: var(--accent);
-  color: #fff;
-  border: none;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.85rem;
   cursor: pointer;
   font-family: var(--font);
   transition: all var(--transition);
+  letter-spacing: 0.5px;
 }
 
 .btn-submit:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  background: var(--accent-dim);
+  border-color: var(--accent-hover);
 }
 
 /* ============================================

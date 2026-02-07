@@ -108,7 +108,11 @@
   "subject": "Asunto",
   "message": "Mensaje",
   "send_message": "Enviar Mensaje",
-  "portal_title": "Explora mis proyectos",
-  "portal_subtitle": "Haz click para entrar",
+  "dimension_title": "Dimensión paralela",
+  "dimension_subtitle": "Haz click en el portal para entrar",
+  "dimension_enter": "Entrar",
+  "dimension_exit_btn": "Volver",
+  "portal_title": "Dimensión paralela",
+  "download_cv": "Descargar CV",
   "rights": "© {year} Jesús Gerardo Garza García. Todos los derechos reservados."
 }

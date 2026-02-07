@@ -99,6 +99,32 @@
   font-size: 0.7rem;
 }
 
+/* CV Download Button */
+.btn-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  font-family: var(--font);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-cv:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent-hover);
+}
+
+.btn-cv i {
+  font-size: 0.65rem;
+}
+
 /* Panel Nav */
 .panel-nav {
   display: flex;
