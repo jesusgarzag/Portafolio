@@ -48,7 +48,7 @@ Abre [index.html](index.html) en el navegador. No requiere dependencias.
 
 - Email: jesusgarzacia@hotmail.com
 - GitHub: https://github.com/JesusGGGGit
-- LinkedIn: https://www.linkedin.com/in/jesus-garza-garcia
+- LinkedIn: https://www.linkedin.com/in/jesusgarzacia
 
 ---
 
@@ -102,4 +102,4 @@ Open [index.html](index.html) in your browser. No dependencies required.
 
 - Email: jesusgarzacia@hotmail.com
 - GitHub: https://github.com/JesusGGGGit
-- LinkedIn: https://www.linkedin.com/in/jesus-garza-garcia
+- LinkedIn: https://www.linkedin.com/in/jesusgarzacia
