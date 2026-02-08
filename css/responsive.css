@@ -110,8 +110,8 @@
 
   .mobile-hero-name {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
-    font-weight: 800;
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--text);
     margin-bottom: 0.3rem;
     line-height: 1.1;
@@ -261,5 +261,17 @@
   .exp-accent {
     width: 100%;
     height: 3px;
+  }
+}
+
+/* Keep the main name on a single line on small screens */
+@media (max-width: 480px) {
+  .mobile-hero-name,
+  .panel-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    font-size: clamp(1.8rem, 6vw, 1.9rem);
+    line-height: 1.05;
   }
 }
