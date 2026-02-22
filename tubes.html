@@ -74,6 +74,34 @@
     body.light.dimension-mode #tubesCanvas {
       filter: invert(1);
     }
+
+    /* 7. Mobile — relax the 8192px WebGPU height constraint.
+          WebGPU is unsupported on most mobile browsers, so the restriction
+          is unnecessary. Removing it lets the mobile layout (mobile-header,
+          mobile-hero, panelRight) work identically to the fluids dimension. */
+    @media (max-width: 768px) {
+      html, body {
+        height: auto;
+        overflow-y: auto;
+      }
+
+      body.dimension-mode .layout {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+      }
+
+      body.dimension-mode .panel-left {
+        position: relative;
+        height: auto;
+        overflow-y: visible;
+      }
+
+      body.dimension-mode #panelRight {
+        height: auto;
+        overflow-y: visible;
+      }
+    }
   </style>
 </head>
 
