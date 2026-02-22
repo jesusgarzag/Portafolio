@@ -1338,20 +1338,9 @@ body.light.dimension-mode .exp-subtitle {
   color: #7c3aed;
 }
 
-body.dimension-mode .btn-submit {
-  background: #a855f7;
-}
-
 body.dimension-mode .btn-submit:hover {
-  background: #9333ea;
-}
-
-body.light.dimension-mode .btn-submit {
-  background: #7c3aed;
-}
-
-body.light.dimension-mode .btn-submit:hover {
-  background: #6d28d9;
+  background: var(--accent-dim);
+  border-color: var(--accent-hover);
 }
 
 /* Hide portal trigger in dimension mode */
@@ -1471,7 +1460,7 @@ body.light.dimension-mode .dimension-zen:hover {
 }
 
 body.dimension-mode .dimension-theme {
-  display: flex;
+  display: none;
 }
 
 .dimension-theme:hover {
@@ -1524,6 +1513,7 @@ body.zen-mode:hover .dimension-theme {
 
 body.zen-mode .dimension-zen,
 body.zen-mode .dimension-theme {
+  display: flex;
   opacity: 0.3;
   transition: opacity 0.3s ease;
 }
@@ -1644,4 +1634,158 @@ body.light.dimension-mode .scroll-progress {
   .dimension-exit {
     cursor: pointer;
   }
+
+  /* Dimension selector responsive */
+  .dimension-selector {
+    bottom: 35px;
+    gap: 0.6rem;
+  }
+
+  .dimension-option {
+    padding: 0.55rem 0.9rem;
+    border-radius: 12px;
+  }
+
+  .dimension-option-icon {
+    font-size: 1.1rem;
+  }
+
+  .dimension-option-label {
+    font-size: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .dimension-divider {
+    height: 36px;
+  }
+}
+
+/* ============================================
+   DIMENSION SELECTOR (two parallel options)
+   ============================================ */
+.dimension-selector {
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: enterBtnAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  white-space: nowrap;
+}
+
+.dimension-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(5, 5, 10, 0.5);
+  border: 1.5px solid rgba(16, 185, 129, 0.4);
+  color: #fff;
+  font-family: var(--font-heading);
+  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  min-width: 110px;
+}
+
+.dimension-option:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.8);
+  transform: translateY(-4px) scale(1.06);
+  box-shadow:
+    0 0 25px rgba(16, 185, 129, 0.35),
+    0 0 50px rgba(16, 185, 129, 0.15);
+}
+
+.dimension-option:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Tubes option — magenta theme */
+.dimension-option-tubes {
+  border-color: rgba(249, 103, 251, 0.4);
+}
+
+.dimension-option-tubes:hover {
+  background: rgba(249, 103, 251, 0.15);
+  border-color: rgba(249, 103, 251, 0.8);
+  box-shadow:
+    0 0 25px rgba(249, 103, 251, 0.35),
+    0 0 50px rgba(249, 103, 251, 0.15);
+}
+
+.dimension-option-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.dimension-option-fluids .dimension-option-icon {
+  color: rgba(52, 211, 153, 0.9);
+}
+
+.dimension-option-tubes .dimension-option-icon {
+  color: rgba(249, 103, 251, 0.9);
+}
+
+.dimension-option-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-align: center;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dimension-divider {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  flex-shrink: 0;
+}
+
+/* Light theme overrides */
+body.light .dimension-option {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #1a1a2e;
+}
+
+body.light .dimension-option:hover {
+  background: rgba(16, 185, 129, 0.12);
+}
+
+body.light .dimension-option-tubes {
+  border-color: rgba(249, 103, 251, 0.35);
+}
+
+body.light .dimension-option-tubes:hover {
+  background: rgba(249, 103, 251, 0.1);
+}
+
+body.light .dimension-option-label {
+  color: rgba(26, 26, 46, 0.85);
+}
+
+body.light .dimension-divider {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
 }

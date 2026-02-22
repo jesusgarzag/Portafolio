@@ -660,14 +660,18 @@
         <div class="portal-center-glow"></div>
         <div class="portal-center-glow portal-center-glow-2"></div>
 
-        <!-- Clickable enter zone -->
-        <button class="dimension-enter" id="dimensionEnter" aria-label="Entrar al portal">
-          <span class="dimension-enter-glow"></span>
-          <span class="dimension-enter-text" data-i18n="dimension_enter">Entrar</span>
-          <span class="dimension-enter-particles">
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-          </span>
-        </button>
+        <!-- Dimension selector -->
+        <div class="dimension-selector" id="dimensionSelector">
+          <button class="dimension-option dimension-option-fluids" id="enterFluids" aria-label="Entrar a la Dimensión de Fluidos">
+            <span class="dimension-option-icon">≋</span>
+            <span class="dimension-option-label" data-i18n="dimension_fluids">Dimensión<br>de Fluidos</span>
+          </button>
+          <div class="dimension-divider"></div>
+          <button class="dimension-option dimension-option-tubes" id="enterTubes" aria-label="Entrar a la Dimensión de Tubos">
+            <span class="dimension-option-icon">⬡</span>
+            <span class="dimension-option-label" data-i18n="dimension_tubes">Dimensión<br>de Tubos</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

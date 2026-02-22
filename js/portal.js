@@ -6,7 +6,6 @@
   const portalExpanded = document.getElementById('portalExpanded');
   const portalClose = document.getElementById('portalClose');
   const portalCanvas = document.getElementById('portalCanvas');
-  const dimensionEnter = document.getElementById('dimensionEnter');
   const warpOverlay = document.getElementById('warpOverlay');
   const dimensionBg = document.getElementById('dimensionBg');
   const dimensionExit = document.getElementById('dimensionExit');
@@ -313,10 +312,11 @@
     });
 
     // ============================================
-    // ENTER DIMENSION (warp effect)
+    // ENTER FLUIDS DIMENSION (warp effect)
     // ============================================
-    if (dimensionEnter) {
-      dimensionEnter.addEventListener('click', () => {
+    const enterFluids = document.getElementById('enterFluids');
+    if (enterFluids) {
+      enterFluids.addEventListener('click', () => {
         // Close the portal overlay
         portalExpanded.classList.remove('active');
         document.body.classList.remove('portal-open');
@@ -326,7 +326,7 @@
           warpOverlay.classList.add('active');
         }
 
-        // After warp animation, activate dimension mode
+        // After warp animation, activate fluids dimension mode
         setTimeout(() => {
           if (stopWormhole) {
             stopWormhole();
@@ -355,6 +355,33 @@
           }
 
           window.scrollTo({ top: 0, behavior: 'auto' });
+        }, 1200);
+      });
+    }
+
+    // ============================================
+    // ENTER TUBES DIMENSION
+    // ============================================
+    const enterTubes = document.getElementById('enterTubes');
+    if (enterTubes) {
+      enterTubes.addEventListener('click', () => {
+        // Close the portal overlay
+        portalExpanded.classList.remove('active');
+        document.body.classList.remove('portal-open');
+        document.body.style.overflow = '';
+
+        // Start warp effect
+        if (warpOverlay) {
+          warpOverlay.classList.add('active');
+        }
+
+        // After warp animation, navigate to tubes dimension
+        setTimeout(() => {
+          if (stopWormhole) {
+            stopWormhole();
+            stopWormhole = null;
+          }
+          window.location.href = 'tubes.html';
         }, 1200);
       });
     }

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dimensión de Tubos — Jesús Garza</title>
+  <meta name="description" content="Desarrollador Backend especializado en Python, PostgreSQL y Odoo.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="fetch" href="i18n/es.json" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="i18n/en.json" crossorigin="anonymous">
+  <link href="css/base.css" rel="stylesheet">
+  <link href="css/layout.css" rel="stylesheet">
+  <link href="css/components.css" rel="stylesheet">
+  <link href="css/portal.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       TUBES DIMENSION — layout overrides only.
+       All visual styles (glass, purple accent, cards…) come from
+       portal.css via the `dimension-mode` class on <body>.
+       The ONLY reason for this <style> block is the body-height
+       constraint required by TubesCursor's WebGPU texture creation.
+       ============================================================ */
+
+    /* 1. Constrain body so document.body.scrollHeight ≈ 100vh (<8192px) */
+    html, body {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 2. TubesCursor canvas — identical positioning to #dimensionBg */
+    #tubesCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* 3. Cap the layout height to 100vh so document.body.scrollHeight stays
+          under 8192px (WebGPU texture limit). Preserve max-width/margin from
+          layout.css and position/z-index from portal.css — only constrain size. */
+    body.dimension-mode .layout {
+      height: 100vh;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* 4. Left panel: remove sticky (parent is now fixed), allow independent scroll */
+    body.dimension-mode .panel-left {
+      position: relative;
+      height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body.dimension-mode .panel-left::-webkit-scrollbar { display: none; }
+
+    /* 5. Right panel: scroll within itself — NOT the window */
+    body.dimension-mode #panelRight {
+      height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body.dimension-mode #panelRight::-webkit-scrollbar { display: none; }
+
+    /* 6. Day mode: invert the canvas so its dark background becomes near-white.
+          Tubes remain visible with inverted hues. Glass panels then backdrop-blur
+          the now-light canvas and appear correctly light. No blurry overlay. */
+    body.light.dimension-mode #tubesCanvas {
+      filter: invert(1);
+    }
+  </style>
+</head>
+
+<!-- dimension-mode gives us the exact same visual as the Fluids Dimension -->
+<body class="dimension-mode">
+
+  <!-- TubesCursor canvas (replaces the WebGL fluid canvas) -->
+  <canvas id="tubesCanvas"></canvas>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ============================================
+       SPLIT LAYOUT — identical structure to index.html
+       ============================================ -->
+  <div class="layout">
+
+    <!-- LEFT PANEL -->
+    <header class="panel-left" id="panelLeft">
+      <div class="panel-left-inner">
+        <div class="panel-top">
+          <h1 class="panel-name">Jesús Garza<span class="accent">.</span></h1>
+          <h2 class="panel-title" data-i18n="backend_dev">Desarrollador Backend</h2>
+          <p class="panel-desc" data-i18n="hero_desc">
+            Especializado en crear soluciones robustas y escalables.
+            Desarrollo de módulos, APIs e integraciones con Python y PostgreSQL.
+          </p>
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span data-i18n="status_available">Disponible para trabajar</span>
+          </div>
+          <a href="mailto:jesusgarzacia@hotmail.com" class="panel-email">
+            <i class="fas fa-envelope"></i> jesusgarzacia@hotmail.com
+          </a>
+          <a href="#" class="btn-cv" id="btnCvDesktop" data-i18n="download_cv" download>
+            <i class="fas fa-download"></i> Descargar CV
+          </a>
+        </div>
+
+        <nav class="panel-nav" id="panelNav">
+          <a href="#about" class="panel-nav-link active" data-section="about">
+            <span class="nav-indicator"></span>
+            <span class="nav-text" data-i18n="about">Sobre mí</span>
+          </a>
+          <a href="#experience" class="panel-nav-link" data-section="experience">
+            <span class="nav-indicator"></span>
+            <span class="nav-text" data-i18n="experience_nav">Experiencia</span>
+          </a>
+          <a href="#projects" class="panel-nav-link" data-section="projects">
+            <span class="nav-indicator"></span>
+            <span class="nav-text" data-i18n="projectsh">Proyectos</span>
+          </a>
+          <a href="#skills" class="panel-nav-link" data-section="skills">
+            <span class="nav-indicator"></span>
+            <span class="nav-text" data-i18n="skills">Habilidades</span>
+          </a>
+          <a href="#education" class="panel-nav-link" data-section="education">
+            <span class="nav-indicator"></span>
+            <span class="nav-text" data-i18n="education">Formación</span>
+          </a>
+          <a href="#contact" class="panel-nav-link" data-section="contact">
+            <span class="nav-indicator"></span>
+            <span class="nav-text" data-i18n="contact">Contacto</span>
+          </a>
+        </nav>
+
+        <div class="panel-bottom">
+          <div class="panel-actions">
+            <div class="language-switcher">
+              <button class="language-btn active" data-lang="es">ES</button>
+              <button class="language-btn" data-lang="en">EN</button>
+            </div>
+            <button class="theme-btn" id="themeToggle" title="Toggle theme">
+              <i class="fas fa-sun"></i>
+            </button>
+          </div>
+          <div class="panel-social">
+            <a href="https://github.com/JesusGGGGit" target="_blank" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE HEADER -->
+    <div class="mobile-header" id="mobileHeader">
+      <a href="index.html" class="logo">JG<span class="accent">.</span></a>
+      <div class="mobile-actions">
+        <div class="language-switcher">
+          <button class="language-btn active" data-lang="es">ES</button>
+          <button class="language-btn" data-lang="en">EN</button>
+        </div>
+        <button class="theme-btn" id="themeToggleMobile" title="Toggle theme">
+          <i class="fas fa-sun"></i>
+        </button>
+        <button class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <nav class="mobile-nav-menu">
+        <a href="#about"      class="mobile-nav-link" data-i18n="about">Sobre mí</a>
+        <a href="#experience" class="mobile-nav-link" data-i18n="experience_nav">Experiencia</a>
+        <a href="#projects"   class="mobile-nav-link" data-i18n="projectsh">Proyectos</a>
+        <a href="#skills"     class="mobile-nav-link" data-i18n="skills">Habilidades</a>
+        <a href="#education"  class="mobile-nav-link" data-i18n="education">Formación</a>
+        <a href="#contact"    class="mobile-nav-link" data-i18n="contact">Contacto</a>
+      </nav>
+    </div>
+
+    <!-- MOBILE HERO -->
+    <div class="mobile-hero">
+      <h1 class="mobile-hero-name">Jesús Garza<span class="accent">.</span></h1>
+      <h2 class="mobile-hero-title" data-i18n="backend_dev">Desarrollador Backend</h2>
+      <p class="mobile-hero-desc" data-i18n="hero_desc">
+        Especializado en crear soluciones robustas y escalables.
+        Desarrollo de módulos, APIs e integraciones con Python y PostgreSQL.
+      </p>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span data-i18n="status_available">Disponible para trabajar</span>
+      </div>
+      <a href="mailto:jesusgarzacia@hotmail.com" class="panel-email">
+        <i class="fas fa-envelope"></i> jesusgarzacia@hotmail.com
+      </a>
+      <a href="#" class="btn-cv" id="btnCvMobile" data-i18n="download_cv" download>
+        <i class="fas fa-download"></i> Descargar CV
+      </a>
+    </div>
+
+    <!-- RIGHT PANEL (scrolls within itself) -->
+    <main class="panel-right" id="panelRight">
+
+      <!-- About -->
+      <section id="about" class="content-section">
+        <div class="section-content">
+          <p class="content-text" data-i18n="about_desc1">
+            Soy un desarrollador backend especializado en Python con experiencia en el desarrollo de módulos personalizados para Odoo,
+            integraciones mediante XML-RPC, automatización de procesos y manejo de bases de datos con PostgreSQL.
+            Mi nivel de inglés es avanzado, lo que me permite colaborar eficazmente en entornos internacionales.
+          </p>
+          <p class="content-text" data-i18n="about_desc2">
+            Cuento con formación en administración de sistemas Linux (Red Hat).
+            Mi enfoque se centra en escribir código limpio, eficiente y mantenible que resuelva problemas reales de negocio.
+          </p>
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number" data-target="8">0</span><span class="stat-suffix">+</span>
+              <p class="stat-label" data-i18n="stat_projects">Proyectos Completados</p>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+              <p class="stat-label" data-i18n="stat_modules">Módulos Odoo</p>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="3">0</span><span class="stat-suffix"></span>
+              <p class="stat-label" data-i18n="stat_certs">Certificaciones Red Hat</p>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
+              <p class="stat-label" data-i18n="stat_tech">Tecnologías</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="content-section">
+        <h2 class="section-heading" data-i18n="experience_title">Experiencia Profesional</h2>
+
+        <div class="experience-card">
+          <div class="exp-accent"></div>
+          <div class="exp-content">
+            <div class="exp-header">
+              <h3 data-i18n="exp_odoo_title">Desarrollador Backend Odoo</h3>
+              <p class="exp-subtitle" data-i18n="exp_odoo_subtitle">Odoo 17/18 · Python · PostgreSQL · ORM · Owl · XML-RPC</p>
+            </div>
+            <div class="exp-metrics">
+              <span class="metric-chip"><i class="fas fa-layer-group"></i> <span data-i18n="metric_odoo_1">Multi-almacén</span></span>
+              <span class="metric-chip"><i class="fas fa-chart-line"></i> <span data-i18n="metric_odoo_2">Dashboard Owl</span></span>
+              <span class="metric-chip"><i class="fas fa-plug"></i> <span data-i18n="metric_odoo_3">API REST</span></span>
+              <span class="metric-chip"><i class="fas fa-file-invoice"></i> <span data-i18n="metric_odoo_4">CFDI</span></span>
+            </div>
+            <ul class="exp-list">
+              <li data-i18n="exp_odoo_1">Módulo de reabastecimiento en cascada</li>
+              <li data-i18n="exp_odoo_2">Dashboard interactivo de postnómina con componente Owl</li>
+              <li data-i18n="exp_odoo_3">Sistema de integración con Watchdog</li>
+            </ul>
+            <ul class="exp-list exp-details">
+              <li data-i18n="exp_odoo_4">Integración CFDI: timbrado automático de facturas</li>
+              <li data-i18n="exp_odoo_5">Reportes avanzados QWeb</li>
+              <li data-i18n="exp_odoo_6">Detección automática de contactos bancarios</li>
+              <li data-i18n="exp_odoo_7">Override de procurement core (_run_pull)</li>
+              <li data-i18n="exp_odoo_8">API REST personalizada con 3 endpoints</li>
+              <li data-i18n="exp_odoo_9">Migración de módulos Odoo v17 → v18</li>
+              <li data-i18n="exp_odoo_10">Herencia de 6+ modelos estándar</li>
+            </ul>
+            <button class="expand-toggle">
+              <span data-i18n="show_more">Ver más</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="exp-tags">
+              <span>Python</span><span>PostgreSQL</span><span>Odoo ORM</span><span>Owl</span><span>XML-RPC</span>
+              <span>QWeb</span><span>CFDI</span><span>Watchdog</span><span>xlsxwriter</span><span>ReportLab</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-accent"></div>
+          <div class="exp-content">
+            <div class="exp-header">
+              <h3 data-i18n="exp_ss_title">Programador Full Stack — Servicio Social</h3>
+              <p class="exp-subtitle" data-i18n="exp_ss_subtitle">Biblioteca FCFM-UANL · Flask · SQL Server · 3 Sistemas en Producción</p>
+            </div>
+            <div class="exp-metrics">
+              <span class="metric-chip"><i class="fas fa-book"></i> <span data-i18n="metric_ss_1">3 Sistemas</span></span>
+              <span class="metric-chip"><i class="fas fa-database"></i> <span data-i18n="metric_ss_2">Dual DB</span></span>
+              <span class="metric-chip"><i class="fas fa-chart-pie"></i> <span data-i18n="metric_ss_3">Dashboards</span></span>
+              <span class="metric-chip"><i class="fas fa-box"></i> <span data-i18n="metric_ss_4">Producción</span></span>
+            </div>
+            <ul class="exp-list">
+              <li data-i18n="exp_ss_1">Sistema de préstamos de libros y computadoras</li>
+              <li data-i18n="exp_ss_2">Sistema de registro de entradas y salidas</li>
+              <li data-i18n="exp_ss_3">Sistema de inventario de libros</li>
+            </ul>
+            <ul class="exp-list exp-details">
+              <li data-i18n="exp_ss_4">Generación de reportes profesionales en PDF y Excel</li>
+              <li data-i18n="exp_ss_5">Arquitectura dual de bases de datos</li>
+              <li data-i18n="exp_ss_6">Importación masiva de datos desde Excel/CSV</li>
+              <li data-i18n="exp_ss_7">Despliegue en producción con Waitress</li>
+            </ul>
+            <button class="expand-toggle">
+              <span data-i18n="show_more">Ver más</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="exp-tags">
+              <span>Python</span><span>Flask</span><span>SQL Server</span><span>SQLite</span><span>Pandas</span>
+              <span>ReportLab</span><span>Chart.js</span><span>APScheduler</span><span>bcrypt</span>
+              <span>Tkinter</span><span>Waitress</span><span>PyInstaller</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="content-section">
+        <h2 class="section-heading" data-i18n="projects">Proyectos Destacados</h2>
+        <div class="projects-list">
+
+          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank" class="project-card">
+            <div class="project-image"><img src="assets/images/acervo.jpg" alt="Gestión de Libros" loading="lazy"></div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title" data-i18n="book_management">Gestión de Libros de Acervo</h3>
+                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
+              </div>
+              <p class="project-desc" data-i18n="book_desc">Sistema web con 13+ endpoints para gestión de préstamos, monitoreo de computadoras en tiempo real, dashboard analítico con Chart.js, reportes PDF/Excel, importación masiva y tareas programadas con APScheduler.</p>
+              <div class="project-tech"><span>Python</span><span>Flask</span><span>SQL Server</span><span>Pandas</span><span>Chart.js</span></div>
+            </div>
+          </a>
+
+          <a href="https://jesusggggit.github.io/Rubiks-Timer/" target="_blank" class="project-card">
+            <div class="project-image"><img src="assets/images/timer.jpg" alt="Rubik's Timer" loading="lazy"></div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title" data-i18n="timer-title">Cronómetro para Cubo Rubik</h3>
+                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
+              </div>
+              <p class="project-desc" data-i18n="timer-desc">Cronómetro web en React para speedcubing con inspección, estadísticas, visualización 2D y personalización.</p>
+              <div class="project-tech"><span>React</span><span>JavaScript</span><span>Responsive</span></div>
+            </div>
+          </a>
+
+          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank" class="project-card">
+            <div class="project-image"><img src="assets/images/asistencias.jpg" alt="Registro de Asistencias" loading="lazy"></div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title" data-i18n="attendance">Registro de Entradas y Salidas</h3>
+                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
+              </div>
+              <p class="project-desc" data-i18n="attendance_desc">Sistema de control de asistencias con autenticación bcrypt, roles Admin/Usuario, estadísticas por alumno (días, horas, promedios), reportes Excel/PDF y cierre automático de registros.</p>
+              <div class="project-tech"><span>Python</span><span>Flask</span><span>SQL Server</span><span>bcrypt</span><span>Pandas</span></div>
+            </div>
+          </a>
+
+          <a href="assets/demo/demo.mp4" target="_blank" class="project-card">
+            <div class="project-image"><img src="assets/images/inventario.jpg" alt="Inventario de Libros" loading="lazy"></div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title" data-i18n="inventory">Inventario de Libros</h3>
+                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
+              </div>
+              <p class="project-desc" data-i18n="inventory_desc">App de escritorio con escaneo de código de barras, búsqueda con normalización Unicode, merge de múltiples bases de datos con detección de conflictos, historial de auditoría y exportación a 5 reportes Excel.</p>
+              <div class="project-tech"><span>Python</span><span>Tkinter</span><span>SQLite</span><span>Pandas</span><span>PyInstaller</span></div>
+            </div>
+          </a>
+
+          <a href="https://github.com/JesusGGGGit/Portafolio" target="_blank" class="project-card">
+            <div class="project-image"><img src="assets/images/portafolio_en.jpg" alt="Portafolio" loading="lazy"></div>
+            <div class="project-body">
+              <div class="project-top">
+                <h3 class="project-title" data-i18n="portafolio">Portafolio</h3>
+                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
+              </div>
+              <p class="project-desc" data-i18n="portafolio_desc">Portafolio personal con todos mis proyectos y habilidades de programación.</p>
+              <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="content-section">
+        <h2 class="section-heading" data-i18n="tech_skills">Habilidades Técnicas</h2>
+        <div class="skills-group">
+          <h3 class="skills-category" data-i18n="backend_databases">Backend & Bases de Datos</h3>
+          <div class="skills-chips">
+            <span class="skill-chip"><i class="fab fa-python"></i> Python</span>
+            <span class="skill-chip"><i class="fas fa-cube"></i> Odoo</span>
+            <span class="skill-chip"><i class="fas fa-flask-vial"></i> Flask</span>
+            <span class="skill-chip"><i class="fas fa-database"></i> PostgreSQL</span>
+            <span class="skill-chip"><i class="fas fa-database"></i> SQL Server</span>
+            <span class="skill-chip"><i class="fas fa-plug"></i> XML-RPC</span>
+            <span class="skill-chip"><i class="fas fa-table"></i> Pandas</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <h3 class="skills-category" data-i18n="web_development">Desarrollo Web</h3>
+          <div class="skills-chips">
+            <span class="skill-chip"><i class="fab fa-html5"></i> HTML5</span>
+            <span class="skill-chip"><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span class="skill-chip"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="skill-chip"><i class="fab fa-react"></i> React</span>
+            <span class="skill-chip"><i class="fas fa-feather"></i> Owl</span>
+            <span class="skill-chip"><i class="fas fa-paint-brush"></i> QWeb</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <h3 class="skills-category" data-i18n="devops_tools">DevOps & Herramientas</h3>
+          <div class="skills-chips">
+            <span class="skill-chip"><i class="fab fa-git-alt"></i> Git</span>
+            <span class="skill-chip"><i class="fab fa-github"></i> GitHub</span>
+            <span class="skill-chip"><i class="fab fa-linux"></i> Linux</span>
+            <span class="skill-chip"><i class="fab fa-redhat"></i> Red Hat</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="content-section">
+        <h2 class="section-heading" data-i18n="education">Formación</h2>
+        <div class="education-card">
+          <div class="education-header">
+            <div class="education-logos">
+              <a href="https://www.uanl.mx/" target="_blank" rel="noopener">
+                <img src="assets/images/Uanl.png" alt="UANL" class="education-logo">
+              </a>
+              <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener">
+                <img src="assets/images/logofcfmpng.png" alt="FCFM" class="education-logo">
+              </a>
+            </div>
+            <div class="education-details">
+              <h3 data-i18n="degree">Licenciatura en Ciencias Computacionales</h3>
+              <p class="education-institution" data-i18n="university">Universidad Autónoma de Nuevo León, Facultad de Ciencias Físico Matemáticas</p>
+              <span class="education-period">2021 — 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="subsection-heading" data-i18n="certifications">Certificaciones Técnicas</h3>
+        <div class="certifications-list">
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
+            <div class="cert-info">
+              <h4 data-i18n="rh124">Red Hat System Administration I (RH124)</h4>
+              <span class="cert-year">2024</span>
+            </div>
+            <a href="assets/certificados/RH124.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
+            <div class="cert-info">
+              <h4 data-i18n="rh134">Red Hat System Administration II (RH134)</h4>
+              <span class="cert-year">2024</span>
+            </div>
+            <a href="assets/certificados/RH134.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
+            <div class="cert-info">
+              <h4 data-i18n="rh294">Red Hat Enterprise Linux Automation with Ansible (RH294)</h4>
+              <span class="cert-year">2024</span>
+            </div>
+            <a href="assets/certificados/RH294.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </div>
+
+        <h3 class="subsection-heading" data-i18n="recognitions">Reconocimientos</h3>
+        <div class="recognitions-list">
+          <div class="recognition-card">
+            <div class="recognition-icon"><i class="fas fa-envelope-open-text"></i></div>
+            <div class="recognition-info">
+              <h4 data-i18n="recommendation">Reconocimiento por la elaboración de 3 sistemas para biblioteca</h4>
+              <p data-i18n="recommendation_desc">Reconocimiento por la elaboración de los sistemas: Entradas y Salidas, Registro de Libros de Acervo e Inventario de Libros.</p>
+              <a href="assets/certificados/carta.pdf" target="_blank" class="recognition-link">
+                <span data-i18n="view_letter">Ver Carta</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="recognition-card">
+            <div class="recognition-icon award"><i class="fas fa-award"></i></div>
+            <div class="recognition-info">
+              <h4 data-i18n="egel_award">EGEL-CENEVAL</h4>
+              <p data-i18n="egel_desc">Testimonio de Desempeño Sobresaliente en el EGEL de Ciencias Computacionales, otorgado por CENEVAL.</p>
+              <a href="assets/certificados/EGEL.pdf" target="_blank" class="recognition-link">
+                <span data-i18n="view_certificate">Ver Reconocimiento</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="subsection-heading" data-i18n="testimonials">Testimonios</h3>
+        <div class="testimonial-card">
+          <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text" data-i18n="testimonial1_text">
+            "Jesús Garza demostró ser un elemento muy valioso por su gran responsabilidad y atención al detalle. Su iniciativa y compromiso superaron las expectativas, logrando mejoras significativas en los procesos internos de nuestra Biblioteca."
+          </p>
+          <div class="testimonial-author">
+            <h4 data-i18n="testimonial1_name">Dra. Aleida Magdalena Gil González</h4>
+            <p data-i18n="testimonial1_position">Subdirectora de Calidad e Innovación Educativa, FCFM - UANL</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="content-section">
+        <h2 class="section-heading" data-i18n="contact_title">Trabajemos juntos</h2>
+        <p class="content-text" data-i18n="contact_intro">
+          ¿Tienes un proyecto en mente o quieres colaborar? No dudes en contactarme.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:jesusgarzacia@hotmail.com" class="contact-link-item">
+            <i class="fas fa-envelope"></i><span>jesusgarzacia@hotmail.com</span>
+            <i class="fas fa-arrow-right contact-arrow"></i>
+          </a>
+          <a href="https://github.com/JesusGGGGit" target="_blank" class="contact-link-item">
+            <i class="fab fa-github"></i><span>github.com/JesusGGGGit</span>
+            <i class="fas fa-arrow-right contact-arrow"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" class="contact-link-item">
+            <i class="fab fa-linkedin-in"></i><span>linkedin.com/in/jesusgarzacia</span>
+            <i class="fas fa-arrow-right contact-arrow"></i>
+          </a>
+        </div>
+        <form class="contact-form" id="form-contacto" action="https://formspree.io/f/xzzgdodw" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre" data-i18n="name">Nombre</label>
+              <input type="text" id="nombre" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email" data-i18n="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="asunto" data-i18n="subject">Asunto</label>
+            <input type="text" id="asunto" name="affair" required>
+          </div>
+          <div class="form-group">
+            <label for="mensaje" data-i18n="message">Mensaje</label>
+            <textarea id="mensaje" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <span data-i18n="send_message">Enviar Mensaje</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Footer -->
+      <footer class="panel-footer">
+        <div class="mobile-footer-social">
+          <a href="https://github.com/JesusGGGGit" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="copyright"></p>
+      </footer>
+
+    </main>
+  </div>
+  <!-- /SPLIT LAYOUT -->
+
+  <!-- Dimension controls — same as fluids dimension (portal.css handles styling) -->
+  <a href="index.html" class="dimension-exit">
+    <i class="fas fa-arrow-left"></i>
+    <span data-i18n="dimension_exit_btn">Volver</span>
+  </a>
+
+  <button class="dimension-zen" id="dimensionZen" title="Zen mode">
+    <i class="fas fa-expand"></i>
+  </button>
+
+  <button class="dimension-theme theme-btn" id="themeToggleDimension" title="Toggle theme">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script src="js/idiomas.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/interactions.js"></script>
+
+  <script>
+    // Copyright
+    document.querySelectorAll('.copyright').forEach(el => {
+      el.textContent =
+        `© ${new Date().getFullYear()} Jesús Gerardo Garza García. Todos los derechos reservados.`;
+    });
+
+    // ── Navigation — scroll #panelRight instead of window ────
+    const panelRight  = document.getElementById('panelRight');
+    const navLinks    = document.querySelectorAll('.panel-nav-link');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    const sections    = panelRight ? panelRight.querySelectorAll('section[id]') : [];
+    const scrollProg  = document.getElementById('scrollProgress');
+
+    function updateActiveNav() {
+      if (!panelRight) return;
+      const scrollTop = panelRight.scrollTop + 120;
+      let current = sections[0]?.id || 'about';
+      sections.forEach(s => { if (s.offsetTop <= scrollTop) current = s.id; });
+      navLinks.forEach(link =>
+        link.classList.toggle('active', link.dataset.section === current)
+      );
+    }
+
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target && panelRight)
+        panelRight.scrollTo({ top: target.offsetTop - 20, behavior: 'smooth' });
+    }
+
+    panelRight?.addEventListener('scroll', updateActiveNav);
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => { e.preventDefault(); scrollToSection(link.getAttribute('href').slice(1)); });
+    });
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        scrollToSection(link.getAttribute('href').slice(1));
+        document.getElementById('mobileNav')?.classList.remove('active');
+        document.getElementById('hamburger')?.querySelector('i')?.setAttribute('class', 'fas fa-bars');
+      });
+    });
+
+    // Scroll progress
+    panelRight?.addEventListener('scroll', () => {
+      if (!scrollProg) return;
+      const pct = panelRight.scrollTop / (panelRight.scrollHeight - panelRight.clientHeight) * 100;
+      scrollProg.style.width = pct + '%';
+    });
+
+    // Mobile hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger?.addEventListener('click', () => {
+      mobileNav?.classList.toggle('active');
+      const icon = hamburger.querySelector('i');
+      if (icon) icon.className = mobileNav?.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+    });
+
+    // Forward wheel events to panelRight when cursor is outside scrollable panels.
+    // body/layout have overflow:hidden so wheel events outside panels go nowhere.
+    window.addEventListener('wheel', (e) => {
+      if (!e.target.closest('#panelRight') && panelRight) {
+        panelRight.scrollTop += e.deltaY;
+      }
+    }, { passive: true });
+
+    // Zen mode toggle (same as fluids dimension)
+    document.getElementById('dimensionZen')?.addEventListener('click', () => {
+      document.body.classList.toggle('zen-mode');
+    });
+  </script>
+
+  <!-- TubesCursor — ES module, replaces the WebGL fluid simulation -->
+  <!-- body.scrollHeight ≈ 100vh here, so WebGPU texture creation succeeds -->
+  <script type="module">
+    // Licence CC BY-NC-SA 4.0
+    import TubesCursor from
+      "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js";
+
+    TubesCursor(document.getElementById('tubesCanvas'), {
+      tubes: {
+        colors: ["#f967fb", "#53bc28", "#6958d5"],
+        lights: {
+          intensity: 200,
+          colors: ["#83f36e", "#fe8a2e", "#ff008a", "#60aed5"]
+        }
+      }
+    });
+  </script>
+</body>
+</html>
