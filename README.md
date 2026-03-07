@@ -1,4 +1,4 @@
-# Portafolio de JesusGGGGit
+# Portafolio de jesusgarzag
 
 ![Estado](https://img.shields.io/badge/estado-activo-success) ![HTML5](https://img.shields.io/badge/html5-e34f26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-f7df1e?logo=javascript&logoColor=000000) ![i18n](https://img.shields.io/badge/i18n-json-blue) ![Theme](https://img.shields.io/badge/tema-claro%2Foscuro-4b5563)
 
@@ -47,12 +47,12 @@ Abre [index.html](index.html) en el navegador. No requiere dependencias.
 ## Contacto
 
 - Email: jesusgarzacia@hotmail.com
-- GitHub: https://github.com/JesusGGGGit
+- GitHub: https://github.com/jesusgarzag
 - LinkedIn: https://www.linkedin.com/in/jesusgarzacia
 
 ---
 
-# Portfolio of JesusGGGGit
+# Portfolio of jesusgarzag
 
 ![Status](https://img.shields.io/badge/status-active-success) ![HTML5](https://img.shields.io/badge/html5-e34f26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-f7df1e?logo=javascript&logoColor=000000) ![i18n](https://img.shields.io/badge/i18n-json-blue) ![Theme](https://img.shields.io/badge/theme-light%2Fdark-4b5563)
 
@@ -101,5 +101,5 @@ Open [index.html](index.html) in your browser. No dependencies required.
 ## Contact
 
 - Email: jesusgarzacia@hotmail.com
-- GitHub: https://github.com/JesusGGGGit
+- GitHub: https://github.com/jesusgarzag
 - LinkedIn: https://www.linkedin.com/in/jesusgarzacia
