@@ -25,7 +25,7 @@ function applyTranslations(lang, translations) {
   document.documentElement.lang = lang;
   localStorage.setItem('preferredLanguage', lang);
 
-  document.querySelectorAll('.language-btn').forEach((btn) => {
+  document.querySelectorAll('.lang-switch__btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 
@@ -38,23 +38,16 @@ function applyTranslations(lang, translations) {
     el.textContent = value;
   });
 
-  // Update portal tooltip
-  const portalTrigger = document.getElementById('portalTrigger');
-  if (portalTrigger) {
-    const tooltip = translations.portal_title || (lang === 'en' ? 'Parallel dimension' : 'Dimensión paralela');
-    portalTrigger.setAttribute('data-tooltip', tooltip);
-  }
-
   // Update CV download links
   const cvFile = lang === 'en' ? 'assets/certificados/cv_en.pdf' : 'assets/certificados/cv_es.pdf';
   const cvName = lang === 'en' ? 'Jesus_Garza_Resume.pdf' : 'Jesus_Garza_CV.pdf';
-  document.querySelectorAll('.btn-cv').forEach((btn) => {
+  document.querySelectorAll('#btnCv').forEach((btn) => {
     btn.href = cvFile;
     btn.setAttribute('download', cvName);
   });
 
   // Update expand/collapse buttons
-  document.querySelectorAll('.expand-toggle').forEach((btn) => {
+  document.querySelectorAll('.timeline__toggle').forEach((btn) => {
     const span = btn.querySelector('span');
     if (!span) return;
     const isExpanded = btn.classList.contains('active');
@@ -83,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const preferredLanguage = localStorage.getItem('preferredLanguage') || 'es';
   changeLanguage(preferredLanguage);
 
-  document.querySelectorAll('.language-btn').forEach((btn) => {
+  document.querySelectorAll('.lang-switch__btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       changeLanguage(btn.dataset.lang);
     });

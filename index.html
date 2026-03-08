@@ -3,549 +3,437 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jesús Garza | Backend Developer</title>
+  <title>Jesus Garza | Backend Developer</title>
   <meta name="description" content="Desarrollador Backend especializado en Python, PostgreSQL y Odoo. Portafolio profesional.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="fetch" href="i18n/es.json" crossorigin="anonymous">
   <link rel="preload" as="fetch" href="i18n/en.json" crossorigin="anonymous">
   <link href="css/base.css" rel="stylesheet">
+  <link href="css/animations.css" rel="stylesheet">
   <link href="css/layout.css" rel="stylesheet">
   <link href="css/components.css" rel="stylesheet">
-  <link href="css/portal.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Loading Screen -->
-  <div class="loader" id="loader">
-    <div class="loader-content">
-      <div class="loader-logo">JG<span class="accent">.</span></div>
-      <div class="loader-bar"><div class="loader-progress"></div></div>
-    </div>
-  </div>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="#hero" class="nav__logo">JG<span class="nav__logo-dot">.</span></a>
 
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="scrollProgress"></div>
-
-  <!-- ============================================
-       SPLIT LAYOUT
-       ============================================ -->
-  <div class="layout">
-
-    <!-- LEFT PANEL (Sticky) -->
-    <header class="panel-left" id="panelLeft">
-      <div class="panel-left-inner">
-        <!-- Top: Identity -->
-        <div class="panel-top">
-          <h1 class="panel-name">Jesús Garza<span class="accent">.</span></h1>
-          <h2 class="panel-title" data-i18n="backend_dev">Desarrollador Backend</h2>
-          <p class="panel-desc" data-i18n="hero_desc">
-            Especializado en crear soluciones robustas y escalables.
-            Desarrollo de módulos, APIs e integraciones con Python y PostgreSQL.
-          </p>
-          <div class="status-badge">
-            <span class="status-dot"></span>
-            <span data-i18n="status_available">Disponible para trabajar</span>
-          </div>
-          <a href="mailto:jesusgarzacia@hotmail.com" class="panel-email">
-            <i class="fas fa-envelope"></i> jesusgarzacia@hotmail.com
-          </a>
-          <a href="#" class="btn-cv" id="btnCvDesktop" data-i18n="download_cv" download>
-            <i class="fas fa-download"></i> Descargar CV
-          </a>
-        </div>
-        <nav class="panel-nav" id="panelNav">
-          <a href="#about" class="panel-nav-link active" data-section="about">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="about">Sobre mí</span>
-          </a>
-          <a href="#experience" class="panel-nav-link" data-section="experience">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="experience_nav">Experiencia</span>
-          </a>
-          <a href="#projects" class="panel-nav-link" data-section="projects">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="projectsh">Proyectos</span>
-          </a>
-          <a href="#skills" class="panel-nav-link" data-section="skills">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="skills">Habilidades</span>
-          </a>
-          <a href="#education" class="panel-nav-link" data-section="education">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="education">Formación</span>
-          </a>
-          <a href="#contact" class="panel-nav-link" data-section="contact">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="contact">Contacto</span>
-          </a>
-        </nav>
-
-        <!-- Bottom: Social + Actions -->
-        <div class="panel-bottom">
-          <div class="panel-actions">
-            <div class="language-switcher">
-              <button class="language-btn active" data-lang="es">ES</button>
-              <button class="language-btn" data-lang="en">EN</button>
-            </div>
-            <button class="theme-btn" id="themeToggle" title="Toggle theme">
-              <i class="fas fa-sun"></i>
-            </button>
-          </div>
-          <div class="panel-social">
-            <a href="https://github.com/jesusgarzag" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
+      <div class="nav__links" id="navLinks">
+        <a href="#about" class="nav__link active" data-section="about" data-i18n="about">Sobre mi</a>
+        <a href="#experience" class="nav__link" data-section="experience" data-i18n="experience_nav">Experiencia</a>
+        <a href="#projects" class="nav__link" data-section="projects" data-i18n="projectsh">Proyectos</a>
+        <a href="#skills" class="nav__link" data-section="skills" data-i18n="skills">Habilidades</a>
+        <a href="#education" class="nav__link" data-section="education" data-i18n="education">Formacion</a>
+        <a href="#contact" class="nav__link" data-section="contact" data-i18n="contact">Contacto</a>
       </div>
-    </header>
 
-    <!-- MOBILE HEADER -->
-    <div class="mobile-header" id="mobileHeader">
-      <a href="#" class="logo">JG<span class="accent">.</span></a>
-      <div class="mobile-actions">
-        <div class="language-switcher">
-          <button class="language-btn active" data-lang="es">ES</button>
-          <button class="language-btn" data-lang="en">EN</button>
+      <div class="nav__actions">
+        <div class="lang-switch">
+          <button class="lang-switch__btn active" data-lang="es">ES</button>
+          <button class="lang-switch__btn" data-lang="en">EN</button>
         </div>
-        <button class="theme-btn" id="themeToggleMobile" title="Toggle theme">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
           <i class="fas fa-sun"></i>
         </button>
-        <button class="hamburger" id="hamburger">
-          <i class="fas fa-bars"></i>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
+  </nav>
 
-    <!-- MOBILE NAV OVERLAY -->
-    <div class="mobile-nav-overlay" id="mobileNav">
-      <nav class="mobile-nav-menu">
-        <a href="#about" class="mobile-nav-link" data-i18n="about">Sobre mí</a>
-        <a href="#experience" class="mobile-nav-link" data-i18n="experience_nav">Experiencia</a>
-        <a href="#projects" class="mobile-nav-link" data-i18n="projectsh">Proyectos</a>
-        <a href="#skills" class="mobile-nav-link" data-i18n="skills">Habilidades</a>
-        <a href="#education" class="mobile-nav-link" data-i18n="education">Formación</a>
-        <a href="#contact" class="mobile-nav-link" data-i18n="contact">Contacto</a>
-      </nav>
-    </div>
-
-    <!-- MOBILE HERO (visible only on mobile) -->
-    <div class="mobile-hero">
-      <h1 class="mobile-hero-name">Jesús Garza<span class="accent">.</span></h1>
-      <h2 class="mobile-hero-title" data-i18n="backend_dev">Desarrollador Backend</h2>
-      <p class="mobile-hero-desc" data-i18n="hero_desc">
-        Especializado en crear soluciones robustas y escalables.
-        Desarrollo de módulos, APIs e integraciones con Python y PostgreSQL.
-      </p>
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        <span data-i18n="status_available">Disponible para trabajar</span>
-      </div>
-      <a href="mailto:jesusgarzacia@hotmail.com" class="panel-email">
-        <i class="fas fa-envelope"></i> jesusgarzacia@hotmail.com
-      </a>
-      <a href="#" class="btn-cv" id="btnCvMobile" data-i18n="download_cv" download>
-        <i class="fas fa-download"></i> Descargar CV
-      </a>
-    </div>
-
-    <!-- RIGHT PANEL (Scrolls) -->
-    <main class="panel-right" id="panelRight">
-
-      <!-- About -->
-      <section id="about" class="content-section">
-        <div class="section-content">
-          <p class="content-text" data-i18n="about_desc1">
-            Soy un desarrollador backend especializado en Python con experiencia en el desarrollo de módulos personalizados para Odoo,
-            integraciones mediante XML-RPC, automatización de procesos y manejo de bases de datos con PostgreSQL.
-            Mi nivel de inglés es avanzado, lo que me permite colaborar eficazmente en entornos internacionales.
-          </p>
-          <p class="content-text" data-i18n="about_desc2">
-            Cuento con formación en administración de sistemas Linux (Red Hat).
-            Mi enfoque se centra en escribir código limpio, eficiente y mantenible que resuelva problemas reales de negocio.
-          </p>
-
-          <div class="stats-row">
-            <div class="stat-item">
-              <span class="stat-number" data-target="8">0</span><span class="stat-suffix">+</span>
-              <p class="stat-label" data-i18n="stat_projects">Proyectos Completados</p>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
-              <p class="stat-label" data-i18n="stat_modules">Módulos Odoo</p>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="3">0</span><span class="stat-suffix"></span>
-              <p class="stat-label" data-i18n="stat_certs">Certificaciones Red Hat</p>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
-              <p class="stat-label" data-i18n="stat_tech">Tecnologías</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Experience -->
-      <section id="experience" class="content-section">
-        <h2 class="section-heading" data-i18n="experience_title">Experiencia Profesional</h2>
-
-        <!-- Odoo Experience -->
-        <div class="experience-card">
-          <div class="exp-accent"></div>
-          <div class="exp-content">
-            <div class="exp-header">
-              <h3 data-i18n="exp_odoo_title">Desarrollador Backend Odoo</h3>
-              <p class="exp-subtitle" data-i18n="exp_odoo_subtitle">Odoo 17/18 · Python · PostgreSQL · ORM · Owl · XML-RPC</p>
-            </div>
-
-            <div class="exp-metrics">
-              <span class="metric-chip"><i class="fas fa-layer-group"></i> <span data-i18n="metric_odoo_1">Multi-almacén</span></span>
-              <span class="metric-chip"><i class="fas fa-chart-line"></i> <span data-i18n="metric_odoo_2">Dashboard Owl</span></span>
-              <span class="metric-chip"><i class="fas fa-plug"></i> <span data-i18n="metric_odoo_3">API REST</span></span>
-              <span class="metric-chip"><i class="fas fa-file-invoice"></i> <span data-i18n="metric_odoo_4">CFDI</span></span>
-            </div>
-
-            <ul class="exp-list">
-              <li data-i18n="exp_odoo_1">Módulo de reabastecimiento en cascada: sourcing parcial desde 3 almacenes priorizados, stock mínimo configurable, transferencias consolidadas batch y notificaciones BUS en tiempo real</li>
-              <li data-i18n="exp_odoo_2">Dashboard interactivo de postnómina con componente Owl: 3 modos de vista, gauges SVG, tracking de dispersión en 6 pasos, filtrado avanzado y paginación</li>
-              <li data-i18n="exp_odoo_3">Sistema de integración con Watchdog: monitoreo de directorios en tiempo real, parseo de XML/CSV/JSON, creación automática de clientes, productos y facturas en Odoo vía XML-RPC</li>
-            </ul>
-
-            <ul class="exp-list exp-details">
-              <li data-i18n="exp_odoo_4">Integración CFDI: timbrado automático de facturas, detección inteligente de bancos mexicanos con 8 patrones regex, generación de layouts CELEX/Banregio y comprobantes SPEI en PDF</li>
-              <li data-i18n="exp_odoo_5">Reportes avanzados: Póliza con Conceptos (60+ conceptos de nómina agrupados por departamento/sucursal), reportes QWeb de facturación con CFDI, y reportes de dispersión multi-concepto</li>
-              <li data-i18n="exp_odoo_6">Detección automática de contactos bancarios: normalización Unicode, extracción de RFC, matching difuso de nombres y 8 patrones regex para números de cuenta/CLABE</li>
-              <li data-i18n="exp_odoo_7">Override de procurement core (_run_pull): algoritmo de cascada con resolución dinámica de almacenes, encadenamiento de movimientos en tránsito y gestión de orderpoints</li>
-              <li data-i18n="exp_odoo_8">API REST personalizada con 3 endpoints para dashboard, reconciliación de pagos con matching por UUID/folio, y generación batch de PDFs de comprobantes</li>
-              <li data-i18n="exp_odoo_9">Migración de módulos entre versiones de Odoo (v17 → v18), adaptando modelos, vistas, controladores y componentes Owl</li>
-              <li data-i18n="exp_odoo_10">Herencia de 6+ modelos estándar (account.move, hr.payslip.run, stock.rule, account.payment, bank.statement.line, stock.picking) con lógica de negocio personalizada</li>
-            </ul>
-
-            <button class="expand-toggle">
-              <span data-i18n="show_more">Ver más</span>
-              <i class="fas fa-chevron-down"></i>
-            </button>
-
-            <div class="exp-tags">
-              <span>Python</span><span>PostgreSQL</span><span>Odoo ORM</span><span>Owl</span><span>XML-RPC</span>
-              <span>QWeb</span><span>CFDI</span><span>Watchdog</span><span>xlsxwriter</span><span>ReportLab</span>
-            </div>
-          </div>
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero__container">
+        <div class="hero__badge">
+          <span class="hero__status-dot"></span>
+          <span data-i18n="status_available">Disponible para trabajar</span>
         </div>
 
-        <!-- Social Service -->
-        <div class="experience-card">
-          <div class="exp-accent"></div>
-          <div class="exp-content">
-            <div class="exp-header">
-              <h3 data-i18n="exp_ss_title">Programador Full Stack — Servicio Social</h3>
-              <p class="exp-subtitle" data-i18n="exp_ss_subtitle">Biblioteca FCFM-UANL · Flask · SQL Server · 3 Sistemas en Producción</p>
-            </div>
+        <h1 class="hero__name">
+          <span class="hero__name-filled">Jesus</span>
+          <span class="hero__name-outline">Garza</span><span class="hero__dot">.</span>
+        </h1>
 
-            <div class="exp-metrics">
-              <span class="metric-chip"><i class="fas fa-book"></i> <span data-i18n="metric_ss_1">3 Sistemas</span></span>
-              <span class="metric-chip"><i class="fas fa-database"></i> <span data-i18n="metric_ss_2">Dual DB</span></span>
-              <span class="metric-chip"><i class="fas fa-chart-pie"></i> <span data-i18n="metric_ss_3">Dashboards</span></span>
-              <span class="metric-chip"><i class="fas fa-box"></i> <span data-i18n="metric_ss_4">Producción</span></span>
-            </div>
+        <p class="hero__role" data-i18n="backend_dev">Desarrollador Backend</p>
 
-            <ul class="exp-list">
-              <li data-i18n="exp_ss_1">Sistema de préstamos de libros y computadoras: 13+ endpoints, monitoreo en tiempo real con AJAX, dashboard analítico con Chart.js, y cierre automático de sesiones con APScheduler</li>
-              <li data-i18n="exp_ss_2">Sistema de registro de entradas y salidas: autenticación con bcrypt, control de acceso por roles (Admin/Usuario), paginación avanzada y recuperación de contraseña con preguntas de seguridad</li>
-              <li data-i18n="exp_ss_3">Sistema de inventario de libros: app de escritorio con Tkinter, escaneo de código de barras, búsqueda con normalización Unicode, merge de múltiples bases de datos con detección de conflictos</li>
-            </ul>
-
-            <ul class="exp-list exp-details">
-              <li data-i18n="exp_ss_4">Generación de reportes profesionales en PDF (ReportLab) y Excel (openpyxl/xlsxwriter) con formato avanzado, gráficos y análisis de datos con Pandas</li>
-              <li data-i18n="exp_ss_5">Arquitectura dual de bases de datos (SQLite + SQL Server) con la misma lógica de aplicación, queries parametrizadas y prevención de SQL injection</li>
-              <li data-i18n="exp_ss_6">Importación masiva de datos desde Excel/CSV con validación, mapeo de columnas y resolución de conflictos</li>
-              <li data-i18n="exp_ss_7">Despliegue en producción con Waitress (WSGI), compilación a ejecutables con PyInstaller, y documentación completa de usuario y código</li>
-            </ul>
-
-            <button class="expand-toggle">
-              <span data-i18n="show_more">Ver más</span>
-              <i class="fas fa-chevron-down"></i>
-            </button>
-
-            <div class="exp-tags">
-              <span>Python</span><span>Flask</span><span>SQL Server</span><span>SQLite</span><span>Pandas</span>
-              <span>ReportLab</span><span>Chart.js</span><span>APScheduler</span><span>bcrypt</span>
-              <span>Tkinter</span><span>Waitress</span><span>PyInstaller</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="content-section">
-        <h2 class="section-heading" data-i18n="projects">Proyectos Destacados</h2>
-
-        <div class="projects-list">
-          <!-- Project 1 -->
-          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/acervo.jpg" alt="Gestión de Libros" loading="lazy">
-            </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="book_management">Gestión de Libros de Acervo</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="book_desc">
-                Sistema web con 13+ endpoints para gestión de préstamos, monitoreo de computadoras en tiempo real,
-                dashboard analítico con Chart.js, reportes PDF/Excel, importación masiva y tareas programadas con APScheduler.
-              </p>
-              <div class="project-tech">
-                <span>Python</span><span>Flask</span><span>SQL Server</span><span>Pandas</span><span>Chart.js</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Project 2 -->
-          <a href="https://jesusgarzag.github.io/Rubiks-Timer/" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/timer.jpg" alt="Rubik's Timer" loading="lazy">
-            </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="timer-title">Cronómetro para Cubo Rubik</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="timer-desc">
-                Cronómetro web en React para speedcubing con inspección, estadísticas, visualización 2D y personalización.
-              </p>
-              <div class="project-tech">
-                <span>React</span><span>JavaScript</span><span>Responsive</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Project 3 -->
-          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/asistencias.jpg" alt="Registro de Asistencias" loading="lazy">
-            </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="attendance">Registro de Entradas y Salidas</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="attendance_desc">
-                Sistema de control de asistencias con autenticación bcrypt, roles Admin/Usuario,
-                estadísticas por alumno (días, horas, promedios), reportes Excel/PDF y cierre automático de registros.
-              </p>
-              <div class="project-tech">
-                <span>Python</span><span>Flask</span><span>SQL Server</span><span>bcrypt</span><span>Pandas</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Project 4 -->
-          <a href="assets/demo/demo.mp4" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/inventario.jpg" alt="Inventario de Libros" loading="lazy">
-            </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="inventory">Inventario de Libros</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="inventory_desc">
-                App de escritorio con escaneo de código de barras, búsqueda con normalización Unicode,
-                merge de múltiples bases de datos con detección de conflictos, historial de auditoría y exportación a 5 reportes Excel.
-              </p>
-              <div class="project-tech">
-                <span>Python</span><span>Tkinter</span><span>SQLite</span><span>Pandas</span><span>PyInstaller</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Project 5 -->
-          <a href="https://github.com/jesusgarzag/Portafolio" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/portafolio_en.jpg" alt="Portafolio" loading="lazy">
-            </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="portafolio">Portafolio</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="portafolio_desc">
-                Portafolio personal con todos mis proyectos y habilidades de programación.
-              </p>
-              <div class="project-tech">
-                <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- Skills -->
-      <section id="skills" class="content-section">
-        <h2 class="section-heading" data-i18n="tech_skills">Habilidades Técnicas</h2>
-
-        <div class="skills-group">
-          <h3 class="skills-category" data-i18n="backend_databases">Backend & Bases de Datos</h3>
-          <div class="skills-chips">
-            <span class="skill-chip"><i class="fab fa-python"></i> Python</span>
-            <span class="skill-chip"><i class="fas fa-cube"></i> Odoo</span>
-            <span class="skill-chip"><i class="fas fa-flask-vial"></i> Flask</span>
-            <span class="skill-chip"><i class="fas fa-database"></i> PostgreSQL</span>
-            <span class="skill-chip"><i class="fas fa-database"></i> SQL Server</span>
-            <span class="skill-chip"><i class="fas fa-plug"></i> XML-RPC</span>
-            <span class="skill-chip"><i class="fas fa-table"></i> Pandas</span>
-          </div>
-        </div>
-
-        <div class="skills-group">
-          <h3 class="skills-category" data-i18n="web_development">Desarrollo Web</h3>
-          <div class="skills-chips">
-            <span class="skill-chip"><i class="fab fa-html5"></i> HTML5</span>
-            <span class="skill-chip"><i class="fab fa-css3-alt"></i> CSS3</span>
-            <span class="skill-chip"><i class="fab fa-js"></i> JavaScript</span>
-            <span class="skill-chip"><i class="fab fa-react"></i> React</span>
-            <span class="skill-chip"><i class="fas fa-feather"></i> Owl</span>
-            <span class="skill-chip"><i class="fas fa-paint-brush"></i> QWeb</span>
-          </div>
-        </div>
-
-        <div class="skills-group">
-          <h3 class="skills-category" data-i18n="devops_tools">DevOps & Herramientas</h3>
-          <div class="skills-chips">
-            <span class="skill-chip"><i class="fab fa-git-alt"></i> Git</span>
-            <span class="skill-chip"><i class="fab fa-github"></i> GitHub</span>
-            <span class="skill-chip"><i class="fab fa-linux"></i> Linux</span>
-            <span class="skill-chip"><i class="fab fa-redhat"></i> Red Hat</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Education -->
-      <section id="education" class="content-section">
-        <h2 class="section-heading" data-i18n="education">Formación</h2>
-
-        <div class="education-card">
-          <div class="education-header">
-            <div class="education-logos">
-              <a href="https://www.uanl.mx/" target="_blank" rel="noopener">
-                <img src="assets/images/Uanl.png" alt="UANL" class="education-logo">
-              </a>
-              <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener">
-                <img src="assets/images/logofcfmpng.png" alt="FCFM" class="education-logo">
-              </a>
-            </div>
-            <div class="education-details">
-              <h3 data-i18n="degree">Licenciatura en Ciencias Computacionales</h3>
-              <p class="education-institution" data-i18n="university">Universidad Autónoma de Nuevo León, Facultad de Ciencias Físico Matemáticas</p>
-              <span class="education-period">2021 — 2025</span>
-            </div>
-          </div>
-        </div>
-
-        <h3 class="subsection-heading" data-i18n="certifications">Certificaciones Técnicas</h3>
-        <div class="certifications-list">
-          <div class="cert-card">
-            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
-            <div class="cert-info">
-              <h4 data-i18n="rh124">Red Hat System Administration I (RH124)</h4>
-              <span class="cert-year">2024</span>
-            </div>
-            <a href="assets/certificados/RH124.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
-          </div>
-          <div class="cert-card">
-            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
-            <div class="cert-info">
-              <h4 data-i18n="rh134">Red Hat System Administration II (RH134)</h4>
-              <span class="cert-year">2024</span>
-            </div>
-            <a href="assets/certificados/RH134.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
-          </div>
-          <div class="cert-card">
-            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
-            <div class="cert-info">
-              <h4 data-i18n="rh294">Red Hat Enterprise Linux Automation with Ansible (RH294)</h4>
-              <span class="cert-year">2024</span>
-            </div>
-            <a href="assets/certificados/RH294.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
-          </div>
-        </div>
-
-        <!-- Recognitions -->
-        <h3 class="subsection-heading" data-i18n="recognitions">Reconocimientos</h3>
-        <div class="recognitions-list">
-          <div class="recognition-card">
-            <div class="recognition-icon"><i class="fas fa-envelope-open-text"></i></div>
-            <div class="recognition-info">
-              <h4 data-i18n="recommendation">Reconocimiento por la elaboración de 3 sistemas para biblioteca</h4>
-              <p data-i18n="recommendation_desc">Reconocimiento por la elaboración de los sistemas: Entradas y Salidas, Registro de Libros de Acervo e Inventario de Libros.</p>
-              <a href="assets/certificados/carta.pdf" target="_blank" class="recognition-link">
-                <span data-i18n="view_letter">Ver Carta</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-          <div class="recognition-card">
-            <div class="recognition-icon award"><i class="fas fa-award"></i></div>
-            <div class="recognition-info">
-              <h4 data-i18n="egel_award">EGEL-CENEVAL</h4>
-              <p data-i18n="egel_desc">Testimonio de Desempeño Sobresaliente en el EGEL de Ciencias Computacionales, otorgado por CENEVAL.</p>
-              <a href="assets/certificados/EGEL.pdf" target="_blank" class="recognition-link">
-                <span data-i18n="view_certificate">Ver Reconocimiento</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial -->
-        <h3 class="subsection-heading" data-i18n="testimonials">Testimonios</h3>
-        <div class="testimonial-card">
-          <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-          <p class="testimonial-text" data-i18n="testimonial1_text">
-            "Jesús Garza demostró ser un elemento muy valioso por su gran responsabilidad y atención al detalle. Su iniciativa y compromiso superaron las expectativas, logrando mejoras significativas en los procesos internos de nuestra Biblioteca."
-          </p>
-          <div class="testimonial-author">
-            <h4 data-i18n="testimonial1_name">Dra. Aleida Magdalena Gil González</h4>
-            <p data-i18n="testimonial1_position">Subdirectora de Calidad e Innovación Educativa, FCFM - UANL</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="content-section">
-        <h2 class="section-heading" data-i18n="contact_title">Trabajemos juntos</h2>
-
-        <p class="content-text" data-i18n="contact_intro">
-          ¿Tienes un proyecto en mente o quieres colaborar? No dudes en contactarme.
+        <p class="hero__desc" data-i18n="hero_desc">
+          Especializado en crear soluciones robustas y escalables.
+          Desarrollo de modulos, APIs e integraciones con Python y PostgreSQL.
         </p>
 
-        <div class="contact-links">
-          <a href="mailto:jesusgarzacia@hotmail.com" class="contact-link-item">
-            <i class="fas fa-envelope"></i>
-            <span>jesusgarzacia@hotmail.com</span>
-            <i class="fas fa-arrow-right contact-arrow"></i>
-          </a>
-          <a href="https://github.com/jesusgarzag" target="_blank" class="contact-link-item">
-            <i class="fab fa-github"></i>
-            <span>github.com/jesusgarzag</span>
-            <i class="fas fa-arrow-right contact-arrow"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" class="contact-link-item">
-            <i class="fab fa-linkedin-in"></i>
-            <span>linkedin.com/in/jesusgarzacia</span>
-            <i class="fas fa-arrow-right contact-arrow"></i>
+        <div class="hero__cta">
+          <a href="#contact" class="btn btn--primary" data-i18n="contact_me">Contactame</a>
+          <a href="#" class="btn btn--ghost" id="btnCv" data-i18n="download_cv" download>
+            <i class="fas fa-arrow-down"></i> Descargar CV
           </a>
         </div>
 
-        <form class="contact-form" id="form-contacto" action="https://formspree.io/f/xzzgdodw" method="POST">
+        <div class="hero__social">
+          <a href="https://github.com/jesusgarzag" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="hero__scroll-cue">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-label" data-reveal>
+          <span class="section-label__number">// 01</span>
+          <span class="section-label__text" data-i18n="about">Sobre mi</span>
+          <span class="section-label__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="about__content" data-reveal>
+          <p data-i18n="about_desc1">
+            Desarrollador backend Python con experiencia en modulos Odoo, integraciones XML-RPC y bases de datos PostgreSQL. Ingles avanzado.
+          </p>
+          <p data-i18n="about_desc2">
+            Formacion en administracion Linux (Red Hat). Enfocado en codigo limpio que resuelva problemas reales.
+          </p>
+        </div>
+
+        <div class="stats-terminal" data-reveal>
+          <span class="stats-terminal__label">// stats</span>
+          <div class="stats-terminal__row">
+            <span class="stats-terminal__key">&gt; <span data-i18n="stat_projects_key">proyectos</span></span>
+            <span class="stats-terminal__value"><span class="stats__number" data-target="8">0</span>+</span>
+          </div>
+          <div class="stats-terminal__row">
+            <span class="stats-terminal__key">&gt; <span data-i18n="stat_modules_key">modulos_odoo</span></span>
+            <span class="stats-terminal__value"><span class="stats__number" data-target="10">0</span>+</span>
+          </div>
+          <div class="stats-terminal__row">
+            <span class="stats-terminal__key">&gt; <span data-i18n="stat_certs_key">certificaciones</span></span>
+            <span class="stats-terminal__value"><span class="stats__number" data-target="3">0</span></span>
+          </div>
+          <div class="stats-terminal__row">
+            <span class="stats-terminal__key">&gt; <span data-i18n="stat_tech_key">tecnologias</span></span>
+            <span class="stats-terminal__value"><span class="stats__number" data-target="15">0</span>+</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-label" data-reveal>
+          <span class="section-label__number">// 02</span>
+          <span class="section-label__text" data-i18n="experience_title">Experiencia Profesional</span>
+          <span class="section-label__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline__entry" data-reveal>
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <span class="timeline__period" data-i18n="exp_odoo_period">2024 — Presente</span>
+              <h3 class="timeline__title" data-i18n="exp_odoo_title">Desarrollador Backend Odoo</h3>
+              <p class="timeline__subtitle" data-i18n="exp_odoo_subtitle">Odoo 17/18 · Python · PostgreSQL · ORM · Owl · XML-RPC</p>
+
+              <ul class="timeline__list">
+                <li data-i18n="exp_odoo_1">Reabastecimiento en cascada multi-almacen con sourcing parcial, stock minimo configurable y transferencias batch</li>
+                <li data-i18n="exp_odoo_2">Dashboard de postnomina con Owl: vistas multiples, gauges SVG, tracking de dispersion y filtrado avanzado</li>
+                <li data-i18n="exp_odoo_3">Integracion con Watchdog: monitoreo de directorios, parseo XML/CSV/JSON y creacion automatica de registros via XML-RPC</li>
+              </ul>
+
+              <ul class="timeline__list timeline__details">
+                <li data-i18n="exp_odoo_4">Integracion CFDI: timbrado automatico, deteccion de bancos mexicanos, layouts bancarios y comprobantes SPEI</li>
+                <li data-i18n="exp_odoo_5">Reportes QWeb avanzados: polizas de nomina por departamento, facturacion CFDI y dispersion multi-concepto</li>
+                <li data-i18n="exp_odoo_6">Deteccion automatica de contactos bancarios con normalizacion Unicode, extraccion de RFC y matching difuso</li>
+                <li data-i18n="exp_odoo_7">Override de procurement core (_run_pull) con resolucion dinamica de almacenes y encadenamiento de movimientos</li>
+                <li data-i18n="exp_odoo_8">API REST con endpoints de dashboard, reconciliacion de pagos y generacion batch de PDFs</li>
+                <li data-i18n="exp_odoo_9">Migracion de modulos Odoo v17 → v18, adaptando modelos, vistas y componentes Owl</li>
+                <li data-i18n="exp_odoo_10">Herencia de 6+ modelos estandar (account.move, hr.payslip.run, stock.rule, etc.) con logica personalizada</li>
+              </ul>
+
+              <button class="timeline__toggle">
+                <span data-i18n="show_more">Ver mas</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+
+              <div class="timeline__tags">
+                <span>Python</span><span>PostgreSQL</span><span>Odoo ORM</span><span>Owl</span><span>XML-RPC</span>
+                <span>QWeb</span><span>CFDI</span><span>Watchdog</span><span>xlsxwriter</span><span>ReportLab</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline__entry" data-reveal>
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <span class="timeline__period" data-i18n="exp_ss_period">2023 — 2024</span>
+              <h3 class="timeline__title" data-i18n="exp_ss_title">Programador Full Stack — Servicio Social</h3>
+              <p class="timeline__subtitle" data-i18n="exp_ss_subtitle">Biblioteca FCFM-UANL · Flask · SQL Server · 3 Sistemas en Produccion</p>
+
+              <ul class="timeline__list">
+                <li data-i18n="exp_ss_1">Sistema de prestamos: monitoreo en tiempo real, dashboard analitico con Chart.js y cierre automatico de sesiones</li>
+                <li data-i18n="exp_ss_2">Registro de entradas y salidas: autenticacion bcrypt, control por roles y reportes de asistencia</li>
+                <li data-i18n="exp_ss_3">Inventario de libros: app de escritorio con escaneo de codigo de barras y merge de bases de datos</li>
+              </ul>
+
+              <ul class="timeline__list timeline__details">
+                <li data-i18n="exp_ss_4">Reportes PDF y Excel con formato avanzado y analisis de datos con Pandas</li>
+                <li data-i18n="exp_ss_5">Arquitectura dual SQLite + SQL Server con queries parametrizadas</li>
+                <li data-i18n="exp_ss_6">Importacion masiva desde Excel/CSV con validacion y resolucion de conflictos</li>
+                <li data-i18n="exp_ss_7">Despliegue en produccion con Waitress y compilacion a ejecutables con PyInstaller</li>
+              </ul>
+
+              <button class="timeline__toggle">
+                <span data-i18n="show_more">Ver mas</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+
+              <div class="timeline__tags">
+                <span>Python</span><span>Flask</span><span>SQL Server</span><span>SQLite</span><span>Pandas</span>
+                <span>ReportLab</span><span>Chart.js</span><span>APScheduler</span><span>bcrypt</span>
+                <span>Tkinter</span><span>Waitress</span><span>PyInstaller</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-label" data-reveal>
+          <span class="section-label__number">// 03</span>
+          <span class="section-label__text" data-i18n="projects">Proyectos Destacados</span>
+          <span class="section-label__line" aria-hidden="true"></span>
+        </div>
+
+        <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank" class="project-featured" data-reveal>
+          <div class="project-featured__header">
+            <span class="project-featured__number">01</span>
+            <h3 class="project-featured__title" data-i18n="book_management">Gestion de Libros de Acervo</h3>
+            <i class="fas fa-arrow-up-right-from-square project-featured__arrow"></i>
+          </div>
+          <p class="project-featured__desc" data-i18n="book_desc">
+            Sistema web con 13+ endpoints para gestion de prestamos, monitoreo en tiempo real,
+            dashboard analitico con Chart.js, reportes PDF/Excel y tareas programadas con APScheduler.
+          </p>
+          <div class="project-featured__tech">
+            <span>Python</span><span>Flask</span><span>SQL Server</span><span>Pandas</span><span>Chart.js</span>
+          </div>
+        </a>
+
+        <div class="project-list" data-reveal-stagger>
+          <a href="https://jesusgarzag.github.io/Rubiks-Timer/" target="_blank" class="project-list__item">
+            <div class="project-list__body">
+              <div class="project-list__header">
+                <span class="project-list__number">02</span>
+                <h3 class="project-list__title" data-i18n="timer-title">Cronometro para Cubo Rubik</h3>
+              </div>
+              <p class="project-list__desc" data-i18n="timer-desc">Cronometro web en React para speedcubing con inspeccion, estadisticas, visualizacion 2D y personalizacion.</p>
+            </div>
+            <span class="project-list__tech">React, JavaScript</span>
+            <i class="fas fa-arrow-right project-list__arrow"></i>
+          </a>
+
+          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank" class="project-list__item">
+            <div class="project-list__body">
+              <div class="project-list__header">
+                <span class="project-list__number">03</span>
+                <h3 class="project-list__title" data-i18n="attendance">Registro de Entradas y Salidas</h3>
+              </div>
+              <p class="project-list__desc" data-i18n="attendance_desc">Sistema de control de asistencias con autenticacion bcrypt, roles Admin/Usuario, estadisticas por alumno (dias, horas, promedios), reportes Excel/PDF y cierre automatico de registros.</p>
+            </div>
+            <span class="project-list__tech">Python, Flask, SQL Server</span>
+            <i class="fas fa-arrow-right project-list__arrow"></i>
+          </a>
+
+          <a href="assets/demo/demo.mp4" target="_blank" class="project-list__item">
+            <div class="project-list__body">
+              <div class="project-list__header">
+                <span class="project-list__number">04</span>
+                <h3 class="project-list__title" data-i18n="inventory">Inventario de Libros</h3>
+              </div>
+              <p class="project-list__desc" data-i18n="inventory_desc">App de escritorio con escaneo de codigo de barras, busqueda con normalizacion Unicode, merge de multiples bases de datos con deteccion de conflictos, historial de auditoria y exportacion a 5 reportes Excel.</p>
+            </div>
+            <span class="project-list__tech">Python, Tkinter, SQLite</span>
+            <i class="fas fa-arrow-right project-list__arrow"></i>
+          </a>
+
+          <a href="https://github.com/jesusgarzag/Portafolio" target="_blank" class="project-list__item">
+            <div class="project-list__body">
+              <div class="project-list__header">
+                <span class="project-list__number">05</span>
+                <h3 class="project-list__title" data-i18n="portafolio">Portafolio</h3>
+              </div>
+              <p class="project-list__desc" data-i18n="portafolio_desc">Portafolio personal con todos mis proyectos y habilidades de programacion.</p>
+            </div>
+            <span class="project-list__tech">HTML5, CSS3, JavaScript</span>
+            <i class="fas fa-arrow-right project-list__arrow"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-label" data-reveal>
+          <span class="section-label__number">// 04</span>
+          <span class="section-label__text" data-i18n="tech_skills">Habilidades Tecnicas</span>
+          <span class="section-label__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="skills-marquee" data-reveal>
+          <div class="skills-marquee__row">
+            <span class="skills-marquee__label" data-i18n="skills_label_backend">Backend</span>
+            <div class="skills-marquee__track" data-direction="left">
+              <div class="skills-marquee__content">
+                <span>Python</span><span>Odoo</span><span>Flask</span><span>PostgreSQL</span><span>SQL Server</span><span>XML-RPC</span><span>Pandas</span><span>Git</span><span>Linux</span>
+              </div>
+              <div class="skills-marquee__content" aria-hidden="true">
+                <span>Python</span><span>Odoo</span><span>Flask</span><span>PostgreSQL</span><span>SQL Server</span><span>XML-RPC</span><span>Pandas</span><span>Git</span><span>Linux</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-marquee__row">
+            <span class="skills-marquee__label" data-i18n="skills_label_frontend">Frontend</span>
+            <div class="skills-marquee__track" data-direction="right">
+              <div class="skills-marquee__content">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Owl</span><span>QWeb</span><span>Red Hat</span><span>GitHub</span>
+              </div>
+              <div class="skills-marquee__content" aria-hidden="true">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Owl</span><span>QWeb</span><span>Red Hat</span><span>GitHub</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-marquee__row">
+            <span class="skills-marquee__label" data-i18n="skills_label_tools">Librerias</span>
+            <div class="skills-marquee__track" data-direction="left">
+              <div class="skills-marquee__content">
+                <span>Watchdog</span><span>CFDI</span><span>xlsxwriter</span><span>ReportLab</span><span>Chart.js</span><span>APScheduler</span><span>bcrypt</span><span>Waitress</span>
+              </div>
+              <div class="skills-marquee__content" aria-hidden="true">
+                <span>Watchdog</span><span>CFDI</span><span>xlsxwriter</span><span>ReportLab</span><span>Chart.js</span><span>APScheduler</span><span>bcrypt</span><span>Waitress</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-label" data-reveal>
+          <span class="section-label__number">// 05</span>
+          <span class="section-label__text" data-i18n="education">Formacion</span>
+          <span class="section-label__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="edu-degree" data-reveal>
+          <div class="edu-degree__logos">
+            <a href="https://www.uanl.mx/" target="_blank" rel="noopener">
+              <img src="assets/images/Uanl.png" alt="UANL" class="edu-degree__logo">
+            </a>
+            <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener">
+              <img src="assets/images/logofcfmpng.png" alt="FCFM" class="edu-degree__logo">
+            </a>
+          </div>
+          <h3 class="edu-degree__title" data-i18n="degree">Licenciatura en Ciencias Computacionales</h3>
+          <p class="edu-degree__university" data-i18n="university">Universidad Autonoma de Nuevo Leon, Facultad de Ciencias Fisico Matematicas</p>
+          <span class="edu-degree__period">2021 — 2025</span>
+        </div>
+
+        <h3 class="section__subheading" data-reveal data-i18n="certifications">Certificaciones Tecnicas</h3>
+        <ul class="edu-certs" data-reveal>
+          <li>
+            <span class="edu-certs__year">2024</span>
+            <a href="assets/certificados/RH124.pdf" target="_blank" class="edu-certs__link">
+              <span data-i18n="rh124">Red Hat System Administration I (RH124)</span>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </li>
+          <li>
+            <span class="edu-certs__year">2024</span>
+            <a href="assets/certificados/RH134.pdf" target="_blank" class="edu-certs__link">
+              <span data-i18n="rh134">Red Hat System Administration II (RH134)</span>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </li>
+          <li>
+            <span class="edu-certs__year">2024</span>
+            <a href="assets/certificados/RH294.pdf" target="_blank" class="edu-certs__link">
+              <span data-i18n="rh294">Red Hat Enterprise Linux Automation with Ansible (RH294)</span>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </li>
+        </ul>
+
+        <h3 class="section__subheading" data-reveal data-i18n="recognitions">Reconocimientos</h3>
+        <div class="edu-recognitions" data-reveal-stagger>
+          <div class="edu-recognition">
+            <h4 data-i18n="recommendation">Reconocimiento por la elaboracion de 3 sistemas para biblioteca</h4>
+            <p data-i18n="recommendation_desc">Reconocimiento por la elaboracion de los sistemas: Entradas y Salidas, Registro de Libros de Acervo e Inventario de Libros.</p>
+            <a href="assets/certificados/carta.pdf" target="_blank" class="edu-recognition__link">
+              <span data-i18n="view_letter">Ver Carta</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="edu-recognition">
+            <h4 data-i18n="egel_award">EGEL-CENEVAL</h4>
+            <p data-i18n="egel_desc">Testimonio de Desempeno Sobresaliente en el EGEL de Ciencias Computacionales, otorgado por CENEVAL.</p>
+            <a href="assets/certificados/EGEL.pdf" target="_blank" class="edu-recognition__link">
+              <span data-i18n="view_certificate">Ver Reconocimiento</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <h3 class="section__subheading" data-reveal data-i18n="testimonials">Testimonios</h3>
+        <blockquote class="pull-quote" data-reveal>
+          <p class="pull-quote__text" data-i18n="testimonial1_text">
+            "Jesus Garza demostro ser un elemento muy valioso por su gran responsabilidad y atencion al detalle. Su iniciativa y compromiso superaron las expectativas, logrando mejoras significativas en los procesos internos de nuestra Biblioteca."
+          </p>
+          <footer class="pull-quote__footer">
+            <span class="pull-quote__author" data-i18n="testimonial1_name">Dra. Aleida Magdalena Gil Gonzalez</span>
+            <span class="pull-quote__role" data-i18n="testimonial1_position">Subdirectora de Calidad e Innovacion Educativa, FCFM - UANL</span>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-label" data-reveal>
+          <span class="section-label__number">// 06</span>
+          <span class="section-label__text" data-i18n="contact_title">Trabajemos juntos</span>
+          <span class="section-label__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="contact-hero" data-reveal>
+          <p class="contact-hero__prompt" data-i18n="contact_prompt">tienes un proyecto?</p>
+          <a href="mailto:jesusgarzacia@hotmail.com" class="contact-hero__email">
+            jesusgarzacia@hotmail.com
+          </a>
+        </div>
+
+        <div class="contact-social" data-reveal>
+          <a href="https://github.com/jesusgarzag" target="_blank" class="contact-social__link">GitHub</a>
+          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" class="contact-social__link">LinkedIn</a>
+        </div>
+
+        <form class="contact-form" data-reveal action="https://formspree.io/f/xzzgdodw" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label for="nombre" data-i18n="name">Nombre</label>
@@ -564,162 +452,24 @@
             <label for="mensaje" data-i18n="message">Mensaje</label>
             <textarea id="mensaje" name="message" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn-submit">
+          <button type="submit" class="btn btn--primary">
             <span data-i18n="send_message">Enviar Mensaje</span>
           </button>
         </form>
-      </section>
-
-      <!-- Footer -->
-      <footer class="panel-footer">
-        <div class="mobile-footer-social">
-          <a href="https://github.com/jesusgarzag" target="_blank" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
-        <p class="copyright" data-i18n="rights"></p>
-      </footer>
-      <script>document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Jesús Gerardo Garza García. Todos los derechos reservados.`;</script>
-
-    </main>
-  </div>
-
-  <!-- MAGIC PORTAL -->
-  <div class="portal-wrapper" id="portalWrapper">
-    <!-- Floating trigger button -->
-    <button class="portal-trigger" id="portalTrigger" aria-label="Explorar dimensión">
-      <div class="portal-ring portal-ring-1"></div>
-      <div class="portal-ring portal-ring-2"></div>
-      <div class="portal-ring portal-ring-3"></div>
-      <div class="portal-core">
-        <i class="fas fa-bolt"></i>
       </div>
-      <div class="portal-particles">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-      </div>
-    </button>
+    </section>
+  </main>
 
-    <!-- Expanded portal — dimension gateway -->
-    <div class="portal-expanded" id="portalExpanded">
-      <div class="portal-backdrop" id="portalBackdrop"></div>
-
-      <!-- Close button -->
-      <button class="portal-close" id="portalClose" aria-label="Cerrar portal">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <!-- Character select screen -->
-      <div class="world-select">
-
-        <!-- 8 Mario-style stars in a single row, numbered 1–8 -->
-        <div class="world-stars">
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">1</span>
-            <span class="star-gfx"></span>
-          </div>
-          <button class="world-star world-star--active" id="enterFluids">
-            <span class="star-num">2</span>
-            <span class="star-gfx"></span>
-            <span class="star-label" data-i18n="dimension_fluids">Mundo de Fluidos</span>
-          </button>
-          <button class="world-star world-star--active" id="enterTubes">
-            <span class="star-num">3</span>
-            <span class="star-gfx"></span>
-            <span class="star-label" data-i18n="dimension_tubes">Mundo de Tubos</span>
-          </button>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">4</span>
-            <span class="star-gfx"></span>
-          </div>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">5</span>
-            <span class="star-gfx"></span>
-          </div>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">6</span>
-            <span class="star-gfx"></span>
-          </div>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">7</span>
-            <span class="star-gfx"></span>
-          </div>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">8</span>
-            <span class="star-gfx"></span>
-          </div>
-        </div>
-
-        <!-- World name display (SM64 course name style) -->
-        <div class="world-name-display">
-          <span class="world-name-text">&nbsp;</span>
-        </div>
-
-        <!-- 2D human silhouette -->
-        <div class="char-wrap">
-          <svg class="char-silhouette" viewBox="0 0 100 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <ellipse cx="50" cy="28" rx="18" ry="20"/>
-            <rect x="45" y="46" width="10" height="8"/>
-            <path d="M 26 54 L 74 54 L 70 130 L 30 130 Z"/>
-            <path d="M 26 58 L 6 100 L 16 106 L 36 64 Z"/>
-            <path d="M 74 58 L 94 100 L 84 106 L 64 64 Z"/>
-            <path d="M 30 130 L 26 220 L 44 220 L 48 130 Z"/>
-            <path d="M 70 130 L 74 220 L 56 220 L 52 130 Z"/>
-          </svg>
-        </div>
-
-        <!-- Character info -->
-        <div class="char-info">
-          <span class="char-level">NIVEL</span>
-          <span class="char-name">Jesús Garza</span>
-          <span class="char-role" data-i18n="backend_dev">Desarrollador Back End</span>
-        </div>
-
-      </div>
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__copy" data-i18n="rights"></p>
     </div>
-  </div>
+  </footer>
 
-  <!-- Warp overlay (for Mario 64 transition effect) -->
-  <div class="warp-overlay" id="warpOverlay">
-    <div class="warp-rings">
-      <div class="warp-ring"></div>
-      <div class="warp-ring"></div>
-      <div class="warp-ring"></div>
-    </div>
-    <div class="warp-flash"></div>
-  </div>
+  <canvas class="fluid-bg" id="fluidBg"></canvas>
 
-  <!-- Dimension mode background (WebGL fluid simulation) -->
-  <canvas class="dimension-bg" id="dimensionBg"></canvas>
-
-  <!-- Exit dimension button -->
-  <button class="dimension-exit" id="dimensionExit">
-    <i class="fas fa-arrow-left"></i>
-    <span data-i18n="dimension_exit_btn">Volver</span>
-  </button>
-
-  <!-- Zen mode toggle (hide UI, show only fluid canvas) -->
-  <button class="dimension-zen" id="dimensionZen" title="Zen mode">
-    <i class="fas fa-expand"></i>
-  </button>
-
-  <!-- Theme toggle visible in dimension mode -->
-  <button class="dimension-theme theme-btn" id="themeToggleDimension" title="Toggle theme">
-    <i class="fas fa-sun"></i>
-  </button>
-
-  <script src="js/idiomas.js"></script>
-  <script src="js/theme.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/interactions.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/fluid.js"></script>
-  <script src="js/portal.js"></script>
-  <script src="js/cursor.js"></script>
 </body>
 </html>
