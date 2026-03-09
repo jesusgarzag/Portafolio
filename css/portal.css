@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
-
 /* ============================================
-   MAGIC PORTAL
+   DIMENSIONAL GATEWAY — PORTAL SYSTEM
    ============================================ */
+
+/* ── Floating Trigger ── */
 .portal-wrapper {
   position: fixed;
   bottom: 2rem;
@@ -10,150 +10,43 @@
   z-index: 9000;
 }
 
-/* Floating Trigger */
 .portal-trigger {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .portal-trigger:hover {
-  transform: scale(1.15);
-}
-
-.portal-core {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1rem;
-  z-index: 3;
-  position: relative;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5),
-              0 0 60px rgba(16, 185, 129, 0.2);
-  animation: corePulse 2s ease-in-out infinite;
-}
-
-@keyframes corePulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5),
-                0 0 60px rgba(16, 185, 129, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(16, 185, 129, 0.7),
-                0 0 80px rgba(16, 185, 129, 0.3),
-                0 0 120px rgba(16, 185, 129, 0.1);
-  }
-}
-
-/* Rotating rings */
-.portal-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid transparent;
-}
-
-.portal-ring-1 {
-  width: 56px;
-  height: 56px;
-  border-top-color: var(--accent);
-  border-right-color: rgba(16, 185, 129, 0.3);
-  animation: portalSpin 3s linear infinite;
-}
-
-.portal-ring-2 {
-  width: 68px;
-  height: 68px;
-  border-bottom-color: var(--accent-hover);
-  border-left-color: rgba(52, 211, 153, 0.2);
-  animation: portalSpin 5s linear infinite reverse;
-}
-
-.portal-ring-3 {
-  width: 80px;
-  height: 80px;
-  border-top-color: rgba(16, 185, 129, 0.15);
-  border-right-color: rgba(52, 211, 153, 0.1);
-  animation: portalSpin 7s linear infinite;
-}
-
-@keyframes portalSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Floating particles */
-.portal-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.portal-particles span {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 50%;
-  opacity: 0;
-  animation: particleFloat 3s ease-in-out infinite;
-}
-
-.portal-particles span:nth-child(1) { top: -8px; left: 50%; animation-delay: 0s; }
-.portal-particles span:nth-child(2) { top: 50%; right: -8px; animation-delay: 0.4s; }
-.portal-particles span:nth-child(3) { bottom: -8px; left: 50%; animation-delay: 0.8s; }
-.portal-particles span:nth-child(4) { top: 50%; left: -8px; animation-delay: 1.2s; }
-.portal-particles span:nth-child(5) { top: 5px; right: 5px; animation-delay: 1.6s; }
-.portal-particles span:nth-child(6) { bottom: 5px; right: 5px; animation-delay: 2s; }
-.portal-particles span:nth-child(7) { bottom: 5px; left: 5px; animation-delay: 2.4s; }
-.portal-particles span:nth-child(8) { top: 5px; left: 5px; animation-delay: 2.8s; }
-
-@keyframes particleFloat {
-  0% { opacity: 0; transform: scale(0) translateY(0); }
-  50% { opacity: 1; transform: scale(1.2) translateY(-12px); }
-  100% { opacity: 0; transform: scale(0) translateY(-24px); }
-}
-
-/* Tooltip on hover */
-.portal-trigger::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  right: calc(100% + 12px);
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
   color: var(--text);
-  font-family: var(--font);
-  font-size: 0.7rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: 6px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent-dim), 0 0 0 1px var(--accent-dim);
 }
 
-.portal-trigger:hover::after {
-  opacity: 1;
+.portal-trigger__glyph {
+  font-size: 0.95rem;
+  color: var(--accent);
+  line-height: 1;
+  transition: color var(--transition);
 }
 
-/* ============================================
-   PORTAL EXPANDED OVERLAY
-   ============================================ */
+.portal-trigger:hover .portal-trigger__glyph {
+  color: var(--accent-hover);
+}
+
+/* ── Portal Expanded overlay ── */
 .portal-expanded {
   position: fixed;
   inset: 0;
@@ -164,54 +57,6 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  cursor: auto !important;
-}
-
-/* Glow burst on entry */
-.portal-expanded::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, rgba(16, 185, 129, 0.1) 40%, transparent 70%);
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
-  transition: none;
-}
-
-.portal-expanded.active::before {
-  animation: glowBurst 0.8s ease-out forwards;
-}
-
-@keyframes glowBurst {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 1;
-  }
-  50% {
-    width: 900px;
-    height: 900px;
-    opacity: 0.6;
-  }
-  100% {
-    width: 1400px;
-    height: 1400px;
-    opacity: 0;
-  }
-}
-
-.portal-expanded * {
-  cursor: auto !important;
-}
-
-.portal-expanded a, .portal-expanded button {
-  cursor: pointer !important;
 }
 
 .portal-expanded.active {
@@ -219,7 +64,461 @@
   visibility: visible;
 }
 
-/* Hide glow when portal is open */
+.portal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 4, 10, 0.94);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+body.light .portal-backdrop {
+  background: rgba(238, 238, 246, 0.94);
+}
+
+/* ── Close button ── */
+.portal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: var(--font);
+}
+
+.portal-close:hover {
+  border-color: var(--text-secondary);
+  color: var(--text);
+}
+
+/* ── Gateway container ── */
+.gateway {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 860px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.portal-expanded.active .gateway {
+  animation: gatewayIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.06s forwards;
+}
+
+@keyframes gatewayIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Gateway header ── */
+.gateway__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.gateway__tag {
+  font-family: var(--font);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.gateway__status {
+  font-family: var(--font);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-transform: uppercase;
+}
+
+.gw-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+  flex-shrink: 0;
+  animation: gwBlink 2.4s ease-in-out infinite;
+}
+
+@keyframes gwBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── Gateway grid (two dimension panels + separator) ── */
+.gateway__grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  height: 340px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* ── Vertical separator ── */
+.gateway__sep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--border);
+  padding: 1.5rem 0;
+  width: 1px;
+  position: relative;
+}
+
+/* Make separator a bit wider for the glyph */
+.gateway__sep-glyph {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg);
+  padding: 0.3rem;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  line-height: 1;
+  user-select: none;
+  transition: background var(--transition);
+}
+
+body.light .gateway__sep-glyph {
+  background: var(--bg);
+}
+
+.gateway__sep-line {
+  display: none; /* glyph only */
+}
+
+/* ── Dimension Card (each panel) ── */
+.dim-card {
+  position: relative;
+  overflow: hidden;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: background 0.3s ease;
+}
+
+/* Subtle overlay on hover */
+.dim-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.03);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dim-card:hover::before {
+  opacity: 1;
+}
+
+/* Gradient so text is always readable */
+.dim-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 75%;
+  background: linear-gradient(to top, rgba(4, 4, 10, 0.9) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+body.light .dim-card::after {
+  background: linear-gradient(to top, rgba(230, 230, 242, 0.92) 0%, transparent 100%);
+}
+
+/* ── Animated backgrounds ── */
+.dim-card__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* FLUIDS: drifting color blobs */
+.dim-card__bg--fluids {
+  background: #050510;
+}
+
+body.light .dim-card__bg--fluids {
+  background: #f0f0fc;
+}
+
+.dim-card__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(44px);
+  opacity: 0.65;
+}
+
+.dim-card__blob--a {
+  width: 220px;
+  height: 220px;
+  background: rgba(16, 185, 129, 0.55);
+  top: -60px;
+  left: -60px;
+  animation: blobA 11s ease-in-out infinite alternate;
+}
+
+.dim-card__blob--b {
+  width: 170px;
+  height: 170px;
+  background: rgba(168, 85, 247, 0.45);
+  bottom: -30px;
+  right: -30px;
+  animation: blobB 13s ease-in-out infinite alternate;
+}
+
+.dim-card__blob--c {
+  width: 130px;
+  height: 130px;
+  background: rgba(6, 182, 212, 0.4);
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  animation: blobC 9s ease-in-out infinite alternate;
+}
+
+@keyframes blobA {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(70%, 90%) scale(1.35); }
+}
+
+@keyframes blobB {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-55%, -65%) scale(1.25); }
+}
+
+@keyframes blobC {
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  50%  { transform: translate(-25%, -75%) scale(0.75); }
+  100% { transform: translate(-75%, -25%) scale(1.15); }
+}
+
+/* TUBES: animated mesh grid */
+.dim-card__bg--tubes {
+  background: #06050f;
+}
+
+body.light .dim-card__bg--tubes {
+  background: #ededfc;
+}
+
+.dim-card__grid-lines {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 29px,
+      rgba(249, 103, 251, 0.07) 29px,
+      rgba(249, 103, 251, 0.07) 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 29px,
+      rgba(105, 88, 213, 0.07) 29px,
+      rgba(105, 88, 213, 0.07) 30px
+    );
+  animation: gridShift 5s linear infinite;
+}
+
+.dim-card__bg--tubes::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 55px,
+      rgba(249, 103, 251, 0.04) 55px,
+      rgba(249, 103, 251, 0.04) 56px
+    );
+  animation: gridDiag 9s linear infinite;
+}
+
+.dim-card__bg--tubes::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(105, 88, 213, 0.35);
+  filter: blur(55px);
+  top: 20%;
+  left: 15%;
+  animation: tubeGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes gridShift {
+  0%   { background-position: 0 0, 0 0; }
+  100% { background-position: 0 30px, 30px 0; }
+}
+
+@keyframes gridDiag {
+  0%   { background-position: 0 0; }
+  100% { background-position: 56px 56px; }
+}
+
+@keyframes tubeGlow {
+  0%   { transform: translate(0, 0); opacity: 0.5; }
+  100% { transform: translate(50%, -40%); opacity: 0.85; }
+}
+
+/* ── Card body (text content) ── */
+.dim-card__body {
+  position: relative;
+  z-index: 3;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.dim-card__id {
+  font-family: var(--font);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+body.light .dim-card__id {
+  color: var(--text-secondary);
+}
+
+.dim-card__name {
+  font-family: var(--font);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+  transition: letter-spacing 0.3s ease;
+}
+
+body.light .dim-card__name {
+  color: var(--text);
+}
+
+.dim-card:hover .dim-card__name {
+  letter-spacing: 0.1em;
+}
+
+.dim-card__spec {
+  font-family: var(--font);
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.38);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+body.light .dim-card__spec {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.dim-card__enter {
+  font-family: var(--font);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-top: 0.6rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
+}
+
+.dim-card--tubes .dim-card__enter {
+  color: #f967fb;
+}
+
+.dim-card:hover .dim-card__enter {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Scan line sweep on hover ── */
+.dim-card__scan {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-dim);
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dim-card--tubes .dim-card__scan {
+  background: #f967fb;
+  box-shadow: 0 0 10px rgba(249, 103, 251, 0.8), 0 0 20px rgba(249, 103, 251, 0.3);
+}
+
+.dim-card:hover .dim-card__scan {
+  animation: scanSweep 0.55s ease-out forwards;
+}
+
+@keyframes scanSweep {
+  0%   { top: 0; opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── Gateway footer ── */
+.gateway__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+/* ── Light mode close / portal-open ── */
 body.portal-open #cursorGlow {
   display: none !important;
 }
@@ -228,335 +527,19 @@ body.portal-open {
   cursor: auto !important;
 }
 
-/* Backdrop */
-.portal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+.portal-expanded * {
+  cursor: auto !important;
 }
 
-body.light .portal-backdrop {
-  background: rgba(240, 240, 245, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-/* ============================================
-   WORLD SELECT SCREEN (character select)
-   ============================================ */
-.world-select {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.7rem;
-  opacity: 0;
-  transform: translateY(24px);
-  max-width: 100%;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-.portal-expanded.active .world-select {
-  animation: worldSelectIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
-}
-
-@keyframes worldSelectIn {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ============================================
-   PORTAL CLOSE BUTTON
-   ============================================ */
-.portal-close {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.65);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 0.8rem;
-  cursor: pointer !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition);
-  z-index: 10;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-body.light .portal-close {
-  background: rgba(255, 255, 255, 0.55);
-  color: var(--text-secondary);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-.portal-close:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: rotate(90deg) scale(1.1);
-}
-
-/* ============================================
-   WORLD STARS (Mario 64-style — single row)
-   ============================================ */
-.world-stars {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 0 0.6rem;
-  flex-wrap: nowrap;
-}
-
-.world-star {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  background: none;
-  border: none;
-  padding: 0.2rem 0.3rem;
-  cursor: default;
-}
-
-.world-star--active {
+.portal-expanded a,
+.portal-expanded button {
   cursor: pointer !important;
 }
 
-/* Number above each star */
-.star-num {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-style: italic;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
-  user-select: none;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-
-.world-star--locked .star-num {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-/* ── Star shape: clip-path + 3D gold gradient ── */
-.star-gfx {
-  width: 72px;
-  height: 72px;
-  display: block;
-  flex-shrink: 0;
-  position: relative;
-  clip-path: polygon(
-    50%  0%,  61% 35%, 98% 35%,
-    68% 57%,  79% 91%, 50% 70%,
-    21% 91%,  32% 57%,  2% 35%,
-    39% 35%
-  );
-  /*
-   * Two layers:
-   * 1) Specular highlight: small bright ellipse top-left
-   * 2) Main 3D shading from yellow-white → gold → dark amber
-   */
-  background:
-    radial-gradient(ellipse 26% 20% at 34% 24%,
-      rgba(255, 255, 220, 0.92) 0%,
-      transparent 100%
-    ),
-    radial-gradient(ellipse at 42% 36%,
-      #fff9a0 0%,
-      #ffd700 28%,
-      #ffaa00 52%,
-      #cc6000 76%,
-      #7a3000 100%
-    );
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s;
-}
-
-/* ── Left eye — black oval with white reflection dot ── */
-.world-star--active .star-gfx::before {
-  content: '';
-  position: absolute;
-  width: 14%;
-  height: 20%;
-  border-radius: 50%;
-  top: 51%;
-  left: 30%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 68% 26%,
-      rgba(255,255,255,0.85) 0%,
-      rgba(255,255,255,0.85) 24%,
-      transparent 24%
-    ),
-    #111;
-}
-
-/* ── Right eye — same ── */
-.world-star--active .star-gfx::after {
-  content: '';
-  position: absolute;
-  width: 14%;
-  height: 20%;
-  border-radius: 50%;
-  top: 51%;
-  left: 56%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 68% 26%,
-      rgba(255,255,255,0.85) 0%,
-      rgba(255,255,255,0.85) 24%,
-      transparent 24%
-    ),
-    #111;
-}
-
-.world-star--active .star-gfx {
-  filter: drop-shadow(0 0 8px rgba(255, 210, 0, 0.85))
-          drop-shadow(0 2px 16px rgba(255, 190, 0, 0.4));
-  animation: starFloat 2.8s ease-in-out infinite;
-}
-
-.world-star:nth-child(2) .star-gfx { animation-delay: 0s; }
-.world-star:nth-child(3) .star-gfx { animation-delay: 0.45s; }
-
-/* Locked: dark amber, no eyes, no glow */
-.world-star--locked .star-gfx {
-  background: radial-gradient(ellipse at 40% 30%,
-    #c8b050 0%,
-    #907010 50%,
-    #4a3600 100%
-  );
-  opacity: 0.38;
-  filter: none;
-}
-
-@keyframes starFloat {
-  0%, 100% { transform: translateY(0)    rotate(-5deg); }
-  50%       { transform: translateY(-10px) rotate(5deg); }
-}
-
-.world-star--active:hover .star-gfx {
-  transform: scale(1.25) translateY(-5px);
-  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1))
-          drop-shadow(0 0 40px rgba(255, 200, 0, 0.6));
-  animation-play-state: paused;
-}
-
-/* Star label hidden — text read by JS for .world-name-text */
-.star-label {
-  display: none;
-}
-
 /* ============================================
-   WORLD NAME DISPLAY (SM64 course name style)
+   DIMENSION TRANSITION OVERLAY (scanline)
    ============================================ */
-.world-name-display {
-  min-height: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.world-name-text {
-  font-family: 'Bangers', Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #fff;
-  text-shadow:
-    2px 2px 0 #000,
-    -1px -1px 0 #000,
-    0 0 12px rgba(255, 215, 0, 0.3);
-  transition: opacity 0.15s ease;
-}
-
-body.light .world-name-text {
-  color: rgba(20, 20, 40, 0.85);
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
-}
-
-/* ============================================
-   CHARACTER SILHOUETTE
-   ============================================ */
-.char-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-
-.char-silhouette {
-  width: 68px;
-  height: 158px;
-  fill: var(--accent);
-  filter: drop-shadow(0 0 8px var(--accent)) drop-shadow(0 0 20px rgba(16, 185, 129, 0.3));
-  animation: charGlow 3s ease-in-out infinite;
-}
-
-@keyframes charGlow {
-  0%, 100% { filter: drop-shadow(0 0 8px var(--accent)) drop-shadow(0 0 20px rgba(16, 185, 129, 0.25)); }
-  50%       { filter: drop-shadow(0 0 16px var(--accent)) drop-shadow(0 0 36px var(--accent)); }
-}
-
-/* ============================================
-   CHARACTER INFO
-   ============================================ */
-.char-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.15rem;
-  text-align: center;
-}
-
-.char-level {
-  font-family: 'Bangers', Georgia, serif;
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 5px;
-  color: #ffd700;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 0 #000;
-}
-
-.char-name {
-  font-family: 'Bangers', Georgia, serif;
-  font-size: 2rem;
-  font-weight: 400;
-  color: #fff;
-  letter-spacing: 3px;
-  line-height: 1.05;
-  text-shadow: 2px 2px 0 #000, -1px -1px 0 #333;
-}
-
-body.light .char-name { color: var(--text); }
-
-.char-role {
-  font-family: 'Bangers', Georgia, serif;
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.75);
-  text-shadow: 1px 1px 0 #000;
-  text-transform: uppercase;
-}
-
-body.light .char-role { color: var(--text-secondary); }
-
-/* ============================================
-   WARP OVERLAY (Mario 64 transition)
-   ============================================ */
-.warp-overlay {
+.dim-transition {
   position: fixed;
   inset: 0;
   z-index: 99999;
@@ -565,76 +548,50 @@ body.light .char-role { color: var(--text-secondary); }
   visibility: hidden;
 }
 
-.warp-overlay.active {
+.dim-transition.active {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
 }
 
-.warp-rings {
+.dim-transition__scan {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.warp-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  border: 3px solid rgba(16, 185, 129, 0.6);
-  transform: translate(-50%, -50%);
-}
-
-.warp-overlay.active .warp-ring {
-  animation: warpRingExpand 0.8s ease-out forwards;
-}
-
-.warp-overlay.active .warp-ring:nth-child(2) {
-  animation-delay: 0.15s;
-}
-
-.warp-overlay.active .warp-ring:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-@keyframes warpRingExpand {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 1;
-    border-width: 4px;
-  }
-  100% {
-    width: 300vmax;
-    height: 300vmax;
-    opacity: 0;
-    border-width: 1px;
-  }
-}
-
-.warp-flash {
-  position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
   background: #fff;
+  box-shadow: 0 0 24px #fff, 0 0 48px rgba(255, 255, 255, 0.5);
+  top: 0;
   opacity: 0;
 }
 
-body.light .warp-flash {
-  background: #1a1a2e;
+.dim-transition.active .dim-transition__scan {
+  animation: transitionScan 0.75s cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
-.warp-overlay.active .warp-flash {
-  animation: warpFlash 1.2s ease forwards;
+@keyframes transitionScan {
+  0%   { top: 0;      opacity: 1; }
+  88%  { top: 100vh;  opacity: 1; }
+  100% { top: 100vh;  opacity: 0; }
 }
 
-@keyframes warpFlash {
-  0% { opacity: 0; }
-  40% { opacity: 0; }
-  60% { opacity: 1; }
+.dim-transition__fill {
+  position: absolute;
+  inset: 0;
+  background: #050508;
+  opacity: 0;
+}
+
+body.light .dim-transition__fill {
+  background: #f8f8fc;
+}
+
+.dim-transition.active .dim-transition__fill {
+  animation: transitionFill 0.45s ease forwards 0.55s;
+}
+
+@keyframes transitionFill {
+  0%   { opacity: 0; }
   100% { opacity: 1; }
 }
 
@@ -657,8 +614,6 @@ body.dimension-mode .dimension-bg {
   display: block;
   opacity: 1;
 }
-
-/* Blob cursor removed — the fluid simulation IS the cursor effect */
 
 /* ============================================
    DIMENSION MODE — visual overrides (DARK)
@@ -719,9 +674,6 @@ body.light.dimension-mode .mobile-header {
   background: rgba(248, 248, 252, 0.82) !important;
 }
 
-/* Mobile nav overlay — solid enough to read text over the canvas.
-   z-index stays at the default 999 (< mobile-header's 1000) so the
-   hamburger/close button in the header remains clickable. */
 body.dimension-mode .mobile-nav-overlay {
   background: rgba(6, 6, 10, 0.94);
   backdrop-filter: blur(28px);
@@ -749,7 +701,6 @@ body.dimension-mode .content-right {
   background: transparent;
 }
 
-/* Cards and sections become frosted glass — fluid visible through them */
 body.dimension-mode .content-section {
   background: transparent;
 }
@@ -994,6 +945,19 @@ body.dimension-mode #cursorGlow {
   display: none !important;
 }
 
+/* Scroll progress bar in dimension mode */
+body.dimension-mode .scroll-progress {
+  background: #a855f7;
+}
+
+body.light.dimension-mode .scroll-progress {
+  background: #7c3aed;
+}
+
+/* ============================================
+   DIMENSION CONTROLS (exit, zen, theme)
+   ============================================ */
+
 /* Exit dimension button */
 .dimension-exit {
   position: fixed;
@@ -1120,7 +1084,9 @@ body.light.dimension-mode .dimension-theme:hover {
   border-color: rgba(124, 58, 237, 0.5);
 }
 
-/* Zen mode active — hide everything except canvas and controls */
+/* ============================================
+   ZEN MODE (hide UI, fluid canvas only)
+   ============================================ */
 body.zen-mode .layout,
 body.zen-mode .scroll-progress,
 body.zen-mode .mobile-header,
@@ -1164,17 +1130,8 @@ body.zen-mode:hover .dimension-theme {
   opacity: 1;
 }
 
-/* Scroll progress bar in dimension mode */
-body.dimension-mode .scroll-progress {
-  background: #a855f7;
-}
-
-body.light.dimension-mode .scroll-progress {
-  background: #7c3aed;
-}
-
 /* ============================================
-   PORTAL RESPONSIVE
+   RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
   .portal-wrapper {
@@ -1183,59 +1140,57 @@ body.light.dimension-mode .scroll-progress {
   }
 
   .portal-trigger {
-    width: 50px;
-    height: 50px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.66rem;
   }
-
-  .portal-core {
-    width: 36px;
-    height: 36px;
-    font-size: 0.85rem;
-  }
-
-  .portal-ring-1 { width: 46px; height: 46px; }
 
   .portal-close {
-    top: 0.75rem;
-    right: 0.75rem;
-    width: 30px;
-    height: 28px;
-    font-size: 0.7rem;
+    top: 1rem;
+    right: 1rem;
   }
 
-  /* 8 stars × 54px + 7 gaps ≈ 432+gaps → fits ≥ 480px */
-  .world-select {
+  .gateway {
+    padding: 1.25rem 1rem;
+    gap: 1rem;
+  }
+
+  .gateway__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  /* Stack panels vertically on mobile */
+  .gateway__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1px 1fr;
+    height: 460px;
+  }
+
+  .gateway__sep {
+    width: auto;
+    height: 1px;
+    flex-direction: row;
+    padding: 0;
+    background: var(--border);
+  }
+
+  .gateway__sep-glyph {
+    position: static;
+    transform: none;
     padding: 0 0.5rem;
   }
 
-  .world-stars {
-    gap: 0 0.15rem;
+  .dim-card__name {
+    font-size: 1.8rem;
   }
 
-  .star-gfx {
-    width: 54px;
-    height: 54px;
+  .dim-card__body {
+    padding: 1.25rem;
   }
 
-  .star-num {
-    font-size: 0.72rem;
-  }
-
-  .world-name-text {
-    font-size: 1.2rem;
-  }
-
-  .char-silhouette {
-    width: 54px;
-    height: 126px;
-  }
-
-  .char-name {
-    font-size: 1.6rem;
-  }
-
-  .char-role {
-    font-size: 0.85rem;
+  .gateway__footer {
+    display: none;
   }
 
   .dimension-exit {
@@ -1243,67 +1198,17 @@ body.light.dimension-mode .scroll-progress {
   }
 }
 
-/* 8 stars × 42px + 7 × 2px gaps = 336+14 = 350px → fits 375px */
-@media (max-width: 540px) {
-  .world-stars {
-    gap: 0 0.1rem;
+@media (max-width: 480px) {
+  .gateway__tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
   }
 
-  .star-gfx {
-    width: 42px;
-    height: 42px;
+  .dim-card__name {
+    font-size: 1.5rem;
   }
 
-  .star-num {
-    font-size: 0.62rem;
-  }
-
-  .world-name-text {
-    font-size: 1rem;
-    letter-spacing: 0.1em;
-  }
-
-  .char-silhouette {
-    width: 46px;
-    height: 108px;
-  }
-
-  .char-name {
-    font-size: 1.35rem;
+  .gateway__grid {
+    height: 400px;
   }
 }
-
-/* 8 stars × 34px + no gaps = 272px → fits 320px */
-@media (max-width: 400px) {
-  .world-stars {
-    gap: 0;
-  }
-
-  .star-gfx {
-    width: 34px;
-    height: 34px;
-  }
-
-  .star-num {
-    font-size: 0.52rem;
-  }
-
-  .world-name-text {
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-  }
-
-  .char-silhouette {
-    width: 40px;
-    height: 94px;
-  }
-
-  .char-name {
-    font-size: 1.1rem;
-  }
-
-  .char-role {
-    font-size: 0.72rem;
-  }
-}
-

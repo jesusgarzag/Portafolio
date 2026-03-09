@@ -590,109 +590,75 @@
     </main>
   </div>
 
-  <!-- MAGIC PORTAL -->
+  <!-- DIMENSIONAL GATEWAY -->
   <div class="portal-wrapper" id="portalWrapper">
-    <!-- Floating trigger button -->
-    <button class="portal-trigger" id="portalTrigger" aria-label="Explorar dimensión">
-      <div class="portal-ring portal-ring-1"></div>
-      <div class="portal-ring portal-ring-2"></div>
-      <div class="portal-ring portal-ring-3"></div>
-      <div class="portal-core">
-        <i class="fas fa-bolt"></i>
-      </div>
-      <div class="portal-particles">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-      </div>
+    <button class="portal-trigger" id="portalTrigger" aria-label="Explorar dimensiones">
+      <span class="portal-trigger__glyph">◈</span>
+      <span class="portal-trigger__text">DIMS</span>
     </button>
+  </div>
 
-    <!-- Expanded portal — dimension gateway -->
-    <div class="portal-expanded" id="portalExpanded">
-      <div class="portal-backdrop" id="portalBackdrop"></div>
+  <!-- Portal expanded overlay -->
+  <div class="portal-expanded" id="portalExpanded">
+    <div class="portal-backdrop" id="portalBackdrop"></div>
+    <button class="portal-close" id="portalClose" aria-label="Cerrar">×</button>
 
-      <!-- Close button -->
-      <button class="portal-close" id="portalClose" aria-label="Cerrar portal">
-        <i class="fas fa-times"></i>
-      </button>
+    <div class="gateway">
+      <div class="gateway__header">
+        <span class="gateway__tag">// DIMENSIONAL_ACCESS.SYS //</span>
+        <span class="gateway__status"><span class="gw-dot"></span>SYS&thinsp;ONLINE · 2&thinsp;DIMS&thinsp;AVAILABLE</span>
+      </div>
 
-      <!-- Character select screen -->
-      <div class="world-select">
+      <div class="gateway__grid">
+        <!-- DIM 001: Fluidos -->
+        <button class="dim-card" id="enterFluids">
+          <div class="dim-card__bg dim-card__bg--fluids">
+            <div class="dim-card__blob dim-card__blob--a"></div>
+            <div class="dim-card__blob dim-card__blob--b"></div>
+            <div class="dim-card__blob dim-card__blob--c"></div>
+          </div>
+          <div class="dim-card__body">
+            <span class="dim-card__id">DIM // 001</span>
+            <h2 class="dim-card__name">FLUIDOS</h2>
+            <p class="dim-card__spec">Navier-Stokes · WebGL · ∂ρ/∂t&thinsp;=&thinsp;0</p>
+            <span class="dim-card__enter">[ INGRESAR → ]</span>
+          </div>
+          <div class="dim-card__scan"></div>
+        </button>
 
-        <!-- 8 Mario-style stars in a single row, numbered 1–8 -->
-        <div class="world-stars">
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">1</span>
-            <span class="star-gfx"></span>
-          </div>
-          <button class="world-star world-star--active" id="enterFluids">
-            <span class="star-num">2</span>
-            <span class="star-gfx"></span>
-            <span class="star-label" data-i18n="dimension_fluids">Mundo de Fluidos</span>
-          </button>
-          <button class="world-star world-star--active" id="enterTubes">
-            <span class="star-num">3</span>
-            <span class="star-gfx"></span>
-            <span class="star-label" data-i18n="dimension_tubes">Mundo de Tubos</span>
-          </button>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">4</span>
-            <span class="star-gfx"></span>
-          </div>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">5</span>
-            <span class="star-gfx"></span>
-          </div>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">6</span>
-            <span class="star-gfx"></span>
-          </div>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">7</span>
-            <span class="star-gfx"></span>
-          </div>
-          <div class="world-star world-star--locked" aria-hidden="true">
-            <span class="star-num">8</span>
-            <span class="star-gfx"></span>
-          </div>
+        <div class="gateway__sep">
+          <div class="gateway__sep-line"></div>
+          <span class="gateway__sep-glyph">⊕</span>
+          <div class="gateway__sep-line"></div>
         </div>
 
-        <!-- World name display (SM64 course name style) -->
-        <div class="world-name-display">
-          <span class="world-name-text">&nbsp;</span>
-        </div>
+        <!-- DIM 002: Tubos -->
+        <button class="dim-card dim-card--tubes" id="enterTubes">
+          <div class="dim-card__bg dim-card__bg--tubes">
+            <div class="dim-card__grid-lines"></div>
+          </div>
+          <div class="dim-card__body">
+            <span class="dim-card__id">DIM // 002</span>
+            <h2 class="dim-card__name">TUBOS</h2>
+            <p class="dim-card__spec">WebGPU · 3D&thinsp;Geometry · cursor.fx</p>
+            <span class="dim-card__enter">[ INGRESAR → ]</span>
+          </div>
+          <div class="dim-card__scan"></div>
+        </button>
+      </div>
 
-        <!-- 2D human silhouette -->
-        <div class="char-wrap">
-          <svg class="char-silhouette" viewBox="0 0 100 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <ellipse cx="50" cy="28" rx="18" ry="20"/>
-            <rect x="45" y="46" width="10" height="8"/>
-            <path d="M 26 54 L 74 54 L 70 130 L 30 130 Z"/>
-            <path d="M 26 58 L 6 100 L 16 106 L 36 64 Z"/>
-            <path d="M 74 58 L 94 100 L 84 106 L 64 64 Z"/>
-            <path d="M 30 130 L 26 220 L 44 220 L 48 130 Z"/>
-            <path d="M 70 130 L 74 220 L 56 220 L 52 130 Z"/>
-          </svg>
-        </div>
-
-        <!-- Character info -->
-        <div class="char-info">
-          <span class="char-level">NIVEL</span>
-          <span class="char-name">Jesús Garza</span>
-          <span class="char-role" data-i18n="backend_dev">Desarrollador Back End</span>
-        </div>
-
+      <div class="gateway__footer">
+        <span>LAT&thinsp;19.4°N · LNG&thinsp;99.1°W</span>
+        <span>JESÚS GARZA · v1.0.0</span>
+        <span>ACCESS:&thinsp;GRANTED</span>
       </div>
     </div>
   </div>
 
-  <!-- Warp overlay (for Mario 64 transition effect) -->
-  <div class="warp-overlay" id="warpOverlay">
-    <div class="warp-rings">
-      <div class="warp-ring"></div>
-      <div class="warp-ring"></div>
-      <div class="warp-ring"></div>
-    </div>
-    <div class="warp-flash"></div>
+  <!-- Dimension transition overlay -->
+  <div class="dim-transition" id="dimTransition">
+    <div class="dim-transition__scan"></div>
+    <div class="dim-transition__fill"></div>
   </div>
 
   <!-- Dimension mode background (WebGL fluid simulation) -->
