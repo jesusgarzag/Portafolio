@@ -425,6 +425,160 @@
 }
 
 /* ============================================
+   ODOO MODULES
+   ============================================ */
+.modules-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.module-category {
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.module-category:hover {
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.module-category__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--bg-secondary);
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background var(--transition);
+}
+
+.module-category__header:hover {
+  background: var(--accent-dim);
+}
+
+.module-category__icon {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-dim);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.module-category__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.module-category__name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.module-category__count {
+  display: block;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+.module-category__arrow {
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.module-category.expanded .module-category__arrow {
+  transform: rotate(180deg);
+}
+
+.module-category__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.module-category.expanded .module-category__body {
+  max-height: 2000px;
+}
+
+.module-entry {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.module-entry__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.module-entry__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.module-entry__version {
+  font-family: var(--font);
+  font-size: 0.68rem;
+  padding: 0.15rem 0.5rem;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-radius: 4px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.module-entry__desc {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+.module-entry__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.module-entry__tags span {
+  font-family: var(--font);
+  font-size: 0.65rem;
+  padding: 0.15rem 0.45rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.modules-extra {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+/* ============================================
    SKILLS
    ============================================ */
 .skills-group {

@@ -68,6 +68,10 @@
             <span class="nav-indicator"></span>
             <span class="nav-text" data-i18n="projectsh">Proyectos</span>
           </a>
+          <a href="#odoo-modules" class="panel-nav-link" data-section="odoo-modules">
+            <span class="nav-indicator"></span>
+            <span class="nav-text" data-i18n="odoo_modules_nav">Módulos Odoo</span>
+          </a>
           <a href="#skills" class="panel-nav-link" data-section="skills">
             <span class="nav-indicator"></span>
             <span class="nav-text" data-i18n="skills">Habilidades</span>
@@ -131,6 +135,7 @@
         <a href="#about" class="mobile-nav-link" data-i18n="about">Sobre mí</a>
         <a href="#experience" class="mobile-nav-link" data-i18n="experience_nav">Experiencia</a>
         <a href="#projects" class="mobile-nav-link" data-i18n="projectsh">Proyectos</a>
+        <a href="#odoo-modules" class="mobile-nav-link" data-i18n="odoo_modules_nav">Módulos Odoo</a>
         <a href="#skills" class="mobile-nav-link" data-i18n="skills">Habilidades</a>
         <a href="#education" class="mobile-nav-link" data-i18n="education">Formación</a>
         <a href="#contact" class="mobile-nav-link" data-i18n="contact">Contacto</a>
@@ -179,7 +184,7 @@
               <p class="stat-label" data-i18n="stat_projects">Proyectos Completados</p>
             </div>
             <div class="stat-item">
-              <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+              <span class="stat-number" data-target="17">0</span><span class="stat-suffix">+</span>
               <p class="stat-label" data-i18n="stat_modules">Módulos Odoo</p>
             </div>
             <div class="stat-item">
@@ -204,7 +209,7 @@
           <div class="exp-content">
             <div class="exp-header">
               <h3 data-i18n="exp_odoo_title">Desarrollador Backend Odoo</h3>
-              <p class="exp-subtitle" data-i18n="exp_odoo_subtitle">Odoo 17/18 · Python · PostgreSQL · ORM · Owl · XML-RPC</p>
+              <p class="exp-subtitle" data-i18n="exp_odoo_subtitle">Odoo 17/18/19 · Python · PostgreSQL · ORM · Owl · XML-RPC</p>
             </div>
 
             <div class="exp-metrics">
@@ -388,6 +393,241 @@
             </div>
           </a>
         </div>
+      </section>
+
+      <!-- Odoo Modules -->
+      <section id="odoo-modules" class="content-section">
+        <h2 class="section-heading" data-i18n="odoo_modules_title">Módulos Odoo</h2>
+
+        <div class="modules-summary">
+          <span class="metric-chip"><i class="fas fa-cube"></i> <span data-i18n="mod_total">17 módulos</span></span>
+          <span class="metric-chip"><i class="fas fa-code-branch"></i> Odoo 17 / 18 / 19</span>
+          <span class="metric-chip"><i class="fas fa-building"></i> <span data-i18n="mod_clients">7+ clientes</span></span>
+          <span class="metric-chip"><i class="fas fa-layer-group"></i> <span data-i18n="mod_areas">6 áreas funcionales</span></span>
+        </div>
+
+        <!-- Contabilidad y Cumplimiento Fiscal -->
+        <div class="module-category">
+          <button class="module-category__header">
+            <span class="module-category__icon"><i class="fas fa-calculator"></i></span>
+            <div class="module-category__info">
+              <span class="module-category__name" data-i18n="mod_cat_accounting">Contabilidad y Cumplimiento Fiscal</span>
+              <span class="module-category__count" data-i18n="mod_cat_accounting_count">6 módulos · Avalia, Dimex, Casa Guerra, Cosesa</span>
+            </div>
+            <i class="fas fa-chevron-down module-category__arrow"></i>
+          </button>
+          <div class="module-category__body">
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_formatos">Reportes Avalia</h4>
+                <span class="module-entry__version">v18</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_formatos_desc">9 reportes PDF QWeb, reporte de conciliación bancaria Excel, dashboard post-nómina OWL y cron SAFI.</p>
+              <div class="module-entry__tags"><span>QWeb</span><span>openpyxl</span><span>OWL</span><span>CFDI</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_bank_balance">Saldos Estado de Cuenta Manual</h4>
+                <span class="module-entry__version">v18</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_bank_balance_desc">Captura manual de saldos bancarios con sincronización bidireccional, importación Excel masiva y trazabilidad completa.</p>
+              <div class="module-entry__tags"><span>mail.thread</span><span>openpyxl</span><span>Wizard</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_aged_days">Días Vencidos en Antigüedad de Saldos</h4>
+                <span class="module-entry__version">v18</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_aged_days_desc">Columna "Días Vencidos" en reportes nativos de Cuentas por Cobrar y por Pagar con hooks de instalación limpios.</p>
+              <div class="module-entry__tags"><span>Report Engine</span><span>Hooks</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_base_efectivo">Base Efectivo — Fecha de Pago en DIOT</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_base_efectivo_desc">Corrige el periodo fiscal del IVA en anticipos conciliados para cumplimiento correcto de DIOT ante el SAT.</p>
+              <div class="module-entry__tags"><span>DIOT</span><span>SAT</span><span>IVA</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_anticipo">Anticipo — Base Efectivo Automático</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_anticipo_desc">Genera asientos de base efectivo al registrar anticipos con cálculo inverso de IVA y prevención de duplicados.</p>
+              <div class="module-entry__tags"><span>IVA</span><span>Smart Button</span><span>DIOT</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_rep">Reporte REP — Recibo Electrónico de Pago</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_rep_desc">Formato profesional de REP con parsing de XML CFDI 4.0, complemento Pagos20, QR y sellos digitales.</p>
+              <div class="module-entry__tags"><span>CFDI 4.0</span><span>QWeb</span><span>XML Parsing</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nómina y Recursos Humanos -->
+        <div class="module-category">
+          <button class="module-category__header">
+            <span class="module-category__icon"><i class="fas fa-users"></i></span>
+            <div class="module-category__info">
+              <span class="module-category__name" data-i18n="mod_cat_payroll">Nómina y Recursos Humanos</span>
+              <span class="module-category__count" data-i18n="mod_cat_payroll_count">3 módulos · Avalia, Casa Guerra</span>
+            </div>
+            <i class="fas fa-chevron-down module-category__arrow"></i>
+          </button>
+          <div class="module-category__body">
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_holidays">Vacaciones — Saldo y Reporte PDF</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_holidays_desc">Días restantes computados en tiempo real y formato PDF media carta para solicitudes de vacaciones con firma.</p>
+              <div class="module-entry__tags"><span>QWeb</span><span>hr.leave</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_payroll_report">Reporte Dinámico de Nómina</h4>
+                <span class="module-entry__version">v18</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_payroll_report_desc">Wizard Excel con columnas dinámicas generadas a partir de reglas salariales marcadas con add_to_report.</p>
+              <div class="module-entry__tags"><span>xlsxwriter</span><span>Wizard</span><span>Dynamic</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_odessa">Interfaz ODESSA — Caja de Ahorro</h4>
+                <span class="module-entry__version">v18</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_odessa_desc">Integración con sistema ODESSA: exportar/importar archivos MOPER y 5 reglas salariales de caja de ahorro.</p>
+              <div class="module-entry__tags"><span>MOPER</span><span>3 Wizards</span><span>Mapping</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inventario y Almacén -->
+        <div class="module-category">
+          <button class="module-category__header">
+            <span class="module-category__icon"><i class="fas fa-warehouse"></i></span>
+            <div class="module-category__info">
+              <span class="module-category__name" data-i18n="mod_cat_inventory">Inventario y Almacén</span>
+              <span class="module-category__count" data-i18n="mod_cat_inventory_count">4 módulos · Forrajera Elizondo, Recavisa, Interenter</span>
+            </div>
+            <i class="fas fa-chevron-down module-category__arrow"></i>
+          </button>
+          <div class="module-category__body">
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_stock_location">Inventario por Ubicación y Almacén</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_stock_location_desc">Reporte histórico de inventario desglosado por ubicación con algoritmo de boundary-crossing y soporte para BOMs fantasma.</p>
+              <div class="module-entry__tags"><span>stock.quant</span><span>Boundary-crossing</span><span>Wizard</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_pedimento">Reporte de Pedimentos Aduanales</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_pedimento_desc">Vista de pedimentos con indicadores CFDI por colores, verificación de presencia en XML y auto-refresh transparente.</p>
+              <div class="module-entry__tags"><span>CFDI</span><span>Aduanas</span><span>Auto-refresh</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_quant_unrestrict">Editar Lote/Serie en Quants</h4>
+                <span class="module-entry__version">v19</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_quant_unrestrict_desc">Permite editar lot_id en inventario físico removiendo la restricción nativa con 4 líneas de código.</p>
+              <div class="module-entry__tags"><span>stock.quant</span><span>Minimal</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_import_lots">Importar Lotes con Comas</h4>
+                <span class="module-entry__version">v19</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_import_lots_desc">Acepta comas como separador en importación de lotes/series, permitiendo pegar directamente desde Excel.</p>
+              <div class="module-entry__tags"><span>stock.move</span><span>UX</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ventas y Compras -->
+        <div class="module-category">
+          <button class="module-category__header">
+            <span class="module-category__icon"><i class="fas fa-shopping-cart"></i></span>
+            <div class="module-category__info">
+              <span class="module-category__name" data-i18n="mod_cat_sales">Ventas y Compras</span>
+              <span class="module-category__count" data-i18n="mod_cat_sales_count">2 módulos · FGH, Invent</span>
+            </div>
+            <i class="fas fa-chevron-down module-category__arrow"></i>
+          </button>
+          <div class="module-category__body">
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_catalogo">Catálogo Extendido de Productos</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_catalogo_desc">Sistema de doble catálogo con filtrado inteligente en dropdowns via override de _name_search().</p>
+              <div class="module-entry__tags"><span>_name_search</span><span>Context</span><span>UX</span></div>
+            </div>
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_proyecto">Auto-creación de Salidas a Proyectos</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_proyecto_desc">Crea pickings de salida automáticamente al confirmar compras de proyecto, agrupados por cuenta analítica.</p>
+              <div class="module-entry__tags"><span>stock.picking</span><span>Analítica</span><span>Automation</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integraciones y API -->
+        <div class="module-category">
+          <button class="module-category__header">
+            <span class="module-category__icon"><i class="fas fa-plug"></i></span>
+            <div class="module-category__info">
+              <span class="module-category__name" data-i18n="mod_cat_api">Integraciones y API</span>
+              <span class="module-category__count" data-i18n="mod_cat_api_count">1 módulo · Ikigai</span>
+            </div>
+            <i class="fas fa-chevron-down module-category__arrow"></i>
+          </button>
+          <div class="module-category__body">
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_edi">EDI IKIGAI — REST API</h4>
+                <span class="module-entry__version">v17</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_edi_desc">API REST para EDI SAP↔Odoo con API keys SHA-256, endpoint /edi/factura y autenticación Bearer token.</p>
+              <div class="module-entry__tags"><span>REST API</span><span>SHA-256</span><span>Bearer</span><span>EDI</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Herramientas UI/UX -->
+        <div class="module-category">
+          <button class="module-category__header">
+            <span class="module-category__icon"><i class="fas fa-paint-brush"></i></span>
+            <div class="module-category__info">
+              <span class="module-category__name" data-i18n="mod_cat_uiux">Herramientas UI/UX</span>
+              <span class="module-category__count" data-i18n="mod_cat_uiux_count">1 módulo · Interenter</span>
+            </div>
+            <i class="fas fa-chevron-down module-category__arrow"></i>
+          </button>
+          <div class="module-category__body">
+            <div class="module-entry">
+              <div class="module-entry__header">
+                <h4 class="module-entry__name" data-i18n="mod_columns">Columnas Separadas en Líneas de Orden</h4>
+                <span class="module-entry__version">v19</span>
+              </div>
+              <p class="module-entry__desc" data-i18n="mod_columns_desc">Patch OWL que restaura Producto y Descripción como columnas independientes en facturas, ventas y compras.</p>
+              <div class="module-entry__tags"><span>OWL Patch</span><span>Frontend</span><span>Mixin</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Complementarios -->
+        <p class="modules-extra" data-i18n="mod_extra">+ 3 módulos complementarios: Impuestos por defecto en productos, Validación de precios de proveedor y Botón de remisión en entregas.</p>
       </section>
 
       <!-- Skills -->

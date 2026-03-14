@@ -35,7 +35,8 @@
   const revealItems = document.querySelectorAll(
     '.experience-card, .project-card, .skills-group, .education-card, ' +
     '.cert-card, .recognition-card, .testimonial-card, .content-text, ' +
-    '.stats-row, .section-heading, .subsection-heading, .contact-links, .contact-form'
+    '.stats-row, .section-heading, .subsection-heading, .contact-links, .contact-form, ' +
+    '.module-category, .modules-summary, .modules-extra'
   );
 
   revealItems.forEach((el) => el.classList.add('reveal-item'));
@@ -54,6 +55,15 @@
 
     revealItems.forEach((el) => revealObserver.observe(el));
   }
+
+  // ============================================
+  // MODULE CATEGORY ACCORDION
+  // ============================================
+  document.querySelectorAll('.module-category__header').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      btn.closest('.module-category').classList.toggle('expanded');
+    });
+  });
 
   // ============================================
   // EXPERIENCE EXPAND/COLLAPSE
