@@ -175,6 +175,21 @@
   margin-bottom: 0.2rem;
 }
 
+.exp-company {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.15rem;
+}
+
+.exp-period {
+  font-family: var(--font);
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 0.25rem;
+  display: inline-block;
+}
+
 .exp-subtitle {
   font-family: var(--font);
   font-size: 0.78rem;
@@ -434,6 +449,42 @@
   margin-bottom: 2rem;
 }
 
+/* Clients Grid */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.client-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.client-card:hover {
+  border-color: rgba(16, 185, 129, 0.25);
+  background: var(--accent-dim);
+}
+
+.client-card__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+}
+
+.client-card__desc {
+  font-family: var(--font);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
 .module-category {
   margin-bottom: 0.75rem;
   border: 1px solid var(--border);
@@ -564,10 +615,10 @@
   font-family: var(--font);
   font-size: 0.65rem;
   padding: 0.15rem 0.45rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  border-radius: 3px;
+  background: var(--accent-dim);
+  border: none;
+  color: var(--accent);
+  border-radius: 4px;
   font-weight: 500;
 }
 

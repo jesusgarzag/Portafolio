@@ -199,6 +199,11 @@
     gap: 0.25rem;
   }
 
+  .clients-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
   .modules-summary {
     gap: 0.4rem;
   }
