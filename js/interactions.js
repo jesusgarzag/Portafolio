@@ -36,7 +36,7 @@
     '.experience-card, .project-card, .skills-group, .education-card, ' +
     '.cert-card, .recognition-card, .testimonial-card, .content-text, ' +
     '.stats-row, .section-heading, .subsection-heading, .contact-links, .contact-form, ' +
-    '.module-category, .modules-summary, .modules-extra, .clients-grid'
+    '.module-category, .modules-summary, .modules-extra, .clients-scroll'
   );
 
   revealItems.forEach((el) => el.classList.add('reveal-item'));

@@ -411,46 +411,29 @@
         </div>
 
         <h3 class="subsection-heading" data-i18n="mod_clients_title">Empresas Atendidas</h3>
-        <div class="clients-grid">
-          <div class="client-card">
-            <span class="client-card__name">Avalia</span>
-            <span class="client-card__desc" data-i18n="client_avalia">Grupo financiero · Pensiones y dividendos</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">Dimex</span>
-            <span class="client-card__desc" data-i18n="client_dimex">Contabilidad fiscal · Anticipos y DIOT</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">Casa Guerra</span>
-            <span class="client-card__desc" data-i18n="client_casaguerra">Facturación · REP y vacaciones</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">Cosesa</span>
-            <span class="client-card__desc" data-i18n="client_cosesa">Contabilidad · Cartera vencida</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">Forrajera Elizondo</span>
-            <span class="client-card__desc" data-i18n="client_forrajera">Inventario multi-ubicación</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">Recavisa</span>
-            <span class="client-card__desc" data-i18n="client_recavisa">Aduanas · Pedimentos y precios</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">Interenter</span>
-            <span class="client-card__desc" data-i18n="client_interenter">Inventario · UI/UX y lotes</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">FGH</span>
-            <span class="client-card__desc" data-i18n="client_fgh">Ventas · Catálogo de productos</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">Invent</span>
-            <span class="client-card__desc" data-i18n="client_invent">Compras · Proyectos y analítica</span>
-          </div>
-          <div class="client-card">
-            <span class="client-card__name">Ikigai</span>
-            <span class="client-card__desc" data-i18n="client_ikigai">Integración · EDI SAP↔Odoo</span>
+        <div class="clients-scroll">
+          <div class="clients-track">
+            <div class="client-chip"><i class="fas fa-landmark"></i><span class="client-chip__name">Avalia</span><span class="client-chip__area" data-i18n="client_avalia_short">Finanzas</span></div>
+            <div class="client-chip"><i class="fas fa-file-invoice-dollar"></i><span class="client-chip__name">Dimex</span><span class="client-chip__area" data-i18n="client_dimex_short">Fiscal</span></div>
+            <div class="client-chip"><i class="fas fa-receipt"></i><span class="client-chip__name">Casa Guerra</span><span class="client-chip__area" data-i18n="client_casaguerra_short">Facturación</span></div>
+            <div class="client-chip"><i class="fas fa-chart-line"></i><span class="client-chip__name">Cosesa</span><span class="client-chip__area" data-i18n="client_cosesa_short">Contabilidad</span></div>
+            <div class="client-chip"><i class="fas fa-boxes-stacked"></i><span class="client-chip__name">Forrajera Elizondo</span><span class="client-chip__area" data-i18n="client_forrajera_short">Inventario</span></div>
+            <div class="client-chip"><i class="fas fa-ship"></i><span class="client-chip__name">Recavisa</span><span class="client-chip__area" data-i18n="client_recavisa_short">Aduanas</span></div>
+            <div class="client-chip"><i class="fas fa-barcode"></i><span class="client-chip__name">Interenter</span><span class="client-chip__area" data-i18n="client_interenter_short">Almacén</span></div>
+            <div class="client-chip"><i class="fas fa-store"></i><span class="client-chip__name">FGH</span><span class="client-chip__area" data-i18n="client_fgh_short">Ventas</span></div>
+            <div class="client-chip"><i class="fas fa-diagram-project"></i><span class="client-chip__name">Invent</span><span class="client-chip__area" data-i18n="client_invent_short">Compras</span></div>
+            <div class="client-chip"><i class="fas fa-plug"></i><span class="client-chip__name">Ikigai</span><span class="client-chip__area" data-i18n="client_ikigai_short">API/EDI</span></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="client-chip"><i class="fas fa-landmark"></i><span class="client-chip__name">Avalia</span><span class="client-chip__area" data-i18n="client_avalia_short">Finanzas</span></div>
+            <div class="client-chip"><i class="fas fa-file-invoice-dollar"></i><span class="client-chip__name">Dimex</span><span class="client-chip__area" data-i18n="client_dimex_short">Fiscal</span></div>
+            <div class="client-chip"><i class="fas fa-receipt"></i><span class="client-chip__name">Casa Guerra</span><span class="client-chip__area" data-i18n="client_casaguerra_short">Facturación</span></div>
+            <div class="client-chip"><i class="fas fa-chart-line"></i><span class="client-chip__name">Cosesa</span><span class="client-chip__area" data-i18n="client_cosesa_short">Contabilidad</span></div>
+            <div class="client-chip"><i class="fas fa-boxes-stacked"></i><span class="client-chip__name">Forrajera Elizondo</span><span class="client-chip__area" data-i18n="client_forrajera_short">Inventario</span></div>
+            <div class="client-chip"><i class="fas fa-ship"></i><span class="client-chip__name">Recavisa</span><span class="client-chip__area" data-i18n="client_recavisa_short">Aduanas</span></div>
+            <div class="client-chip"><i class="fas fa-barcode"></i><span class="client-chip__name">Interenter</span><span class="client-chip__area" data-i18n="client_interenter_short">Almacén</span></div>
+            <div class="client-chip"><i class="fas fa-store"></i><span class="client-chip__name">FGH</span><span class="client-chip__area" data-i18n="client_fgh_short">Ventas</span></div>
+            <div class="client-chip"><i class="fas fa-diagram-project"></i><span class="client-chip__name">Invent</span><span class="client-chip__area" data-i18n="client_invent_short">Compras</span></div>
+            <div class="client-chip"><i class="fas fa-plug"></i><span class="client-chip__name">Ikigai</span><span class="client-chip__area" data-i18n="client_ikigai_short">API/EDI</span></div>
           </div>
         </div>
 
