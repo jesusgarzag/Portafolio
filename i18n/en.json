@@ -209,5 +209,14 @@
   "cmd_lang_en": "Switch language to English",
   "cmd_cv": "Download resume",
   "cmd_github": "Open GitHub profile",
-  "cmd_mail": "Send email"
+  "cmd_mail": "Send email",
+  "cmd_branches": "View other portfolio versions",
+  "archive_label": "// Archive",
+  "branches_intro": "Each branch is a complete version of the portfolio. Pick one to visit.",
+  "branch_terminal_desc": "Terminal session. Mono typography, command palette (Ctrl+K), prompts and vim-like status bar.",
+  "branch_minimalist_desc": "Editorial. Full-width sections, generous whitespace, no decoration. Typography as the protagonist.",
+  "branch_gateway_desc": "Sticky-left split-panel. Portal to parallel dimensions: WebGL Fluids (Navier-Stokes) and WebGPU Tubes.",
+  "branch_current": "// current version",
+  "branches_close": "close",
+  "branches_toggle": "toggle"
 }

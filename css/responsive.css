@@ -113,6 +113,20 @@
   .palette__box { width: 94vw; }
   .palette__hint { font-size: 10px; gap: var(--sp-2); }
   .palette__hint-group { gap: var(--sp-2); }
+
+  .branches { padding: 4vh var(--sp-3) var(--sp-6); }
+  .branches__list {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+    padding: var(--sp-4);
+  }
+  .branch__ascii { font-size: 10px; }
+  .branches__foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-2);
+  }
+  .branches__count { margin-left: 0; }
 }
 
 /* ── Small mobile ──────────────────────────────────────── */

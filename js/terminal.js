@@ -84,6 +84,7 @@
     { cmd: 'wget cv.pdf',           desc_key: 'cmd_cv',         action: 'cv' },
     { cmd: 'gh repo open',          desc_key: 'cmd_github',     href: 'https://github.com/jesusgarzag' },
     { cmd: 'mailto:',               desc_key: 'cmd_mail',       href: 'mailto:jesusgarzacia@hotmail.com' },
+    { cmd: 'git branch -v',         desc_key: 'cmd_branches',   action: 'branches' },
   ];
 
   const palette       = document.getElementById('palette');
@@ -161,7 +162,38 @@
     } else if (cmd.action === 'cv') {
       const cv = document.getElementById('btnCv');
       cv?.click();
+    } else if (cmd.action === 'branches') {
+      openBranches();
     }
+  }
+
+  /* ── Branch picker (other portfolio versions) ─────────── */
+  const branches = document.getElementById('branches');
+  const openBranchesBtn = document.getElementById('openBranches');
+  const closeBranchesBtn = document.getElementById('closeBranches');
+
+  function openBranches() {
+    if (!branches) return;
+    branches.classList.add('is-open');
+    document.body.classList.add('branches-open');
+    setMode('BRANCH');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBranches() {
+    if (!branches) return;
+    branches.classList.remove('is-open');
+    document.body.classList.remove('branches-open');
+    setMode('NORMAL');
+    document.body.style.overflow = '';
+  }
+
+  if (openBranchesBtn) openBranchesBtn.addEventListener('click', openBranches);
+  if (closeBranchesBtn) closeBranchesBtn.addEventListener('click', closeBranches);
+  if (branches) {
+    branches.addEventListener('click', e => {
+      if (e.target === branches) closeBranches();
+    });
   }
 
   if (paletteOpen) paletteOpen.addEventListener('click', openPalette);
@@ -191,12 +223,26 @@
     });
   }
 
-  // Global shortcut: Ctrl/Cmd + K
+  // Global shortcuts
   document.addEventListener('keydown', e => {
+    // Ctrl/Cmd + K → command palette
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
       if (palette?.classList.contains('is-open')) closePalette();
       else openPalette();
+      return;
+    }
+    // Ctrl/Cmd + B → branch picker
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+      e.preventDefault();
+      if (branches?.classList.contains('is-open')) closeBranches();
+      else openBranches();
+      return;
+    }
+    // Esc → close any open overlay
+    if (e.key === 'Escape') {
+      if (palette?.classList.contains('is-open')) closePalette();
+      if (branches?.classList.contains('is-open')) closeBranches();
     }
   });
 

@@ -209,5 +209,14 @@
   "cmd_lang_en": "Cambiar idioma a Inglés",
   "cmd_cv": "Descargar CV",
   "cmd_github": "Abrir perfil de GitHub",
-  "cmd_mail": "Enviar correo electrónico"
+  "cmd_mail": "Enviar correo electrónico",
+  "cmd_branches": "Ver otras versiones del portafolio",
+  "archive_label": "// Archivo",
+  "branches_intro": "Cada rama es una versión completa del portafolio. Selecciona una para visitarla.",
+  "branch_terminal_desc": "Sesión de terminal. Tipografía mono, command palette (Ctrl+K), prompts y status bar tipo vim.",
+  "branch_minimalist_desc": "Editorial. Secciones full-width, mucho espacio en blanco, sin decoración. Tipografía como protagonista.",
+  "branch_gateway_desc": "Split-panel sticky-left. Portal a dimensiones paralelas: WebGL Fluids (Navier-Stokes) y WebGPU Tubes.",
+  "branch_current": "// versión actual",
+  "branches_close": "cerrar",
+  "branches_toggle": "alternar"
 }

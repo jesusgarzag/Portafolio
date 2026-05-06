@@ -124,6 +124,12 @@
         <a href="#contact" class="cmd" data-section="contact">
           <span class="cmd__name">mail jesus</span>
         </a>
+
+        <span class="cmdlist__label" data-i18n="archive_label">// Archivo</span>
+        <button type="button" class="cmd cmd--util" id="openBranches">
+          <span class="cmd__name">git branch -v</span>
+          <span class="cmd__hint"><kbd>Ctrl B</kbd></span>
+        </button>
       </nav>
 
       <div class="sidebar__bottom">
@@ -898,6 +904,119 @@
       </footer>
 
     </main>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       BRANCH PICKER (other portfolio versions)
+       ════════════════════════════════════════════════════ -->
+  <div class="branches" id="branches" role="dialog" aria-modal="true" aria-label="Other portfolio versions">
+    <div class="branches__box">
+      <header class="branches__head">
+        <div class="branches__prompt">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">git branch -v</span>
+        </div>
+        <button class="branches__close" id="closeBranches" aria-label="Close">×</button>
+      </header>
+
+      <p class="branches__intro" data-i18n="branches_intro">
+        Cada rama es una versión completa del portafolio. Selecciona una para visitarla.
+      </p>
+
+      <div class="branches__list">
+
+        <!-- v3 terminal — current -->
+        <a class="branch is-current" href="https://jesusgarza.pages.dev/" target="_blank" rel="noopener">
+          <div class="branch__side">
+            <span class="branch__marker">*</span>
+            <span class="branch__hash">a3e7c91</span>
+          </div>
+          <div class="branch__main">
+            <header class="branch__head">
+              <span class="branch__name">terminal</span>
+              <span class="branch__tag">v3 · 2026</span>
+            </header>
+            <p class="branch__desc" data-i18n="branch_terminal_desc">
+              Sesión de terminal. Tipografía mono, command palette (Ctrl+K), prompts y status bar tipo vim.
+            </p>
+            <pre class="branch__ascii" aria-hidden="true">┌── jesus@portfolio:~ ──────┐
+│ $ whoami                  │
+│ &gt; Jesús Garza<span class="accent">_</span>             │
+│ ── neofetch ──            │
+│ os    Linux x86_64        │
+│ stack Python · Odoo       │
+└───────────────────────────┘</pre>
+            <span class="branch__cta" data-i18n="branch_current">// versión actual</span>
+          </div>
+        </a>
+
+        <!-- v2 minimalist -->
+        <a class="branch" href="https://minimalist.jesusgarza.pages.dev/" target="_blank" rel="noopener">
+          <div class="branch__side">
+            <span class="branch__marker">·</span>
+            <span class="branch__hash">e588c67</span>
+          </div>
+          <div class="branch__main">
+            <header class="branch__head">
+              <span class="branch__name">minimalist</span>
+              <span class="branch__tag">v2 · 2025</span>
+            </header>
+            <p class="branch__desc" data-i18n="branch_minimalist_desc">
+              Editorial. Secciones full-width, mucho espacio en blanco, sin decoración. Tipografía como protagonista.
+            </p>
+            <pre class="branch__ascii" aria-hidden="true">┌───────────────────────────┐
+│                           │
+│      Jesús Garza          │
+│      ─────────────        │
+│      Backend Developer    │
+│                           │
+│      ── about ──          │
+│      ── work ──           │
+└───────────────────────────┘</pre>
+            <span class="branch__cta">checkout →</span>
+          </div>
+        </a>
+
+        <!-- v1 gateway -->
+        <a class="branch" href="https://gateway.jesusgarza.pages.dev/" target="_blank" rel="noopener">
+          <div class="branch__side">
+            <span class="branch__marker">·</span>
+            <span class="branch__hash">f4de20f</span>
+          </div>
+          <div class="branch__main">
+            <header class="branch__head">
+              <span class="branch__name">gateway</span>
+              <span class="branch__tag">v1 · 2024</span>
+            </header>
+            <p class="branch__desc" data-i18n="branch_gateway_desc">
+              Split-panel sticky-left. Portal a dimensiones paralelas: WebGL Fluids (Navier-Stokes) y WebGPU Tubes.
+            </p>
+            <pre class="branch__ascii" aria-hidden="true">┌─────────────┬─────────────┐
+│             │             │
+│   panel     │   content   │
+│   sticky    │   scrolls   │
+│             │             │
+│   ◈ DIMS    │  ── about ──│
+│             │  ── work  ──│
+└─────────────┴─────────────┘</pre>
+            <span class="branch__cta">checkout →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <footer class="branches__foot">
+        <span class="branches__hint">
+          <kbd>Esc</kbd> <span data-i18n="branches_close">cerrar</span>
+        </span>
+        <span class="branches__hint">
+          <kbd>Ctrl B</kbd> <span data-i18n="branches_toggle">alternar</span>
+        </span>
+        <span class="branches__count">3 branches</span>
+      </footer>
+    </div>
   </div>
 
   <!-- ════════════════════════════════════════════════════
