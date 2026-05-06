@@ -79,12 +79,16 @@
     { cmd: 'man certifications',    desc_key: 'cmd_education',  target: '#education' },
     { cmd: 'mail jesus',            desc_key: 'cmd_contact',    target: '#contact' },
     { cmd: ':set background=toggle', desc_key: 'cmd_theme',     action: 'theme' },
+    { cmd: ':colorscheme',          desc_key: 'cmd_colorscheme', action: 'colorscheme' },
     { cmd: 'LANG=es_MX.UTF-8',      desc_key: 'cmd_lang_es',    action: 'lang:es' },
     { cmd: 'LANG=en_US.UTF-8',      desc_key: 'cmd_lang_en',    action: 'lang:en' },
     { cmd: 'wget cv.pdf',           desc_key: 'cmd_cv',         action: 'cv' },
     { cmd: 'gh repo open',          desc_key: 'cmd_github',     href: 'https://github.com/jesusgarzag' },
     { cmd: 'mailto:',               desc_key: 'cmd_mail',       href: 'mailto:jesusgarzacia@hotmail.com' },
     { cmd: 'git branch -v',         desc_key: 'cmd_branches',   action: 'branches' },
+    { cmd: 'cal jesus',             desc_key: 'cmd_cal',        href: 'https://cal.com/jesusgarza' },
+    { cmd: 'man jesus',             desc_key: 'cmd_man',        action: 'man' },
+    { cmd: 'htop',                  desc_key: 'cmd_htop',       action: 'htop' },
   ];
 
   const palette       = document.getElementById('palette');
@@ -164,8 +168,73 @@
       cv?.click();
     } else if (cmd.action === 'branches') {
       openBranches();
+    } else if (cmd.action === 'colorscheme') {
+      openScheme();
+    } else if (cmd.action === 'man') {
+      openMan();
+    } else if (cmd.action === 'htop') {
+      openHtop();
     }
   }
+
+  /* ── Generic overlay helpers ───────────────────────────── */
+  function makeOverlayToggle(id, bodyClass, modeLabel) {
+    const el = document.getElementById(id);
+    return {
+      el,
+      open() {
+        if (!el) return;
+        el.classList.add('is-open');
+        document.body.classList.add(bodyClass);
+        setMode(modeLabel);
+        document.body.style.overflow = 'hidden';
+      },
+      close() {
+        if (!el) return;
+        el.classList.remove('is-open');
+        document.body.classList.remove(bodyClass);
+        setMode('NORMAL');
+        document.body.style.overflow = '';
+      },
+      isOpen: () => el?.classList.contains('is-open'),
+    };
+  }
+
+  /* ── Scheme picker ─────────────────────────────────────── */
+  const scheme = makeOverlayToggle('schemePicker', 'scheme-open', 'COLORS');
+  function openScheme() { scheme.open(); }
+  function closeScheme() { scheme.close(); }
+  document.getElementById('closeScheme')?.addEventListener('click', closeScheme);
+  scheme.el?.addEventListener('click', e => { if (e.target === scheme.el) closeScheme(); });
+
+  /* ── Man page overlay ──────────────────────────────────── */
+  const man = makeOverlayToggle('manPage', 'man-open', 'MAN');
+  function openMan() { man.open(); }
+  function closeMan() { man.close(); }
+  document.getElementById('closeMan')?.addEventListener('click', closeMan);
+  man.el?.addEventListener('click', e => { if (e.target === man.el) closeMan(); });
+
+  /* ── htop overlay ──────────────────────────────────────── */
+  const htop = makeOverlayToggle('htopOverlay', 'htop-open', 'HTOP');
+  function openHtop() {
+    htop.open();
+    // Animate bars
+    requestAnimationFrame(() => {
+      htop.el?.querySelectorAll('.htop__bar-track').forEach(t => {
+        t.style.setProperty('--htop-pct', (t.dataset.load || 0) + '%');
+      });
+    });
+  }
+  function closeHtop() {
+    htop.el?.querySelectorAll('.htop__bar-track').forEach(t => t.style.setProperty('--htop-pct', '0%'));
+    htop.close();
+  }
+  document.getElementById('closeHtop')?.addEventListener('click', closeHtop);
+  htop.el?.addEventListener('click', e => { if (e.target === htop.el) closeHtop(); });
+  // q key closes htop (vim-like)
+  document.addEventListener('keydown', e => {
+    if (e.key === 'q' && htop.isOpen() && !e.target.matches('input, textarea')) closeHtop();
+  });
 
   /* ── Branch picker (other portfolio versions) ─────────── */
   const branches = document.getElementById('branches');
@@ -243,6 +312,9 @@
     if (e.key === 'Escape') {
       if (palette?.classList.contains('is-open')) closePalette();
       if (branches?.classList.contains('is-open')) closeBranches();
+      if (scheme.isOpen()) closeScheme();
+      if (man.isOpen()) closeMan();
+      if (htop.isOpen()) { closeHtop(); }
     }
   });
 
@@ -309,6 +381,81 @@
         setMailBusy(false);
         setTimeout(() => setMode('NORMAL'), 2400);
       });
+    });
+  }
+
+  /* ── Konami code easter egg → CRT glitch ──────────────── */
+  const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let konamiBuf = [];
+  document.addEventListener('keydown', e => {
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    konamiBuf.push(k);
+    if (konamiBuf.length > KONAMI.length) konamiBuf.shift();
+    if (konamiBuf.length === KONAMI.length && KONAMI.every((v, i) => v === konamiBuf[i])) {
+      triggerCRT();
+      konamiBuf = [];
+    }
+  });
+  function triggerCRT() {
+    document.body.classList.add('crt-mode');
+    setMode('CRT');
+    setTimeout(() => {
+      document.body.classList.remove('crt-mode');
+      setMode('NORMAL');
+    }, 3200);
+  }
+
+  /* ── Logo x5 click → dev panel ─────────────────────────── */
+  const devPanel = document.getElementById('devPanel');
+  const logo = document.querySelector('.sidebar__logo');
+  let logoClicks = 0;
+  let logoTimer = null;
+  if (logo) {
+    logo.style.cursor = 'pointer';
+    logo.addEventListener('click', () => {
+      logoClicks++;
+      clearTimeout(logoTimer);
+      logoTimer = setTimeout(() => { logoClicks = 0; }, 1500);
+      if (logoClicks >= 5) {
+        logoClicks = 0;
+        openDevPanel();
+      }
+    });
+  }
+  document.getElementById('closeDev')?.addEventListener('click', () => devPanel?.classList.remove('is-open'));
+
+  function fmtBytes(n) {
+    if (!n && n !== 0) return '—';
+    if (n < 1024) return n + ' B';
+    if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+    return (n / (1024 * 1024)).toFixed(2) + ' MB';
+  }
+
+  function openDevPanel() {
+    if (!devPanel) return;
+    devPanel.classList.add('is-open');
+    document.getElementById('devScheme').textContent = window.scheme?.get() || 'dark';
+    document.getElementById('devLang').textContent = window.i18n?.current || 'es';
+    document.getElementById('devVp').textContent = `${window.innerWidth}×${window.innerHeight}`;
+    document.getElementById('devDpr').textContent = (window.devicePixelRatio || 1).toFixed(2);
+    const nav = performance.getEntriesByType?.('navigation')?.[0];
+    document.getElementById('devLoad').textContent = nav ? Math.round(nav.duration) + ' ms' : '—';
+    document.getElementById('devHtml').textContent = fmtBytes(document.documentElement.outerHTML.length);
+    const mem = performance.memory;
+    document.getElementById('devMem').textContent = mem
+      ? `${(mem.usedJSHeapSize / 1048576).toFixed(1)} / ${(mem.jsHeapSizeLimit / 1048576).toFixed(0)} MB`
+      : '—';
+    const c = navigator.connection;
+    document.getElementById('devConn').textContent = c ? `${c.effectiveType || '—'} · ${c.downlink || '?'} Mbps` : '—';
+  }
+
+  /* ── Idle cube: click to "solve" ───────────────────────── */
+  const cubeHost = document.getElementById('cubeHost');
+  if (cubeHost) {
+    cubeHost.addEventListener('click', () => {
+      if (cubeHost.classList.contains('is-solving')) return;
+      cubeHost.classList.add('is-solving');
+      setTimeout(() => cubeHost.classList.remove('is-solving'), 1700);
     });
   }
 

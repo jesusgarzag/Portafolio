@@ -222,5 +222,11 @@
   "mail_status_sending": "Enviando mensaje...",
   "mail_status_sent": "Mensaje enviado. Responderé a la brevedad.",
   "mail_status_error": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme directo a <a href=\"mailto:jesusgarzacia@hotmail.com\">jesusgarzacia@hotmail.com</a>.",
-  "mail_btn_sending": "Enviando..."
+  "mail_btn_sending": "Enviando...",
+  "now_working_label": "now_working:",
+  "now_working_val": "módulo de PTU · Avalia",
+  "cmd_colorscheme": "Cambiar paleta de colores",
+  "cmd_man": "Manual page sobre Jesús",
+  "cmd_htop": "Ver clientes activos como procesos",
+  "cmd_cal": "Agendar una llamada"
 }

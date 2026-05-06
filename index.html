@@ -10,6 +10,10 @@
   <meta name="google-site-verification" content="UH-ryH3ItbHpqrZ2tg2jyNeRqvWJ-3Q_sSFZ9Xyanlc">
   <meta name="theme-color" content="#0c0c0d">
 
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="apple-touch-icon" href="assets/icon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
   <link rel="canonical" href="https://jesusgarza.pages.dev/">
 
   <!-- Open Graph -->
@@ -42,7 +46,92 @@
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "Universidad Autónoma de Nuevo León"
-    }
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Monterrey",
+      "addressRegion": "NL",
+      "addressCountry": "MX"
+    },
+    "workLocation": {
+      "@type": "Place",
+      "name": "Remote · Monterrey, MX"
+    },
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Odoo Backend Developer",
+      "occupationLocation": { "@type": "City", "name": "Monterrey" },
+      "skills": "Python, PostgreSQL, Odoo ORM, Owl, XML-RPC, QWeb, CFDI, REST API, Linux, Red Hat"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Red Hat System Administration I (RH124)",
+        "credentialCategory": "certification",
+        "recognizedBy": { "@type": "Organization", "name": "Red Hat" },
+        "dateCreated": "2024"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Red Hat System Administration II (RH134)",
+        "credentialCategory": "certification",
+        "recognizedBy": { "@type": "Organization", "name": "Red Hat" },
+        "dateCreated": "2024"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Red Hat Enterprise Linux Automation with Ansible (RH294)",
+        "credentialCategory": "certification",
+        "recognizedBy": { "@type": "Organization", "name": "Red Hat" },
+        "dateCreated": "2024"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Featured Odoo modules as CreativeWork list -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Featured Odoo Modules",
+    "description": "Custom Odoo modules in production for 10 companies in Mexico.",
+    "numberOfItems": 17,
+    "itemListElement": [
+      {
+        "@type": "ListItem", "position": 1,
+        "item": {
+          "@type": "SoftwareSourceCode",
+          "name": "Suite de Reportes Financieros — Grupo Avalia",
+          "programmingLanguage": "Python",
+          "runtimePlatform": "Odoo 18",
+          "applicationCategory": "BusinessApplication",
+          "author": { "@type": "Person", "name": "Jesús Gerardo Garza García" }
+        }
+      },
+      {
+        "@type": "ListItem", "position": 2,
+        "item": {
+          "@type": "SoftwareSourceCode",
+          "name": "Control de Cumplimiento Aduanal",
+          "programmingLanguage": "Python",
+          "runtimePlatform": "Odoo 17",
+          "applicationCategory": "BusinessApplication",
+          "author": { "@type": "Person", "name": "Jesús Gerardo Garza García" }
+        }
+      },
+      {
+        "@type": "ListItem", "position": 3,
+        "item": {
+          "@type": "SoftwareSourceCode",
+          "name": "EDI IKIGAI — REST API",
+          "programmingLanguage": "Python",
+          "runtimePlatform": "Odoo 17",
+          "applicationCategory": "BusinessApplication",
+          "author": { "@type": "Person", "name": "Jesús Gerardo Garza García" }
+        }
+      }
+    ]
   }
   </script>
 
@@ -103,6 +192,10 @@
         <span class="sidebar__logo">jesus<span class="accent">.garza</span></span>
         <span class="sidebar__role" data-i18n="backend_dev">Desarrollador Backend</span>
         <span class="sidebar__status" data-i18n="status_available">Disponible para trabajar</span>
+        <span class="sidebar__working">
+          <span class="sidebar__working-key" data-i18n="now_working_label">now_working:</span>
+          <span class="sidebar__working-val" data-i18n="now_working_val">módulo de conciliación bancaria · Avalia</span>
+        </span>
       </div>
 
       <nav class="cmdlist" aria-label="Commands">
@@ -187,6 +280,7 @@
             <div class="neofetch__row"><span class="neofetch__key">shell</span><span class="neofetch__val">/bin/zsh · vim · tmux</span></div>
             <div class="neofetch__row"><span class="neofetch__key">location</span><span class="neofetch__val">Monterrey, MX · UTC-6</span></div>
             <div class="neofetch__row"><span class="neofetch__key">uptime</span><span class="neofetch__val" data-i18n="neofetch_uptime">17 módulos · 10 clientes · 3 certs</span></div>
+            <div class="neofetch__row"><span class="neofetch__key">last_push</span><span class="neofetch__val" id="ghLastPush"><span class="dim">checking github...</span></span></div>
           </div>
         </div>
 
@@ -913,6 +1007,221 @@
   </div>
 
   <!-- ════════════════════════════════════════════════════
+       COLORSCHEME PICKER
+       ════════════════════════════════════════════════════ -->
+  <div class="scheme-picker" id="schemePicker" role="dialog" aria-modal="true" aria-label="Color scheme">
+    <div class="scheme-picker__box">
+      <header class="scheme-picker__head">
+        <div class="branches__prompt">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">:colorscheme</span>
+        </div>
+        <button class="branches__close" id="closeScheme" aria-label="Close">×</button>
+      </header>
+      <div class="scheme-picker__list" id="schemeList">
+        <button class="scheme" data-scheme="dark">
+          <span class="scheme__bar"
+            style="--c1:#0c0c0d;--c2:#141416;--c3:#1a1a1c;--c4:#e6b450;--c5:#7fb069;"></span>
+          <span class="scheme__name">terminal-dark</span>
+          <span class="scheme__desc">default · ámbar cálido</span>
+        </button>
+        <button class="scheme" data-scheme="light">
+          <span class="scheme__bar"
+            style="--c1:#faf9f6;--c2:#f0eee8;--c3:#e8e6df;--c4:#a86a2c;--c5:#4a7a3a;"></span>
+          <span class="scheme__name">terminal-light</span>
+          <span class="scheme__desc">paper · solarized-ish</span>
+        </button>
+        <button class="scheme" data-scheme="nord">
+          <span class="scheme__bar"
+            style="--c1:#2e3440;--c2:#3b4252;--c3:#434c5e;--c4:#88c0d0;--c5:#a3be8c;"></span>
+          <span class="scheme__name">nord</span>
+          <span class="scheme__desc">arctic · frost cyan</span>
+        </button>
+        <button class="scheme" data-scheme="gruvbox">
+          <span class="scheme__bar"
+            style="--c1:#282828;--c2:#32302f;--c3:#3c3836;--c4:#fabd2f;--c5:#b8bb26;"></span>
+          <span class="scheme__name">gruvbox</span>
+          <span class="scheme__desc">retro · warm yellow</span>
+        </button>
+        <button class="scheme" data-scheme="dracula">
+          <span class="scheme__bar"
+            style="--c1:#282a36;--c2:#343746;--c3:#44475a;--c4:#bd93f9;--c5:#50fa7b;"></span>
+          <span class="scheme__name">dracula</span>
+          <span class="scheme__desc">vibrant · purple</span>
+        </button>
+        <button class="scheme" data-scheme="tokyo-night">
+          <span class="scheme__bar"
+            style="--c1:#1a1b26;--c2:#1f2335;--c3:#24283b;--c4:#7aa2f7;--c5:#9ece6a;"></span>
+          <span class="scheme__name">tokyo-night</span>
+          <span class="scheme__desc">night · electric blue</span>
+        </button>
+        <button class="scheme" data-scheme="catppuccin">
+          <span class="scheme__bar"
+            style="--c1:#1e1e2e;--c2:#181825;--c3:#313244;--c4:#f5c2e7;--c5:#a6e3a1;"></span>
+          <span class="scheme__name">catppuccin</span>
+          <span class="scheme__desc">mocha · pastel pink</span>
+        </button>
+        <button class="scheme" data-scheme="solarized">
+          <span class="scheme__bar"
+            style="--c1:#fdf6e3;--c2:#f0eacf;--c3:#eee8d5;--c4:#b58900;--c5:#859900;"></span>
+          <span class="scheme__name">solarized</span>
+          <span class="scheme__desc">light · ethan schoonover</span>
+        </button>
+      </div>
+      <footer class="branches__foot">
+        <span class="branches__hint"><kbd>Esc</kbd> <span data-i18n="branches_close">cerrar</span></span>
+        <span class="branches__count">8 schemes</span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       MAN PAGE — `man jesus`
+       ════════════════════════════════════════════════════ -->
+  <div class="man" id="manPage" role="dialog" aria-modal="true" aria-label="man jesus">
+    <div class="man__box">
+      <header class="man__topbar">
+        <span class="man__title">JESUS(1)</span>
+        <span class="man__title">User Commands</span>
+        <span class="man__title">JESUS(1)</span>
+        <button class="branches__close" id="closeMan" aria-label="Close" style="position:absolute;right:12px;top:8px;">×</button>
+      </header>
+
+      <article class="man__body">
+
+        <h3 class="man__sec">NAME</h3>
+        <p class="man__p"><b>jesus.garza</b> — backend developer specialized in Odoo and Python ecosystems.</p>
+
+        <h3 class="man__sec">SYNOPSIS</h3>
+        <pre class="man__pre">jesus.garza [<i>OPTIONS</i>] &lt;<i>project</i>&gt; [<i>arguments</i>...]</pre>
+
+        <h3 class="man__sec">DESCRIPTION</h3>
+        <p class="man__p">
+          <b>jesus.garza</b> is a Mexican backend developer (b. Monterrey, NL).
+          Builds custom modules and integrations for the Odoo ERP, with a focus on Mexican
+          fiscal compliance (CFDI 4.0, SAT, DIOT), customs (pedimentos), payroll, and
+          inventory traceability. Reads Linux man pages for fun.
+        </p>
+        <p class="man__p">
+          Currently maintains <b>17+ modules</b> in production for <b>10 companies</b>,
+          across Odoo versions <b>17, 18 and 19</b>.
+        </p>
+
+        <h3 class="man__sec">OPTIONS</h3>
+        <dl class="man__dl">
+          <dt>-l, --language</dt>   <dd>Spanish (native), English (advanced).</dd>
+          <dt>-s, --stack</dt>      <dd>Python · PostgreSQL · Odoo ORM · Owl · QWeb · XML-RPC · REST.</dd>
+          <dt>-c, --certifications</dt><dd>RH124 · RH134 · RH294 (Ansible). EGEL-CENEVAL Outstanding.</dd>
+          <dt>-t, --timezone</dt>   <dd>America/Monterrey · UTC-6.</dd>
+          <dt>--available</dt>      <dd>Currently accepting work.</dd>
+        </dl>
+
+        <h3 class="man__sec">EXAMPLES</h3>
+        <pre class="man__pre">$ jesus.garza --hire        <span class="dim"># initiate contact via mail</span>
+$ jesus.garza --see-modules <span class="dim"># scroll to ls -la modules/</span>
+$ jesus.garza --book-call   <span class="dim"># cal.com/jesusgarza</span></pre>
+
+        <h3 class="man__sec">FILES</h3>
+        <pre class="man__pre"><span class="ansi-cyan">~/about.md</span>          biography &amp; intro
+<span class="ansi-cyan">~/experience/</span>       roles, dates, responsibilities
+<span class="ansi-cyan">~/modules/odoo/</span>     17 production-grade Odoo modules
+<span class="ansi-cyan">~/projects.json</span>     side projects (open source &amp; web)
+<span class="ansi-cyan">~/.cv.pdf</span>           résumé (es / en)</pre>
+
+        <h3 class="man__sec">ENVIRONMENT</h3>
+        <dl class="man__dl">
+          <dt>EDITOR</dt>     <dd>vim</dd>
+          <dt>SHELL</dt>      <dd>/bin/zsh</dd>
+          <dt>TERM</dt>       <dd>xterm-256color · tmux</dd>
+          <dt>LANG</dt>       <dd>es_MX.UTF-8</dd>
+        </dl>
+
+        <h3 class="man__sec">DIAGNOSTICS</h3>
+        <p class="man__p">
+          Exits <b>0</b> when the deliverable matches the spec, edge cases included.
+          Exits <b>1</b> when the spec is wrong; opens an issue, suggests a fix, ships the fix.
+        </p>
+
+        <h3 class="man__sec">SEE ALSO</h3>
+        <p class="man__p">
+          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener">github(1)</a>,
+          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener">linkedin(1)</a>,
+          <a href="mailto:jesusgarzacia@hotmail.com">mail(1)</a>,
+          <a href="https://cal.com/jesusgarza" target="_blank" rel="noopener">cal(1)</a>
+        </p>
+
+        <h3 class="man__sec">BUGS</h3>
+        <p class="man__p">
+          Occasionally writes overly clever Odoo overrides. Report at
+          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener">github.com/jesusgarzag</a>.
+        </p>
+
+        <h3 class="man__sec">AUTHOR</h3>
+        <p class="man__p">Jesús Gerardo Garza García &lt;jesusgarzacia@hotmail.com&gt;</p>
+
+        <p class="man__footer">Monterrey · 2026 &nbsp;·&nbsp; JESUS(1)</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       HTOP — fake top with 10 client processes
+       ════════════════════════════════════════════════════ -->
+  <div class="htop" id="htopOverlay" role="dialog" aria-modal="true" aria-label="htop">
+    <div class="htop__box">
+      <header class="htop__head">
+        <div class="branches__prompt">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">htop</span>
+        </div>
+        <button class="branches__close" id="closeHtop" aria-label="Close">×</button>
+      </header>
+
+      <div class="htop__bars">
+        <div class="htop__bar"><span>CPU[</span><span class="htop__bar-track" data-load="62"></span><span class="htop__bar-num">62.0%</span><span>]</span></div>
+        <div class="htop__bar"><span>MEM[</span><span class="htop__bar-track" data-load="48"></span><span class="htop__bar-num">3.8/8.0G</span><span>]</span></div>
+        <div class="htop__meta">
+          <span>Tasks: <b>10</b></span>
+          <span>Load: 1.07 1.12 1.05</span>
+          <span>Uptime: 17m · 10c · 6a</span>
+        </div>
+      </div>
+
+      <table class="htop__table" aria-label="Client processes">
+        <thead>
+          <tr>
+            <th>PID</th><th>USER</th><th>CPU%</th><th>MEM%</th><th>TIME+</th><th class="htop__name-col">COMMAND</th>
+          </tr>
+        </thead>
+        <tbody id="htopRows">
+          <tr data-cpu="22"><td>1001</td><td>avalia</td><td class="cpu">22.4</td><td>14.1</td><td>9:32:11</td><td>odoo-bin -d avalia · finanzas</td></tr>
+          <tr data-cpu="14"><td>1002</td><td>dimex</td><td class="cpu">14.3</td><td>10.7</td><td>4:18:45</td><td>odoo-bin -d dimex · fiscal</td></tr>
+          <tr data-cpu="11"><td>1003</td><td>casaguerra</td><td class="cpu">11.2</td><td> 8.5</td><td>3:55:09</td><td>odoo-bin -d casaguerra · facturación</td></tr>
+          <tr data-cpu="9"> <td>1004</td><td>cosesa</td><td class="cpu"> 9.1</td><td> 6.3</td><td>2:41:00</td><td>odoo-bin -d cosesa · contabilidad</td></tr>
+          <tr data-cpu="8"> <td>1005</td><td>forrajera</td><td class="cpu"> 8.4</td><td> 5.9</td><td>2:12:33</td><td>odoo-bin -d forrajera · inventario</td></tr>
+          <tr data-cpu="7"> <td>1006</td><td>recavisa</td><td class="cpu"> 7.6</td><td> 5.2</td><td>1:55:22</td><td>odoo-bin -d recavisa · aduanas</td></tr>
+          <tr data-cpu="5"> <td>1007</td><td>interenter</td><td class="cpu"> 5.1</td><td> 4.0</td><td>1:30:08</td><td>odoo-bin -d interenter · almacén</td></tr>
+          <tr data-cpu="4"> <td>1008</td><td>fgh</td><td class="cpu"> 4.2</td><td> 3.5</td><td>0:58:14</td><td>odoo-bin -d fgh · ventas</td></tr>
+          <tr data-cpu="3"> <td>1009</td><td>invent</td><td class="cpu"> 3.0</td><td> 2.8</td><td>0:42:51</td><td>odoo-bin -d invent · compras</td></tr>
+          <tr data-cpu="2"> <td>1010</td><td>ikigai</td><td class="cpu"> 2.7</td><td> 2.1</td><td>0:31:07</td><td>edi-api · sap → odoo</td></tr>
+        </tbody>
+      </table>
+
+      <footer class="htop__foot">
+        <span><kbd>F1</kbd> Help</span>
+        <span><kbd>F3</kbd> Search</span>
+        <span><kbd>F5</kbd> Tree</span>
+        <span><kbd>F9</kbd> Kill</span>
+        <span><kbd>F10</kbd>/<kbd>q</kbd>/<kbd>Esc</kbd> Quit</span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
        BRANCH PICKER (other portfolio versions)
        ════════════════════════════════════════════════════ -->
   <div class="branches" id="branches" role="dialog" aria-modal="true" aria-label="Other portfolio versions">
@@ -1023,6 +1332,43 @@
         <span class="branches__count">3 branches</span>
       </footer>
     </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       IDLE CUBE (Rubik) — CSS-only 3D rotating
+       ════════════════════════════════════════════════════ -->
+  <div class="cube-host is-active" id="cubeHost" title="¿Te resuelvo?" aria-label="Rubik's cube easter egg">
+    <div class="cube" id="cube" aria-hidden="true">
+      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       DEV PANEL (logo x5 click)
+       ════════════════════════════════════════════════════ -->
+  <div class="dev-panel" id="devPanel" role="dialog" aria-label="Dev stats">
+    <div class="dev-panel__head">
+      <span>// dev_panel</span>
+      <span class="dev-panel__close" id="closeDev" role="button" aria-label="Close">×</span>
+    </div>
+    <dl class="dev-panel__body">
+      <dt>scheme</dt><dd id="devScheme">dark</dd>
+      <dt>lang</dt><dd id="devLang">es</dd>
+      <dt>viewport</dt><dd id="devVp">—</dd>
+      <dt>dpr</dt><dd id="devDpr">—</dd>
+      <dt>load</dt><dd id="devLoad">—</dd>
+      <dt>html bytes</dt><dd id="devHtml">—</dd>
+      <dt>memory</dt><dd id="devMem">—</dd>
+      <dt>connection</dt><dd id="devConn">—</dd>
+      <div class="dev-panel__row">
+        <small>build: <span id="devBuild">terminal v3.0 · 2026</span></small>
+      </div>
+    </dl>
   </div>
 
   <!-- ════════════════════════════════════════════════════

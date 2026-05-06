@@ -1,0 +1,27 @@
+{
+  "name": "Jesús Garza · Backend Developer",
+  "short_name": "jesus.garza",
+  "description": "Portafolio de Jesús Garza · Odoo Developer · Python · PostgreSQL · CFDI · REST APIs",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "lang": "es-MX",
+  "categories": ["productivity", "developer", "portfolio"],
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

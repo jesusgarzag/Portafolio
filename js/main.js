@@ -4,31 +4,57 @@
 
 (function () {
 
-  /* ── Theme toggle ─────────────────────────────────────── */
-  const THEME_KEY = 'theme';
+  /* ── Color scheme (theme toggle + multiple schemes) ───── */
+  const SCHEME_KEY = 'colorscheme';
+  const LIGHT_SCHEMES = ['light', 'solarized'];
   const themeBtn = document.getElementById('themeToggle');
 
-  function applyTheme(theme) {
-    if (theme === 'light') document.body.classList.add('light');
-    else document.body.classList.remove('light');
-    if (themeBtn) themeBtn.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+  function applyScheme(scheme) {
+    document.documentElement.setAttribute('data-theme', scheme);
+    document.body.classList.toggle('light', LIGHT_SCHEMES.includes(scheme));
+    if (themeBtn) {
+      themeBtn.setAttribute('aria-pressed', LIGHT_SCHEMES.includes(scheme) ? 'true' : 'false');
+    }
+    document.querySelectorAll('.scheme[data-scheme]').forEach(el => {
+      el.classList.toggle('is-active', el.dataset.scheme === scheme);
+    });
+    window.__currentScheme = scheme;
   }
 
-  function getStoredTheme() {
-    const v = localStorage.getItem(THEME_KEY);
-    if (v === 'light' || v === 'dark') return v;
+  function getStoredScheme() {
+    const v = localStorage.getItem(SCHEME_KEY);
+    if (v) return v;
+    // legacy: fall back to old "theme" key
+    const legacy = localStorage.getItem('theme');
+    if (legacy === 'light' || legacy === 'dark') return legacy;
     return window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   }
 
-  applyTheme(getStoredTheme());
+  function setScheme(name) {
+    applyScheme(name);
+    localStorage.setItem(SCHEME_KEY, name);
+  }
 
+  applyScheme(getStoredScheme());
+
+  // Toggle button: cycles dark <-> light (most common case)
   if (themeBtn) {
     themeBtn.addEventListener('click', () => {
-      const next = document.body.classList.contains('light') ? 'dark' : 'light';
-      applyTheme(next);
-      localStorage.setItem(THEME_KEY, next);
+      const cur = window.__currentScheme || 'dark';
+      const next = LIGHT_SCHEMES.includes(cur) ? 'dark' : 'light';
+      setScheme(next);
     });
   }
+
+  // Bind scheme picker buttons
+  document.querySelectorAll('.scheme[data-scheme]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setScheme(btn.dataset.scheme);
+    });
+  });
+
+  // Expose API for terminal.js
+  window.scheme = { set: setScheme, get: () => window.__currentScheme };
 
   /* ── Smooth scroll (offset for sticky topbar) ──────────── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -142,6 +168,49 @@
       const icon = firstHead.querySelector('.ls__group-icon');
       if (icon) icon.textContent = '▾';
     }
+  }
+
+  /* ── GitHub activity (last public push) ────────────────── */
+  const ghEl = document.getElementById('ghLastPush');
+  function relTime(iso) {
+    const d = new Date(iso);
+    const diff = (Date.now() - d.getTime()) / 1000;
+    if (diff < 60)        return Math.round(diff) + 's ago';
+    if (diff < 3600)      return Math.round(diff / 60) + 'm ago';
+    if (diff < 86400)     return Math.round(diff / 3600) + 'h ago';
+    if (diff < 604800)    return Math.round(diff / 86400) + 'd ago';
+    return Math.round(diff / 604800) + 'w ago';
+  }
+  function loadGitHub() {
+    if (!ghEl) return;
+    fetch('https://api.github.com/users/jesusgarzag/events/public?per_page=30', {
+      headers: { 'Accept': 'application/vnd.github+json' }
+    })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(events => {
+        const push = events.find(e => e.type === 'PushEvent');
+        if (!push) {
+          const any = events[0];
+          if (!any) throw new Error('no events');
+          ghEl.innerHTML = `<a href="https://github.com/${any.actor.login}" target="_blank" rel="noopener">${relTime(any.created_at)} · ${any.type.replace('Event','').toLowerCase()} on ${any.repo.name}</a>`;
+          return;
+        }
+        const repo = push.repo.name;
+        const repoShort = repo.split('/')[1] || repo;
+        const time = relTime(push.created_at);
+        ghEl.innerHTML = `<a href="https://github.com/${repo}" target="_blank" rel="noopener">${time} · ${repoShort}</a>`;
+      })
+      .catch(() => {
+        ghEl.innerHTML = '<a href="https://github.com/jesusgarzag" target="_blank" rel="noopener">github.com/jesusgarzag</a>';
+      });
+  }
+  loadGitHub();
+
+  /* ── PWA service worker (cache-first shell) ────────────── */
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
   }
 
   /* ── Mobile sidebar drawer ─────────────────────────────── */

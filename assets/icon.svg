@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0c0c0d"/>
+  <rect x="40" y="40" width="432" height="432" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <text x="256" y="320" font-family="ui-monospace, 'JetBrains Mono', 'Geist Mono', monospace"
+        font-size="280" font-weight="700" fill="#e6b450" text-anchor="middle"
+        letter-spacing="-12">J</text>
+  <rect x="332" y="120" width="20" height="220" fill="#e6b450">
+    <animate attributeName="opacity" values="1;0;1" dur="1.06s" repeatCount="indefinite"/>
+  </rect>
+</svg>

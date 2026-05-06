@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0c0c0d"/>
+  <text x="256" y="328" font-family="ui-monospace, 'JetBrains Mono', monospace"
+        font-size="220" font-weight="700" fill="#e6b450" text-anchor="middle"
+        letter-spacing="-10">J</text>
+  <rect x="316" y="160" width="16" height="170" fill="#e6b450"/>
+</svg>
