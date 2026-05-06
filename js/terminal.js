@@ -89,6 +89,7 @@
     { cmd: 'cal jesus',             desc_key: 'cmd_cal',        href: 'https://cal.com/jesusgarza' },
     { cmd: 'man jesus',             desc_key: 'cmd_man',        action: 'man' },
     { cmd: 'htop',                  desc_key: 'cmd_htop',       action: 'htop' },
+    { cmd: './rubik',               desc_key: 'cmd_rubik',      action: 'rubik' },
   ];
 
   const palette       = document.getElementById('palette');
@@ -174,6 +175,8 @@
       openMan();
     } else if (cmd.action === 'htop') {
       openHtop();
+    } else if (cmd.action === 'rubik') {
+      openRubik();
     }
   }
 
@@ -315,6 +318,7 @@
       if (scheme.isOpen()) closeScheme();
       if (man.isOpen()) closeMan();
       if (htop.isOpen()) { closeHtop(); }
+      if (rubik.isOpen()) closeRubik();
     }
   });
 
@@ -449,15 +453,188 @@
     document.getElementById('devConn').textContent = c ? `${c.effectiveType || '—'} · ${c.downlink || '?'} Mbps` : '—';
   }
 
-  /* ── Idle cube: click to "solve" ───────────────────────── */
-  const cubeHost = document.getElementById('cubeHost');
-  if (cubeHost) {
-    cubeHost.addEventListener('click', () => {
-      if (cubeHost.classList.contains('is-solving')) return;
-      cubeHost.classList.add('is-solving');
-      setTimeout(() => cubeHost.classList.remove('is-solving'), 1700);
+  /* ── Rubik 2x2 functional ──────────────────────────────── */
+  const rubik = makeOverlayToggle('rubikOverlay', 'rubik-open', 'RUBIK');
+  function openRubik() { rubik.open(); rubikInit(); }
+  function closeRubik() { rubik.close(); }
+  document.getElementById('closeRubik')?.addEventListener('click', closeRubik);
+  rubik.el?.addEventListener('click', e => { if (e.target === rubik.el) closeRubik(); });
+
+  // 2x2 state and rendering
+  const RB_HALF = 32;          // half-size of a cubie in px
+  const RB_ANIM = 280;         // ms
+  const RB_FACES = ['U','D','L','R','F','B'];
+  const RB_MOVES = {
+    //              axis  coord  val   deg
+    U:  { axis:'y', coord:1, val:-1, deg: -90, inv:'Up' },
+    Up: { axis:'y', coord:1, val:-1, deg:  90, inv:'U'  },
+    D:  { axis:'y', coord:1, val: 1, deg:  90, inv:'Dp' },
+    Dp: { axis:'y', coord:1, val: 1, deg: -90, inv:'D'  },
+    L:  { axis:'x', coord:0, val:-1, deg: -90, inv:'Lp' },
+    Lp: { axis:'x', coord:0, val:-1, deg:  90, inv:'L'  },
+    R:  { axis:'x', coord:0, val: 1, deg:  90, inv:'Rp' },
+    Rp: { axis:'x', coord:0, val: 1, deg: -90, inv:'R'  },
+    F:  { axis:'z', coord:2, val: 1, deg:  90, inv:'Fp' },
+    Fp: { axis:'z', coord:2, val: 1, deg: -90, inv:'F'  },
+    B:  { axis:'z', coord:2, val:-1, deg: -90, inv:'Bp' },
+    Bp: { axis:'z', coord:2, val:-1, deg:  90, inv:'B'  },
+  };
+
+  function rotVec(v, axis, deg) {
+    const [x, y, z] = v;
+    if (axis === 'x') return deg ===  90 ? [x, -z,  y] : [x,  z, -y];
+    if (axis === 'y') return deg ===  90 ? [z,  y, -x] : [-z,  y,  x];
+    return                   deg ===  90 ? [-y,  x,  z] : [ y, -x,  z];
+  }
+
+  let rb_state = null;       // [{el, pos:[x,y,z], rot: string}, ...]
+  let rb_busy = false;
+  let rb_count = 0;
+  let rb_initialized = false;
+  let rb_history = [];
+
+  function rubikRenderTransform(c) {
+    const [x, y, z] = c.pos;
+    return `translate3d(${x * RB_HALF}px, ${y * RB_HALF}px, ${z * RB_HALF}px) ${c.rot}`;
+  }
+
+  function rubikBuild() {
+    const root = document.getElementById('rubikCubies');
+    if (!root) return;
+    root.innerHTML = '';
+    rb_state = [];
+    for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) {
+      const el = document.createElement('div');
+      el.className = 'rubik__cubie';
+      // Each cubie carries 6 stickers; only the outward-facing ones are visible (others overlap inside).
+      for (const f of RB_FACES) {
+        const s = document.createElement('span');
+        s.className = `rubik__sticker rubik__sticker--${f}`;
+        el.appendChild(s);
+      }
+      const c = { el, pos: [x, y, z], rot: '' };
+      el.style.transform = rubikRenderTransform(c);
+      root.appendChild(el);
+      rb_state.push(c);
+    }
+  }
+
+  function rubikUpdateStats(lastMove) {
+    const cnt = document.getElementById('rubikCount');
+    const lst = document.getElementById('rubikLast');
+    if (cnt) cnt.textContent = rb_count;
+    if (lst && lastMove) lst.textContent = lastMove.replace('p', "'");
+  }
+
+  function rubikInit() {
+    if (rb_initialized) return;
+    rb_initialized = true;
+    rubikBuild();
+    rubikUpdateStats();
+
+    document.getElementById('rubikMovePad')?.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-move]');
+      if (!btn || rb_busy) return;
+      applyMove(btn.dataset.move, true);
+    });
+    document.getElementById('rubikScramble')?.addEventListener('click', () => {
+      if (rb_busy) return;
+      rubikScramble(15);
+    });
+    document.getElementById('rubikReset')?.addEventListener('click', () => {
+      if (rb_busy) return;
+      rubikBuild();
+      rb_count = 0;
+      rb_history = [];
+      rubikUpdateStats('—');
+      const lst = document.getElementById('rubikLast');
+      if (lst) lst.textContent = '—';
     });
   }
+
+  function applyMove(name, fromUser) {
+    const m = RB_MOVES[name];
+    if (!m || rb_busy) return Promise.resolve();
+    rb_busy = true;
+
+    // Pick affected cubies
+    const layer = document.createElement('div');
+    layer.className = 'rubik__layer';
+    const root = document.getElementById('rubikCubies');
+    if (!root) { rb_busy = false; return Promise.resolve(); }
+
+    const affected = rb_state.filter(c => c.pos[m.coord] === m.val);
+    affected.forEach(c => layer.appendChild(c.el));
+    root.appendChild(layer);
+
+    // Force layout to register the layer with current transforms
+    // before applying its rotation.
+    void layer.offsetWidth;
+
+    // Animate the layer rotating around the cube center on the chosen axis
+    const axisMap = { x: 'X', y: 'Y', z: 'Z' };
+    layer.style.transform = `rotate${axisMap[m.axis]}(${m.deg}deg)`;
+
+    return new Promise(resolve => {
+      setTimeout(() => {
+        // Commit: compute final pos/rot for each affected cubie, set transform,
+        // and reparent back to root (without flicker).
+        affected.forEach(c => {
+          c.pos = rotVec(c.pos, m.axis, m.deg);
+          c.rot = `rotate${axisMap[m.axis]}(${m.deg}deg) ${c.rot}`;
+          // Apply final transform BEFORE reparenting (still in rotated layer it
+          // would render wrong, so we move it to root immediately after).
+          c.el.style.transform = rubikRenderTransform(c);
+          root.appendChild(c.el);
+        });
+        layer.remove();
+
+        if (fromUser) {
+          rb_count++;
+          rb_history.push(name);
+          rubikUpdateStats(name);
+        }
+        rb_busy = false;
+        resolve();
+      }, RB_ANIM + 20);
+    });
+  }
+
+  async function rubikScramble(n) {
+    if (rb_busy) return;
+    const moves = Object.keys(RB_MOVES);
+    let last = '';
+    for (let i = 0; i < n; i++) {
+      let m;
+      do { m = moves[Math.floor(Math.random() * moves.length)]; }
+      while (m === last || m === RB_MOVES[last]?.inv);
+      last = m;
+      rb_count++;
+      rb_history.push(m);
+      rubikUpdateStats(m);
+      await applyMove(m, false);
+    }
+  }
+
+  // Keyboard shortcuts inside the overlay
+  document.addEventListener('keydown', e => {
+    if (!rubik.isOpen()) return;
+    if (e.target.matches('input, textarea')) return;
+    const k = e.key;
+    if (k === 'Escape') return; // global handler closes
+    const upper = k.toUpperCase();
+    if ('UDLRFB'.includes(upper)) {
+      e.preventDefault();
+      const move = e.shiftKey ? upper + 'p' : upper;
+      if (RB_MOVES[move]) applyMove(move, true);
+    } else if (k === 's' || k === 'S') {
+      e.preventDefault();
+      rubikScramble(15);
+    } else if (k === '0') {
+      e.preventDefault();
+      document.getElementById('rubikReset')?.click();
+    }
+  });
 
   /* ── Boot ──────────────────────────────────────────────── */
   initTyping();

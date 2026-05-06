@@ -228,5 +228,7 @@
   "cmd_colorscheme": "Cambiar paleta de colores",
   "cmd_man": "Manual page sobre Jesús",
   "cmd_htop": "Ver clientes activos como procesos",
-  "cmd_cal": "Agendar una llamada"
+  "cmd_cal": "Agendar una llamada",
+  "cmd_rubik": "Cubo de Rubik 2x2 interactivo",
+  "rubik_hint_keys": "teclas U D L R F B · shift = inverso · S=scramble · 0=reset"
 }

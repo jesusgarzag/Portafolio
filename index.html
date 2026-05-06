@@ -1335,16 +1335,48 @@ $ jesus.garza --book-call   <span class="dim"># cal.com/jesusgarza</span></pre>
   </div>
 
   <!-- ════════════════════════════════════════════════════
-       IDLE CUBE (Rubik) — CSS-only 3D rotating
+       RUBIK'S CUBE 2x2 — interactive
        ════════════════════════════════════════════════════ -->
-  <div class="cube-host is-active" id="cubeHost" title="¿Te resuelvo?" aria-label="Rubik's cube easter egg">
-    <div class="cube" id="cube" aria-hidden="true">
-      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="cube__face"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="rubik" id="rubikOverlay" role="dialog" aria-modal="true" aria-label="Rubik 2x2">
+    <div class="rubik__box">
+      <header class="rubik__head">
+        <div class="branches__prompt">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">./rubik</span>
+        </div>
+        <button class="branches__close" id="closeRubik" aria-label="Close">×</button>
+      </header>
+
+      <div class="rubik__stage">
+        <div class="rubik__scene">
+          <div class="rubik__cubies" id="rubikCubies"></div>
+        </div>
+      </div>
+
+      <div class="rubik__bar">
+        <div class="rubik__moves" id="rubikMovePad">
+          <button data-move="U">U</button>   <button data-move="Up">U'</button>
+          <button data-move="D">D</button>   <button data-move="Dp">D'</button>
+          <button data-move="L">L</button>   <button data-move="Lp">L'</button>
+          <button data-move="R">R</button>   <button data-move="Rp">R'</button>
+          <button data-move="F">F</button>   <button data-move="Fp">F'</button>
+          <button data-move="B">B</button>   <button data-move="Bp">B'</button>
+        </div>
+        <div class="rubik__actions">
+          <button class="btn btn--ghost" id="rubikScramble">scramble</button>
+          <button class="btn btn--ghost" id="rubikReset">reset</button>
+        </div>
+        <div class="rubik__stats">
+          <span class="rubik__stat"><span class="rubik__stat-key">moves:</span> <span id="rubikCount">0</span></span>
+          <span class="rubik__stat"><span class="rubik__stat-key">last:</span> <span id="rubikLast">—</span></span>
+        </div>
+      </div>
+
+      <footer class="branches__foot">
+        <span class="branches__hint" data-i18n="rubik_hint_keys">teclas U D L R F B · shift = inverso · S=scramble · 0=reset</span>
+      </footer>
     </div>
   </div>
 
