@@ -246,8 +246,34 @@
     }
   });
 
-  /* ── Mail form: Ctrl+Enter submits ─────────────────────── */
-  const mailForm = document.getElementById('form-contacto');
+  /* ── Mail form: Ctrl+Enter submits + status feedback ─── */
+  const mailForm   = document.getElementById('form-contacto');
+  const mailStatus = document.getElementById('mailStatus');
+  const mailSubmit = document.getElementById('mailSubmit');
+  const mailBtnLabel = mailSubmit?.querySelector('.mail__btn-label');
+
+  function setMailStatus(state, key) {
+    if (!mailStatus) return;
+    mailStatus.hidden = !state;
+    mailStatus.classList.remove('mail__status--pending', 'mail__status--ok', 'mail__status--err');
+    if (!state) { mailStatus.innerHTML = ''; return; }
+    mailStatus.classList.add(`mail__status--${state}`);
+    const text = (window.i18n && window.i18n.t(key)) || key;
+    // allow simple HTML (e.g. fallback link in error)
+    mailStatus.innerHTML = `<span>${text}</span>`;
+  }
+
+  function setMailBusy(busy) {
+    if (!mailSubmit) return;
+    mailSubmit.disabled = busy;
+    mailSubmit.setAttribute('aria-busy', busy ? 'true' : 'false');
+    if (mailBtnLabel) {
+      const key = busy ? 'mail_btn_sending' : 'send_message';
+      const txt = (window.i18n && window.i18n.t(key));
+      if (txt) mailBtnLabel.textContent = txt;
+    }
+  }
+
   if (mailForm) {
     mailForm.addEventListener('keydown', e => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
@@ -255,8 +281,13 @@
         mailForm.requestSubmit();
       }
     });
+
     mailForm.addEventListener('submit', e => {
       e.preventDefault();
+      setMailBusy(true);
+      setMailStatus('pending', 'mail_status_sending');
+      setMode('SEND');
+
       const data = new FormData(mailForm);
       fetch(mailForm.action, {
         method: 'POST',
@@ -265,14 +296,17 @@
       }).then(r => {
         if (r.ok) {
           mailForm.reset();
+          setMailStatus('ok', 'mail_status_sent');
           setMode('SENT');
-          setTimeout(() => setMode('NORMAL'), 2400);
         } else {
+          setMailStatus('err', 'mail_status_error');
           setMode('ERROR');
-          setTimeout(() => setMode('NORMAL'), 2400);
         }
       }).catch(() => {
+        setMailStatus('err', 'mail_status_error');
         setMode('ERROR');
+      }).finally(() => {
+        setMailBusy(false);
         setTimeout(() => setMode('NORMAL'), 2400);
       });
     });

@@ -224,7 +224,10 @@
   margin: var(--sp-2) 0 var(--sp-3);
   word-break: break-word;
 }
-.hero__name .accent { color: var(--accent); }
+.hero__name .accent {
+  color: var(--accent);
+  animation: caret-pulse 1.06s steps(2) infinite;
+}
 
 .hero__role {
   font-size: var(--fs-md);

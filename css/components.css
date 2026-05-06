@@ -689,6 +689,63 @@
 
 .mail__hint kbd { margin: 0 2px; }
 
+/* Mail send status (terminal output below the form) */
+.mail__status {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 1px dashed var(--border);
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--text);
+  background: var(--bg);
+}
+.mail__status[hidden] { display: none; }
+.mail__status::before {
+  flex-shrink: 0;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.mail__status--pending {
+  color: var(--text-dim);
+}
+.mail__status--pending::before {
+  content: '[...]';
+  color: var(--ansi-yellow);
+  animation: caret-pulse 0.8s steps(2) infinite;
+}
+.mail__status--ok {
+  color: var(--text);
+  background: var(--accent-soft);
+  border-top-color: var(--border-accent);
+}
+.mail__status--ok::before {
+  content: '[OK]';
+  color: var(--ansi-green);
+}
+.mail__status--err {
+  color: var(--text);
+}
+.mail__status--err::before {
+  content: '[ERR]';
+  color: var(--ansi-red);
+}
+.mail__status a {
+  color: var(--accent);
+  border-bottom: 1px dashed transparent;
+  transition: border-color var(--t-fast);
+}
+.mail__status a:hover { border-bottom-color: var(--border-accent); }
+
+.btn[disabled],
+.btn[aria-busy="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* ── Contact links list ────────────────────────────────── */
 .contact-links {
   display: grid;

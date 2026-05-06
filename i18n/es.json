@@ -218,5 +218,9 @@
   "branch_gateway_desc": "Split-panel sticky-left. Portal a dimensiones paralelas: WebGL Fluids (Navier-Stokes) y WebGPU Tubes.",
   "branch_current": "// versión actual",
   "branches_close": "cerrar",
-  "branches_toggle": "alternar"
+  "branches_toggle": "alternar",
+  "mail_status_sending": "Enviando mensaje...",
+  "mail_status_sent": "Mensaje enviado. Responderé a la brevedad.",
+  "mail_status_error": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme directo a <a href=\"mailto:jesusgarzacia@hotmail.com\">jesusgarzacia@hotmail.com</a>.",
+  "mail_btn_sending": "Enviando..."
 }

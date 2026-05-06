@@ -113,6 +113,21 @@
   .footer { flex-direction: column; align-items: flex-start; }
 
   .palette__box { width: 94vw; }
+  .palette__item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2px;
+    padding: var(--sp-2) var(--sp-3);
+    text-align: left;
+  }
+  .palette__item-cmd,
+  .palette__item-desc {
+    width: 100%;
+    display: block;
+  }
+  .palette__item-cmd  { font-size: var(--fs-sm); }
+  .palette__item-desc { font-size: 11px; }
   .palette__hint { font-size: 10px; gap: var(--sp-2); }
   .palette__hint-group { gap: var(--sp-2); }
 

@@ -894,11 +894,12 @@
             <span class="mail__hint">
               <span data-i18n="mail_hint_send">Enviar</span> <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
             </span>
-            <button type="submit" class="btn btn--primary">
-              <span data-i18n="send_message">Enviar Mensaje</span>
+            <button type="submit" class="btn btn--primary" id="mailSubmit">
+              <span class="mail__btn-label" data-i18n="send_message">Enviar Mensaje</span>
               <span class="btn__arrow" aria-hidden="true">→</span>
             </button>
           </div>
+          <div class="mail__status" id="mailStatus" role="status" aria-live="polite" hidden></div>
         </form>
       </section>
 
