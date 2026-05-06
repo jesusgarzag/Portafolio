@@ -509,6 +509,9 @@
   let rb_count = 0;
   let rb_initialized = false;
   let rb_history = [];
+  // Camera rotation (drag-to-rotate). Initial values match CSS defaults.
+  let rb_camX = -22;
+  let rb_camY = -32;
 
   function rubikRenderTransform(c) {
     const [x, y, z] = c.pos;
@@ -601,6 +604,59 @@
         rubikSetMode(parseInt(b.dataset.rbMode, 10));
       });
     });
+
+    // Drag-to-rotate camera (pointer events: covers mouse + touch + pen)
+    const stage = rubik.el?.querySelector('.rubik__stage');
+    const scene = rubik.el?.querySelector('.rubik__scene');
+    if (stage && scene) {
+      let dragging = false, lastX = 0, lastY = 0, ptrId = null;
+
+      const applyCam = () => {
+        scene.style.transform = `rotateX(${rb_camX}deg) rotateY(${rb_camY}deg)`;
+      };
+      // Apply once so JS owns the transform from the start.
+      applyCam();
+
+      stage.addEventListener('pointerdown', e => {
+        dragging = true;
+        ptrId = e.pointerId;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        stage.setPointerCapture(ptrId);
+        stage.classList.add('is-dragging');
+      });
+      stage.addEventListener('pointermove', e => {
+        if (!dragging) return;
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        rb_camY += dx * 0.5;
+        rb_camX -= dy * 0.5;
+        // Clamp pitch so we never look exactly along the Y axis (avoids gimbal weirdness).
+        if (rb_camX >  85) rb_camX =  85;
+        if (rb_camX < -85) rb_camX = -85;
+        applyCam();
+      });
+      const endDrag = e => {
+        if (!dragging) return;
+        dragging = false;
+        try { stage.releasePointerCapture(ptrId); } catch (_) {}
+        stage.classList.remove('is-dragging');
+      };
+      stage.addEventListener('pointerup', endDrag);
+      stage.addEventListener('pointercancel', endDrag);
+      stage.addEventListener('lostpointercapture', endDrag);
+
+      // Double-click resets the camera to default angle.
+      stage.addEventListener('dblclick', () => {
+        rb_camX = -22;
+        rb_camY = -32;
+        scene.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        applyCam();
+        setTimeout(() => { scene.style.transition = ''; }, 420);
+      });
+    }
   }
 
   function applyMove(name, fromUser) {

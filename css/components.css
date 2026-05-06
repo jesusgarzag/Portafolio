@@ -943,12 +943,18 @@ body.rubik-open .statusbar { display: none; }
   perspective: 800px;
   perspective-origin: 50% 38%;
   overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
+.rubik__stage.is-dragging { cursor: grabbing; }
 .rubik__scene {
   width: 0;
   height: 0;
   transform-style: preserve-3d;
   transform: rotateX(-22deg) rotateY(-32deg);
+  /* JS overrides inline once the user drags. */
 }
 .rubik__cubies {
   --rb-size: 64px;
@@ -976,7 +982,7 @@ body.rubik-open .statusbar { display: none; }
 }
 .rubik__sticker--U { transform: rotateX( 90deg) translateZ(var(--rb-half)); background: var(--accent); }
 .rubik__sticker--D { transform: rotateX(-90deg) translateZ(var(--rb-half)); background: var(--text); }
-.rubik__sticker--L { transform: rotateY(-90deg) translateZ(var(--rb-half)); background: var(--ansi-magenta); }
+.rubik__sticker--L { transform: rotateY(-90deg) translateZ(var(--rb-half)); background: #ed8b2c; }
 .rubik__sticker--R { transform: rotateY( 90deg) translateZ(var(--rb-half)); background: var(--ansi-red); }
 .rubik__sticker--F { transform: translateZ(var(--rb-half));                   background: var(--ansi-green); }
 .rubik__sticker--B { transform: rotateY(180deg) translateZ(var(--rb-half)); background: var(--ansi-blue); }
