@@ -53,6 +53,7 @@
 
   .topbar { padding: 0 var(--sp-3); }
   .topbar__title { display: none; }
+  .topbar__clock { display: none; }
   .topbar__dots { display: none; }
   .topbar__right { gap: var(--sp-2); }
   .topbar__btn { padding: 4px 6px; }

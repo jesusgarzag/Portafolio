@@ -162,7 +162,11 @@
         <span></span><span></span><span></span>
       </div>
     </div>
-    <div class="topbar__title">jesus@portfolio: ~</div>
+    <div class="topbar__title">
+      <span>jesus@portfolio: ~</span>
+      <span class="topbar__sep" aria-hidden="true">·</span>
+      <span class="topbar__clock" id="topbarClock" aria-live="off">--:--:--</span>
+    </div>
     <div class="topbar__right">
       <div class="topbar__lang" role="group" aria-label="Language">
         <button class="is-active" data-lang="es" aria-pressed="true">ES</button>
@@ -292,6 +296,25 @@
           <a href="#projects" class="btn btn--ghost">
             <span data-i18n="view_projects">Ver proyectos</span>
           </a>
+        </div>
+
+        <div class="contrib" id="contribHost">
+          <div class="contrib__head">
+            <span class="contrib__label" data-i18n="contrib_label">// contributions · last 12 months</span>
+            <span class="contrib__total" id="contribTotal">—</span>
+          </div>
+          <div class="contrib__grid" id="contribGrid" aria-label="GitHub contributions heatmap"></div>
+          <div class="contrib__foot">
+            <span class="contrib__hint" data-i18n="contrib_less">menos</span>
+            <span class="contrib__legend">
+              <span class="contrib__cell" data-level="0"></span>
+              <span class="contrib__cell" data-level="1"></span>
+              <span class="contrib__cell" data-level="2"></span>
+              <span class="contrib__cell" data-level="3"></span>
+              <span class="contrib__cell" data-level="4"></span>
+            </span>
+            <span class="contrib__hint" data-i18n="contrib_more">más</span>
+          </div>
         </div>
       </section>
 
@@ -1078,6 +1101,87 @@
   </div>
 
   <!-- ════════════════════════════════════════════════════
+       BUILD LOG — `./build`
+       ════════════════════════════════════════════════════ -->
+  <div class="build" id="buildOverlay" role="dialog" aria-modal="true" aria-label="Build log">
+    <div class="build__box">
+      <header class="build__head">
+        <div class="branches__prompt">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">./build --all</span>
+        </div>
+        <button class="branches__close" id="closeBuild" aria-label="Close">×</button>
+      </header>
+      <div class="build__log" id="buildLog" aria-live="polite"></div>
+      <footer class="build__foot" id="buildFoot">
+        <span class="build__status">queued</span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       VIM — `vim ~/modules/...`
+       ════════════════════════════════════════════════════ -->
+  <div class="vim" id="vimOverlay" role="dialog" aria-modal="true" aria-label="Vim">
+    <div class="vim__box">
+      <header class="vim__tabs">
+        <span class="vim__tab is-active">aged_days.py</span>
+        <span class="vim__tab">__manifest__.py</span>
+        <span class="vim__tab">report.xml</span>
+        <button class="branches__close" id="closeVim" aria-label="Close" style="margin-left:auto;">×</button>
+      </header>
+      <pre class="vim__buffer" id="vimBuffer"></pre>
+      <footer class="vim__status">
+        <span class="vim__mode">NORMAL</span>
+        <span class="vim__file">aged_days.py</span>
+        <span class="vim__meta" id="vimMeta">utf-8 · py · ln 42 · 100%</span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       HIRE — `./hire`
+       ════════════════════════════════════════════════════ -->
+  <div class="hire" id="hireOverlay" role="dialog" aria-modal="true" aria-label="Hire info">
+    <div class="hire__box">
+      <header class="hire__head">
+        <div class="branches__prompt">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">./hire --info-pack</span>
+        </div>
+        <button class="branches__close" id="closeHire" aria-label="Close">×</button>
+      </header>
+      <div class="hire__body">
+        <h3 class="hire__title">Info pack para reclutadores</h3>
+        <dl class="hire__grid">
+          <dt>role</dt>           <dd>Backend Engineer · Odoo Specialist</dd>
+          <dt>availability</dt>   <dd><span class="hire__pill hire__pill--ok">accepting work</span></dd>
+          <dt>modes</dt>          <dd>remote · hybrid (MTY) · part-time · freelance</dd>
+          <dt>location</dt>       <dd>Monterrey, MX · UTC-6 · willing to overlap PT/CT/ET</dd>
+          <dt>languages</dt>      <dd>Spanish (native) · English (advanced, C1)</dd>
+          <dt>core stack</dt>     <dd>Python · PostgreSQL · Odoo 17/18/19 · Owl · QWeb · XML-RPC</dd>
+          <dt>specialty</dt>      <dd>Mexican localization (CFDI 4.0, SAT, DIOT, REP, pedimentos, PTU)</dd>
+          <dt>experience</dt>     <dd>17+ modules in production · 10 companies · 6 functional areas</dd>
+          <dt>certifications</dt> <dd>Red Hat RHCSA (RH124 + RH134) · Ansible (RH294)</dd>
+          <dt>education</dt>      <dd>BSc Computer Science · UANL FCFM · EGEL Outstanding</dd>
+        </dl>
+        <h3 class="hire__title hire__title--mt">Quick links</h3>
+        <div class="hire__links">
+          <a href="mailto:jesusgarzacia@hotmail.com" class="hire__link">$ <span class="ansi-cyan">mail</span> · jesusgarzacia@hotmail.com</a>
+          <a href="https://cal.com/jesusgarza" target="_blank" rel="noopener" class="hire__link">$ <span class="ansi-cyan">cal</span> · book a call</a>
+          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener" class="hire__link">$ <span class="ansi-cyan">linkedin</span> · /in/jesusgarzacia</a>
+          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener" class="hire__link">$ <span class="ansi-cyan">gh</span> · /jesusgarzag</a>
+          <a href="#" class="hire__link" id="hireCv">$ <span class="ansi-cyan">cv</span> · download résumé (es / en)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
        MAN PAGE — `man jesus`
        ════════════════════════════════════════════════════ -->
   <div class="man" id="manPage" role="dialog" aria-modal="true" aria-label="man jesus">
@@ -1378,6 +1482,8 @@ $ jesus.garza --book-call   <span class="dim"># cal.com/jesusgarza</span></pre>
           <button class="btn btn--ghost" id="rubikReset">reset</button>
         </div>
         <div class="rubik__stats">
+          <span class="rubik__stat"><span class="rubik__stat-key">time:</span> <span id="rubikTime">00:00.00</span></span>
+          <span class="rubik__stat"><span class="rubik__stat-key">pb:</span> <span id="rubikPB">—</span></span>
           <span class="rubik__stat"><span class="rubik__stat-key">moves:</span> <span id="rubikCount">0</span></span>
           <span class="rubik__stat"><span class="rubik__stat-key">last:</span> <span id="rubikLast">—</span></span>
         </div>

@@ -170,6 +170,26 @@
     }
   }
 
+  /* ── Live clock (Monterrey, UTC-6) ─────────────────────── */
+  const clockEl = document.getElementById('topbarClock');
+  if (clockEl) {
+    const fmt = new Intl.DateTimeFormat('es-MX', {
+      timeZone: 'America/Monterrey',
+      hour12: false,
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+    });
+    function tickClock() {
+      const parts = fmt.formatToParts(new Date());
+      const get = t => parts.find(p => p.type === t)?.value;
+      const date = `${get('year')}-${get('month')}-${get('day')}`;
+      const time = `${get('hour')}:${get('minute')}:${get('second')}`;
+      clockEl.textContent = `${date} ${time} CST`;
+    }
+    tickClock();
+    setInterval(tickClock, 1000);
+  }
+
   /* ── GitHub activity (last public push) ────────────────── */
   const ghEl = document.getElementById('ghLastPush');
   function relTime(iso) {
@@ -205,6 +225,47 @@
       });
   }
   loadGitHub();
+
+  /* ── GitHub contribution heatmap (last 12 months) ──────── */
+  const contribGrid = document.getElementById('contribGrid');
+  const contribTotal = document.getElementById('contribTotal');
+  if (contribGrid) {
+    fetch('https://github-contributions-api.jogruber.de/v4/jesusgarzag?y=last')
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => {
+        const days = data.contributions || [];
+        if (!days.length) throw new Error('empty');
+        // Render columns of 7 rows (Sun → Sat). Pad start so each column starts on Sunday.
+        const startDow = new Date(days[0].date).getDay();
+        const padded = Array(startDow).fill(null).concat(days);
+        contribGrid.innerHTML = '';
+        padded.forEach((d, i) => {
+          const cell = document.createElement('span');
+          cell.className = 'contrib__cell';
+          if (d) {
+            cell.dataset.level = d.level || 0;
+            cell.title = `${d.count} contributions on ${d.date}`;
+          } else {
+            cell.dataset.level = 0;
+            cell.style.visibility = 'hidden';
+          }
+          contribGrid.appendChild(cell);
+        });
+        if (contribTotal) {
+          contribTotal.textContent = `${data.total?.lastYear || days.reduce((a, b) => a + (b.count||0), 0)} contributions`;
+        }
+      })
+      .catch(() => {
+        if (contribTotal) contribTotal.textContent = 'github.com/jesusgarzag';
+        // Render an empty grid so the layout doesn't collapse
+        for (let i = 0; i < 53 * 7; i++) {
+          const c = document.createElement('span');
+          c.className = 'contrib__cell';
+          c.dataset.level = '0';
+          contribGrid.appendChild(c);
+        }
+      });
+  }
 
   /* ── PWA service worker (cache-first shell) ────────────── */
   if ('serviceWorker' in navigator && location.protocol === 'https:') {

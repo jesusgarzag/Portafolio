@@ -230,5 +230,11 @@
   "cmd_htop": "Ver clientes activos como procesos",
   "cmd_cal": "Agendar una llamada",
   "cmd_rubik": "Cubo de Rubik interactivo",
-  "rubik_hint_keys": "arrastra para rotar · doble click = re-centrar · U D L R F B · shift=inverso · 3×3 también M E S · espacio=scramble · 0=reset"
+  "rubik_hint_keys": "arrastra para rotar · doble click = re-centrar · U D L R F B · shift=inverso · 3×3 también M E S · espacio=scramble · 0=reset",
+  "cmd_build": "Compilar y testear los 17 módulos Odoo",
+  "cmd_vim": "Abrir un módulo Odoo en vim",
+  "cmd_hire": "Info pack para reclutadores",
+  "contrib_label": "// commits · últimos 12 meses",
+  "contrib_less": "menos",
+  "contrib_more": "más"
 }

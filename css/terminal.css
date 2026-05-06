@@ -112,10 +112,18 @@
 .topbar__dots span:nth-child(3) { background: #7fb069; }
 
 .topbar__title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
   font-family: var(--mono);
   letter-spacing: var(--tracking-loose);
   text-transform: uppercase;
   color: var(--text-dim);
+}
+.topbar__sep { color: var(--text-faint); }
+.topbar__clock {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
 }
 
 .topbar__right {

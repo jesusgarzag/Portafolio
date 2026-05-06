@@ -230,5 +230,11 @@
   "cmd_htop": "View active clients as processes",
   "cmd_cal": "Schedule a call",
   "cmd_rubik": "Interactive Rubik's cube",
-  "rubik_hint_keys": "drag to rotate · double-click = recenter · U D L R F B · shift=prime · 3×3 also M E S · space=scramble · 0=reset"
+  "rubik_hint_keys": "drag to rotate · double-click = recenter · U D L R F B · shift=prime · 3×3 also M E S · space=scramble · 0=reset",
+  "cmd_build": "Compile and test the 17 Odoo modules",
+  "cmd_vim": "Open an Odoo module in vim",
+  "cmd_hire": "Recruiter info pack",
+  "contrib_label": "// commits · last 12 months",
+  "contrib_less": "less",
+  "contrib_more": "more"
 }

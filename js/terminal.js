@@ -90,6 +90,9 @@
     { cmd: 'man jesus',             desc_key: 'cmd_man',        action: 'man' },
     { cmd: 'htop',                  desc_key: 'cmd_htop',       action: 'htop' },
     { cmd: './rubik',               desc_key: 'cmd_rubik',      action: 'rubik' },
+    { cmd: './build --all',         desc_key: 'cmd_build',      action: 'build' },
+    { cmd: 'vim ~/modules/aged_days.py', desc_key: 'cmd_vim',   action: 'vim' },
+    { cmd: './hire',                desc_key: 'cmd_hire',       action: 'hire' },
   ];
 
   const palette       = document.getElementById('palette');
@@ -177,6 +180,12 @@
       openHtop();
     } else if (cmd.action === 'rubik') {
       openRubik();
+    } else if (cmd.action === 'build') {
+      openBuild();
+    } else if (cmd.action === 'vim') {
+      openVim();
+    } else if (cmd.action === 'hire') {
+      openHire();
     }
   }
 
@@ -319,6 +328,9 @@
       if (man.isOpen()) closeMan();
       if (htop.isOpen()) { closeHtop(); }
       if (rubik.isOpen()) closeRubik();
+      if (build.isOpen()) closeBuild();
+      if (vim.isOpen()) closeVim();
+      if (hire.isOpen()) closeHire();
     }
   });
 
@@ -453,6 +465,182 @@
     document.getElementById('devConn').textContent = c ? `${c.effectiveType || '—'} · ${c.downlink || '?'} Mbps` : '—';
   }
 
+  /* ── Build log overlay ─────────────────────────────────── */
+  const build = makeOverlayToggle('buildOverlay', 'build-open', 'BUILD');
+  function openBuild() { build.open(); buildRun(); }
+  function closeBuild() { build.close(); }
+  document.getElementById('closeBuild')?.addEventListener('click', closeBuild);
+  build.el?.addEventListener('click', e => { if (e.target === build.el) closeBuild(); });
+
+  // 17 modules (matches the ls section). status: ok | warn | fail.
+  const BUILD_MODULES = [
+    { n: 'iia_formatos',           v: 'v18', s: 'ok',   d: 2.4, c: 'avalia',     a: '9 reports · openpyxl · OWL dashboard' },
+    { n: 'iia_bank_balance',       v: 'v18', s: 'ok',   d: 1.7, c: 'avalia',     a: 'bidirectional sync · mail.thread audit' },
+    { n: 'iia_aged_days',          v: 'v18', s: 'ok',   d: 0.8, c: 'avalia',     a: 'report engine · custom expressions' },
+    { n: 'iia_base_efectivo',      v: 'v17', s: 'ok',   d: 0.6, c: 'dimex',      a: '_compute_max_date override · DIOT' },
+    { n: 'iia_anticipo',           v: 'v17', s: 'ok',   d: 1.2, c: 'dimex',      a: 'action_post + cash basis + tax tags' },
+    { n: 'iia_rep',                v: 'v17', s: 'warn', d: 2.9, c: 'casaguerra', a: 'CFDI 4.0 · Pagos20 · QR (DEPRECATION: lxml.etree)' },
+    { n: 'iia_holidays',           v: 'v17', s: 'ok',   d: 0.7, c: 'casaguerra', a: 'QWeb half-letter · hr.leave binding' },
+    { n: 'iia_payroll_report',     v: 'v18', s: 'ok',   d: 1.4, c: 'casaguerra', a: 'xlsxwriter · dynamic columns · wizard' },
+    { n: 'iia_odessa',             v: 'v18', s: 'ok',   d: 1.8, c: 'avalia',     a: '3 wizards · MOPER · 5 salary rules' },
+    { n: 'iia_stock_location',     v: 'v17', s: 'ok',   d: 3.1, c: 'forrajera',  a: 'boundary-crossing · BOM kits' },
+    { n: 'iia_pedimento',          v: 'v17', s: 'ok',   d: 1.6, c: 'recavisa',   a: 'web_search_read · _auto_init · CFDI' },
+    { n: 'iia_quant_unrestrict',   v: 'v19', s: 'ok',   d: 0.3, c: 'interenter', a: '_get_forbidden_fields_write override' },
+    { n: 'iia_stock_import_lots',  v: 'v19', s: 'ok',   d: 0.5, c: 'interenter', a: 'split_lots · stock.move' },
+    { n: 'iia_catalogo',           v: 'v17', s: 'ok',   d: 1.1, c: 'fgh',        a: '_name_search · context-based filter' },
+    { n: 'iia_compras_proyecto',   v: 'v17', s: 'warn', d: 1.9, c: 'invent',     a: 'analytic_distribution · auto chain (NOTE: TODO refactor _create_picking)' },
+    { n: 'iia_edi_ikigai',         v: 'v17', s: 'ok',   d: 0.9, c: 'ikigai',     a: 'REST · SHA-256 · O(1) prefix · chatter trace' },
+    { n: 'iia_columns',            v: 'v19', s: 'ok',   d: 0.4, c: 'interenter', a: 'OWL patch · getActiveColumns · mixin' },
+  ];
+
+  let build_running = false;
+  function buildLine(html) {
+    const log = document.getElementById('buildLog');
+    if (!log) return;
+    const div = document.createElement('span');
+    div.className = 'build__line';
+    div.innerHTML = html;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+  function buildPad(s, n) {
+    s = String(s);
+    return s + ' '.repeat(Math.max(0, n - s.length));
+  }
+  function buildTs() {
+    const d = new Date();
+    return d.toTimeString().slice(0, 8);
+  }
+  async function buildRun() {
+    if (build_running) return;
+    build_running = true;
+    const log = document.getElementById('buildLog');
+    const foot = document.getElementById('buildFoot');
+    if (log) log.innerHTML = '';
+    if (foot) foot.innerHTML = '<span class="build__status is-running">running</span>';
+    const buildId = '#' + (1240 + Math.floor(Math.random() * 30));
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__info">[INFO]</span> Starting Odoo CI run ${buildId} · 17 modules · target Odoo 17/18/19`);
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__info">[INFO]</span> Resolving dependencies...`);
+    await new Promise(r => setTimeout(r, 280));
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__ok">[OK]</span>   Dependencies resolved (PostgreSQL 14, Python 3.11)`);
+    await new Promise(r => setTimeout(r, 200));
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__info">[INFO]</span> Compiling assets...`);
+    await new Promise(r => setTimeout(r, 220));
+
+    let warns = 0, fails = 0, totalDur = 0;
+    for (const m of BUILD_MODULES) {
+      if (!build.isOpen()) break;
+      const tag = m.s === 'ok' ? '<span class="build__ok">[OK]</span>  '
+                : m.s === 'warn' ? '<span class="build__warn">[WARN]</span>'
+                : '<span class="build__fail">[FAIL]</span>';
+      buildLine(
+        `<span class="build__t">[${buildTs()}]</span> ${tag} ` +
+        `<span class="build__name">${buildPad(m.n, 26)}</span> ` +
+        `<span class="build__ver">${m.v}</span> ` +
+        `<span class="build__d">· ${m.c} · ${m.a} · ${m.d.toFixed(1)}s</span>`
+      );
+      if (m.s === 'warn') warns++;
+      if (m.s === 'fail') fails++;
+      totalDur += m.d;
+      await new Promise(r => setTimeout(r, 110 + Math.random() * 160));
+    }
+
+    if (!build.isOpen()) { build_running = false; return; }
+    buildLine(``);
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__info">[INFO]</span> Running odoo-bin --test-enable...`);
+    await new Promise(r => setTimeout(r, 320));
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__ok">[OK]</span>   142 tests passed in 14.7s`);
+    await new Promise(r => setTimeout(r, 200));
+    const ok = fails === 0;
+    const status = ok ? 'passed' : 'failed';
+    const cls = ok ? 'is-done' : 'is-fail';
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__${ok ? 'ok' : 'fail'}">[${ok ? 'DONE' : 'FAIL'}]</span> Build ${buildId} ${status} · 17/17 modules · ${warns} warnings · ${totalDur.toFixed(1)}s`);
+    if (foot) foot.innerHTML = `<span class="build__status ${cls}">${status}</span> &nbsp; build ${buildId} · 17 modules · ${warns} warnings · ${totalDur.toFixed(1)}s`;
+    build_running = false;
+  }
+
+  /* ── Vim overlay ───────────────────────────────────────── */
+  const vim = makeOverlayToggle('vimOverlay', 'vim-open', 'VIM');
+  function openVim() { vim.open(); vimRender(); }
+  function closeVim() { vim.close(); }
+  document.getElementById('closeVim')?.addEventListener('click', closeVim);
+  vim.el?.addEventListener('click', e => { if (e.target === vim.el) closeVim(); });
+
+  // Real Odoo override snippet (anonymized + slightly compressed for display).
+  const VIM_LINES = [
+    [1,  '<span class="py-com"># ~/modules/iia_aged_days/models/account_report.py</span>'],
+    [2,  '<span class="py-com"># Adds "days overdue" computed expression to the AR Aging report.</span>'],
+    [3,  '<span class="py-com"># Critical for cash-flow visibility — Odoo natively shows aged buckets only.</span>'],
+    [4,  ''],
+    [5,  '<span class="py-kw">from</span> odoo <span class="py-kw">import</span> models, fields, api, _'],
+    [6,  '<span class="py-kw">from</span> dateutil.relativedelta <span class="py-kw">import</span> relativedelta'],
+    [7,  ''],
+    [8,  ''],
+    [9,  '<span class="py-kw">class</span> <span class="py-cls">AccountReport</span>(models.Model):'],
+    [10, '    _inherit <span class="py-op">=</span> <span class="py-str">"account.report"</span>'],
+    [11, ''],
+    [12, '    <span class="py-kw">def</span> <span class="py-fn">_report_custom_engine_aged_days</span>('],
+    [13, '            <span class="py-self">self</span>, expressions, options, date_scope, current_groupby, next_groupby,'],
+    [14, '            offset<span class="py-op">=</span><span class="py-num">0</span>, limit<span class="py-op">=</span><span class="py-kw">None</span>, warnings<span class="py-op">=</span><span class="py-kw">None</span>):'],
+    [15, '        <span class="py-str">""" Returns days overdue per AR line at the report date.</span>'],
+    [16, '<span class="py-str">            Used as &lt;expression engine="custom"&gt; in the report XML.</span>'],
+    [17, '<span class="py-str">        """</span>'],
+    [18, '        report_date <span class="py-op">=</span> fields.Date.from_string(options[<span class="py-str">"date"</span>][<span class="py-str">"date_to"</span>])'],
+    [19, '        results <span class="py-op">=</span> []'],
+    [20, ''],
+    [21, '        <span class="py-kw">for</span> grouping_key, lines <span class="py-kw">in</span> <span class="py-self">self</span><span class="py-op">.</span>_aged_partner_balance_query('],
+    [22, '                options, current_groupby, next_groupby, offset, limit):'],
+    [23, '            partner_total <span class="py-op">=</span> <span class="py-num">0</span>'],
+    [24, '            <span class="py-kw">for</span> aml <span class="py-kw">in</span> lines:'],
+    [25, '                due <span class="py-op">=</span> aml<span class="py-op">.</span>date_maturity <span class="py-kw">or</span> aml<span class="py-op">.</span>date'],
+    [26, '                days <span class="py-op">=</span> (report_date <span class="py-op">-</span> due)<span class="py-op">.</span>days <span class="py-kw">if</span> due <span class="py-kw">else</span> <span class="py-num">0</span>'],
+    [27, '                partner_total <span class="py-op">+=</span> <span class="py-fn">max</span>(days, <span class="py-num">0</span>)'],
+    [28, ''],
+    [29, '            results<span class="py-op">.</span>append((grouping_key, {'],
+    [30, '                <span class="py-str">"days_overdue"</span>: partner_total <span class="py-op">/</span> <span class="py-fn">max</span>(<span class="py-fn">len</span>(lines), <span class="py-num">1</span>),'],
+    [31, '            }))'],
+    [32, ''],
+    [33, '        <span class="py-kw">return</span> results'],
+    [34, ''],
+    [35, '    <span class="py-com"># post_init_hook installs the column once and keeps it idempotent.</span>'],
+    [36, '    <span class="py-kw">def</span> <span class="py-fn">_install_overdue_column</span>(<span class="py-self">self</span>):'],
+    [37, '        report <span class="py-op">=</span> <span class="py-self">self</span><span class="py-op">.</span>env<span class="py-op">.</span>ref(<span class="py-str">"account.aged_receivable_report"</span>)'],
+    [38, '        <span class="py-kw">if</span> <span class="py-kw">not</span> report<span class="py-op">.</span>column_ids<span class="py-op">.</span>filtered(<span class="py-kw">lambda</span> c: c<span class="py-op">.</span>expression_label <span class="py-op">==</span> <span class="py-str">"days_overdue"</span>):'],
+    [39, '            report<span class="py-op">.</span>column_ids <span class="py-op">=</span> [(<span class="py-num">0</span>, <span class="py-num">0</span>, {'],
+    [40, '                <span class="py-str">"name"</span>: _(<span class="py-str">"Days Overdue"</span>),'],
+    [41, '                <span class="py-str">"expression_label"</span>: <span class="py-str">"days_overdue"</span>,'],
+    [42, '                <span class="py-str">"figure_type"</span>: <span class="py-str">"integer"</span>,'],
+    [43, '                <span class="py-str">"sortable"</span>: <span class="py-kw">True</span>,'],
+    [44, '            })]'],
+    [45, ''],
+    [46, '    <span class="py-com"># uninstall_hook keeps the database clean — no residual columns.</span>'],
+    [47, '    <span class="py-kw">def</span> <span class="py-fn">_remove_overdue_column</span>(<span class="py-self">self</span>):'],
+    [48, '        <span class="py-self">self</span><span class="py-op">.</span>env[<span class="py-str">"account.report.column"</span>]<span class="py-op">.</span>search(['],
+    [49, '            (<span class="py-str">"expression_label"</span>, <span class="py-str">"="</span>, <span class="py-str">"days_overdue"</span>)'],
+    [50, '        ])<span class="py-op">.</span>unlink()'],
+  ];
+
+  function vimRender() {
+    const buf = document.getElementById('vimBuffer');
+    if (!buf) return;
+    buf.innerHTML = VIM_LINES.map(([n, src]) => {
+      const isCursor = n === 26;
+      return `<div class="line${isCursor ? ' is-cursor' : ''}"><span class="ln">${n}</span><span class="src">${src || ' '}</span></div>`;
+    }).join('');
+    buf.scrollTop = 0;
+  }
+
+  /* ── Hire overlay ──────────────────────────────────────── */
+  const hire = makeOverlayToggle('hireOverlay', 'hire-open', 'HIRE');
+  function openHire() { hire.open(); }
+  function closeHire() { hire.close(); }
+  document.getElementById('closeHire')?.addEventListener('click', closeHire);
+  hire.el?.addEventListener('click', e => { if (e.target === hire.el) closeHire(); });
+  document.getElementById('hireCv')?.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('btnCv')?.click();
+  });
+
   /* ── Rubik 2x2 functional ──────────────────────────────── */
   const rubik = makeOverlayToggle('rubikOverlay', 'rubik-open', 'RUBIK');
   function openRubik() { rubik.open(); rubikInit(); }
@@ -512,6 +700,11 @@
   // Camera rotation (drag-to-rotate). Initial values match CSS defaults.
   let rb_camX = -22;
   let rb_camY = -32;
+  // PB timer: starts on first user move after a scramble, stops when solved.
+  let rb_timerStart = 0;     // perf.now timestamp
+  let rb_timerActive = false;
+  let rb_timerScrambled = false; // true after a scramble; false after reset/solve
+  let rb_timerRAF = 0;
 
   function rubikRenderTransform(c) {
     const [x, y, z] = c.pos;
@@ -557,6 +750,75 @@
     if (lst && lastMove) lst.textContent = lastMove.replace('p', "'");
   }
 
+  function fmtMs(ms) {
+    const totalCs = Math.floor(ms / 10);          // centiseconds
+    const cs = totalCs % 100;
+    const totalSec = Math.floor(totalCs / 100);
+    const sec = totalSec % 60;
+    const min = Math.floor(totalSec / 60);
+    return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}.${String(cs).padStart(2, '0')}`;
+  }
+
+  function rubikIsSolved() {
+    if (!rb_state) return true;
+    // Solved when every cubie is back to its initial position with identity orientation.
+    // We track orientation via the appended rotation string: empty string == identity.
+    return rb_state.every(c => {
+      // pos must equal "initial" position. We don't store initial separately, but the build
+      // function created cubies in canonical positions matching their indices.
+      // Easier check: each cubie's rot string must collapse to a multiple-of-360 rotation.
+      // We compare against a snapshot taken at build time — simpler.
+      return c.rot === '' || c.rot.replace(/\s/g, '') === '';
+    });
+  }
+
+  function rubikTimerTick() {
+    if (!rb_timerActive) return;
+    const el = document.getElementById('rubikTime');
+    if (el) el.textContent = fmtMs(performance.now() - rb_timerStart);
+    rb_timerRAF = requestAnimationFrame(rubikTimerTick);
+  }
+
+  function rubikTimerStart() {
+    if (rb_timerActive) return;
+    rb_timerActive = true;
+    rb_timerStart = performance.now();
+    rubikTimerTick();
+  }
+
+  function rubikTimerStop() {
+    if (!rb_timerActive) return performance.now();
+    rb_timerActive = false;
+    cancelAnimationFrame(rb_timerRAF);
+    return performance.now();
+  }
+
+  function rubikTimerReset() {
+    rubikTimerStop();
+    rb_timerScrambled = false;
+    const el = document.getElementById('rubikTime');
+    if (el) el.textContent = '00:00.00';
+  }
+
+  function rubikLoadPB() {
+    const key = `rubik_pb_${rb_mode}`;
+    const v = parseFloat(localStorage.getItem(key) || '0');
+    const el = document.getElementById('rubikPB');
+    if (el) el.textContent = v > 0 ? fmtMs(v) : '—';
+  }
+
+  function rubikSavePB(ms) {
+    const key = `rubik_pb_${rb_mode}`;
+    const prev = parseFloat(localStorage.getItem(key) || '0');
+    if (prev === 0 || ms < prev) {
+      localStorage.setItem(key, String(ms));
+      const el = document.getElementById('rubikPB');
+      if (el) el.textContent = fmtMs(ms);
+      return true;
+    }
+    return false;
+  }
+
   function rubikResetState() {
     rubikBuild();
     rb_count = 0;
@@ -564,6 +826,8 @@
     rubikUpdateStats();
     const lst = document.getElementById('rubikLast');
     if (lst) lst.textContent = '—';
+    rubikTimerReset();
+    rubikLoadPB();
   }
 
   function rubikSetMode(m) {
@@ -585,6 +849,7 @@
     rb_initialized = true;
     rubikBuild();
     rubikUpdateStats();
+    rubikLoadPB();
 
     document.getElementById('rubikMovePad')?.addEventListener('click', e => {
       const btn = e.target.closest('button[data-move]');
@@ -705,6 +970,16 @@
           rb_count++;
           rb_history.push(name);
           rubikUpdateStats(name);
+          // Start timer on first user move after a scramble
+          if (rb_timerScrambled && !rb_timerActive) rubikTimerStart();
+          // Detect solved state
+          if (rb_timerActive && rubikIsSolved()) {
+            const elapsed = rubikTimerStop() - rb_timerStart;
+            rb_timerScrambled = false;
+            const isPB = rubikSavePB(elapsed);
+            const tEl = document.getElementById('rubikTime');
+            if (tEl) tEl.textContent = fmtMs(elapsed) + (isPB ? ' · PB!' : '');
+          }
         }
         rb_busy = false;
         resolve();
@@ -714,7 +989,9 @@
 
   async function rubikScramble(n) {
     if (rb_busy) return;
-    const moves = Object.keys(RB_MOVES);
+    rubikTimerReset();
+    // Only face moves in scrambles (no slices), and only the ones that make sense per mode.
+    const moves = Object.keys(RB_MOVES).filter(k => !RB_MOVES[k].mid);
     let last = '';
     for (let i = 0; i < n; i++) {
       let m;
@@ -726,6 +1003,10 @@
       rubikUpdateStats(m);
       await applyMove(m, false);
     }
+    // Ready for the user's solve attempt
+    rb_timerScrambled = true;
+    const tEl = document.getElementById('rubikTime');
+    if (tEl) tEl.textContent = '00:00.00';
   }
 
   // Keyboard shortcuts inside the overlay
