@@ -8,6 +8,7 @@
   <meta name="keywords" content="Odoo Developer, Python, PostgreSQL, OWL, CFDI, REST API, Backend Developer, Módulos Odoo, ERP, XML-RPC">
   <meta name="author" content="Jesús Gerardo Garza García">
   <meta name="google-site-verification" content="UH-ryH3ItbHpqrZ2tg2jyNeRqvWJ-3Q_sSFZ9Xyanlc">
+  <meta name="theme-color" content="#0c0c0d">
 
   <link rel="canonical" href="https://jesusgarza.pages.dev/">
 
@@ -45,939 +46,901 @@
   }
   </script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="fetch" href="i18n/es.json" crossorigin="anonymous">
   <link rel="preload" as="fetch" href="i18n/en.json" crossorigin="anonymous">
+
   <link href="css/base.css" rel="stylesheet">
+  <link href="css/terminal.css" rel="stylesheet">
   <link href="css/layout.css" rel="stylesheet">
   <link href="css/components.css" rel="stylesheet">
-  <link href="css/portal.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Loading Screen -->
-  <div class="loader" id="loader">
-    <div class="loader-content">
-      <div class="loader-logo">JG<span class="accent">.</span></div>
-      <div class="loader-bar"><div class="loader-progress"></div></div>
+  <!-- ════════════════════════════════════════════════════
+       TOP BAR (window chrome)
+       ════════════════════════════════════════════════════ -->
+  <header class="topbar">
+    <div class="topbar__dots" aria-hidden="true">
+      <span></span><span></span><span></span>
     </div>
-  </div>
-
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="scrollProgress"></div>
-
-  <!-- ============================================
-       SPLIT LAYOUT
-       ============================================ -->
-  <div class="layout">
-
-    <!-- LEFT PANEL (Sticky) -->
-    <header class="panel-left" id="panelLeft">
-      <div class="panel-left-inner">
-        <!-- Top: Identity -->
-        <div class="panel-top">
-          <h1 class="panel-name">Jesús Garza<span class="accent">.</span></h1>
-          <h2 class="panel-title" data-i18n="backend_dev">Desarrollador Backend</h2>
-          <p class="panel-desc" data-i18n="hero_desc">
-            Desarrollador Odoo con 17+ módulos en producción para 10 empresas.
-            Python, PostgreSQL, OWL, CFDI y APIs REST.
-          </p>
-          <div class="status-badge">
-            <span class="status-dot"></span>
-            <span data-i18n="status_available">Disponible para trabajar</span>
-          </div>
-          <a href="mailto:jesusgarzacia@hotmail.com" class="panel-email">
-            <i class="fas fa-envelope"></i> jesusgarzacia@hotmail.com
-          </a>
-          <a href="#" class="btn-cv" id="btnCvDesktop" data-i18n="download_cv" download>
-            <i class="fas fa-download"></i> Descargar CV
-          </a>
-        </div>
-        <nav class="panel-nav" id="panelNav">
-          <a href="#about" class="panel-nav-link active" data-section="about">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="about">Sobre mí</span>
-          </a>
-          <a href="#experience" class="panel-nav-link" data-section="experience">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="experience_nav">Experiencia</span>
-          </a>
-          <a href="#odoo-modules" class="panel-nav-link" data-section="odoo-modules">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="odoo_modules_nav">Módulos Odoo</span>
-          </a>
-          <a href="#projects" class="panel-nav-link" data-section="projects">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="projectsh">Proyectos</span>
-          </a>
-          <a href="#skills" class="panel-nav-link" data-section="skills">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="skills">Habilidades</span>
-          </a>
-          <a href="#education" class="panel-nav-link" data-section="education">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="education">Formación</span>
-          </a>
-          <a href="#contact" class="panel-nav-link" data-section="contact">
-            <span class="nav-indicator"></span>
-            <span class="nav-text" data-i18n="contact">Contacto</span>
-          </a>
-        </nav>
-
-        <!-- Bottom: Social + Actions -->
-        <div class="panel-bottom">
-          <div class="panel-actions">
-            <div class="language-switcher">
-              <button class="language-btn active" data-lang="es">ES</button>
-              <button class="language-btn" data-lang="en">EN</button>
-            </div>
-            <button class="theme-btn" id="themeToggle" title="Toggle theme">
-              <i class="fas fa-sun"></i>
-            </button>
-          </div>
-          <div class="panel-social">
-            <a href="https://github.com/jesusgarzag" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
+    <div class="topbar__title">jesus@portfolio: ~</div>
+    <div class="topbar__right">
+      <div class="topbar__lang" role="group" aria-label="Language">
+        <button class="is-active" data-lang="es" aria-pressed="true">ES</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
       </div>
-    </header>
-
-    <!-- MOBILE HEADER -->
-    <div class="mobile-header" id="mobileHeader">
-      <a href="#" class="logo">JG<span class="accent">.</span></a>
-      <div class="mobile-actions">
-        <div class="language-switcher">
-          <button class="language-btn active" data-lang="es">ES</button>
-          <button class="language-btn" data-lang="en">EN</button>
-        </div>
-        <button class="theme-btn" id="themeToggleMobile" title="Toggle theme">
-          <i class="fas fa-sun"></i>
-        </button>
-        <button class="hamburger" id="hamburger">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
+      <button class="topbar__btn" id="paletteOpen" aria-label="Open command palette">
+        <span aria-hidden="true">❯_</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+      <button class="topbar__btn" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
+        <span aria-hidden="true">◐</span>
+        <span data-i18n="theme_toggle">TEMA</span>
+      </button>
     </div>
+  </header>
 
-    <!-- MOBILE NAV OVERLAY -->
-    <div class="mobile-nav-overlay" id="mobileNav">
-      <nav class="mobile-nav-menu">
-        <a href="#about" class="mobile-nav-link" data-i18n="about">Sobre mí</a>
-        <a href="#experience" class="mobile-nav-link" data-i18n="experience_nav">Experiencia</a>
-        <a href="#odoo-modules" class="mobile-nav-link" data-i18n="odoo_modules_nav">Módulos Odoo</a>
-        <a href="#projects" class="mobile-nav-link" data-i18n="projectsh">Proyectos</a>
-        <a href="#skills" class="mobile-nav-link" data-i18n="skills">Habilidades</a>
-        <a href="#education" class="mobile-nav-link" data-i18n="education">Formación</a>
-        <a href="#contact" class="mobile-nav-link" data-i18n="contact">Contacto</a>
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open menu">≡</button>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ════════════════════════════════════════════════════
+       PAGE
+       ════════════════════════════════════════════════════ -->
+  <div class="page">
+
+    <!-- ────────── SIDEBAR ────────── -->
+    <aside class="sidebar" id="sidebar" aria-label="Navigation">
+      <div class="sidebar__brand">
+        <span class="sidebar__logo">jesus<span class="accent">.garza</span></span>
+        <span class="sidebar__role" data-i18n="backend_dev">Desarrollador Backend</span>
+        <span class="sidebar__status" data-i18n="status_available">Disponible para trabajar</span>
+      </div>
+
+      <nav class="cmdlist" aria-label="Commands">
+        <span class="cmdlist__label" data-i18n="nav_label">// Navegación</span>
+
+        <a href="#about" class="cmd is-active" data-section="about">
+          <span class="cmd__name">cat about.md</span>
+        </a>
+        <a href="#experience" class="cmd" data-section="experience">
+          <span class="cmd__name">tree experience/</span>
+        </a>
+        <a href="#modules" class="cmd" data-section="modules">
+          <span class="cmd__name">ls -la modules/</span>
+        </a>
+        <a href="#projects" class="cmd" data-section="projects">
+          <span class="cmd__name">cat projects.json</span>
+        </a>
+        <a href="#skills" class="cmd" data-section="skills">
+          <span class="cmd__name">pacman -Q tech</span>
+        </a>
+        <a href="#education" class="cmd" data-section="education">
+          <span class="cmd__name">man certifications</span>
+        </a>
+        <a href="#contact" class="cmd" data-section="contact">
+          <span class="cmd__name">mail jesus</span>
+        </a>
       </nav>
-    </div>
 
-    <!-- MOBILE HERO (visible only on mobile) -->
-    <div class="mobile-hero">
-      <h1 class="mobile-hero-name">Jesús Garza<span class="accent">.</span></h1>
-      <h2 class="mobile-hero-title" data-i18n="backend_dev">Desarrollador Backend</h2>
-      <p class="mobile-hero-desc" data-i18n="hero_desc">
-        Desarrollador Odoo con 17+ módulos en producción para 10 empresas.
-        Python, PostgreSQL, OWL, CFDI y APIs REST.
-      </p>
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        <span data-i18n="status_available">Disponible para trabajar</span>
+      <div class="sidebar__bottom">
+        <a href="#" class="sidebar__cv" id="btnCv" download>
+          <span data-i18n="download_cv">Descargar CV</span>
+        </a>
+        <div class="sidebar__socials" aria-label="Social">
+          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+          <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email">@</a>
+        </div>
+        <p class="sidebar__meta">
+          <span data-i18n="sidebar_loc">Monterrey, MX</span><br>
+          <span>v2.0.0 · 2026</span>
+        </p>
       </div>
-      <a href="mailto:jesusgarzacia@hotmail.com" class="panel-email">
-        <i class="fas fa-envelope"></i> jesusgarzacia@hotmail.com
-      </a>
-      <a href="#" class="btn-cv" id="btnCvMobile" data-i18n="download_cv" download>
-        <i class="fas fa-download"></i> Descargar CV
-      </a>
-    </div>
+    </aside>
 
-    <!-- RIGHT PANEL (Scrolls) -->
-    <main class="panel-right" id="panelRight">
+    <!-- ────────── MAIN ────────── -->
+    <main class="page__main" id="main">
 
-      <!-- About -->
-      <section id="about" class="content-section">
-        <div class="section-content">
-          <p class="content-text" data-i18n="about_desc1">
-            Soy un desarrollador backend especializado en Python con experiencia en el desarrollo de módulos personalizados para Odoo,
-            integraciones mediante XML-RPC, automatización de procesos y manejo de bases de datos con PostgreSQL.
-            Mi nivel de inglés es avanzado, lo que me permite colaborar eficazmente en entornos internacionales.
-          </p>
-          <p class="content-text" data-i18n="about_desc2">
-            Cuento con formación en administración de sistemas Linux (Red Hat).
-            Mi enfoque se centra en escribir código limpio, eficiente y mantenible que resuelva problemas reales de negocio.
-          </p>
+      <!-- ── HERO ───────────────────────────────────── -->
+      <section class="hero" id="top">
+        <div class="hero__prompt" aria-hidden="true">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd typed" data-typed="whoami"></span>
+        </div>
 
-          <div class="stats-row">
-            <div class="stat-item">
-              <span class="stat-number" data-target="10">0</span><span class="stat-suffix"></span>
-              <p class="stat-label" data-i18n="stat_projects">Empresas Atendidas</p>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="17">0</span><span class="stat-suffix">+</span>
-              <p class="stat-label" data-i18n="stat_modules">Módulos Odoo</p>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="3">0</span><span class="stat-suffix"></span>
-              <p class="stat-label" data-i18n="stat_certs">Certificaciones Red Hat</p>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
-              <p class="stat-label" data-i18n="stat_tech">Tecnologías</p>
-            </div>
+        <h1 class="hero__name">Jesús Garza<span class="accent">_</span></h1>
+        <p class="hero__role" data-i18n="hero_role">Backend Engineer · Python · Odoo</p>
+        <p class="hero__tag" data-i18n="hero_desc">
+          Desarrollador Odoo con 17+ módulos en producción para 10 empresas.
+          Python, PostgreSQL, OWL, CFDI y APIs REST.
+        </p>
+
+        <div class="neofetch">
+          <pre class="neofetch__ascii" aria-hidden="true">
+   ▄▄▄▄▄▄▄
+  █ ┌───┐ █
+  █ │ J │ █     jesus@portfolio
+  █ │ G │ █     ─────────────────
+  █ └───┘ █
+   ▀▀▀▀▀▀▀</pre>
+          <div class="neofetch__list">
+            <div class="neofetch__row"><span class="neofetch__key">os</span><span class="neofetch__val">Linux x86_64 · RHEL Certified</span></div>
+            <div class="neofetch__row"><span class="neofetch__key">stack</span><span class="neofetch__val">Python · PostgreSQL · Odoo 17/18/19</span></div>
+            <div class="neofetch__row"><span class="neofetch__key">specialty</span><span class="neofetch__val">CFDI · ERP · REST · XML-RPC</span></div>
+            <div class="neofetch__row"><span class="neofetch__key">shell</span><span class="neofetch__val">/bin/zsh · vim · tmux</span></div>
+            <div class="neofetch__row"><span class="neofetch__key">location</span><span class="neofetch__val">Monterrey, MX · UTC-6</span></div>
+            <div class="neofetch__row"><span class="neofetch__key">uptime</span><span class="neofetch__val" data-i18n="neofetch_uptime">17 módulos · 10 clientes · 3 certs</span></div>
+          </div>
+        </div>
+
+        <div class="hero__cta">
+          <a href="#contact" class="btn btn--primary">
+            <span data-i18n="contact_me">Contáctame</span>
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="#projects" class="btn btn--ghost">
+            <span data-i18n="view_projects">Ver proyectos</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ── ABOUT ──────────────────────────────────── -->
+      <section class="section" id="about" data-reveal>
+        <div class="section__prompt" aria-hidden="true">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">cat about.md</span>
+        </div>
+
+        <h2 class="section-title">
+          <span class="section-title__num">01_</span><span data-i18n="about">Sobre mí</span>
+        </h2>
+
+        <p class="output" data-i18n="about_desc1">
+          Desarrollador backend Python con experiencia en módulos Odoo, integraciones XML-RPC y bases de datos PostgreSQL. Inglés avanzado.
+        </p>
+        <br>
+        <p class="output" data-i18n="about_desc2">
+          Formación en administración Linux (Red Hat). Enfocado en código limpio que resuelva problemas reales.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat__hash">#01</span>
+            <div class="stat__num" data-target="10">0</div>
+            <div class="stat__label" data-i18n="stat_projects">Empresas Atendidas</div>
+          </div>
+          <div class="stat">
+            <span class="stat__hash">#02</span>
+            <div class="stat__num" data-target="17" data-suffix="+">0</div>
+            <div class="stat__label" data-i18n="stat_modules">Módulos Odoo</div>
+          </div>
+          <div class="stat">
+            <span class="stat__hash">#03</span>
+            <div class="stat__num" data-target="3">0</div>
+            <div class="stat__label" data-i18n="stat_certs">Certificaciones Red Hat</div>
+          </div>
+          <div class="stat">
+            <span class="stat__hash">#04</span>
+            <div class="stat__num" data-target="15" data-suffix="+">0</div>
+            <div class="stat__label" data-i18n="stat_tech">Tecnologías</div>
           </div>
         </div>
       </section>
 
-      <!-- Experience -->
-      <section id="experience" class="content-section">
-        <h2 class="section-heading" data-i18n="experience_title">Experiencia Profesional</h2>
+      <!-- ── EXPERIENCE ─────────────────────────────── -->
+      <section class="section" id="experience" data-reveal>
+        <div class="section__prompt" aria-hidden="true">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">tree experience/ -L 2</span>
+        </div>
 
-        <!-- Odoo Experience -->
-        <div class="experience-card">
-          <div class="exp-accent"></div>
-          <div class="exp-content">
-            <div class="exp-header">
-              <h3 data-i18n="exp_odoo_title">Consultor Técnico / Desarrollador Odoo</h3>
-              <p class="exp-company" data-i18n="exp_odoo_company">Integra Informática Administrativa</p>
-              <p class="exp-subtitle" data-i18n="exp_odoo_subtitle">Odoo 17/18/19 · Python · PostgreSQL · ORM · Owl · XML-RPC</p>
-              <span class="exp-period" data-i18n="exp_odoo_period">Ago 2025 — presente</span>
+        <h2 class="section-title">
+          <span class="section-title__num">02_</span><span data-i18n="experience_title">Experiencia Profesional</span>
+        </h2>
+
+        <div class="tree">
+          <div class="tree__root">experience/</div>
+
+          <div class="tree__branch">
+            <div class="tree__node tree__node--title" data-i18n="exp_odoo_title">Consultor Técnico / Desarrollador Odoo</div>
+            <div class="tree__node tree__node--meta">
+              <span data-i18n="exp_odoo_company">Integra Informática Administrativa</span>
+              <span class="dim"> · </span>
+              <span data-i18n="exp_odoo_period">Ago 2025 — Presente</span>
+              <br>
+              <span data-i18n="exp_odoo_subtitle">Odoo 17/18/19 · Python · PostgreSQL · ORM · Owl · XML-RPC</span>
             </div>
 
-            <div class="exp-metrics">
-              <span class="metric-chip"><i class="fas fa-layer-group"></i> <span data-i18n="metric_odoo_1">Multi-almacén</span></span>
-              <span class="metric-chip"><i class="fas fa-chart-line"></i> <span data-i18n="metric_odoo_2">Dashboard Owl</span></span>
-              <span class="metric-chip"><i class="fas fa-plug"></i> <span data-i18n="metric_odoo_3">API REST</span></span>
-              <span class="metric-chip"><i class="fas fa-file-invoice"></i> <span data-i18n="metric_odoo_4">CFDI</span></span>
+            <div class="tree__line" data-i18n="exp_odoo_1">Reabastecimiento en cascada multi-almacén con sourcing parcial, stock mínimo configurable y transferencias batch</div>
+            <div class="tree__line" data-i18n="exp_odoo_2">Dashboard de postnómina con Owl: vistas múltiples, gauges SVG, tracking de dispersión y filtrado avanzado</div>
+            <div class="tree__line" data-i18n="exp_odoo_3">Integración con Watchdog: monitoreo de directorios, parseo XML/CSV/JSON y creación automática de registros vía XML-RPC</div>
+
+            <div class="tree__hidden" id="exp-odoo-more">
+              <div class="tree__line" data-i18n="exp_odoo_4">Integración CFDI: timbrado automático, detección de bancos mexicanos, layouts bancarios y comprobantes SPEI</div>
+              <div class="tree__line" data-i18n="exp_odoo_5">Reportes QWeb avanzados: pólizas de nómina por departamento, facturación CFDI y dispersión multi-concepto</div>
+              <div class="tree__line" data-i18n="exp_odoo_6">Detección automática de contactos bancarios con normalización Unicode, extracción de RFC y matching difuso</div>
+              <div class="tree__line" data-i18n="exp_odoo_7">Override de procurement core (_run_pull) con resolución dinámica de almacenes y encadenamiento de movimientos</div>
+              <div class="tree__line" data-i18n="exp_odoo_8">API REST con endpoints de dashboard, reconciliación de pagos y generación batch de PDFs</div>
+              <div class="tree__line" data-i18n="exp_odoo_9">Migración de módulos Odoo v17 → v18, adaptando modelos, vistas y componentes Owl</div>
+              <div class="tree__line" data-i18n="exp_odoo_10">Herencia de 6+ modelos estándar (account.move, hr.payslip.run, stock.rule, etc.) con lógica personalizada</div>
             </div>
 
-            <ul class="exp-list">
-              <li data-i18n="exp_odoo_1">Módulo de reabastecimiento en cascada: sourcing parcial desde 3 almacenes priorizados, stock mínimo configurable, transferencias consolidadas batch y notificaciones BUS en tiempo real</li>
-              <li data-i18n="exp_odoo_2">Dashboard interactivo de postnómina con componente Owl: 3 modos de vista, gauges SVG, tracking de dispersión en 6 pasos, filtrado avanzado y paginación</li>
-              <li data-i18n="exp_odoo_3">Sistema de integración con Watchdog: monitoreo de directorios en tiempo real, parseo de XML/CSV/JSON, creación automática de clientes, productos y facturas en Odoo vía XML-RPC</li>
-            </ul>
-
-            <ul class="exp-list exp-details">
-              <li data-i18n="exp_odoo_4">Integración CFDI: timbrado automático de facturas, detección inteligente de bancos mexicanos con 8 patrones regex, generación de layouts CELEX/Banregio y comprobantes SPEI en PDF</li>
-              <li data-i18n="exp_odoo_5">Reportes avanzados: Póliza con Conceptos (60+ conceptos de nómina agrupados por departamento/sucursal), reportes QWeb de facturación con CFDI, y reportes de dispersión multi-concepto</li>
-              <li data-i18n="exp_odoo_6">Detección automática de contactos bancarios: normalización Unicode, extracción de RFC, matching difuso de nombres y 8 patrones regex para números de cuenta/CLABE</li>
-              <li data-i18n="exp_odoo_7">Override de procurement core (_run_pull): algoritmo de cascada con resolución dinámica de almacenes, encadenamiento de movimientos en tránsito y gestión de orderpoints</li>
-              <li data-i18n="exp_odoo_8">API REST personalizada con 3 endpoints para dashboard, reconciliación de pagos con matching por UUID/folio, y generación batch de PDFs de comprobantes</li>
-              <li data-i18n="exp_odoo_9">Migración de módulos entre versiones de Odoo (v17 → v18), adaptando modelos, vistas, controladores y componentes Owl</li>
-              <li data-i18n="exp_odoo_10">Herencia de 6+ modelos estándar (account.move, hr.payslip.run, stock.rule, account.payment, bank.statement.line, stock.picking) con lógica de negocio personalizada</li>
-            </ul>
-
-            <button class="expand-toggle">
-              <span data-i18n="show_more">Ver más</span>
-              <i class="fas fa-chevron-down"></i>
+            <button class="tree__expand" data-target="exp-odoo-more">
+              <span data-i18n="show_more">Ver más</span><span aria-hidden="true">▾</span>
             </button>
 
-            <div class="exp-tags">
-              <span>Python</span><span>PostgreSQL</span><span>Odoo ORM</span><span>Owl</span><span>XML-RPC</span>
-              <span>QWeb</span><span>CFDI</span><span>Watchdog</span><span>xlsxwriter</span><span>ReportLab</span>
+            <div class="tree__chips">
+              <span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">Odoo ORM</span>
+              <span class="chip">Owl</span><span class="chip">XML-RPC</span><span class="chip">QWeb</span>
+              <span class="chip">CFDI</span><span class="chip">Watchdog</span><span class="chip">xlsxwriter</span>
+              <span class="chip">ReportLab</span>
             </div>
           </div>
-        </div>
 
-        <!-- Social Service -->
-        <div class="experience-card">
-          <div class="exp-accent"></div>
-          <div class="exp-content">
-            <div class="exp-header">
-              <h3 data-i18n="exp_ss_title">Programador Full Stack</h3>
-              <p class="exp-company" data-i18n="exp_ss_company">Biblioteca FCFM-UANL</p>
-              <p class="exp-subtitle" data-i18n="exp_ss_subtitle">Flask · SQL Server · SQLite · 3 Sistemas en Producción</p>
-              <span class="exp-period" data-i18n="exp_ss_period">Ene 2025 — Jun 2025 · Contrato por proyecto (6 meses)</span>
+          <div class="tree__branch">
+            <div class="tree__node tree__node--title" data-i18n="exp_ss_title">Programador Full Stack</div>
+            <div class="tree__node tree__node--meta">
+              <span data-i18n="exp_ss_company">Biblioteca FCFM-UANL</span>
+              <span class="dim"> · </span>
+              <span data-i18n="exp_ss_period">Ene 2025 — Jun 2025 · Contrato por proyecto (6 meses)</span>
+              <br>
+              <span data-i18n="exp_ss_subtitle">Flask · SQL Server · SQLite · 3 Sistemas en Producción</span>
             </div>
 
-            <div class="exp-metrics">
-              <span class="metric-chip"><i class="fas fa-book"></i> <span data-i18n="metric_ss_1">3 Sistemas</span></span>
-              <span class="metric-chip"><i class="fas fa-database"></i> <span data-i18n="metric_ss_2">Dual DB</span></span>
-              <span class="metric-chip"><i class="fas fa-chart-pie"></i> <span data-i18n="metric_ss_3">Dashboards</span></span>
-              <span class="metric-chip"><i class="fas fa-box"></i> <span data-i18n="metric_ss_4">Producción</span></span>
+            <div class="tree__line" data-i18n="exp_ss_1">Sistema de préstamos: monitoreo en tiempo real, dashboard analítico con Chart.js y cierre automático de sesiones</div>
+            <div class="tree__line" data-i18n="exp_ss_2">Registro de entradas y salidas: autenticación bcrypt, control por roles y reportes de asistencia</div>
+            <div class="tree__line" data-i18n="exp_ss_3">Inventario de libros: app de escritorio con escaneo de código de barras y merge de bases de datos</div>
+
+            <div class="tree__hidden" id="exp-ss-more">
+              <div class="tree__line" data-i18n="exp_ss_4">Reportes PDF y Excel con formato avanzado y análisis de datos con Pandas</div>
+              <div class="tree__line" data-i18n="exp_ss_5">Arquitectura dual SQLite + SQL Server con queries parametrizadas</div>
+              <div class="tree__line" data-i18n="exp_ss_6">Importación masiva desde Excel/CSV con validación y resolución de conflictos</div>
+              <div class="tree__line" data-i18n="exp_ss_7">Despliegue en producción con Waitress y compilación a ejecutables con PyInstaller</div>
             </div>
 
-            <ul class="exp-list">
-              <li data-i18n="exp_ss_1">Sistema de préstamos de libros y computadoras: 13+ endpoints, monitoreo en tiempo real con AJAX, dashboard analítico con Chart.js, y cierre automático de sesiones con APScheduler</li>
-              <li data-i18n="exp_ss_2">Sistema de registro de entradas y salidas: autenticación con bcrypt, control de acceso por roles (Admin/Usuario), paginación avanzada y recuperación de contraseña con preguntas de seguridad</li>
-              <li data-i18n="exp_ss_3">Sistema de inventario de libros: app de escritorio con Tkinter, escaneo de código de barras, búsqueda con normalización Unicode, merge de múltiples bases de datos con detección de conflictos</li>
-            </ul>
-
-            <ul class="exp-list exp-details">
-              <li data-i18n="exp_ss_4">Generación de reportes profesionales en PDF (ReportLab) y Excel (openpyxl/xlsxwriter) con formato avanzado, gráficos y análisis de datos con Pandas</li>
-              <li data-i18n="exp_ss_5">Arquitectura dual de bases de datos (SQLite + SQL Server) con la misma lógica de aplicación, queries parametrizadas y prevención de SQL injection</li>
-              <li data-i18n="exp_ss_6">Importación masiva de datos desde Excel/CSV con validación, mapeo de columnas y resolución de conflictos</li>
-              <li data-i18n="exp_ss_7">Despliegue en producción con Waitress (WSGI), compilación a ejecutables con PyInstaller, y documentación completa de usuario y código</li>
-            </ul>
-
-            <button class="expand-toggle">
-              <span data-i18n="show_more">Ver más</span>
-              <i class="fas fa-chevron-down"></i>
+            <button class="tree__expand" data-target="exp-ss-more">
+              <span data-i18n="show_more">Ver más</span><span aria-hidden="true">▾</span>
             </button>
 
-            <div class="exp-tags">
-              <span>Python</span><span>Flask</span><span>SQL Server</span><span>SQLite</span><span>Pandas</span>
-              <span>ReportLab</span><span>Chart.js</span><span>APScheduler</span><span>bcrypt</span>
-              <span>Tkinter</span><span>Waitress</span><span>PyInstaller</span>
+            <div class="tree__chips">
+              <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">SQL Server</span>
+              <span class="chip">SQLite</span><span class="chip">Pandas</span><span class="chip">ReportLab</span>
+              <span class="chip">Chart.js</span><span class="chip">bcrypt</span><span class="chip">Tkinter</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Odoo Modules -->
-      <section id="odoo-modules" class="content-section">
-        <h2 class="section-heading" data-i18n="odoo_modules_title">Módulos Odoo</h2>
-
-        <div class="modules-summary">
-          <span class="metric-chip"><i class="fas fa-cube"></i> <span data-i18n="mod_total">17 módulos</span></span>
-          <span class="metric-chip"><i class="fas fa-code-branch"></i> Odoo 17 / 18 / 19</span>
-          <span class="metric-chip"><i class="fas fa-building"></i> <span data-i18n="mod_clients">10 clientes</span></span>
-          <span class="metric-chip"><i class="fas fa-layer-group"></i> <span data-i18n="mod_areas">6 áreas funcionales</span></span>
+      <!-- ── MODULES ────────────────────────────────── -->
+      <section class="section" id="modules" data-reveal>
+        <div class="section__prompt" aria-hidden="true">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">ls -la modules/odoo/ | grep -E "v1[789]"</span>
         </div>
 
-        <h3 class="subsection-heading" data-i18n="mod_clients_title">Empresas Atendidas</h3>
-        <div class="clients-scroll">
-          <div class="clients-track">
-            <div class="client-chip"><i class="fas fa-landmark"></i><span class="client-chip__name">Avalia</span><span class="client-chip__area" data-i18n="client_avalia_short">Finanzas</span></div>
-            <div class="client-chip"><i class="fas fa-file-invoice-dollar"></i><span class="client-chip__name">Dimex</span><span class="client-chip__area" data-i18n="client_dimex_short">Fiscal</span></div>
-            <div class="client-chip"><i class="fas fa-receipt"></i><span class="client-chip__name">Casa Guerra</span><span class="client-chip__area" data-i18n="client_casaguerra_short">Facturación</span></div>
-            <div class="client-chip"><i class="fas fa-chart-line"></i><span class="client-chip__name">Cosesa</span><span class="client-chip__area" data-i18n="client_cosesa_short">Contabilidad</span></div>
-            <div class="client-chip"><i class="fas fa-boxes-stacked"></i><span class="client-chip__name">Forrajera Elizondo</span><span class="client-chip__area" data-i18n="client_forrajera_short">Inventario</span></div>
-            <div class="client-chip"><i class="fas fa-ship"></i><span class="client-chip__name">Recavisa</span><span class="client-chip__area" data-i18n="client_recavisa_short">Aduanas</span></div>
-            <div class="client-chip"><i class="fas fa-barcode"></i><span class="client-chip__name">Interenter</span><span class="client-chip__area" data-i18n="client_interenter_short">Almacén</span></div>
-            <div class="client-chip"><i class="fas fa-store"></i><span class="client-chip__name">FGH</span><span class="client-chip__area" data-i18n="client_fgh_short">Ventas</span></div>
-            <div class="client-chip"><i class="fas fa-diagram-project"></i><span class="client-chip__name">Invent</span><span class="client-chip__area" data-i18n="client_invent_short">Compras</span></div>
-            <div class="client-chip"><i class="fas fa-plug"></i><span class="client-chip__name">Ikigai</span><span class="client-chip__area" data-i18n="client_ikigai_short">API/EDI</span></div>
-            <!-- Duplicate for seamless loop -->
-            <div class="client-chip"><i class="fas fa-landmark"></i><span class="client-chip__name">Avalia</span><span class="client-chip__area" data-i18n="client_avalia_short">Finanzas</span></div>
-            <div class="client-chip"><i class="fas fa-file-invoice-dollar"></i><span class="client-chip__name">Dimex</span><span class="client-chip__area" data-i18n="client_dimex_short">Fiscal</span></div>
-            <div class="client-chip"><i class="fas fa-receipt"></i><span class="client-chip__name">Casa Guerra</span><span class="client-chip__area" data-i18n="client_casaguerra_short">Facturación</span></div>
-            <div class="client-chip"><i class="fas fa-chart-line"></i><span class="client-chip__name">Cosesa</span><span class="client-chip__area" data-i18n="client_cosesa_short">Contabilidad</span></div>
-            <div class="client-chip"><i class="fas fa-boxes-stacked"></i><span class="client-chip__name">Forrajera Elizondo</span><span class="client-chip__area" data-i18n="client_forrajera_short">Inventario</span></div>
-            <div class="client-chip"><i class="fas fa-ship"></i><span class="client-chip__name">Recavisa</span><span class="client-chip__area" data-i18n="client_recavisa_short">Aduanas</span></div>
-            <div class="client-chip"><i class="fas fa-barcode"></i><span class="client-chip__name">Interenter</span><span class="client-chip__area" data-i18n="client_interenter_short">Almacén</span></div>
-            <div class="client-chip"><i class="fas fa-store"></i><span class="client-chip__name">FGH</span><span class="client-chip__area" data-i18n="client_fgh_short">Ventas</span></div>
-            <div class="client-chip"><i class="fas fa-diagram-project"></i><span class="client-chip__name">Invent</span><span class="client-chip__area" data-i18n="client_invent_short">Compras</span></div>
-            <div class="client-chip"><i class="fas fa-plug"></i><span class="client-chip__name">Ikigai</span><span class="client-chip__area" data-i18n="client_ikigai_short">API/EDI</span></div>
+        <h2 class="section-title">
+          <span class="section-title__num">03_</span><span data-i18n="odoo_modules_title">Módulos Odoo</span>
+        </h2>
+
+        <p class="ls__total">
+          <span class="ansi-green">total 17</span>
+          <span class="dim"> — </span>
+          <span data-i18n="mod_clients">10 clientes</span>
+          <span class="dim"> · </span>
+          <span data-i18n="mod_areas">6 áreas funcionales</span>
+        </p>
+
+        <div class="summary">
+          <span class="chip chip--accent">v17 / v18 / v19</span>
+          <span class="chip" data-i18n="mod_total">17 módulos</span>
+          <span class="chip" data-i18n="mod_clients">10 clientes</span>
+          <span class="chip" data-i18n="mod_areas">6 áreas funcionales</span>
+        </div>
+
+        <h3 class="subsection-title" data-i18n="mod_clients_title">Empresas Atendidas</h3>
+        <div class="clients">
+          <div class="clients__track">
+            <span class="client-pill"><span class="client-pill__name">Avalia</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_avalia_short">Finanzas</span></span>
+            <span class="client-pill"><span class="client-pill__name">Dimex</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_dimex_short">Fiscal</span></span>
+            <span class="client-pill"><span class="client-pill__name">Casa Guerra</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_casaguerra_short">Facturación</span></span>
+            <span class="client-pill"><span class="client-pill__name">Cosesa</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_cosesa_short">Contabilidad</span></span>
+            <span class="client-pill"><span class="client-pill__name">Forrajera Elizondo</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_forrajera_short">Inventario</span></span>
+            <span class="client-pill"><span class="client-pill__name">Recavisa</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_recavisa_short">Aduanas</span></span>
+            <span class="client-pill"><span class="client-pill__name">Interenter</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_interenter_short">Almacén</span></span>
+            <span class="client-pill"><span class="client-pill__name">FGH</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_fgh_short">Ventas</span></span>
+            <span class="client-pill"><span class="client-pill__name">Invent</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_invent_short">Compras</span></span>
+            <span class="client-pill"><span class="client-pill__name">Ikigai</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_ikigai_short">API/EDI</span></span>
+            <!-- duplicate for seamless loop -->
+            <span class="client-pill"><span class="client-pill__name">Avalia</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_avalia_short">Finanzas</span></span>
+            <span class="client-pill"><span class="client-pill__name">Dimex</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_dimex_short">Fiscal</span></span>
+            <span class="client-pill"><span class="client-pill__name">Casa Guerra</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_casaguerra_short">Facturación</span></span>
+            <span class="client-pill"><span class="client-pill__name">Cosesa</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_cosesa_short">Contabilidad</span></span>
+            <span class="client-pill"><span class="client-pill__name">Forrajera Elizondo</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_forrajera_short">Inventario</span></span>
+            <span class="client-pill"><span class="client-pill__name">Recavisa</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_recavisa_short">Aduanas</span></span>
+            <span class="client-pill"><span class="client-pill__name">Interenter</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_interenter_short">Almacén</span></span>
+            <span class="client-pill"><span class="client-pill__name">FGH</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_fgh_short">Ventas</span></span>
+            <span class="client-pill"><span class="client-pill__name">Invent</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_invent_short">Compras</span></span>
+            <span class="client-pill"><span class="client-pill__name">Ikigai</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_ikigai_short">API/EDI</span></span>
           </div>
         </div>
 
-        <!-- Contabilidad y Cumplimiento Fiscal -->
-        <div class="module-category">
-          <button class="module-category__header">
-            <span class="module-category__icon"><i class="fas fa-calculator"></i></span>
-            <div class="module-category__info">
-              <span class="module-category__name" data-i18n="mod_cat_accounting">Contabilidad y Cumplimiento Fiscal</span>
-              <span class="module-category__count" data-i18n="mod_cat_accounting_count">6 módulos · Avalia, Dimex, Casa Guerra, Cosesa</span>
-            </div>
-            <i class="fas fa-chevron-down module-category__arrow"></i>
-          </button>
-          <div class="module-category__body">
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_formatos">Suite de Reportes Financieros — Grupo Avalia</h4>
-                <span class="module-entry__version">v18</span>
+        <div class="ls">
+
+          <!-- Group: accounting -->
+          <div class="ls__group">
+            <button class="ls__group-head" type="button" aria-expanded="false">
+              <span class="ls__group-icon">▸</span>
+              <span>
+                <span class="ls__group-name" data-i18n="mod_cat_accounting">Contabilidad y Cumplimiento Fiscal</span>
+                <span class="ls__group-count" data-i18n="mod_cat_accounting_count">6 módulos · Avalia, Dimex, Casa Guerra, Cosesa</span>
+              </span>
+              <span class="ls__group-arrow" aria-hidden="true">›</span>
+            </button>
+            <div class="ls__group-body">
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_formatos">Suite de Reportes Financieros — Grupo Avalia</div>
+                  <div class="ls__desc" data-i18n="mod_formatos_desc">Automatizó la generación de 9 reportes fiscales para un grupo financiero que administra pensiones y nómina de +500 beneficiarios.</div>
+                  <div class="ls__tags"><span class="chip">QWeb</span><span class="chip">openpyxl</span><span class="chip">OWL</span><span class="chip">CFDI</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_formatos_desc">Automatizó la generación de 9 reportes fiscales para un grupo financiero que administra pensiones y nómina de +500 beneficiarios. Herencia del motor de reportes nativo, generación de Excel con openpyxl, dashboard OWL con assets frontend y sincronización con sistema SAFI vía cron.</p>
-              <div class="module-entry__tags"><span>QWeb</span><span>openpyxl</span><span>OWL</span><span>CFDI</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_bank_balance">Control de Conciliación Bancaria</h4>
-                <span class="module-entry__version">v18</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_bank_balance">Control de Conciliación Bancaria</div>
+                  <div class="ls__desc" data-i18n="mod_bank_balance_desc">Resolvió un problema crítico donde Odoo mostraba saldos bancarios vacíos al depender de la conciliación nativa.</div>
+                  <div class="ls__tags"><span class="chip">mail.thread</span><span class="chip">openpyxl</span><span class="chip">Bidirectional Sync</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_bank_balance_desc">Resolvió un problema crítico donde Odoo mostraba saldos bancarios vacíos al depender de la conciliación nativa. Sincronización bidireccional con flag de contexto anti-loop, importación masiva desde Excel, inserción dinámica de columnas en workbooks existentes y auditoría completa con mail.thread.</p>
-              <div class="module-entry__tags"><span>mail.thread</span><span>openpyxl</span><span>Bidirectional Sync</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_aged_days">Visibilidad de Cartera Vencida</h4>
-                <span class="module-entry__version">v18</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_aged_days">Visibilidad de Cartera Vencida</div>
+                  <div class="ls__desc" data-i18n="mod_aged_days_desc">Dio a cobranza visibilidad instantánea de los días vencidos por factura — información crítica para flujo de efectivo que Odoo omite.</div>
+                  <div class="ls__tags"><span class="chip">Report Engine</span><span class="chip">Hooks</span><span class="chip">Custom Expressions</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_aged_days_desc">Dio a cobranza visibilidad instantánea de los días vencidos por factura — información crítica para flujo de efectivo que Odoo omite. Extensión del report engine con custom expressions, post_init_hook y uninstall_hook para instalación/desinstalación sin residuos.</p>
-              <div class="module-entry__tags"><span>Report Engine</span><span>Hooks</span><span>Custom Expressions</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_base_efectivo">Corrección Fiscal de Anticipos — DIOT</h4>
-                <span class="module-entry__version">v17</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_base_efectivo">Corrección Fiscal de Anticipos — DIOT</div>
+                  <div class="ls__desc" data-i18n="mod_base_efectivo_desc">Evitó declaraciones incorrectas ante el SAT que arriesgaban multas fiscales. Override de _compute_max_date() para forzar la fecha del flujo real de efectivo.</div>
+                  <div class="ls__tags"><span class="chip">account.partial.reconcile</span><span class="chip">DIOT</span><span class="chip">SAT</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_base_efectivo_desc">Evitó declaraciones incorrectas ante el SAT que arriesgaban multas fiscales: Odoo generaba asientos de base efectivo con fecha de conciliación en vez de fecha de pago. Override de _compute_max_date() en account.partial.reconcile para forzar la fecha del flujo real de efectivo.</p>
-              <div class="module-entry__tags"><span>account.partial.reconcile</span><span>DIOT</span><span>SAT</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_anticipo">Reconocimiento Automático de IVA en Anticipos</h4>
-                <span class="module-entry__version">v17</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_anticipo">Reconocimiento Automático de IVA en Anticipos</div>
+                  <div class="ls__desc" data-i18n="mod_anticipo_desc">Automatizó un proceso manual mensual que causaba errores en la DIOT. Override de action_post() para generar asientos de base efectivo al registrar anticipos.</div>
+                  <div class="ls__tags"><span class="chip">action_post</span><span class="chip">Cash Basis</span><span class="chip">Tax Tags</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_anticipo_desc">Automatizó un proceso manual mensual que causaba errores en la DIOT. Override de action_post() para generar asientos de base efectivo al registrar anticipos, cálculo inverso de IVA (total / 1.16 × 0.16), manejo de tags fiscales y prevención inteligente de duplicados en conciliación.</p>
-              <div class="module-entry__tags"><span>action_post</span><span>Cash Basis</span><span>Tax Tags</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_rep">Comprobante de Pago con Cumplimiento SAT</h4>
-                <span class="module-entry__version">v17</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_rep">Comprobante de Pago con Cumplimiento SAT</div>
+                  <div class="ls__desc" data-i18n="mod_rep_desc">Reemplazó el formato genérico de Odoo con un REP profesional que cumple 100% los requisitos del SAT. Parsing de XML CFDI 4.0 con namespaces y complemento Pagos20.</div>
+                  <div class="ls__tags"><span class="chip">CFDI 4.0</span><span class="chip">XML Parsing</span><span class="chip">Pagos20</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_rep_desc">Reemplazó el formato genérico de Odoo con un REP profesional que cumple 100% los requisitos del SAT. Parsing de XML CFDI 4.0 con namespaces SAT y complemento Pagos20, extracción de nodos TrasladoDR y DoctoRelacionado, generación de QR y sellos digitales.</p>
-              <div class="module-entry__tags"><span>CFDI 4.0</span><span>XML Parsing</span><span>Pagos20</span></div>
             </div>
           </div>
-        </div>
 
-        <!-- Nómina y Recursos Humanos -->
-        <div class="module-category">
-          <button class="module-category__header">
-            <span class="module-category__icon"><i class="fas fa-users"></i></span>
-            <div class="module-category__info">
-              <span class="module-category__name" data-i18n="mod_cat_payroll">Nómina y Recursos Humanos</span>
-              <span class="module-category__count" data-i18n="mod_cat_payroll_count">3 módulos · Avalia, Casa Guerra</span>
-            </div>
-            <i class="fas fa-chevron-down module-category__arrow"></i>
-          </button>
-          <div class="module-category__body">
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_holidays">Gestión Automatizada de Vacaciones</h4>
-                <span class="module-entry__version">v17</span>
+          <!-- Group: payroll -->
+          <div class="ls__group">
+            <button class="ls__group-head" type="button" aria-expanded="false">
+              <span class="ls__group-icon">▸</span>
+              <span>
+                <span class="ls__group-name" data-i18n="mod_cat_payroll">Nómina y Recursos Humanos</span>
+                <span class="ls__group-count" data-i18n="mod_cat_payroll_count">3 módulos · Avalia, Casa Guerra</span>
+              </span>
+              <span class="ls__group-arrow" aria-hidden="true">›</span>
+            </button>
+            <div class="ls__group-body">
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_holidays">Gestión Automatizada de Vacaciones</div>
+                  <div class="ls__desc" data-i18n="mod_holidays_desc">Eliminó consultas manuales de saldo que RH respondía decenas de veces al mes. Reporte QWeb en formato media carta con áreas de firma.</div>
+                  <div class="ls__tags"><span class="chip">QWeb</span><span class="chip">Computed</span><span class="chip">hr.leave</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_holidays_desc">Eliminó consultas manuales de saldo que RH respondía decenas de veces al mes. Campo computado que calcula asignaciones vigentes menos ausencias en todos los estados, reporte QWeb en formato media carta (216×139mm) con áreas de firma y binding directo al modelo hr.leave.</p>
-              <div class="module-entry__tags"><span>QWeb</span><span>Computed</span><span>hr.leave</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_payroll_report">Reportes de Nómina Auto-configurables</h4>
-                <span class="module-entry__version">v18</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_payroll_report">Reportes de Nómina Auto-configurables</div>
+                  <div class="ls__desc" data-i18n="mod_payroll_report_desc">Un solo reporte que se adapta a cualquier estructura salarial sin intervención de desarrollo. Columnas generadas dinámicamente desde reglas salariales.</div>
+                  <div class="ls__tags"><span class="chip">xlsxwriter</span><span class="chip">Dynamic Columns</span><span class="chip">Wizard</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_payroll_report_desc">Un solo reporte que se adapta a cualquier estructura salarial sin intervención de desarrollo. Columnas generadas dinámicamente desde reglas salariales con flag add_to_report, ordenadas por tipo (percepciones → deducciones → otros), exportación Excel con xlsxwriter y filtros multi-empresa/periodo.</p>
-              <div class="module-entry__tags"><span>xlsxwriter</span><span>Dynamic Columns</span><span>Wizard</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_odessa">Integración Nómina ↔ Caja de Ahorro</h4>
-                <span class="module-entry__version">v18</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_odessa">Integración Nómina ↔ Caja de Ahorro</div>
+                  <div class="ls__desc" data-i18n="mod_odessa_desc">Eliminó horas de captura manual cada quincena entre dos sistemas. 3 wizards especializados y 5 reglas de nómina.</div>
+                  <div class="ls__tags"><span class="chip">MOPER</span><span class="chip">3 Wizards</span><span class="chip">Salary Rules</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_odessa_desc">Eliminó horas de captura manual cada quincena entre dos sistemas. 3 wizards especializados (exportar MOPER, importar descuentos, confirmar), mapping configurable entre claves ODESSA y reglas salariales, y 5 reglas de nómina para ahorro, préstamos y seguros.</p>
-              <div class="module-entry__tags"><span>MOPER</span><span>3 Wizards</span><span>Salary Rules</span></div>
             </div>
           </div>
-        </div>
 
-        <!-- Inventario y Almacén -->
-        <div class="module-category">
-          <button class="module-category__header">
-            <span class="module-category__icon"><i class="fas fa-warehouse"></i></span>
-            <div class="module-category__info">
-              <span class="module-category__name" data-i18n="mod_cat_inventory">Inventario y Almacén</span>
-              <span class="module-category__count" data-i18n="mod_cat_inventory_count">4 módulos · Forrajera Elizondo, Recavisa, Interenter</span>
-            </div>
-            <i class="fas fa-chevron-down module-category__arrow"></i>
-          </button>
-          <div class="module-category__body">
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_stock_location">Trazabilidad de Inventario Multi-ubicación</h4>
-                <span class="module-entry__version">v17</span>
+          <!-- Group: inventory -->
+          <div class="ls__group">
+            <button class="ls__group-head" type="button" aria-expanded="false">
+              <span class="ls__group-icon">▸</span>
+              <span>
+                <span class="ls__group-name" data-i18n="mod_cat_inventory">Inventario y Almacén</span>
+                <span class="ls__group-count" data-i18n="mod_cat_inventory_count">4 módulos · Forrajera Elizondo, Recavisa, Interenter</span>
+              </span>
+              <span class="ls__group-arrow" aria-hidden="true">›</span>
+            </button>
+            <div class="ls__group-body">
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_stock_location">Trazabilidad de Inventario Multi-ubicación</div>
+                  <div class="ls__desc" data-i18n="mod_stock_location_desc">Resolvió una limitación de Odoo que solo mostraba totales agregados. Algoritmo de boundary-crossing con soporte para BOMs fantasma (kits).</div>
+                  <div class="ls__tags"><span class="chip">Boundary-crossing</span><span class="chip">stock.quant</span><span class="chip">BOM Kits</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_stock_location_desc">Resolvió una limitación de Odoo que solo mostraba totales agregados, impidiendo auditorías precisas. Algoritmo de boundary-crossing que lee quants actuales, revierte movimientos posteriores a la fecha de corte y redistribuye transferencias internas, con soporte para BOMs fantasma (kits).</p>
-              <div class="module-entry__tags"><span>Boundary-crossing</span><span>stock.quant</span><span>BOM Kits</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_pedimento">Control de Cumplimiento Aduanal</h4>
-                <span class="module-entry__version">v17</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_pedimento">Control de Cumplimiento Aduanal</div>
+                  <div class="ls__desc" data-i18n="mod_pedimento_desc">Previene multas aduanales al detectar facturas timbradas sin pedimento en el XML. Auto-refresh vía override de web_search_read().</div>
+                  <div class="ls__tags"><span class="chip">web_search_read</span><span class="chip">_auto_init</span><span class="chip">CFDI</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_pedimento_desc">Previene multas aduanales al detectar facturas timbradas sin pedimento en el XML — un error invisible que podría costar miles en sanciones. Modelo con auto-refresh via override de web_search_read(), indicadores CFDI por colores y migración automática de SQL VIEW a modelo regular en _auto_init().</p>
-              <div class="module-entry__tags"><span>web_search_read</span><span>_auto_init</span><span>CFDI</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_quant_unrestrict">Corrección Rápida de Lotes en Inventario</h4>
-                <span class="module-entry__version">v19</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v19</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_quant_unrestrict">Corrección Rápida de Lotes en Inventario</div>
+                  <div class="ls__desc" data-i18n="mod_quant_unrestrict_desc">Eliminó un proceso de 15+ minutos por corrección. Override quirúrgico de _get_forbidden_fields_write() — solución mínima de 4 líneas.</div>
+                  <div class="ls__tags"><span class="chip">_get_forbidden_fields</span><span class="chip">stock.quant</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_quant_unrestrict_desc">Eliminó un proceso de 15+ minutos por corrección que requería ajustes de inventario complejos. Override quirúrgico de _get_forbidden_fields_write() para remover lot_id de campos prohibidos — solución mínima de 4 líneas usando el mecanismo nativo de Odoo.</p>
-              <div class="module-entry__tags"><span>_get_forbidden_fields</span><span>stock.quant</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_import_lots">Recepción Masiva de Series/Lotes</h4>
-                <span class="module-entry__version">v19</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v19</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_import_lots">Recepción Masiva de Series/Lotes</div>
+                  <div class="ls__desc" data-i18n="mod_import_lots_desc">Aceleró la recepción en almacén eliminando la captura uno por uno. Override de split_lots() en stock.move retrocompatible.</div>
+                  <div class="ls__tags"><span class="chip">split_lots</span><span class="chip">stock.move</span><span class="chip">UX</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_import_lots_desc">Aceleró la recepción en almacén eliminando la captura uno por uno que causaba cuellos de botella. Override de split_lots() en stock.move que normaliza comas a saltos de línea antes del método nativo — retrocompatible y sin efectos secundarios.</p>
-              <div class="module-entry__tags"><span>split_lots</span><span>stock.move</span><span>UX</span></div>
             </div>
           </div>
-        </div>
 
-        <!-- Ventas y Compras -->
-        <div class="module-category">
-          <button class="module-category__header">
-            <span class="module-category__icon"><i class="fas fa-shopping-cart"></i></span>
-            <div class="module-category__info">
-              <span class="module-category__name" data-i18n="mod_cat_sales">Ventas y Compras</span>
-              <span class="module-category__count" data-i18n="mod_cat_sales_count">2 módulos · FGH, Invent</span>
-            </div>
-            <i class="fas fa-chevron-down module-category__arrow"></i>
-          </button>
-          <div class="module-category__body">
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_catalogo">Gestión Inteligente de Catálogo de Productos</h4>
-                <span class="module-entry__version">v17</span>
+          <!-- Group: sales -->
+          <div class="ls__group">
+            <button class="ls__group-head" type="button" aria-expanded="false">
+              <span class="ls__group-icon">▸</span>
+              <span>
+                <span class="ls__group-name" data-i18n="mod_cat_sales">Ventas y Compras</span>
+                <span class="ls__group-count" data-i18n="mod_cat_sales_count">2 módulos · FGH, Invent</span>
+              </span>
+              <span class="ls__group-arrow" aria-hidden="true">›</span>
+            </button>
+            <div class="ls__group-body">
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_catalogo">Gestión Inteligente de Catálogo de Productos</div>
+                  <div class="ls__desc" data-i18n="mod_catalogo_desc">Resolvió la saturación de selectores que confundía al equipo de ventas con +35,000 productos. Override de _name_search() con filtrado por contexto.</div>
+                  <div class="ls__tags"><span class="chip">_name_search</span><span class="chip">Context</span><span class="chip">Dynamic Domain</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_catalogo_desc">Resolvió la saturación de selectores que confundía al equipo de ventas con +35,000 productos. Override de _name_search() en product.template y product.product con filtrado por contexto, dominio dinámico en líneas de orden y toggle transparente sin cambiar de vista.</p>
-              <div class="module-entry__tags"><span>_name_search</span><span>Context</span><span>Dynamic Domain</span></div>
-            </div>
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_proyecto">Automatización de Compras a Proyectos</h4>
-                <span class="module-entry__version">v17</span>
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_proyecto">Automatización de Compras a Proyectos</div>
+                  <div class="ls__desc" data-i18n="mod_proyecto_desc">Eliminó pasos manuales en el flujo compra→proyecto. Cadena automatizada PO → Picking → Moves → Confirmación.</div>
+                  <div class="ls__tags"><span class="chip">analytic_distribution</span><span class="chip">stock.picking</span><span class="chip">Automation</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_proyecto_desc">Eliminó pasos manuales en el flujo compra→proyecto que causaban errores de asignación. Parsing de analytic_distribution (JSON dict de Odoo 17+), agrupación de líneas por cuenta del plan "Proyectos", creación automatizada de cadena completa PO → Picking → Moves → Confirmación.</p>
-              <div class="module-entry__tags"><span>analytic_distribution</span><span>stock.picking</span><span>Automation</span></div>
             </div>
           </div>
-        </div>
 
-        <!-- Integraciones y API -->
-        <div class="module-category">
-          <button class="module-category__header">
-            <span class="module-category__icon"><i class="fas fa-plug"></i></span>
-            <div class="module-category__info">
-              <span class="module-category__name" data-i18n="mod_cat_api">Integraciones y API</span>
-              <span class="module-category__count" data-i18n="mod_cat_api_count">1 módulo · Ikigai</span>
-            </div>
-            <i class="fas fa-chevron-down module-category__arrow"></i>
-          </button>
-          <div class="module-category__body">
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_edi">EDI IKIGAI — REST API</h4>
-                <span class="module-entry__version">v17</span>
+          <!-- Group: api -->
+          <div class="ls__group">
+            <button class="ls__group-head" type="button" aria-expanded="false">
+              <span class="ls__group-icon">▸</span>
+              <span>
+                <span class="ls__group-name" data-i18n="mod_cat_api">Integraciones y API</span>
+                <span class="ls__group-count" data-i18n="mod_cat_api_count">1 módulo · Ikigai</span>
+              </span>
+              <span class="ls__group-arrow" aria-hidden="true">›</span>
+            </button>
+            <div class="ls__group-body">
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_edi">EDI IKIGAI — REST API</div>
+                  <div class="ls__desc" data-i18n="mod_edi_desc">Conectó SAP y Odoo eliminando la captura manual de facturas. Endpoint REST con API keys hasheadas con SHA-256.</div>
+                  <div class="ls__tags"><span class="chip">REST API</span><span class="chip">SHA-256</span><span class="chip">Bearer Auth</span><span class="chip">EDI</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_edi_desc">Conectó SAP y Odoo eliminando la captura manual de facturas entre sistemas. Endpoint REST /edi/factura con API keys hasheadas con SHA-256 (nunca en texto plano), búsqueda por prefijo O(1) y trazabilidad completa en chatter.</p>
-              <div class="module-entry__tags"><span>REST API</span><span>SHA-256</span><span>Bearer Auth</span><span>EDI</span></div>
             </div>
           </div>
-        </div>
 
-        <!-- Herramientas UI/UX -->
-        <div class="module-category">
-          <button class="module-category__header">
-            <span class="module-category__icon"><i class="fas fa-paint-brush"></i></span>
-            <div class="module-category__info">
-              <span class="module-category__name" data-i18n="mod_cat_uiux">Herramientas UI/UX</span>
-              <span class="module-category__count" data-i18n="mod_cat_uiux_count">1 módulo · Interenter</span>
-            </div>
-            <i class="fas fa-chevron-down module-category__arrow"></i>
-          </button>
-          <div class="module-category__body">
-            <div class="module-entry">
-              <div class="module-entry__header">
-                <h4 class="module-entry__name" data-i18n="mod_columns">Columnas Separadas en Líneas de Orden</h4>
-                <span class="module-entry__version">v19</span>
+          <!-- Group: uiux -->
+          <div class="ls__group">
+            <button class="ls__group-head" type="button" aria-expanded="false">
+              <span class="ls__group-icon">▸</span>
+              <span>
+                <span class="ls__group-name" data-i18n="mod_cat_uiux">Herramientas UI/UX</span>
+                <span class="ls__group-count" data-i18n="mod_cat_uiux_count">1 módulo · Interenter</span>
+              </span>
+              <span class="ls__group-arrow" aria-hidden="true">›</span>
+            </button>
+            <div class="ls__group-body">
+              <div class="ls__row">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v19</span></div>
+                <div>
+                  <div class="ls__name" data-i18n="mod_columns">Restauración de Usabilidad en Órdenes</div>
+                  <div class="ls__desc" data-i18n="mod_columns_desc">Patch de componentes OWL sobre ProductLabelSectionAndNoteListRender.getActiveColumns(), respetando el sistema de optional fields nativo.</div>
+                  <div class="ls__tags"><span class="chip">OWL Patch</span><span class="chip">getActiveColumns</span><span class="chip">Mixin</span></div>
+                </div>
               </div>
-              <p class="module-entry__desc" data-i18n="mod_columns_desc">Restauró la usabilidad perdida en Odoo 17+ que causaba errores de captura en ventas, compras y facturas. Patch de componentes OWL sobre ProductLabelSectionAndNoteListRender.getActiveColumns() y SaleOrderLineListRenderer, respetando el sistema de optional fields nativo.</p>
-              <div class="module-entry__tags"><span>OWL Patch</span><span>getActiveColumns</span><span>Mixin</span></div>
             </div>
           </div>
+
         </div>
 
-        <!-- Complementarios -->
-        <p class="modules-extra" data-i18n="mod_extra">+ 3 módulos complementarios: automatización de impuestos en productos nuevos, validación de precios de proveedor con 35 puntos de control, y flujo de remisión integrado en entregas.</p>
+        <p class="ls__extra" data-i18n="mod_extra">+ 3 módulos complementarios: automatización de impuestos en productos nuevos, validación de precios de proveedor con 35 puntos de control, y flujo de remisión integrado en entregas.</p>
       </section>
 
-      <!-- Projects -->
-      <section id="projects" class="content-section">
-        <h2 class="section-heading" data-i18n="projects">Proyectos Destacados</h2>
+      <!-- ── PROJECTS ───────────────────────────────── -->
+      <section class="section" id="projects" data-reveal>
+        <div class="section__prompt" aria-hidden="true">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">cat projects.json | jq</span>
+        </div>
 
-        <div class="projects-list">
-          <!-- Project 1 -->
-          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/acervo.jpg" alt="Gestión de Libros" loading="lazy">
+        <h2 class="section-title">
+          <span class="section-title__num">04_</span><span data-i18n="projects">Proyectos Destacados</span>
+        </h2>
+
+        <div class="projects" data-reveal-stagger>
+          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank" rel="noopener" class="project">
+            <div class="project__head">
+              <span class="project__brace">{</span>
+              <span class="project__id">// 0x01</span>
             </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="book_management">Gestión de Libros de Acervo</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="book_desc">
-                Sistema web con 13+ endpoints para gestión de préstamos, monitoreo de computadoras en tiempo real,
-                dashboard analítico con Chart.js, reportes PDF/Excel, importación masiva y tareas programadas con APScheduler.
-              </p>
-              <div class="project-tech">
-                <span>Python</span><span>Flask</span><span>SQL Server</span><span>Pandas</span><span>Chart.js</span>
+            <div class="project__title">
+              <span data-i18n="book_management">Gestión de Libros de Acervo</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="project__field">
+              <span class="project__key">"desc":</span>
+              <span class="project__val project__val--str" data-i18n="book_desc">Sistema web con 13+ endpoints para gestión de préstamos, monitoreo en tiempo real, dashboard analítico con Chart.js, reportes PDF/Excel, importación masiva y APScheduler.</span>
+            </div>
+            <div class="project__field">
+              <span class="project__key">"stack":</span>
+              <div class="project__tech">
+                <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">SQL Server</span>
+                <span class="chip">Pandas</span><span class="chip">Chart.js</span>
               </div>
             </div>
+            <span class="project__brace">}</span>
           </a>
 
-          <!-- Project 2 -->
-          <a href="https://rtimer.pages.dev/" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/timer.jpg" alt="Rubik's Timer" loading="lazy">
+          <a href="https://rtimer.pages.dev/" target="_blank" rel="noopener" class="project">
+            <div class="project__head">
+              <span class="project__brace">{</span>
+              <span class="project__id">// 0x02</span>
             </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="timer-title">Cronómetro para Cubo Rubik</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="timer-desc">
-                Cronómetro web en React para speedcubing con inspección, estadísticas, visualización 2D y personalización.
-              </p>
-              <div class="project-tech">
-                <span>React</span><span>JavaScript</span><span>Responsive</span>
+            <div class="project__title">
+              <span data-i18n="timer-title">Cronómetro para Cubo Rubik</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="project__field">
+              <span class="project__key">"desc":</span>
+              <span class="project__val project__val--str" data-i18n="timer-desc">Cronómetro web en React para speedcubing con inspección, estadísticas, visualización 2D y personalización.</span>
+            </div>
+            <div class="project__field">
+              <span class="project__key">"stack":</span>
+              <div class="project__tech">
+                <span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">Responsive</span>
               </div>
             </div>
+            <span class="project__brace">}</span>
           </a>
 
-          <!-- Project 3 -->
-          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/asistencias.jpg" alt="Registro de Asistencias" loading="lazy">
+          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank" rel="noopener" class="project">
+            <div class="project__head">
+              <span class="project__brace">{</span>
+              <span class="project__id">// 0x03</span>
             </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="attendance">Registro de Entradas y Salidas</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="attendance_desc">
-                Sistema de control de asistencias con autenticación bcrypt, roles Admin/Usuario,
-                estadísticas por alumno (días, horas, promedios), reportes Excel/PDF y cierre automático de registros.
-              </p>
-              <div class="project-tech">
-                <span>Python</span><span>Flask</span><span>SQL Server</span><span>bcrypt</span><span>Pandas</span>
+            <div class="project__title">
+              <span data-i18n="attendance">Registro de Entradas y Salidas</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="project__field">
+              <span class="project__key">"desc":</span>
+              <span class="project__val project__val--str" data-i18n="attendance_desc">Sistema de control de asistencias con autenticación bcrypt, roles Admin/Usuario, estadísticas, reportes Excel/PDF y cierre automático.</span>
+            </div>
+            <div class="project__field">
+              <span class="project__key">"stack":</span>
+              <div class="project__tech">
+                <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">SQL Server</span>
+                <span class="chip">bcrypt</span><span class="chip">Pandas</span>
               </div>
             </div>
+            <span class="project__brace">}</span>
           </a>
 
-          <!-- Project 4 -->
-          <a href="assets/demo/demo.mp4" target="_blank" class="project-card">
-            <div class="project-image">
-              <img src="assets/images/inventario.jpg" alt="Inventario de Libros" loading="lazy">
+          <a href="assets/demo/demo.mp4" target="_blank" rel="noopener" class="project">
+            <div class="project__head">
+              <span class="project__brace">{</span>
+              <span class="project__id">// 0x04</span>
             </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3 class="project-title" data-i18n="inventory">Inventario de Libros</h3>
-                <i class="fas fa-arrow-up-right-from-square project-arrow"></i>
-              </div>
-              <p class="project-desc" data-i18n="inventory_desc">
-                App de escritorio con escaneo de código de barras, búsqueda con normalización Unicode,
-                merge de múltiples bases de datos con detección de conflictos, historial de auditoría y exportación a 5 reportes Excel.
-              </p>
-              <div class="project-tech">
-                <span>Python</span><span>Tkinter</span><span>SQLite</span><span>Pandas</span><span>PyInstaller</span>
+            <div class="project__title">
+              <span data-i18n="inventory">Inventario de Libros</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="project__field">
+              <span class="project__key">"desc":</span>
+              <span class="project__val project__val--str" data-i18n="inventory_desc">App de escritorio con escaneo de código de barras, búsqueda con normalización Unicode, merge de bases de datos y exportación a 5 reportes Excel.</span>
+            </div>
+            <div class="project__field">
+              <span class="project__key">"stack":</span>
+              <div class="project__tech">
+                <span class="chip">Python</span><span class="chip">Tkinter</span><span class="chip">SQLite</span>
+                <span class="chip">Pandas</span><span class="chip">PyInstaller</span>
               </div>
             </div>
+            <span class="project__brace">}</span>
           </a>
         </div>
       </section>
 
-      <!-- Skills -->
-      <section id="skills" class="content-section">
-        <h2 class="section-heading" data-i18n="tech_skills">Habilidades Técnicas</h2>
-
-        <div class="skills-group">
-          <h3 class="skills-category" data-i18n="backend_databases">Backend & Bases de Datos</h3>
-          <div class="skills-chips">
-            <span class="skill-chip"><i class="fab fa-python"></i> Python</span>
-            <span class="skill-chip"><i class="fas fa-cube"></i> Odoo</span>
-            <span class="skill-chip"><i class="fas fa-flask-vial"></i> Flask</span>
-            <span class="skill-chip"><i class="fas fa-database"></i> PostgreSQL</span>
-            <span class="skill-chip"><i class="fas fa-database"></i> SQL Server</span>
-            <span class="skill-chip"><i class="fas fa-plug"></i> XML-RPC</span>
-            <span class="skill-chip"><i class="fas fa-table"></i> Pandas</span>
-          </div>
+      <!-- ── SKILLS ─────────────────────────────────── -->
+      <section class="section" id="skills" data-reveal>
+        <div class="section__prompt" aria-hidden="true">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">pacman -Qq | grep tech</span>
         </div>
 
-        <div class="skills-group">
-          <h3 class="skills-category" data-i18n="web_development">Desarrollo Web</h3>
-          <div class="skills-chips">
-            <span class="skill-chip"><i class="fab fa-html5"></i> HTML5</span>
-            <span class="skill-chip"><i class="fab fa-css3-alt"></i> CSS3</span>
-            <span class="skill-chip"><i class="fab fa-js"></i> JavaScript</span>
-            <span class="skill-chip"><i class="fab fa-react"></i> React</span>
-            <span class="skill-chip"><i class="fas fa-feather"></i> Owl</span>
-            <span class="skill-chip"><i class="fas fa-paint-brush"></i> QWeb</span>
-          </div>
-        </div>
+        <h2 class="section-title">
+          <span class="section-title__num">05_</span><span data-i18n="tech_skills">Habilidades Técnicas</span>
+        </h2>
 
-        <div class="skills-group">
-          <h3 class="skills-category" data-i18n="devops_tools">DevOps & Herramientas</h3>
-          <div class="skills-chips">
-            <span class="skill-chip"><i class="fab fa-git-alt"></i> Git</span>
-            <span class="skill-chip"><i class="fab fa-github"></i> GitHub</span>
-            <span class="skill-chip"><i class="fab fa-linux"></i> Linux</span>
-            <span class="skill-chip"><i class="fab fa-redhat"></i> Red Hat</span>
+        <div class="skills">
+          <div class="skills__group">
+            <h3 data-i18n="backend_databases">Backend & Bases de Datos</h3>
+            <div class="skills__list">
+              <span class="skill">Python</span><span class="skill">Odoo</span><span class="skill">Flask</span>
+              <span class="skill">PostgreSQL</span><span class="skill">SQL Server</span><span class="skill">XML-RPC</span>
+              <span class="skill">Pandas</span>
+            </div>
+          </div>
+          <div class="skills__group">
+            <h3 data-i18n="web_development">Desarrollo Web</h3>
+            <div class="skills__list">
+              <span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span>
+              <span class="skill">React</span><span class="skill">Owl</span><span class="skill">QWeb</span>
+            </div>
+          </div>
+          <div class="skills__group">
+            <h3 data-i18n="devops_tools">DevOps & Herramientas</h3>
+            <div class="skills__list">
+              <span class="skill">Git</span><span class="skill">GitHub</span><span class="skill">Linux</span>
+              <span class="skill">Red Hat</span><span class="skill">Docker</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Education -->
-      <section id="education" class="content-section">
-        <h2 class="section-heading" data-i18n="education">Formación</h2>
+      <!-- ── EDUCATION ──────────────────────────────── -->
+      <section class="section" id="education" data-reveal>
+        <div class="section__prompt" aria-hidden="true">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">man certifications</span>
+        </div>
 
-        <div class="education-card">
-          <div class="education-header">
-            <div class="education-logos">
-              <a href="https://www.uanl.mx/" target="_blank" rel="noopener">
-                <img src="assets/images/Uanl.png" alt="UANL" class="education-logo">
-              </a>
-              <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener">
-                <img src="assets/images/logofcfmpng.png" alt="FCFM" class="education-logo">
-              </a>
-            </div>
-            <div class="education-details">
-              <h3 data-i18n="degree">Licenciatura en Ciencias Computacionales</h3>
-              <p class="education-institution" data-i18n="university">Universidad Autónoma de Nuevo León, Facultad de Ciencias Físico Matemáticas</p>
-              <span class="education-period">2021 — 2025</span>
-            </div>
+        <h2 class="section-title">
+          <span class="section-title__num">06_</span><span data-i18n="education">Formación</span>
+        </h2>
+
+        <div class="education">
+          <div class="education__degree" data-i18n="degree">Licenciatura en Ciencias Computacionales</div>
+          <div class="education__inst" data-i18n="university">Universidad Autónoma de Nuevo León, Facultad de Ciencias Físico Matemáticas</div>
+          <div class="education__period">2021 — 2025</div>
+        </div>
+
+        <h3 class="subsection-title" data-i18n="certifications">Certificaciones Técnicas</h3>
+        <div class="cert-list">
+          <div class="cert">
+            <span class="cert__id">RH124</span>
+            <span class="cert__name" data-i18n="rh124">Red Hat System Administration I (RH124)</span>
+            <span class="cert__year">2024</span>
+            <a href="assets/certificados/RH124.pdf" target="_blank" rel="noopener" class="cert__link">PDF →</a>
+          </div>
+          <div class="cert">
+            <span class="cert__id">RH134</span>
+            <span class="cert__name" data-i18n="rh134">Red Hat System Administration II (RH134)</span>
+            <span class="cert__year">2024</span>
+            <a href="assets/certificados/RH134.pdf" target="_blank" rel="noopener" class="cert__link">PDF →</a>
+          </div>
+          <div class="cert">
+            <span class="cert__id">RH294</span>
+            <span class="cert__name" data-i18n="rh294">Red Hat Enterprise Linux Automation with Ansible (RH294)</span>
+            <span class="cert__year">2024</span>
+            <a href="assets/certificados/RH294.pdf" target="_blank" rel="noopener" class="cert__link">PDF →</a>
           </div>
         </div>
 
-        <h3 class="subsection-heading" data-i18n="certifications">Certificaciones Técnicas</h3>
-        <div class="certifications-list">
-          <div class="cert-card">
-            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
-            <div class="cert-info">
-              <h4 data-i18n="rh124">Red Hat System Administration I (RH124)</h4>
-              <span class="cert-year">2024</span>
-            </div>
-            <a href="assets/certificados/RH124.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+        <h3 class="subsection-title" data-i18n="recognitions">Reconocimientos</h3>
+        <div class="recognitions">
+          <div class="recognition">
+            <div class="recognition__title" data-i18n="recommendation">Reconocimiento por la elaboración de 3 sistemas para biblioteca</div>
+            <div class="recognition__desc" data-i18n="recommendation_desc">Reconocimiento por la elaboración de los sistemas: Entradas y Salidas, Registro de Libros de Acervo e Inventario de Libros.</div>
+            <a href="assets/certificados/carta.pdf" target="_blank" rel="noopener" class="recognition__link">
+              <span data-i18n="view_letter">Ver Carta</span> →
+            </a>
           </div>
-          <div class="cert-card">
-            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
-            <div class="cert-info">
-              <h4 data-i18n="rh134">Red Hat System Administration II (RH134)</h4>
-              <span class="cert-year">2024</span>
-            </div>
-            <a href="assets/certificados/RH134.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
-          </div>
-          <div class="cert-card">
-            <div class="cert-icon"><i class="fab fa-redhat"></i></div>
-            <div class="cert-info">
-              <h4 data-i18n="rh294">Red Hat Enterprise Linux Automation with Ansible (RH294)</h4>
-              <span class="cert-year">2024</span>
-            </div>
-            <a href="assets/certificados/RH294.pdf" target="_blank" class="cert-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+          <div class="recognition">
+            <div class="recognition__title" data-i18n="egel_award">EGEL-CENEVAL</div>
+            <div class="recognition__desc" data-i18n="egel_desc">Testimonio de Desempeño Sobresaliente en el EGEL de Ciencias Computacionales, otorgado por CENEVAL.</div>
+            <a href="assets/certificados/EGEL.pdf" target="_blank" rel="noopener" class="recognition__link">
+              <span data-i18n="view_certificate">Ver Reconocimiento</span> →
+            </a>
           </div>
         </div>
 
-        <!-- Recognitions -->
-        <h3 class="subsection-heading" data-i18n="recognitions">Reconocimientos</h3>
-        <div class="recognitions-list">
-          <div class="recognition-card">
-            <div class="recognition-icon"><i class="fas fa-envelope-open-text"></i></div>
-            <div class="recognition-info">
-              <h4 data-i18n="recommendation">Reconocimiento por la elaboración de 3 sistemas para biblioteca</h4>
-              <p data-i18n="recommendation_desc">Reconocimiento por la elaboración de los sistemas: Entradas y Salidas, Registro de Libros de Acervo e Inventario de Libros.</p>
-              <a href="assets/certificados/carta.pdf" target="_blank" class="recognition-link">
-                <span data-i18n="view_letter">Ver Carta</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-          <div class="recognition-card">
-            <div class="recognition-icon award"><i class="fas fa-award"></i></div>
-            <div class="recognition-info">
-              <h4 data-i18n="egel_award">EGEL-CENEVAL</h4>
-              <p data-i18n="egel_desc">Testimonio de Desempeño Sobresaliente en el EGEL de Ciencias Computacionales, otorgado por CENEVAL.</p>
-              <a href="assets/certificados/EGEL.pdf" target="_blank" class="recognition-link">
-                <span data-i18n="view_certificate">Ver Reconocimiento</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial -->
-        <h3 class="subsection-heading" data-i18n="testimonials">Testimonios</h3>
-        <div class="testimonial-card">
-          <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-          <p class="testimonial-text" data-i18n="testimonial1_text">
+        <h3 class="subsection-title" data-i18n="testimonials">Testimonios</h3>
+        <div class="testimonial">
+          <span class="testimonial__quote-mark" aria-hidden="true">"</span>
+          <p class="testimonial__text" data-i18n="testimonial1_text">
             "Jesús Garza demostró ser un elemento muy valioso por su gran responsabilidad y atención al detalle. Su iniciativa y compromiso superaron las expectativas, logrando mejoras significativas en los procesos internos de nuestra Biblioteca."
           </p>
-          <div class="testimonial-author">
-            <h4 data-i18n="testimonial1_name">Dra. Aleida Magdalena Gil González</h4>
-            <p data-i18n="testimonial1_position">Subdirectora de Calidad e Innovación Educativa, FCFM - UANL</p>
-          </div>
+          <p class="testimonial__author">
+            <strong data-i18n="testimonial1_name">Dra. Aleida Magdalena Gil González</strong>
+            <br>
+            <span data-i18n="testimonial1_position">Subdirectora de Calidad e Innovación Educativa, FCFM - UANL</span>
+          </p>
         </div>
       </section>
 
-      <!-- Contact -->
-      <section id="contact" class="content-section">
-        <h2 class="section-heading" data-i18n="contact_title">Trabajemos juntos</h2>
+      <!-- ── CONTACT ────────────────────────────────── -->
+      <section class="section" id="contact" data-reveal>
+        <div class="section__prompt" aria-hidden="true">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">mail jesus@portfolio</span>
+        </div>
 
-        <p class="content-text" data-i18n="contact_intro">
+        <h2 class="section-title">
+          <span class="section-title__num">07_</span><span data-i18n="contact_title">Trabajemos juntos</span>
+        </h2>
+
+        <p class="output" data-i18n="contact_intro">
           ¿Tienes un proyecto en mente o quieres colaborar? No dudes en contactarme.
         </p>
 
         <div class="contact-links">
-          <a href="mailto:jesusgarzacia@hotmail.com" class="contact-link-item">
-            <i class="fas fa-envelope"></i>
-            <span>jesusgarzacia@hotmail.com</span>
-            <i class="fas fa-arrow-right contact-arrow"></i>
+          <a href="mailto:jesusgarzacia@hotmail.com" class="contact-link">
+            <span class="contact-link__key">mail</span>
+            <span class="contact-link__val">jesusgarzacia@hotmail.com</span>
+            <span class="contact-link__arrow" aria-hidden="true">→</span>
           </a>
-          <a href="https://github.com/jesusgarzag" target="_blank" class="contact-link-item">
-            <i class="fab fa-github"></i>
-            <span>github.com/jesusgarzag</span>
-            <i class="fas fa-arrow-right contact-arrow"></i>
+          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link__key">github</span>
+            <span class="contact-link__val">github.com/jesusgarzag</span>
+            <span class="contact-link__arrow" aria-hidden="true">→</span>
           </a>
-          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" class="contact-link-item">
-            <i class="fab fa-linkedin-in"></i>
-            <span>linkedin.com/in/jesusgarzacia</span>
-            <i class="fas fa-arrow-right contact-arrow"></i>
+          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link__key">linkedin</span>
+            <span class="contact-link__val">linkedin.com/in/jesusgarzacia</span>
+            <span class="contact-link__arrow" aria-hidden="true">→</span>
           </a>
         </div>
 
-        <form class="contact-form" id="form-contacto" action="https://formspree.io/f/xzzgdodw" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nombre" data-i18n="name">Nombre</label>
-              <input type="text" id="nombre" name="name" required>
+        <form class="mail" id="form-contacto" action="https://formspree.io/f/xzzgdodw" method="POST">
+          <div class="mail__header">
+            <div class="mail__header-row">
+              <label class="mail__label" for="mail-from">From:</label>
+              <input class="mail__input" type="text" id="mail-from" name="name" required
+                     placeholder="Tu nombre">
             </div>
-            <div class="form-group">
-              <label for="email" data-i18n="email">Email</label>
-              <input type="email" id="email" name="email" required>
+            <div class="mail__header-row">
+              <label class="mail__label" for="mail-reply">Reply:</label>
+              <input class="mail__input" type="email" id="mail-reply" name="email" required
+                     placeholder="tu@email.com">
+            </div>
+            <div class="mail__header-row">
+              <label class="mail__label" for="mail-subject">Subject:</label>
+              <input class="mail__input" type="text" id="mail-subject" name="affair" required
+                     placeholder="Asunto del mensaje">
             </div>
           </div>
-          <div class="form-group">
-            <label for="asunto" data-i18n="subject">Asunto</label>
-            <input type="text" id="asunto" name="affair" required>
+          <div class="mail__body">
+            <textarea class="mail__textarea" id="mail-body" name="message" rows="6" required
+                      placeholder="Escribe tu mensaje aquí..."></textarea>
           </div>
-          <div class="form-group">
-            <label for="mensaje" data-i18n="message">Mensaje</label>
-            <textarea id="mensaje" name="message" rows="5" required></textarea>
+          <div class="mail__foot">
+            <span class="mail__hint">
+              <span data-i18n="mail_hint_send">Enviar</span> <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+            </span>
+            <button type="submit" class="btn btn--primary">
+              <span data-i18n="send_message">Enviar Mensaje</span>
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </button>
           </div>
-          <button type="submit" class="btn-submit">
-            <span data-i18n="send_message">Enviar Mensaje</span>
-          </button>
         </form>
       </section>
 
-      <!-- Footer -->
-      <footer class="panel-footer">
-        <div class="mobile-footer-social">
-          <a href="https://github.com/jesusgarzag" target="_blank" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
-        <p class="copyright" data-i18n="rights"></p>
+      <!-- ── FOOTER ─────────────────────────────────── -->
+      <footer class="footer">
+        <span class="footer__exit" data-i18n="footer_exit">exit 0</span>
+        <span id="copyright"></span>
       </footer>
-      <script>document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Jesús Gerardo Garza García. Todos los derechos reservados.`;</script>
 
     </main>
   </div>
 
-  <!-- DIMENSIONAL GATEWAY -->
-  <div class="portal-wrapper" id="portalWrapper">
-    <button class="portal-trigger" id="portalTrigger" aria-label="Explorar dimensiones">
-      <span class="portal-trigger__glyph">◈</span>
-      <span class="portal-trigger__text">DIMS</span>
-    </button>
+  <!-- ════════════════════════════════════════════════════
+       STATUS BAR (vim-style)
+       ════════════════════════════════════════════════════ -->
+  <div class="statusbar" id="statusbar">
+    <div class="statusbar__left">
+      <span class="statusbar__mode" id="statusMode">NORMAL</span>
+      <span class="statusbar__sep">·</span>
+      <span id="statusFile">portfolio.md</span>
+    </div>
+    <div class="statusbar__center">
+      <span id="statusBranch">★ main</span>
+      <span class="statusbar__sep">·</span>
+      <span id="statusInfo">UTF-8 · LF · MD</span>
+    </div>
+    <div class="statusbar__right">
+      <span id="statusLine">ln 1, col 1</span>
+      <span class="statusbar__sep">·</span>
+      <span id="statusPct">0%</span>
+    </div>
   </div>
 
-  <!-- Portal expanded overlay -->
-  <div class="portal-expanded" id="portalExpanded">
-    <div class="portal-backdrop" id="portalBackdrop"></div>
-    <button class="portal-close" id="portalClose" aria-label="Cerrar">×</button>
-
-    <div class="gateway">
-      <div class="gateway__header">
-        <span class="gateway__tag">// DIMENSIONAL_ACCESS.SYS //</span>
-        <span class="gateway__status"><span class="gw-dot"></span>SYS&thinsp;ONLINE · 2&thinsp;DIMS&thinsp;AVAILABLE</span>
+  <!-- ════════════════════════════════════════════════════
+       COMMAND PALETTE
+       ════════════════════════════════════════════════════ -->
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="palette__box">
+      <div class="palette__input-row">
+        <input type="text" class="palette__input" id="paletteInput"
+               placeholder="Type a command..." autocomplete="off">
       </div>
-
-      <div class="gateway__grid">
-        <!-- DIM 001: Fluidos -->
-        <button class="dim-card" id="enterFluids">
-          <div class="dim-card__bg dim-card__bg--fluids">
-            <div class="dim-card__blob dim-card__blob--a"></div>
-            <div class="dim-card__blob dim-card__blob--b"></div>
-            <div class="dim-card__blob dim-card__blob--c"></div>
-          </div>
-          <div class="dim-card__body">
-            <span class="dim-card__id">DIM // 001</span>
-            <h2 class="dim-card__name" data-i18n="dim_fluids_name">FLUIDOS</h2>
-            <p class="dim-card__spec" data-i18n="dim_fluids_spec">Navier-Stokes · WebGL · ∂ρ/∂t&thinsp;=&thinsp;0</p>
-            <span class="dim-card__enter" data-i18n="dim_enter">[ INGRESAR → ]</span>
-          </div>
-          <div class="dim-card__scan"></div>
-        </button>
-
-        <div class="gateway__sep">
-          <div class="gateway__sep-line"></div>
-          <span class="gateway__sep-glyph">⊕</span>
-          <div class="gateway__sep-line"></div>
-        </div>
-
-        <!-- DIM 002: Tubos -->
-        <button class="dim-card dim-card--tubes" id="enterTubes">
-          <div class="dim-card__bg dim-card__bg--tubes">
-            <div class="dim-card__grid-lines"></div>
-          </div>
-          <div class="dim-card__body">
-            <span class="dim-card__id">DIM // 002</span>
-            <h2 class="dim-card__name" data-i18n="dim_tubes_name">TUBOS</h2>
-            <p class="dim-card__spec" data-i18n="dim_tubes_spec">WebGPU · 3D&thinsp;Geometry · cursor.fx</p>
-            <span class="dim-card__enter" data-i18n="dim_enter">[ INGRESAR → ]</span>
-          </div>
-          <div class="dim-card__scan"></div>
-        </button>
-      </div>
-
-      <div class="gateway__footer">
-        <span>LAT&thinsp;19.4°N · LNG&thinsp;99.1°W</span>
-        <span>JESÚS GARZA · v1.0.0</span>
-        <span>ACCESS:&thinsp;GRANTED</span>
+      <div class="palette__list" id="paletteList"></div>
+      <div class="palette__hint">
+        <span class="palette__hint-group"><kbd>↑</kbd><kbd>↓</kbd><span>navigate</span></span>
+        <span class="palette__hint-group"><kbd>Enter</kbd><span>run</span></span>
+        <span class="palette__hint-group"><kbd>Esc</kbd><span>close</span></span>
       </div>
     </div>
   </div>
 
-  <!-- Dimension transition overlay -->
-  <div class="dim-transition" id="dimTransition">
-    <div class="dim-transition__scan"></div>
-    <div class="dim-transition__fill"></div>
-  </div>
-
-  <!-- Dimension mode background (WebGL fluid simulation) -->
-  <canvas class="dimension-bg" id="dimensionBg"></canvas>
-
-  <!-- Exit dimension button -->
-  <button class="dimension-exit" id="dimensionExit">
-    <i class="fas fa-arrow-left"></i>
-    <span data-i18n="dimension_exit_btn">Volver</span>
-  </button>
-
-  <!-- Zen mode toggle (hide UI, show only fluid canvas) -->
-  <button class="dimension-zen" id="dimensionZen" title="Zen mode">
-    <i class="fas fa-expand"></i>
-  </button>
-
-  <!-- Theme toggle visible in dimension mode -->
-  <button class="dimension-theme theme-btn" id="themeToggleDimension" title="Toggle theme">
-    <i class="fas fa-sun"></i>
-  </button>
-
-  <script src="js/idiomas.js"></script>
-  <script src="js/theme.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/interactions.js"></script>
-  <script src="js/fluid.js"></script>
-  <script src="js/portal.js"></script>
-  <script src="js/cursor.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
