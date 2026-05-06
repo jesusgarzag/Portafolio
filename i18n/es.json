@@ -229,6 +229,6 @@
   "cmd_man": "Manual page sobre Jesús",
   "cmd_htop": "Ver clientes activos como procesos",
   "cmd_cal": "Agendar una llamada",
-  "cmd_rubik": "Cubo de Rubik 2x2 interactivo",
+  "cmd_rubik": "Cubo de Rubik interactivo",
   "rubik_hint_keys": "arrastra para rotar · doble click = re-centrar · U D L R F B · shift=inverso · 3×3 también M E S · espacio=scramble · 0=reset"
 }

@@ -229,6 +229,6 @@
   "cmd_man": "Manual page about Jesús",
   "cmd_htop": "View active clients as processes",
   "cmd_cal": "Schedule a call",
-  "cmd_rubik": "Interactive 2x2 Rubik's cube",
+  "cmd_rubik": "Interactive Rubik's cube",
   "rubik_hint_keys": "drag to rotate · double-click = recenter · U D L R F B · shift=prime · 3×3 also M E S · space=scramble · 0=reset"
 }
