@@ -1337,7 +1337,7 @@ $ jesus.garza --book-call   <span class="dim"># cal.com/jesusgarza</span></pre>
   <!-- ════════════════════════════════════════════════════
        RUBIK'S CUBE 2x2 — interactive
        ════════════════════════════════════════════════════ -->
-  <div class="rubik" id="rubikOverlay" role="dialog" aria-modal="true" aria-label="Rubik 2x2">
+  <div class="rubik" id="rubikOverlay" role="dialog" aria-modal="true" aria-label="Rubik cube" data-rb-mode="2">
     <div class="rubik__box">
       <header class="rubik__head">
         <div class="branches__prompt">
@@ -1346,7 +1346,13 @@ $ jesus.garza --book-call   <span class="dim"># cal.com/jesusgarza</span></pre>
           </span>
           <span class="prompt__cmd">./rubik</span>
         </div>
-        <button class="branches__close" id="closeRubik" aria-label="Close">×</button>
+        <div style="display:flex; align-items:center; gap:var(--sp-2);">
+          <div class="rubik__mode" role="group" aria-label="Cube size">
+            <button data-rb-mode="2" class="is-active" aria-pressed="true">2×2</button>
+            <button data-rb-mode="3" aria-pressed="false">3×3</button>
+          </div>
+          <button class="branches__close" id="closeRubik" aria-label="Close">×</button>
+        </div>
       </header>
 
       <div class="rubik__stage">
@@ -1363,6 +1369,9 @@ $ jesus.garza --book-call   <span class="dim"># cal.com/jesusgarza</span></pre>
           <button data-move="R">R</button>   <button data-move="Rp">R'</button>
           <button data-move="F">F</button>   <button data-move="Fp">F'</button>
           <button data-move="B">B</button>   <button data-move="Bp">B'</button>
+          <button data-move="M"  data-slice>M</button>   <button data-move="Mp" data-slice>M'</button>
+          <button data-move="E"  data-slice>E</button>   <button data-move="Ep" data-slice>E'</button>
+          <button data-move="S"  data-slice>S</button>   <button data-move="Sp" data-slice>S'</button>
         </div>
         <div class="rubik__actions">
           <button class="btn btn--ghost" id="rubikScramble">scramble</button>

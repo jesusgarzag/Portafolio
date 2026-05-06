@@ -951,6 +951,8 @@ body.rubik-open .statusbar { display: none; }
   transform: rotateX(-22deg) rotateY(-32deg);
 }
 .rubik__cubies {
+  --rb-size: 64px;
+  --rb-half: 32px;
   width: 0;
   height: 0;
   transform-style: preserve-3d;
@@ -958,9 +960,9 @@ body.rubik-open .statusbar { display: none; }
 
 .rubik__cubie {
   position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: -32px 0 0 -32px;        /* center on origin */
+  width: var(--rb-size);
+  height: var(--rb-size);
+  margin: calc(-1 * var(--rb-half)) 0 0 calc(-1 * var(--rb-half));  /* center on origin */
   transform-style: preserve-3d;
   /* transform set inline via JS */
 }
@@ -972,12 +974,34 @@ body.rubik-open .statusbar { display: none; }
   background: var(--bg-soft);
   box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25);
 }
-.rubik__sticker--U { transform: rotateX( 90deg) translateZ(32px); background: var(--accent); }
-.rubik__sticker--D { transform: rotateX(-90deg) translateZ(32px); background: var(--text); }
-.rubik__sticker--L { transform: rotateY(-90deg) translateZ(32px); background: var(--ansi-magenta); }
-.rubik__sticker--R { transform: rotateY( 90deg) translateZ(32px); background: var(--ansi-red); }
-.rubik__sticker--F { transform: translateZ(32px);                   background: var(--ansi-green); }
-.rubik__sticker--B { transform: rotateY(180deg) translateZ(32px); background: var(--ansi-blue); }
+.rubik__sticker--U { transform: rotateX( 90deg) translateZ(var(--rb-half)); background: var(--accent); }
+.rubik__sticker--D { transform: rotateX(-90deg) translateZ(var(--rb-half)); background: var(--text); }
+.rubik__sticker--L { transform: rotateY(-90deg) translateZ(var(--rb-half)); background: var(--ansi-magenta); }
+.rubik__sticker--R { transform: rotateY( 90deg) translateZ(var(--rb-half)); background: var(--ansi-red); }
+.rubik__sticker--F { transform: translateZ(var(--rb-half));                   background: var(--ansi-green); }
+.rubik__sticker--B { transform: rotateY(180deg) translateZ(var(--rb-half)); background: var(--ansi-blue); }
+
+/* Mode toggle (2×2 / 3×3) */
+.rubik__mode {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  margin-right: var(--sp-2);
+}
+.rubik__mode button {
+  padding: 4px 10px;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-loose);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--t-fast), background var(--t-fast);
+}
+.rubik__mode button:hover { color: var(--text); }
+.rubik__mode button.is-active {
+  color: var(--bg);
+  background: var(--accent);
+}
 
 /* Layer wrapper used during a face turn */
 .rubik__layer {
@@ -1025,6 +1049,9 @@ body.rubik-open .statusbar { display: none; }
   opacity: 0.5;
   cursor: not-allowed;
 }
+/* Slice buttons (M/E/S) — hidden in 2×2, identical to others in 3×3 */
+.rubik__moves button[data-slice] { display: none; }
+.rubik[data-rb-mode="3"] .rubik__moves button[data-slice] { display: block; }
 
 .rubik__actions {
   display: flex;

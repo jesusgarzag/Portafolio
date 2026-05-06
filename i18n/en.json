@@ -230,5 +230,5 @@
   "cmd_htop": "View active clients as processes",
   "cmd_cal": "Schedule a call",
   "cmd_rubik": "Interactive 2x2 Rubik's cube",
-  "rubik_hint_keys": "keys U D L R F B · shift = prime · S=scramble · 0=reset"
+  "rubik_hint_keys": "keys U D L R F B · shift = prime · 3×3 also M E S (buttons) · scramble=spacebar · 0=reset"
 }

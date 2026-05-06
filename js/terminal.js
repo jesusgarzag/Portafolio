@@ -460,24 +460,40 @@
   document.getElementById('closeRubik')?.addEventListener('click', closeRubik);
   rubik.el?.addEventListener('click', e => { if (e.target === rubik.el) closeRubik(); });
 
-  // 2x2 state and rendering
-  const RB_HALF = 32;          // half-size of a cubie in px
+  // 2x2 / 3x3 state and rendering
   const RB_ANIM = 280;         // ms
   const RB_FACES = ['U','D','L','R','F','B'];
+  // Per-mode geometry. faceVal is the value of pos[coord] on the outer face.
+  // 2x2: positions are ±0.5 (centers between unit ticks). faceVal=0.5.
+  // 3x3: positions are -1, 0, +1. faceVal=1. The middle slice (0) is unaffected.
+  const RB_MODES = {
+    2: { size: 64, half: 32, faceVal: 0.5, posVals: [-0.5, 0.5] },
+    3: { size: 44, half: 22, faceVal: 1,   posVals: [-1, 0, 1]   },
+  };
+  // Move direction signs. coord+sign+deg. The sign is multiplied by faceVal at apply time.
   const RB_MOVES = {
-    //              axis  coord  val   deg
-    U:  { axis:'y', coord:1, val:-1, deg: -90, inv:'Up' },
-    Up: { axis:'y', coord:1, val:-1, deg:  90, inv:'U'  },
-    D:  { axis:'y', coord:1, val: 1, deg:  90, inv:'Dp' },
-    Dp: { axis:'y', coord:1, val: 1, deg: -90, inv:'D'  },
-    L:  { axis:'x', coord:0, val:-1, deg: -90, inv:'Lp' },
-    Lp: { axis:'x', coord:0, val:-1, deg:  90, inv:'L'  },
-    R:  { axis:'x', coord:0, val: 1, deg:  90, inv:'Rp' },
-    Rp: { axis:'x', coord:0, val: 1, deg: -90, inv:'R'  },
-    F:  { axis:'z', coord:2, val: 1, deg:  90, inv:'Fp' },
-    Fp: { axis:'z', coord:2, val: 1, deg: -90, inv:'F'  },
-    B:  { axis:'z', coord:2, val:-1, deg: -90, inv:'Bp' },
-    Bp: { axis:'z', coord:2, val:-1, deg:  90, inv:'B'  },
+    U:  { axis:'y', coord:1, sign:-1, deg: -90, inv:'Up' },
+    Up: { axis:'y', coord:1, sign:-1, deg:  90, inv:'U'  },
+    D:  { axis:'y', coord:1, sign: 1, deg:  90, inv:'Dp' },
+    Dp: { axis:'y', coord:1, sign: 1, deg: -90, inv:'D'  },
+    L:  { axis:'x', coord:0, sign:-1, deg: -90, inv:'Lp' },
+    Lp: { axis:'x', coord:0, sign:-1, deg:  90, inv:'L'  },
+    R:  { axis:'x', coord:0, sign: 1, deg:  90, inv:'Rp' },
+    Rp: { axis:'x', coord:0, sign: 1, deg: -90, inv:'R'  },
+    F:  { axis:'z', coord:2, sign: 1, deg:  90, inv:'Fp' },
+    Fp: { axis:'z', coord:2, sign: 1, deg: -90, inv:'F'  },
+    B:  { axis:'z', coord:2, sign:-1, deg: -90, inv:'Bp' },
+    Bp: { axis:'z', coord:2, sign:-1, deg:  90, inv:'B'  },
+    // Middle slices (3x3 only). Direction conventions:
+    //   M follows L (axis x, slice center 0)
+    //   E follows D (axis y, slice center 0)
+    //   S follows F (axis z, slice center 0)
+    M:  { axis:'x', coord:0, mid: true, deg: -90, inv:'Mp' },
+    Mp: { axis:'x', coord:0, mid: true, deg:  90, inv:'M'  },
+    E:  { axis:'y', coord:1, mid: true, deg:  90, inv:'Ep' },
+    Ep: { axis:'y', coord:1, mid: true, deg: -90, inv:'E'  },
+    S:  { axis:'z', coord:2, mid: true, deg:  90, inv:'Sp' },
+    Sp: { axis:'z', coord:2, mid: true, deg: -90, inv:'S'  },
   };
 
   function rotVec(v, axis, deg) {
@@ -487,6 +503,7 @@
     return                   deg ===  90 ? [-y,  x,  z] : [ y, -x,  z];
   }
 
+  let rb_mode = 2;
   let rb_state = null;       // [{el, pos:[x,y,z], rot: string}, ...]
   let rb_busy = false;
   let rb_count = 0;
@@ -495,15 +512,26 @@
 
   function rubikRenderTransform(c) {
     const [x, y, z] = c.pos;
-    return `translate3d(${x * RB_HALF}px, ${y * RB_HALF}px, ${z * RB_HALF}px) ${c.rot}`;
+    const cfg = RB_MODES[rb_mode];
+    // Multiplier such that adjacent cubies touch: centers are SIZE apart.
+    // For 2x2 pos = ±0.5 → centers ±SIZE/2 = ±half. Box = 2·half = size. ✓
+    // For 3x3 pos ∈ {-1,0,+1} → centers separated by SIZE. ✓
+    const k = cfg.size;
+    return `translate3d(${x * k}px, ${y * k}px, ${z * k}px) ${c.rot}`;
   }
 
   function rubikBuild() {
     const root = document.getElementById('rubikCubies');
     if (!root) return;
+    const cfg = RB_MODES[rb_mode];
+    root.style.setProperty('--rb-size', cfg.size + 'px');
+    root.style.setProperty('--rb-half', cfg.half + 'px');
     root.innerHTML = '';
     rb_state = [];
-    for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) {
+    for (const x of cfg.posVals) for (const y of cfg.posVals) for (const z of cfg.posVals) {
+      // Skip fully internal cubies (only matters for 3x3+: the very center).
+      const isInner = cfg.posVals.includes(0) && x === 0 && y === 0 && z === 0;
+      if (isInner) continue;
       const el = document.createElement('div');
       el.className = 'rubik__cubie';
       // Each cubie carries 6 stickers; only the outward-facing ones are visible (others overlap inside).
@@ -526,6 +554,29 @@
     if (lst && lastMove) lst.textContent = lastMove.replace('p', "'");
   }
 
+  function rubikResetState() {
+    rubikBuild();
+    rb_count = 0;
+    rb_history = [];
+    rubikUpdateStats();
+    const lst = document.getElementById('rubikLast');
+    if (lst) lst.textContent = '—';
+  }
+
+  function rubikSetMode(m) {
+    if (rb_busy) return;
+    if (m !== 2 && m !== 3) return;
+    if (m === rb_mode) return;
+    rb_mode = m;
+    rubik.el?.setAttribute('data-rb-mode', String(m));
+    document.querySelectorAll('.rubik__mode [data-rb-mode]').forEach(b => {
+      const active = parseInt(b.dataset.rbMode, 10) === m;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    rubikResetState();
+  }
+
   function rubikInit() {
     if (rb_initialized) return;
     rb_initialized = true;
@@ -539,16 +590,16 @@
     });
     document.getElementById('rubikScramble')?.addEventListener('click', () => {
       if (rb_busy) return;
-      rubikScramble(15);
+      rubikScramble(rb_mode === 3 ? 25 : 15);
     });
     document.getElementById('rubikReset')?.addEventListener('click', () => {
       if (rb_busy) return;
-      rubikBuild();
-      rb_count = 0;
-      rb_history = [];
-      rubikUpdateStats('—');
-      const lst = document.getElementById('rubikLast');
-      if (lst) lst.textContent = '—';
+      rubikResetState();
+    });
+    document.querySelectorAll('[data-rb-mode]').forEach(b => {
+      b.addEventListener('click', () => {
+        rubikSetMode(parseInt(b.dataset.rbMode, 10));
+      });
     });
   }
 
@@ -563,7 +614,12 @@
     const root = document.getElementById('rubikCubies');
     if (!root) { rb_busy = false; return Promise.resolve(); }
 
-    const affected = rb_state.filter(c => c.pos[m.coord] === m.val);
+    // Slice moves only exist on 3×3 (nothing has pos === 0 in 2×2).
+    if (m.mid && rb_mode !== 3) { rb_busy = false; return Promise.resolve(); }
+
+    const faceVal = RB_MODES[rb_mode].faceVal;
+    const targetVal = m.mid ? 0 : m.sign * faceVal;
+    const affected = rb_state.filter(c => c.pos[m.coord] === targetVal);
     affected.forEach(c => layer.appendChild(c.el));
     root.appendChild(layer);
 
@@ -627,9 +683,13 @@
       e.preventDefault();
       const move = e.shiftKey ? upper + 'p' : upper;
       if (RB_MOVES[move]) applyMove(move, true);
-    } else if (k === 's' || k === 'S') {
+    } else if ('MES'.includes(upper) && rb_mode === 3) {
       e.preventDefault();
-      rubikScramble(15);
+      const move = e.shiftKey ? upper + 'p' : upper;
+      if (RB_MOVES[move]) applyMove(move, true);
+    } else if (k === ' ') {
+      e.preventDefault();
+      rubikScramble(rb_mode === 3 ? 25 : 15);
     } else if (k === '0') {
       e.preventDefault();
       document.getElementById('rubikReset')?.click();
