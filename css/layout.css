@@ -270,25 +270,34 @@
 /* ── Mobile sidebar drawer (off-canvas) ────────────────── */
 .sidebar-toggle {
   display: none;
-  position: fixed;
-  top: 8px;
-  right: 8px;
-  z-index: calc(var(--z-sticky) + 1);
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
-  background: var(--bg-soft);
+  background: transparent;
   color: var(--text);
   font-size: var(--fs-md);
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
 }
+.sidebar-toggle:hover {
+  color: var(--accent);
+  border-color: var(--border-accent);
+  background: var(--accent-soft);
+}
+.sidebar-toggle__close { display: none; }
+body.sidebar-open .sidebar-toggle__open { display: none; }
+body.sidebar-open .sidebar-toggle__close { display: inline; }
 
 .sidebar-backdrop {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: calc(var(--z-sticky) - 1);
+  z-index: calc(var(--z-overlay) - 1);
   background: rgba(0,0,0,0.5);
 }
 .sidebar-backdrop.is-open { display: block; }
+
+body.sidebar-open { overflow: hidden; }

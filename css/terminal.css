@@ -90,6 +90,12 @@
   color: var(--text-muted);
 }
 
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
 .topbar__dots {
   display: flex;
   gap: 6px;

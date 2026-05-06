@@ -64,8 +64,14 @@
        TOP BAR (window chrome)
        ════════════════════════════════════════════════════ -->
   <header class="topbar">
-    <div class="topbar__dots" aria-hidden="true">
-      <span></span><span></span><span></span>
+    <div class="topbar__left">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open menu" aria-expanded="false">
+        <span class="sidebar-toggle__open" aria-hidden="true">≡</span>
+        <span class="sidebar-toggle__close" aria-hidden="true">×</span>
+      </button>
+      <div class="topbar__dots" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
     </div>
     <div class="topbar__title">jesus@portfolio: ~</div>
     <div class="topbar__right">
@@ -84,7 +90,6 @@
     </div>
   </header>
 
-  <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open menu">≡</button>
   <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
   <!-- ════════════════════════════════════════════════════
