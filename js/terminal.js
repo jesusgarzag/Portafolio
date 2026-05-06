@@ -86,7 +86,6 @@
     { cmd: 'gh repo open',          desc_key: 'cmd_github',     href: 'https://github.com/jesusgarzag' },
     { cmd: 'mailto:',               desc_key: 'cmd_mail',       href: 'mailto:jesusgarzacia@hotmail.com' },
     { cmd: 'git branch -v',         desc_key: 'cmd_branches',   action: 'branches' },
-    { cmd: 'cal jesus',             desc_key: 'cmd_cal',        href: 'https://cal.com/jesusgarza' },
     { cmd: 'man jesus',             desc_key: 'cmd_man',        action: 'man' },
     { cmd: 'htop',                  desc_key: 'cmd_htop',       action: 'htop' },
     { cmd: './rubik',               desc_key: 'cmd_rubik',      action: 'rubik' },
