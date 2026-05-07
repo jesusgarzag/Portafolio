@@ -36,26 +36,61 @@
 
   .sidebar {
     position: fixed;
-    top: var(--topbar-h);
+    top: 0;
     left: 0;
-    width: min(280px, 78vw);
-    height: calc(100vh - var(--topbar-h));
+    width: min(280px, 80vw);
+    height: 100vh;
+    height: 100dvh;            /* dynamic viewport — handles mobile URL bar */
     background: var(--bg);
     border-right: 1px solid var(--border-strong);
     transform: translateX(-100%);
     transition: transform var(--t-base);
     z-index: var(--z-overlay);
-    padding: var(--sp-6) var(--sp-4) var(--sp-4);
+    /* Brand sits right under the topbar with minimal breathing room */
+    padding: calc(var(--topbar-h) + 4px) var(--sp-4) var(--sp-2);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--sp-3);          /* tighter than desktop's --sp-8 */
   }
   .sidebar.is-open { transform: translateX(0); }
+  .sidebar__brand {
+    padding-bottom: var(--sp-2);
+    gap: 2px;
+  }
+  .sidebar__working {
+    margin-top: 4px;
+    padding-top: 4px;
+  }
+  .sidebar__bottom {
+    padding-top: var(--sp-2);
+    gap: var(--sp-2);
+  }
+  .cmdlist__label {
+    padding: 0;
+    margin-bottom: 4px;
+  }
+  .cmd { padding: 4px 8px; }
 
   .sidebar-toggle { display: inline-flex; }
 
-  .topbar { padding: 0 var(--sp-3); }
+  .topbar {
+    /* Override the desktop grid: in mobile, use flex with space-between.
+       (The grid was sending topbar__right to column 2 once title was hidden.) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--sp-3);
+    gap: var(--sp-2);
+  }
   .topbar__title { display: none; }
   .topbar__clock { display: none; }
   .topbar__dots { display: none; }
-  .topbar__right { gap: var(--sp-2); }
+  .topbar__left { justify-self: auto; }
+  .topbar__right {
+    gap: var(--sp-2);
+    justify-self: auto;
+    margin-left: auto;             /* defensive: stick to the right edge */
+  }
   .topbar__btn { padding: 4px 6px; }
   .topbar__btn .kbd { display: none; }
 
@@ -146,24 +181,192 @@
   }
   .branches__count { margin-left: 0; }
 
+  /* ── Cheatsheet ──────────────────────────────────────── */
+  .cheatsheet { padding: 4vh var(--sp-3) var(--sp-6); }
   .cheatsheet__grid {
     grid-template-columns: 1fr;
     padding: var(--sp-3);
+    gap: var(--sp-3);
+  }
+  .cheatsheet__group { padding: var(--sp-3); }
+  /* Stack kbd group above its description so wide combos don't squeeze the text */
+  .cheatsheet__group li {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    gap: 4px;
+    padding-bottom: var(--sp-2);
+    border-bottom: 1px dashed var(--border);
+  }
+  .cheatsheet__group li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .cheatsheet__group li span:first-child {
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .cheatsheet__group li kbd {
+    font-size: 10px;
+    padding: 2px 5px;
   }
 
-  .history {
-    padding: 6vh var(--sp-3) var(--sp-6);
-  }
+  /* ── History ─────────────────────────────────────────── */
+  .history { padding: 6vh var(--sp-3) var(--sp-6); }
+  .history__body { padding: var(--sp-3); }
 
-  .history__body {
-    padding: var(--sp-3);
-  }
-
+  /* ── Case studies ────────────────────────────────────── */
   .case__summary {
     align-items: flex-start;
     flex-direction: column;
     gap: var(--sp-2);
   }
+
+  /* ── Rubik in mobile: bigger taps + readable stats ───── */
+  .rubik__bar { padding: var(--sp-3) var(--sp-3); gap: var(--sp-3); }
+  .rubik__moves {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  .rubik__moves button {
+    padding: 12px 0;            /* bigger tap target */
+    font-size: var(--fs-md);
+    min-height: 40px;
+  }
+  .rubik__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .rubik__actions .btn {
+    padding: 10px 6px;
+    font-size: var(--fs-xs);
+    justify-content: center;
+    width: 100%;
+  }
+  .rubik__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px var(--sp-3);
+    font-size: var(--fs-xs);
+  }
+  .rubik__stat { display: flex; gap: 4px; min-width: 0; overflow: hidden; }
+  /* Footer hint can wrap freely in mobile */
+  .rubik .branches__hint { white-space: normal; line-height: 1.5; }
+
+  /* ── Topbar on mobile: icon-only buttons ─────────────── */
+  .topbar__btn { gap: 0; }
+  /* Hide non-icon labels (anything not aria-hidden); icons remain visible */
+  .topbar__btn > span:not([aria-hidden="true"]) { display: none; }
+
+  /* ── Build log: wrap, no horizontal scroll ───────────── */
+  .build { padding: 4vh var(--sp-3) var(--sp-6); }
+  .build__head { padding: var(--sp-3) var(--sp-3); flex-wrap: wrap; gap: var(--sp-2); }
+  .build__log {
+    padding: var(--sp-3) var(--sp-3);
+    font-size: 10px;
+    line-height: 1.55;
+  }
+  .build__line {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .build__foot {
+    padding: var(--sp-2) var(--sp-3);
+    font-size: 10px;
+    word-break: break-word;
+  }
+
+  /* ── Vim: wrap long lines instead of horizontal scroll ── */
+  .vim { padding: 4vh var(--sp-3) var(--sp-6); }
+  .vim__tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .vim__tab { padding: 6px 10px; font-size: 10px; white-space: nowrap; }
+  .vim__buffer {
+    font-size: 11px;
+    padding: var(--sp-2) 0;
+    height: 56vh;
+    max-height: none;
+    /* Wrap long lines preserving indentation; no horizontal scroll on the modal. */
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  .vim__buffer .line {
+    /* minmax(0, 1fr) lets the code column shrink and wrap inside the grid. */
+    grid-template-columns: 3ch minmax(0, 1fr);
+    gap: var(--sp-2);
+    padding: 0 var(--sp-2);
+  }
+  .vim__buffer .line .src,
+  .vim__buffer .line span:last-child {
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  .vim__status {
+    grid-template-columns: auto 1fr auto;
+    gap: var(--sp-2);
+    padding: 4px var(--sp-2);
+    font-size: 10px;
+  }
+  .vim__mode { padding: 2px 6px; }
+
+  /* ── Htop: tabla compacta — colapsa columnas menos críticas ── */
+  .htop { padding: 4vh var(--sp-3) var(--sp-6); }
+  .htop__head { padding: var(--sp-3) var(--sp-3); }
+  .htop__bars { padding: var(--sp-2) var(--sp-3); }
+  .htop__bar { font-size: 10px; }
+  .htop__bar-track { height: 10px; }
+  .htop__bar-num { min-width: 60px; font-size: 10px; }
+  .htop__meta { font-size: 10px; gap: var(--sp-2); }
+  .htop__table { font-size: 10px; }
+  .htop__table th,
+  .htop__table td { padding: 4px var(--sp-2); }
+  /* Hide PID, USER, MEM%, TIME+ — keep CPU% and COMMAND */
+  .htop__table th:nth-child(1), .htop__table td:nth-child(1),
+  .htop__table th:nth-child(2), .htop__table td:nth-child(2),
+  .htop__table th:nth-child(4), .htop__table td:nth-child(4),
+  .htop__table th:nth-child(5), .htop__table td:nth-child(5) {
+    display: none;
+  }
+  .htop__foot {
+    padding: var(--sp-2) var(--sp-3);
+    gap: var(--sp-2);
+    font-size: 9px;
+    flex-wrap: wrap;
+  }
+  .htop__foot kbd { font-size: 9px; padding: 1px 4px; }
+
+  /* ── Man page: smaller padding, code blocks scroll inside ── */
+  .man { padding: 4vh var(--sp-3) var(--sp-6); }
+  .man__topbar { padding: var(--sp-2) var(--sp-3); }
+  .man__title { font-size: 9px; }
+  .man__body { padding: var(--sp-3) var(--sp-3); font-size: 12px; }
+  .man__pre {
+    font-size: 11px;
+    overflow-x: auto;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+  }
+  .man__dl { grid-template-columns: 1fr; gap: 2px var(--sp-2); }
+  .man__dl dt { font-size: 11px; }
+
+  /* ── Hire: tighter padding, single column dl ─────────── */
+  .hire { padding: 4vh var(--sp-3) var(--sp-6); }
+  .hire__head { padding: var(--sp-3); }
+  .hire__body { padding: var(--sp-3); }
+  .hire__grid {
+    grid-template-columns: 1fr;
+    gap: 2px var(--sp-2);
+  }
+  .hire__grid dt {
+    font-size: 11px;
+    padding-top: var(--sp-2);
+  }
+  .hire__grid dd { padding-bottom: var(--sp-1); border-bottom: 1px dashed var(--border); }
+  .hire__grid dd:last-child { border-bottom: 0; }
+  .hire__link { font-size: 11px; padding: 8px 10px; word-break: break-word; }
+
+  /* ── Scheme picker compact ───────────────────────────── */
+  .scheme-picker { padding: 4vh var(--sp-3) var(--sp-6); }
+  .scheme-picker__list { padding: var(--sp-3); }
+  .scheme { padding: var(--sp-2) var(--sp-3); }
 }
 
 /* ── Small mobile ──────────────────────────────────────── */

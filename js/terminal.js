@@ -177,6 +177,8 @@
   function openPalette() {
     if (!palette) return;
     palette.classList.add('is-open');
+    document.body.classList.add('palette-open');
+    document.body.style.overflow = 'hidden';
     paletteInput.value = '';
     filterPalette('');
     setTimeout(() => paletteInput.focus(), 50);
@@ -186,6 +188,8 @@
   function closePalette() {
     if (!palette) return;
     palette.classList.remove('is-open');
+    document.body.classList.remove('palette-open');
+    document.body.style.overflow = '';
     setMode('NORMAL');
   }
 

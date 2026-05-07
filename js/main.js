@@ -297,7 +297,11 @@
   }
 
   if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
-  if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+  if (sidebarBackdrop) {
+    // pointerdown is more reliable than click on touch devices
+    sidebarBackdrop.addEventListener('pointerdown', closeSidebar);
+    sidebarBackdrop.addEventListener('click', closeSidebar);
+  }
 
   // Close drawer on Esc
   document.addEventListener('keydown', e => {
