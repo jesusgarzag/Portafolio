@@ -176,6 +176,10 @@
         <span aria-hidden="true">❯_</span>
         <span class="kbd">Ctrl K</span>
       </button>
+      <button class="topbar__btn" id="cheatsheetOpen" aria-label="Open keyboard cheatsheet">
+        <span aria-hidden="true">?</span>
+        <span class="kbd">/</span>
+      </button>
       <button class="topbar__btn" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
         <span aria-hidden="true">◐</span>
         <span data-i18n="theme_toggle">TEMA</span>
@@ -729,6 +733,78 @@
         </div>
 
         <p class="ls__extra" data-i18n="mod_extra">+ 3 módulos complementarios: automatización de impuestos en productos nuevos, validación de precios de proveedor con 35 puntos de control, y flujo de remisión integrado en entregas.</p>
+
+        <h3 class="subsection-title" data-i18n="success_cases_title">Casos de éxito</h3>
+        <p class="output success-cases__intro" data-i18n="success_cases_intro">
+          Resumen ejecutivo de entregables con impacto medible en operaciones, cumplimiento y flujo de caja.
+        </p>
+
+        <div class="success-cases" id="successCases">
+          <details class="case" open>
+            <summary class="case__summary">
+              <span class="case__title" data-i18n="case_avalia_title">Avalia · Conciliación bancaria con visibilidad operativa</span>
+              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
+            </summary>
+            <div class="case__body">
+              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_avalia_problem">Tesorería dependía de conciliaciones manuales y Odoo mostraba saldos incompletos durante el día.</span></p>
+              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_avalia_solution">Diseñé un módulo de sincronización bidireccional con protección anti-loop por contexto, importación masiva desde Excel y auditoría con mail.thread para trazar cada ajuste.</span></p>
+              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_avalia_stack">Python · Odoo ORM · openpyxl · mail.thread</span></p>
+              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_avalia_metrics">-70% tiempo de conciliación diaria · 0 saldos vacíos en cierre · +100% trazabilidad de cambios</span></p>
+            </div>
+          </details>
+
+          <details class="case">
+            <summary class="case__summary">
+              <span class="case__title" data-i18n="case_pedimento_title">Recavisa · Cumplimiento aduanal CFDI + pedimentos</span>
+              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
+            </summary>
+            <div class="case__body">
+              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_pedimento_problem">Facturas timbradas sin pedimento detectadas tarde, con riesgo real de sanción y retrabajo contable.</span></p>
+              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_pedimento_solution">Implementé validaciones sobre XML CFDI en tiempo de consulta, alertas visuales por severidad y migración segura de SQL VIEW a modelo ORM para mantener compatibilidad evolutiva.</span></p>
+              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_pedimento_stack">Python · l10n_mx_edi · XML parsing · web_search_read override</span></p>
+              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_pedimento_metrics">Detección temprana antes de cierre mensual · 0 incidencias críticas de pedimento tras despliegue</span></p>
+            </div>
+          </details>
+
+          <details class="case">
+            <summary class="case__summary">
+              <span class="case__title" data-i18n="case_payroll_title">Casa Guerra · Reporte de nómina auto-configurable</span>
+              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
+            </summary>
+            <div class="case__body">
+              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_payroll_problem">Cada cambio en reglas salariales exigía soporte técnico para rehacer formatos de reporte.</span></p>
+              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_payroll_solution">Construí un generador dinámico de columnas basado en salary rules con exportación xlsxwriter, filtros por periodo/empresa y orden lógico por tipo de percepción.</span></p>
+              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_payroll_stack">Python · hr_payroll · xlsxwriter · wizard patterns</span></p>
+              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_payroll_metrics">De horas a minutos por reporte · 0 ajustes manuales de formato en operación regular</span></p>
+            </div>
+          </details>
+
+          <details class="case">
+            <summary class="case__summary">
+              <span class="case__title" data-i18n="case_edi_title">Ikigai · Integración EDI SAP → Odoo</span>
+              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
+            </summary>
+            <div class="case__body">
+              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_edi_problem">Alta manual de facturas entre sistemas, con errores de captura y latencia operativa.</span></p>
+              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_edi_solution">Desarrollé endpoint REST autenticado con API keys hasheadas SHA-256, búsqueda por prefijo O(1) y trazabilidad en chatter para auditoría integral.</span></p>
+              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_edi_stack">Python · REST API · SHA-256 · Odoo chatter</span></p>
+              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_edi_metrics">Eliminación de captura duplicada · reducción drástica de errores de transcripción</span></p>
+            </div>
+          </details>
+
+          <details class="case">
+            <summary class="case__summary">
+              <span class="case__title" data-i18n="case_stock_title">Forrajera Elizondo · Trazabilidad por ubicación</span>
+              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
+            </summary>
+            <div class="case__body">
+              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_stock_problem">El equipo no podía auditar inventario histórico por ubicación: solo había totales agregados.</span></p>
+              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_stock_solution">Implementé algoritmo de boundary-crossing que reconstruye estado por fecha de corte, revirtiendo movimientos posteriores y contemplando transferencias internas y kits.</span></p>
+              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_stock_stack">Python · stock.quant · stock.move.line · BOM kits</span></p>
+              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_stock_metrics">Auditorías más rápidas y confiables · reducción de ajustes por diferencias no explicadas</span></p>
+            </div>
+          </details>
+        </div>
       </section>
 
       <!-- ── PROJECTS ───────────────────────────────── -->
@@ -1477,6 +1553,7 @@ $ jesus.garza --see-projects <span class="dim"># scroll to cat projects.json</sp
         </div>
         <div class="rubik__actions">
           <button class="btn btn--ghost" id="rubikScramble">scramble</button>
+          <button class="btn btn--ghost" id="rubikSolve">solve</button>
           <button class="btn btn--ghost" id="rubikReset">reset</button>
         </div>
         <div class="rubik__stats">
@@ -1514,6 +1591,101 @@ $ jesus.garza --see-projects <span class="dim"># scroll to cat projects.json</sp
         <small>build: <span id="devBuild">terminal v3.0 · 2026</span></small>
       </div>
     </dl>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       KEYBOARD CHEATSHEET
+       ════════════════════════════════════════════════════ -->
+  <div class="cheatsheet" id="cheatsheetOverlay" role="dialog" aria-modal="true" aria-label="Keyboard cheatsheet">
+    <div class="cheatsheet__box">
+      <header class="cheatsheet__head">
+        <div class="branches__prompt">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">help --keys</span>
+        </div>
+        <button class="branches__close" id="closeCheatsheet" aria-label="Close">×</button>
+      </header>
+
+      <div class="cheatsheet__grid">
+        <section class="cheatsheet__group">
+          <h3 data-i18n="cheat_cat_overlays">Overlays</h3>
+          <ul>
+            <li><span><kbd>Ctrl</kbd>+<kbd>K</kbd></span><span data-i18n="cheat_palette">Command palette</span></li>
+            <li><span><kbd>Ctrl</kbd>+<kbd>B</kbd></span><span data-i18n="cheat_branches">Branch picker</span></li>
+            <li><span><kbd>Ctrl</kbd>+<kbd>H</kbd></span><span data-i18n="cheat_history">History overlay</span></li>
+            <li><span><kbd>?</kbd> o <kbd>/</kbd></span><span data-i18n="cheat_help">Este cheatsheet</span></li>
+            <li><span><kbd>Esc</kbd></span><span data-i18n="cheat_escape">Cerrar overlay activo</span></li>
+            <li><span><kbd>q</kbd></span><span data-i18n="cheat_q_htop">Salir de htop</span></li>
+          </ul>
+        </section>
+
+        <section class="cheatsheet__group">
+          <h3 data-i18n="cheat_cat_navigation">Navegación</h3>
+          <ul>
+            <li><span><kbd>↑</kbd><kbd>↓</kbd></span><span data-i18n="cheat_arrows">Mover selección</span></li>
+            <li><span><kbd>Enter</kbd></span><span data-i18n="cheat_enter">Ejecutar comando seleccionado</span></li>
+            <li><span><kbd>Ctrl</kbd>+<kbd>Enter</kbd></span><span data-i18n="cheat_send_mail">Enviar formulario de contacto</span></li>
+          </ul>
+        </section>
+
+        <section class="cheatsheet__group">
+          <h3 data-i18n="cheat_cat_rubik">Rubik</h3>
+          <ul>
+            <li><span><kbd>U D L R F B</kbd></span><span data-i18n="cheat_rubik_faces">Giros de cara</span></li>
+            <li><span><kbd>Shift</kbd>+<kbd>U...B</kbd></span><span data-i18n="cheat_rubik_prime">Giro inverso</span></li>
+            <li><span><kbd>M E S</kbd></span><span data-i18n="cheat_rubik_slice">Slices en 3x3</span></li>
+            <li><span><kbd>Space</kbd></span><span data-i18n="cheat_rubik_scramble">Scramble</span></li>
+            <li><span><kbd>0</kbd></span><span data-i18n="cheat_rubik_reset">Reset</span></li>
+            <li><span><kbd>Double Click</kbd></span><span data-i18n="cheat_rubik_recenter">Recentrar cámara</span></li>
+            <li><span><kbd>Drag</kbd></span><span data-i18n="cheat_rubik_drag">Rotar cámara</span></li>
+          </ul>
+        </section>
+
+        <section class="cheatsheet__group">
+          <h3 data-i18n="cheat_cat_easter">Easter eggs</h3>
+          <ul>
+            <li><span><kbd>↑↑↓↓←→←→BA</kbd></span><span data-i18n="cheat_konami">Modo CRT</span></li>
+            <li><span><kbd>Logo ×5</kbd></span><span data-i18n="cheat_logo">Abrir dev panel</span></li>
+            <li><span><kbd>fortune</kbd></span><span data-i18n="cheat_fortune">Quote aleatoria al cargar</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <footer class="branches__foot">
+        <span class="branches__hint"><kbd>Esc</kbd> <span data-i18n="branches_close">cerrar</span></span>
+        <span class="branches__count" data-i18n="cheat_total">17 shortcuts</span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       COMMAND HISTORY
+       ════════════════════════════════════════════════════ -->
+  <div class="history" id="historyOverlay" role="dialog" aria-modal="true" aria-label="Command history">
+    <div class="history__box">
+      <header class="history__head">
+        <div class="branches__prompt">
+          <span class="prompt">
+            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
+          </span>
+          <span class="prompt__cmd">history</span>
+        </div>
+        <button class="branches__close" id="closeHistory" aria-label="Close">×</button>
+      </header>
+
+      <div class="history__body">
+        <p class="history__empty" id="historyEmpty" data-i18n="history_empty">Aún no ejecutas comandos desde el palette.</p>
+        <ol class="history__list" id="historyList"></ol>
+      </div>
+
+      <footer class="branches__foot">
+        <span class="branches__hint"><kbd>↑</kbd><kbd>↓</kbd> <span data-i18n="history_nav">navegar</span></span>
+        <span class="branches__hint"><kbd>Enter</kbd> <span data-i18n="history_run">ejecutar</span></span>
+        <span class="branches__hint"><kbd>Esc</kbd> <span data-i18n="branches_close">cerrar</span></span>
+      </footer>
+    </div>
   </div>
 
   <!-- ════════════════════════════════════════════════════

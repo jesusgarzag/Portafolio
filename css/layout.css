@@ -79,6 +79,9 @@
   display: block;
   color: var(--text);
 }
+.sidebar__working + .sidebar__working {
+  margin-top: var(--sp-1);
+}
 .sidebar__status::before {
   content: '';
   width: 6px;

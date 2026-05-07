@@ -796,6 +796,67 @@
   padding: 6px 10px;
 }
 
+/* ── Success cases (expandible) ────────────────────────── */
+.success-cases__intro {
+  margin-bottom: var(--sp-4);
+}
+
+.success-cases {
+  display: grid;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+}
+
+.case {
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+
+.case[open] {
+  border-color: var(--border-accent);
+}
+
+.case__summary {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  cursor: pointer;
+}
+
+.case__summary::-webkit-details-marker {
+  display: none;
+}
+
+.case__title {
+  color: var(--text);
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+
+.case__hint {
+  color: var(--accent);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-loose);
+}
+
+.case__body {
+  border-top: 1px dashed var(--border);
+  padding: var(--sp-4) var(--sp-5);
+  display: grid;
+  gap: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+
+.case__body strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* ── Reveal animations ─────────────────────────────────── */
 [data-reveal] {
   opacity: 0;

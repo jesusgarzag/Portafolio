@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | jesus@portfolio</title>
+  <meta name="robots" content="noindex">
+  <style>
+    :root {
+      --bg: #0c0c0d;
+      --bg-soft: #141416;
+      --text: #ededed;
+      --dim: #8f8f98;
+      --accent: #e6b450;
+      --error: #e07b7b;
+      --border: rgba(255, 255, 255, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(230, 180, 80, 0.12), transparent 38%),
+        radial-gradient(circle at 78% 82%, rgba(127, 163, 216, 0.12), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", monospace;
+      padding: 20px;
+    }
+
+    .nf {
+      width: min(760px, 100%);
+      border: 1px solid var(--border);
+      background: rgba(12, 12, 13, 0.9);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+      padding: 22px;
+    }
+
+    .nf__head {
+      color: var(--dim);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+
+    .line {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .prompt { color: var(--accent); }
+    .path { color: var(--text); }
+    .error { color: var(--error); }
+    .dim { color: var(--dim); }
+
+    .cmd {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .cmd__input {
+      flex: 1;
+      border: 0;
+      border-bottom: 1px dashed var(--border);
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 15px;
+      padding: 4px 0;
+      outline: 0;
+    }
+
+    .cmd__input:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    .cmd__btn {
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--text);
+      font: inherit;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .cmd__btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hint {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    .hint a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+    }
+
+    .hint a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .shake {
+      animation: shake 0.25s linear 1;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      75% { transform: translateX(3px); }
+    }
+  </style>
+</head>
+<body>
+  <main class="nf" aria-labelledby="nfTitle">
+    <div class="nf__head" id="nfTitle">404 :: not found</div>
+
+    <p class="line"><span class="prompt">$</span> cat <span class="path" id="missingPath">/unknown</span></p>
+    <p class="line error" id="errorLine">cat: /unknown: No such file or directory</p>
+
+    <form class="cmd" id="cdForm">
+      <span class="prompt" aria-hidden="true">$</span>
+      <input class="cmd__input" id="cdInput" autocomplete="off" spellcheck="false" value="cd /" aria-label="Terminal command">
+      <button class="cmd__btn" type="submit">run</button>
+    </form>
+
+    <p class="hint">Tip: enter <span class="dim">cd /</span> or go to <a href="/">/</a></p>
+  </main>
+
+  <script>
+    (function () {
+      var path = (location.pathname || '/') + (location.search || '') + (location.hash || '');
+      var safePath = path || '/';
+      var missingPath = document.getElementById('missingPath');
+      var errorLine = document.getElementById('errorLine');
+      var form = document.getElementById('cdForm');
+      var input = document.getElementById('cdInput');
+
+      if (missingPath) missingPath.textContent = safePath;
+      if (errorLine) errorLine.textContent = 'cat: ' + safePath + ': No such file or directory';
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var raw = (input.value || '').trim();
+        var cmd = raw.replace(/\s+/g, ' ');
+        if (cmd === 'cd /' || cmd === 'cd ~' || cmd === 'cd') {
+          location.href = '/';
+          return;
+        }
+        form.classList.remove('shake');
+        void form.offsetWidth;
+        form.classList.add('shake');
+      });
+
+      setTimeout(function () { input.focus(); input.select(); }, 40);
+    })();
+  </script>
+</body>
+</html>

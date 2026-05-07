@@ -23,8 +23,17 @@
     tick();
   }
 
+  const WHOAMI_ROTATION = ['whoami', 'id -un', 'echo $USER', 'getent passwd $UID'];
+
   function initTyping() {
-    document.querySelectorAll('.typed[data-typed]').forEach(typeOnce);
+    document.querySelectorAll('.typed[data-typed]').forEach(el => {
+      const seed = (el.dataset.typed || '').trim().toLowerCase();
+      if (seed === 'whoami') {
+        const pick = WHOAMI_ROTATION[Math.floor(Math.random() * WHOAMI_ROTATION.length)];
+        el.dataset.typed = pick;
+      }
+      typeOnce(el);
+    });
   }
 
   /* ── Status bar (vim-like) ────────────────────────────── */
@@ -69,6 +78,26 @@
     if (STATUS.mode) STATUS.mode.textContent = text;
   }
 
+  const FORTUNES = [
+    '"Premature optimization is the root of all evil." — D. Knuth',
+    '"Talk is cheap. Show me the code." — Linus Torvalds',
+    '"Simplicity is prerequisite for reliability." — E. Dijkstra',
+    '"Controlling complexity is the essence of programming." — B. Kernighan',
+  ];
+
+  function showFortune() {
+    const info = document.getElementById('statusInfo');
+    if (!info) return;
+    const original = info.textContent;
+    const quote = FORTUNES[Math.floor(Math.random() * FORTUNES.length)];
+    info.textContent = quote;
+    info.classList.add('statusbar__fortune');
+    setTimeout(() => {
+      info.textContent = original;
+      info.classList.remove('statusbar__fortune');
+    }, 4000);
+  }
+
   /* ── Command palette ──────────────────────────────────── */
   const PALETTE_COMMANDS = [
     { cmd: 'cat about.md',          desc_key: 'cmd_about',     target: '#about' },
@@ -86,6 +115,8 @@
     { cmd: 'gh repo open',          desc_key: 'cmd_github',     href: 'https://github.com/jesusgarzag' },
     { cmd: 'mailto:',               desc_key: 'cmd_mail',       href: 'mailto:jesusgarzacia@hotmail.com' },
     { cmd: 'git branch -v',         desc_key: 'cmd_branches',   action: 'branches' },
+    { cmd: 'help --keys',           desc_key: 'cmd_help',       action: 'help' },
+    { cmd: 'history',               desc_key: 'cmd_history',    action: 'history' },
     { cmd: 'man jesus',             desc_key: 'cmd_man',        action: 'man' },
     { cmd: 'htop',                  desc_key: 'cmd_htop',       action: 'htop' },
     { cmd: './rubik',               desc_key: 'cmd_rubik',      action: 'rubik' },
@@ -98,9 +129,15 @@
   const paletteInput  = document.getElementById('paletteInput');
   const paletteList   = document.getElementById('paletteList');
   const paletteOpen   = document.getElementById('paletteOpen');
+  const cheatsheetOpenBtn = document.getElementById('cheatsheetOpen');
+  const historyList = document.getElementById('historyList');
+  const historyEmpty = document.getElementById('historyEmpty');
 
   let paletteFiltered = PALETTE_COMMANDS.slice();
   let paletteIndex = 0;
+  const commandHistory = [];
+  const HISTORY_MAX = 80;
+  let historyIndex = -1;
 
   function describe(cmd) {
     const dict = (window.i18n && window.i18n.t(cmd.desc_key)) || '';
@@ -152,10 +189,42 @@
     setMode('NORMAL');
   }
 
-  function runActive() {
-    const cmd = paletteFiltered[paletteIndex];
+  function pushHistoryEntry(commandText) {
+    if (!commandText) return;
+    commandHistory.push(commandText);
+    if (commandHistory.length > HISTORY_MAX) commandHistory.shift();
+    historyIndex = commandHistory.length - 1;
+    renderHistory();
+  }
+
+  function renderHistory() {
+    if (!historyList || !historyEmpty) return;
+    historyList.innerHTML = '';
+    if (!commandHistory.length) {
+      historyEmpty.hidden = false;
+      return;
+    }
+    historyEmpty.hidden = true;
+    commandHistory.forEach((cmdText, i) => {
+      const item = document.createElement('li');
+      item.className = 'history__item' + (i === historyIndex ? ' is-active' : '');
+      item.innerHTML = `<span class="history__idx">${String(i + 1).padStart(2, '0')}</span><span class="history__cmd">$ ${cmdText}</span>`;
+      item.addEventListener('click', () => {
+        historyIndex = i;
+        renderHistory();
+      });
+      item.addEventListener('dblclick', () => runHistorySelection());
+      historyList.appendChild(item);
+    });
+    const active = historyList.querySelector('.history__item.is-active');
+    active?.scrollIntoView({ block: 'nearest' });
+  }
+
+  function runCommand(cmd) {
     if (!cmd) return;
+    pushHistoryEntry(cmd.cmd);
     closePalette();
+    if (history.isOpen()) closeHistory();
 
     if (cmd.target) {
       const t = document.querySelector(cmd.target);
@@ -171,6 +240,10 @@
       cv?.click();
     } else if (cmd.action === 'branches') {
       openBranches();
+    } else if (cmd.action === 'help') {
+      openCheatsheet();
+    } else if (cmd.action === 'history') {
+      openHistory();
     } else if (cmd.action === 'colorscheme') {
       openScheme();
     } else if (cmd.action === 'man') {
@@ -186,6 +259,20 @@
     } else if (cmd.action === 'hire') {
       openHire();
     }
+  }
+
+  function runActive() {
+    const cmd = paletteFiltered[paletteIndex];
+    if (!cmd) return;
+    runCommand(cmd);
+  }
+
+  function runHistorySelection() {
+    if (!commandHistory.length || historyIndex < 0) return;
+    const cmdText = commandHistory[historyIndex];
+    const cmd = PALETTE_COMMANDS.find(c => c.cmd === cmdText);
+    if (!cmd) return;
+    runCommand(cmd);
   }
 
   /* ── Generic overlay helpers ───────────────────────────── */
@@ -247,6 +334,17 @@
     if (e.key === 'q' && htop.isOpen() && !e.target.matches('input, textarea')) closeHtop();
   });
 
+  /* ── Keyboard cheatsheet overlay ──────────────────────── */
+  const cheatsheet = makeOverlayToggle('cheatsheetOverlay', 'cheatsheet-open', 'HELP');
+  function openCheatsheet() {
+    cheatsheet.open();
+  }
+  function closeCheatsheet() {
+    cheatsheet.close();
+  }
+  document.getElementById('closeCheatsheet')?.addEventListener('click', closeCheatsheet);
+  cheatsheet.el?.addEventListener('click', e => { if (e.target === cheatsheet.el) closeCheatsheet(); });
+
   /* ── Branch picker (other portfolio versions) ─────────── */
   const branches = document.getElementById('branches');
   const openBranchesBtn = document.getElementById('openBranches');
@@ -276,7 +374,21 @@
     });
   }
 
+  /* ── Command history overlay ───────────────────────────── */
+  const history = makeOverlayToggle('historyOverlay', 'history-open', 'HISTORY');
+  function openHistory() {
+    history.open();
+    if (commandHistory.length) historyIndex = commandHistory.length - 1;
+    renderHistory();
+  }
+  function closeHistory() {
+    history.close();
+  }
+  document.getElementById('closeHistory')?.addEventListener('click', closeHistory);
+  history.el?.addEventListener('click', e => { if (e.target === history.el) closeHistory(); });
+
   if (paletteOpen) paletteOpen.addEventListener('click', openPalette);
+  if (cheatsheetOpenBtn) cheatsheetOpenBtn.addEventListener('click', openCheatsheet);
 
   if (paletteInput) {
     paletteInput.addEventListener('input', e => filterPalette(e.target.value));
@@ -305,6 +417,39 @@
 
   // Global shortcuts
   document.addEventListener('keydown', e => {
+    const isTypingTarget = e.target.matches('input, textarea, [contenteditable="true"]');
+
+    if (history.isOpen()) {
+      if (!commandHistory.length && (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'Enter')) {
+        e.preventDefault();
+        return;
+      }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        historyIndex = Math.max(0, historyIndex - 1);
+        renderHistory();
+        return;
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        historyIndex = Math.min(commandHistory.length - 1, historyIndex + 1);
+        renderHistory();
+        return;
+      }
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        runHistorySelection();
+        return;
+      }
+    }
+
+    if (!e.ctrlKey && !e.metaKey && !e.altKey && !isTypingTarget && (e.key === '?' || e.key === '/')) {
+      e.preventDefault();
+      if (cheatsheet.isOpen()) closeCheatsheet();
+      else openCheatsheet();
+      return;
+    }
+
     // Ctrl/Cmd + K → command palette
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -319,10 +464,19 @@
       else openBranches();
       return;
     }
+    // Ctrl/Cmd + H → command history
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'h') {
+      e.preventDefault();
+      if (history.isOpen()) closeHistory();
+      else openHistory();
+      return;
+    }
     // Esc → close any open overlay
     if (e.key === 'Escape') {
       if (palette?.classList.contains('is-open')) closePalette();
       if (branches?.classList.contains('is-open')) closeBranches();
+      if (history.isOpen()) closeHistory();
+      if (cheatsheet.isOpen()) closeCheatsheet();
       if (scheme.isOpen()) closeScheme();
       if (man.isOpen()) closeMan();
       if (htop.isOpen()) { closeHtop(); }
@@ -642,8 +796,13 @@
 
   /* ── Rubik 2x2 functional ──────────────────────────────── */
   const rubik = makeOverlayToggle('rubikOverlay', 'rubik-open', 'RUBIK');
-  function openRubik() { rubik.open(); rubikInit(); }
-  function closeRubik() { rubik.close(); }
+  function openRubik() { rubik.open(); rubikInit(); updateRubikSolveButton(); }
+  function closeRubik() {
+    rb_abortSolve = true;
+    rb_solving = false;
+    setRubikControlsDisabled(false);
+    rubik.close();
+  }
   document.getElementById('closeRubik')?.addEventListener('click', closeRubik);
   rubik.el?.addEventListener('click', e => { if (e.target === rubik.el) closeRubik(); });
 
@@ -696,6 +855,8 @@
   let rb_count = 0;
   let rb_initialized = false;
   let rb_history = [];
+  let rb_solving = false;
+  let rb_abortSolve = false;
   // Camera rotation (drag-to-rotate). Initial values match CSS defaults.
   let rb_camX = -22;
   let rb_camY = -32;
@@ -747,6 +908,25 @@
     const lst = document.getElementById('rubikLast');
     if (cnt) cnt.textContent = rb_count;
     if (lst && lastMove) lst.textContent = lastMove.replace('p', "'");
+    updateRubikSolveButton();
+  }
+
+  function setRubikControlsDisabled(disabled) {
+    const controls = document.querySelectorAll('#rubikMovePad button, #rubikScramble, #rubikReset, [data-rb-mode], #rubikSolve');
+    controls.forEach(btn => {
+      const isSolve = btn.id === 'rubikSolve';
+      btn.disabled = isSolve
+        ? disabled || rb_history.length === 0
+        : disabled;
+    });
+  }
+
+  function updateRubikSolveButton() {
+    const solveBtn = document.getElementById('rubikSolve');
+    if (!solveBtn) return;
+    const disabled = rb_solving || rb_busy || rb_history.length === 0;
+    solveBtn.disabled = disabled;
+    solveBtn.setAttribute('aria-disabled', disabled ? 'true' : 'false');
   }
 
   function fmtMs(ms) {
@@ -819,6 +999,9 @@
   }
 
   function rubikResetState() {
+    rb_abortSolve = true;
+    rb_solving = false;
+    setRubikControlsDisabled(false);
     rubikBuild();
     rb_count = 0;
     rb_history = [];
@@ -827,10 +1010,11 @@
     if (lst) lst.textContent = '—';
     rubikTimerReset();
     rubikLoadPB();
+    updateRubikSolveButton();
   }
 
   function rubikSetMode(m) {
-    if (rb_busy) return;
+    if (rb_busy || rb_solving) return;
     if (m !== 2 && m !== 3) return;
     if (m === rb_mode) return;
     rb_mode = m;
@@ -849,18 +1033,23 @@
     rubikBuild();
     rubikUpdateStats();
     rubikLoadPB();
+    updateRubikSolveButton();
 
     document.getElementById('rubikMovePad')?.addEventListener('click', e => {
       const btn = e.target.closest('button[data-move]');
-      if (!btn || rb_busy) return;
+      if (!btn || rb_busy || rb_solving) return;
       applyMove(btn.dataset.move, true);
     });
     document.getElementById('rubikScramble')?.addEventListener('click', () => {
-      if (rb_busy) return;
+      if (rb_busy || rb_solving) return;
       rubikScramble(rb_mode === 3 ? 25 : 15);
     });
+    document.getElementById('rubikSolve')?.addEventListener('click', () => {
+      if (rb_busy || rb_solving || rb_history.length === 0) return;
+      rubikAutoSolve();
+    });
     document.getElementById('rubikReset')?.addEventListener('click', () => {
-      if (rb_busy) return;
+      if (rb_busy || rb_solving) return;
       rubikResetState();
     });
     document.querySelectorAll('[data-rb-mode]').forEach(b => {
@@ -981,13 +1170,15 @@
           }
         }
         rb_busy = false;
+        updateRubikSolveButton();
         resolve();
       }, RB_ANIM + 20);
     });
   }
 
   async function rubikScramble(n) {
-    if (rb_busy) return;
+    if (rb_busy || rb_solving) return;
+    rb_abortSolve = false;
     rubikTimerReset();
     // Only face moves in scrambles (no slices), and only the ones that make sense per mode.
     const moves = Object.keys(RB_MOVES).filter(k => !RB_MOVES[k].mid);
@@ -1006,6 +1197,41 @@
     rb_timerScrambled = true;
     const tEl = document.getElementById('rubikTime');
     if (tEl) tEl.textContent = '00:00.00';
+    updateRubikSolveButton();
+  }
+
+  async function rubikAutoSolve() {
+    if (rb_solving || rb_busy || rb_history.length === 0) return;
+    rb_solving = true;
+    rb_abortSolve = false;
+    rubikTimerStop();
+    rb_timerScrambled = false;
+    setMode('SOLVE');
+    setRubikControlsDisabled(true);
+
+    while (rb_history.length && !rb_abortSolve && rubik.isOpen()) {
+      const last = rb_history[rb_history.length - 1];
+      const inv = RB_MOVES[last]?.inv;
+      if (!inv) {
+        rb_history.pop();
+        continue;
+      }
+      await applyMove(inv, false);
+      rb_history.pop();
+      rb_count++;
+      rubikUpdateStats(inv);
+      await new Promise(r => setTimeout(r, 180));
+    }
+
+    if (!rb_abortSolve && rubik.isOpen()) {
+      const lastEl = document.getElementById('rubikLast');
+      if (lastEl) lastEl.textContent = '✓';
+    }
+
+    rb_solving = false;
+    setRubikControlsDisabled(false);
+    updateRubikSolveButton();
+    if (rubik.isOpen()) setMode('RUBIK');
   }
 
   // Keyboard shortcuts inside the overlay
@@ -1014,6 +1240,7 @@
     if (e.target.matches('input, textarea')) return;
     const k = e.key;
     if (k === 'Escape') return; // global handler closes
+    if (rb_solving) return;
     const upper = k.toUpperCase();
     if ('UDLRFB'.includes(upper)) {
       e.preventDefault();
@@ -1034,6 +1261,8 @@
 
   /* ── Boot ──────────────────────────────────────────────── */
   initTyping();
+  renderHistory();
+  showFortune();
   updateStatus();
   window.addEventListener('scroll', updateStatus, { passive: true });
   window.addEventListener('resize', updateStatus);
