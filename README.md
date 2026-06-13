@@ -1,105 +1,103 @@
-# Portafolio de jesusgarzag
+# Portafolio · Jesús Garza
 
-![Estado](https://img.shields.io/badge/estado-activo-success) ![HTML5](https://img.shields.io/badge/html5-e34f26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-f7df1e?logo=javascript&logoColor=000000) ![i18n](https://img.shields.io/badge/i18n-json-blue) ![Theme](https://img.shields.io/badge/tema-claro%2Foscuro-4b5563)
+![Estado](https://img.shields.io/badge/estado-activo-success) ![HTML5](https://img.shields.io/badge/html5-e34f26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-f7df1e?logo=javascript&logoColor=000000) ![i18n](https://img.shields.io/badge/i18n-ES%2FEN-blue) ![Sin build](https://img.shields.io/badge/build-ninguno-4b5563)
 
-Portafolio web personal de Jesus Garza, backend developer con enfoque en Python, PostgreSQL y Odoo. Presenta experiencia, proyectos y habilidades con una interfaz moderna, tema claro/oscuro e internacionalizacion ES/EN.
+Portafolio web personal de **Jesús Garza**, desarrollador backend especializado en **Odoo** (Python, PostgreSQL, OWL, CFDI). La interfaz es una **sesión de terminal interactiva**: tipografía monoespaciada, prompts por sección, status bar tipo vim y un puñado de "programas" que se abren como overlays. Sin frameworks ni build — solo HTML, CSS y JS.
 
-## Sobre mi
+🔗 **En vivo:** https://jesusgarza.pages.dev/
 
-Soy desarrollador backend con experiencia en desarrollo de modulos para Odoo, integraciones XML-RPC y automatizacion de procesos. He trabajado con Python, PostgreSQL y Linux, y me enfoco en codigo limpio, mantenible y orientado a resolver problemas reales. Nivel de ingles avanzado.
+## Concepto
 
-## Lo que incluye
+Todo el sitio simula un entorno de terminal. La navegación son comandos (`cat about.md`, `ls -la modules/`, `man certifications`) y cada interacción refuerza el tema:
 
-- Secciones de experiencia, proyectos, habilidades, formacion y contacto.
-- Portal interactivo para explorar proyectos destacados.
-- Animaciones suaves y efectos visuales discretos.
-- Tema claro/oscuro y soporte multilenguaje.
+- **Command palette** (`Ctrl+K`) — busca y ejecuta cualquier acción.
+- **Shell interactiva** en el hero — escribe comandos reales (`help`, `ls`, `neofetch`, `sudo hire`, `theme`, `clear`…) y responde en pantalla.
+- **8 colorschemes** (terminal-dark, light, nord, gruvbox, dracula, tokyo-night, catppuccin, solarized) + toggle claro/oscuro.
+- **`vim`** — abre el código real de cada módulo Odoo desde la lista (clic en una fila de `ls`).
+- **`htop`** — los 10 clientes atendidos como procesos del sistema.
+- **`./build --all`** — log de CI animado que "compila y testea" los 23 módulos.
+- **`man jesus`**, **`./hire`** (info pack para reclutadores), **historial de comandos**, **cheatsheet** (`?`).
+- **Cubo de Rubik 2×2 / 3×3** funcional con timer, PB y solver, arrastrable en 3D.
+- **i18n ES/EN** vía JSON, reloj de Monterrey en vivo, heatmap de contribuciones de GitHub.
+- Easter eggs: **código Konami → modo CRT**, logo ×5 → dev panel, `fortune` aleatorio al cargar.
 
-## Tecnologias
+## Contenido
 
-- HTML5, CSS3, JavaScript.
-- Arquitectura CSS modular.
-- i18n con archivos JSON.
-
-## Habilidades
-
-- Backend: Python, Odoo, PostgreSQL, APIs REST, ORM.
-- Datos: diseno de esquemas, optimizacion de consultas, reportes.
-- DevOps: Linux, despliegues.
-- Integraciones: XML-RPC, automatizacion de procesos.
-- Buenas practicas: codigo limpio, pruebas basicas, documentacion.
-
-## Vista previa
-
-![Vista previa](assets/images/portafolio_es.jpg)
+- **Sobre mí** y estadísticas (empresas, módulos, certificaciones).
+- **Experiencia profesional** como árbol de directorios (`tree experience/`).
+- **23+ módulos Odoo** en producción para 10 empresas, agrupados por área funcional, con casos de éxito.
+- **Proyectos** destacados, **habilidades**, **formación** y **contacto** (formulario vía Formspree).
 
 ## Estructura
 
-- css/ estilos por modulos.
-- js/ logica dividida por funcionalidades.
-- i18n/ traducciones ES y EN.
-- assets/ recursos (imagenes, certificados, demos).
+```
+index.html            página única (terminal + overlays)
+404.html              fallback de routing
+manifest.webmanifest  PWA
+sw.js                 service worker (shell cache-first)
+css/
+  base.css            tokens de diseño + temas
+  terminal.css        prompts, palette, overlays, rubik
+  layout.css          topbar, sidebar, hero, secciones
+  components.css      ls, tree, skills, vim, htop, formulario
+  responsive.css      breakpoints
+js/
+  i18n.js             cambio de idioma ES/EN
+  terminal.js         palette, overlays, rubik, build log, vim
+  main.js             tema, scroll spy, reveals, contadores, GitHub
+i18n/
+  es.json · en.json   traducciones
+assets/               certificados, demo, imágenes
+```
 
 ## Ejecutar local
 
-Abre [index.html](index.html) en el navegador. No requiere dependencias.
+Abre [index.html](index.html) en el navegador. No requiere dependencias ni build.
+Para que el `fetch` de los JSON de i18n funcione, sirve la carpeta con un servidor estático, p. ej.:
+
+```bash
+python -m http.server 8000   # luego abre http://localhost:8000
+```
 
 ## Contacto
 
-- Email: jesusgarzacia@hotmail.com
-- GitHub: https://github.com/jesusgarzag
-- LinkedIn: https://www.linkedin.com/in/jesusgarzacia
+- **Email:** jesusgarzacia@hotmail.com
+- **GitHub:** https://github.com/jesusgarzag
+- **LinkedIn:** https://www.linkedin.com/in/jesusgarzacia
 
 ---
 
-# Portfolio of jesusgarzag
+# Portfolio · Jesús Garza
 
-![Status](https://img.shields.io/badge/status-active-success) ![HTML5](https://img.shields.io/badge/html5-e34f26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-f7df1e?logo=javascript&logoColor=000000) ![i18n](https://img.shields.io/badge/i18n-json-blue) ![Theme](https://img.shields.io/badge/theme-light%2Fdark-4b5563)
+Personal portfolio of **Jesús Garza**, a backend developer specialized in **Odoo** (Python, PostgreSQL, OWL, CFDI). The whole UI is an **interactive terminal session**: monospace type, per-section prompts, a vim-style status bar, and a handful of "programs" that open as overlays. No frameworks, no build step — just HTML, CSS and JS.
 
-Personal web portfolio of Jesus Garza, a backend developer focused on Python, PostgreSQL, and Odoo. It showcases experience, projects, and skills with a modern interface, light/dark theme, and ES/EN internationalization.
+🔗 **Live:** https://jesusgarza.pages.dev/
 
-## About me
+## Concept
 
-I am a backend developer with experience building Odoo modules, XML-RPC integrations, and process automation. I have worked with Python, PostgreSQL, and Linux, and I focus on clean, maintainable code that solves real problems.
+The site mimics a terminal environment. Navigation is commands (`cat about.md`, `ls -la modules/`, `man certifications`) and every interaction reinforces the theme:
 
-## What is included
-
-- Sections for experience, projects, skills, education, and contact.
-- Interactive portal to explore featured projects.
-- Smooth animations and subtle visual effects.
-- Light/dark theme and multilingual support.
-
-## Technologies
-
-- HTML5, CSS3, JavaScript.
-- Modular CSS architecture.
-- JSON-based i18n.
-
-## Skills
-
-- Backend: Python, Odoo, PostgreSQL, REST APIs, ORM.
-- Data: schema design, query optimization, reporting.
-- DevOps: Linux, basic deployments.
-- Integrations: XML-RPC, process automation.
-- Good practices: clean code, basic testing, documentation.
-
-## Preview
-
-![Preview](assets/images/portafolio_en.jpg)
-
-## Structure
-
-- css/ styles by modules.
-- js/ logic split by features.
-- i18n/ ES and EN translations.
-- assets/ resources (images, certificates, demos).
+- **Command palette** (`Ctrl+K`) to search and run any action.
+- **Interactive shell** in the hero — type real commands (`help`, `ls`, `neofetch`, `sudo hire`, `theme`, `clear`…).
+- **8 colorschemes** + light/dark toggle.
+- **`vim`** opens the real code of each Odoo module from the list.
+- **`htop`** shows the 10 clients as system processes.
+- **`./build --all`** animated CI log that "builds and tests" all 23 modules.
+- **`man jesus`**, **`./hire`** recruiter info pack, command history, cheatsheet (`?`).
+- Functional **Rubik's cube** (2×2 / 3×3) with timer, PB and solver.
+- **ES/EN i18n**, live Monterrey clock, GitHub contributions heatmap.
+- Easter eggs: **Konami code → CRT mode**, logo ×5 → dev panel, random `fortune` on load.
 
 ## Run locally
 
-Open [index.html](index.html) in your browser. No dependencies required.
+Open [index.html](index.html) in your browser. No dependencies. Serve the folder with any static server so the i18n JSON `fetch` works:
+
+```bash
+python -m http.server 8000
+```
 
 ## Contact
 
-- Email: jesusgarzacia@hotmail.com
-- GitHub: https://github.com/jesusgarzag
-- LinkedIn: https://www.linkedin.com/in/jesusgarzacia
+- **Email:** jesusgarzacia@hotmail.com
+- **GitHub:** https://github.com/jesusgarzag
+- **LinkedIn:** https://www.linkedin.com/in/jesusgarzacia

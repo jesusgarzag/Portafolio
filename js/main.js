@@ -56,6 +56,30 @@
   // Expose API for terminal.js
   window.scheme = { set: setScheme, get: () => window.__currentScheme };
 
+  /* ── now_working: módulo al azar en cada carga ─────────── */
+  // Lista de trabajo real (ES/EN). Se elige uno por carga y se respeta el idioma.
+  const NOW_WORKING = [
+    { es: 'módulo IMSS/SUA · Recavisa',                          en: 'IMSS/SUA module · Recavisa' },
+    { es: 'cálculo de PTU · Avalia',                             en: 'profit-sharing (PTU) · Avalia' },
+    { es: 'timbrado de nómina en paralelo · Avalia',            en: 'parallel payroll stamping · Avalia' },
+    { es: 'corrección de tipo de cambio Banxico/DOF · Avalia',  en: 'Banxico/DOF rate fix · Avalia' },
+    { es: 'reportes SAT XML (Complementario) · Avalia',         en: 'SAT XML reports (Complementary) · Avalia' },
+    { es: 'sincronización de cancelación intercompañía · Avalia', en: 'intercompany cancellation sync · Avalia' },
+    { es: 'conciliación bancaria · Avalia',                     en: 'bank reconciliation · Avalia' },
+    { es: 'recepción masiva de series/lotes · Interenter',     en: 'bulk serial/lot reception · Interenter' },
+    { es: 'reporte dinámico de nómina · Casa Guerra',          en: 'dynamic payroll report · Casa Guerra' },
+  ];
+  const nowIdx = Math.floor(Math.random() * NOW_WORKING.length);
+  function applyNowWorking() {
+    const el = document.querySelector('.sidebar__working-val');
+    if (!el) return;
+    const lang = (window.i18n && window.i18n.current) || 'es';
+    el.textContent = NOW_WORKING[nowIdx][lang] || NOW_WORKING[nowIdx].es;
+  }
+  applyNowWorking();
+  // Re-aplica al cambiar de idioma (i18n.js emite este evento tras traducir).
+  document.addEventListener('i18n:applied', applyNowWorking);
+
   /* ── Smooth scroll (offset for sticky topbar) ──────────── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {

@@ -273,6 +273,27 @@
 .ls__row:last-child { border-bottom: 0; }
 .ls__row:hover { background: var(--bg-elevated); }
 
+/* Filas con código real abrible en vim */
+.ls__row--vim { cursor: pointer; position: relative; }
+.ls__row--vim::after {
+  content: 'vim ↵';
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-4);
+  font-size: 10px;
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--border-accent);
+  padding: 1px 6px;
+  opacity: 0;
+  transition: opacity var(--t-fast);
+  pointer-events: none;
+}
+.ls__row--vim:hover::after { opacity: 1; }
+.ls__row--vim:hover .ls__name { color: var(--accent); }
+
 .ls__row-meta {
   display: flex;
   flex-direction: column;
@@ -499,6 +520,57 @@
 .skill:hover {
   border-color: var(--border-accent);
   background: var(--accent-soft);
+}
+
+/* ── Languages bar (linguist-style) ────────────────────── */
+.langs {
+  margin: var(--sp-2) 0 var(--sp-10);
+}
+.langs__label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+  margin-bottom: var(--sp-3);
+}
+.langs__bar {
+  display: flex;
+  width: 100%;
+  height: 12px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.langs__seg {
+  width: 0;                       /* animado al revelar la sección */
+  background: var(--c);
+  transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  border-right: 1px solid var(--bg);
+}
+.langs__seg:last-child { border-right: 0; }
+.section.is-visible .langs__seg { width: var(--w); }
+
+.langs__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  margin-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+.langs__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-variant-numeric: tabular-nums;
+}
+.langs__legend b { color: var(--text); font-weight: 600; }
+.langs__dot {
+  width: 9px;
+  height: 9px;
+  background: var(--c);
+  display: inline-block;
 }
 
 /* ── Education / certs ─────────────────────────────────── */

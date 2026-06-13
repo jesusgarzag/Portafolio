@@ -42,9 +42,11 @@
     }
     // CV link
     const cv = document.getElementById('btnCv');
-    if (cv) cv.setAttribute('href', `assets/cv_${currentLang}.pdf`);
+    if (cv) cv.setAttribute('href', `assets/certificados/cv_${currentLang}.pdf`);
     // html lang attr
     document.documentElement.lang = currentLang;
+    // avisa que las traducciones ya se aplicaron (para módulos que reaccionan al idioma)
+    document.dispatchEvent(new CustomEvent('i18n:applied', { detail: { lang: currentLang } }));
   }
 
   let currentLang = getStored();

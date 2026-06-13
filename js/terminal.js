@@ -123,6 +123,7 @@
     { cmd: './build --all',         desc_key: 'cmd_build',      action: 'build' },
     { cmd: 'vim ~/modules/aged_days.py', desc_key: 'cmd_vim',   action: 'vim' },
     { cmd: './hire',                desc_key: 'cmd_hire',       action: 'hire' },
+    { cmd: './shell',               desc_key: 'cmd_shell',      action: 'shell' },
   ];
 
   const palette       = document.getElementById('palette');
@@ -262,6 +263,9 @@
       openVim();
     } else if (cmd.action === 'hire') {
       openHire();
+    } else if (cmd.action === 'shell') {
+      document.getElementById('shell')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => document.getElementById('shellInput')?.focus(), 420);
     }
   }
 
@@ -648,6 +652,12 @@
     { n: 'iia_compras_proyecto',   v: 'v17', s: 'warn', d: 1.9, c: 'invent',     a: 'analytic_distribution · auto chain (NOTE: TODO refactor _create_picking)' },
     { n: 'iia_edi_ikigai',         v: 'v17', s: 'ok',   d: 0.9, c: 'ikigai',     a: 'REST · SHA-256 · O(1) prefix · chatter trace' },
     { n: 'iia_columns',            v: 'v19', s: 'ok',   d: 0.4, c: 'interenter', a: 'OWL patch · getActiveColumns · mixin' },
+    { n: 'iia_currency_mx_fix',    v: 'v18', s: 'ok',   d: 0.6, c: 'avalia',     a: 'Banxico SIE API · DOF date shift (-1d)' },
+    { n: 'iia_mx_reports_compl',   v: 'v18', s: 'ok',   d: 1.3, c: 'avalia',     a: 'SAT XML · Balance Complementario · Pólizas' },
+    { n: 'iia_intercompany_cancel',v: 'v18', s: 'ok',   d: 0.7, c: 'avalia',     a: 'auto-cancel intercompany vendor bill' },
+    { n: 'iia_custom_sua',         v: 'v18', s: 'ok',   d: 2.6, c: 'recavisa',   a: 'IMSS/SUA · 8 wizards · INFONAVIT · FONACOT' },
+    { n: 'iia_hr_ptu',             v: 'v18', s: 'ok',   d: 1.0, c: 'avalia',     a: 'PTU · días/salarios · import Excel' },
+    { n: 'iia_nomina_timbrado_par',v: 'v18', s: 'warn', d: 1.5, c: 'avalia',     a: 'concurrent PAC · fast mode (NOTE: ORM writes kept serial)' },
   ];
 
   let build_running = false;
@@ -676,7 +686,7 @@
     if (log) log.innerHTML = '';
     if (foot) foot.innerHTML = '<span class="build__status is-running">running</span>';
     const buildId = '#' + (1240 + Math.floor(Math.random() * 30));
-    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__info">[INFO]</span> Starting Odoo CI run ${buildId} · 17 modules · target Odoo 17/18/19`);
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__info">[INFO]</span> Starting Odoo CI run ${buildId} · 23 modules · target Odoo 17/18/19`);
     buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__info">[INFO]</span> Resolving dependencies...`);
     await new Promise(r => setTimeout(r, 280));
     buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__ok">[OK]</span>   Dependencies resolved (PostgreSQL 14, Python 3.11)`);
@@ -711,14 +721,19 @@
     const ok = fails === 0;
     const status = ok ? 'passed' : 'failed';
     const cls = ok ? 'is-done' : 'is-fail';
-    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__${ok ? 'ok' : 'fail'}">[${ok ? 'DONE' : 'FAIL'}]</span> Build ${buildId} ${status} · 17/17 modules · ${warns} warnings · ${totalDur.toFixed(1)}s`);
-    if (foot) foot.innerHTML = `<span class="build__status ${cls}">${status}</span> &nbsp; build ${buildId} · 17 modules · ${warns} warnings · ${totalDur.toFixed(1)}s`;
+    buildLine(`<span class="build__t">[${buildTs()}]</span> <span class="build__${ok ? 'ok' : 'fail'}">[${ok ? 'DONE' : 'FAIL'}]</span> Build ${buildId} ${status} · 23/23 modules · ${warns} warnings · ${totalDur.toFixed(1)}s`);
+    if (foot) foot.innerHTML = `<span class="build__status ${cls}">${status}</span> &nbsp; build ${buildId} · 23 modules · ${warns} warnings · ${totalDur.toFixed(1)}s`;
     build_running = false;
   }
 
   /* ── Vim overlay ───────────────────────────────────────── */
   const vim = makeOverlayToggle('vimOverlay', 'vim-open', 'VIM');
-  function openVim() { vim.open(); vimRender(); }
+  let vimCurrent = 'aged_days';
+  function openVim(key) {
+    vimCurrent = (key && MODULE_SNIPPETS[key]) ? key : 'aged_days';
+    vim.open();
+    vimRender();
+  }
   function closeVim() { vim.close(); }
   document.getElementById('closeVim')?.addEventListener('click', closeVim);
   vim.el?.addEventListener('click', e => { if (e.target === vim.el) closeVim(); });
@@ -777,15 +792,221 @@
     [50, '        ])<span class="py-op">.</span>unlink()'],
   ];
 
+  // Resaltado mínimo de Python para los snippets en crudo (raw).
+  function pyHi(line) {
+    const esc = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const hiCode = code => esc(code)
+      .replace(/\b(from|import|class|def|return|for|in|if|elif|else|not|and|or|with|as|None|True|False|lambda|while|try|except|raise)\b/g, '<span class="py-kw">$1</span>')
+      .replace(/\bself\b/g, '<span class="py-self">self</span>')
+      .replace(/\b(\d+\.?\d*)\b/g, '<span class="py-num">$1</span>');
+    let out = '';
+    let i = 0;
+    const n = line.length;
+    while (i < n) {
+      const ch = line[i];
+      if (ch === '#') {                       // comentario hasta fin de linea
+        out += '<span class="py-com">' + esc(line.slice(i)) + '</span>';
+        break;
+      }
+      if (ch === '"' || ch === "'") {         // string entre comillas
+        let j = i + 1;
+        while (j < n && line[j] !== ch) j++;
+        out += '<span class="py-str">' + esc(line.slice(i, Math.min(j + 1, n))) + '</span>';
+        i = j + 1;
+        continue;
+      }
+      let j = i;                              // tramo de codigo normal
+      while (j < n && line[j] !== '#' && line[j] !== '"' && line[j] !== "'") j++;
+      out += hiCode(line.slice(i, j));
+      i = j;
+    }
+    return out;
+  }
+
+  // Código real (currency / import_lots) y representaciones fieles del override
+  // documentado para los demás módulos. Cada fila de `ls` con [data-vim] lo abre.
+  const MODULE_SNIPPETS = {
+    aged_days: { file: 'aged_days.py', lines: VIM_LINES, cursor: 26 },
+
+    currency: { file: 'res_company.py', cursor: 18, raw: [
+      '# ~/modules/iia_currency_mx_fix/models/res_company.py',
+      '# Banxico etiqueta el Fix (SF43718) con la fecha de aplicación (día siguiente).',
+      '# El DOF lo publica un día antes. Aquí empatamos ambas fechas.',
+      '',
+      'BANXICO_SIE_URL = "https://www.banxico.org.mx/SieAPIRest/.../SF43718/datos/oportuno"',
+      '',
+      '',
+      'class ResCompany(models.Model):',
+      '    _inherit = "res.company"',
+      '',
+      '    def _get_banxico_fix_usd(self):',
+      '        """Trae el Fix directo de Banxico -> (rate, fecha) o None."""',
+      '        token = self.env["ir.config_parameter"].sudo().get_param("banxico.token")',
+      '        if not token:',
+      '            return None',
+      '        resp = requests.get(BANXICO_SIE_URL, headers={"Bmx-Token": token}, timeout=30)',
+      '        dato = resp.json()["bmx"]["series"][0]["datos"][0]',
+      '        fecha = datetime.strptime(dato["fecha"], "%d/%m/%Y").strftime("%Y-%m-%d")',
+      '        return (1.0 / float(dato["dato"]), fecha)',
+      '',
+      '    def _parse_banxico_data(self, available_currencies):',
+      '        # Usa el Fix con la fecha correcta; si falla, cae al nativo.',
+      '        fix_usd = self._get_banxico_fix_usd()',
+      '        result = super()._parse_banxico_data(available_currencies)',
+      '        if result and fix_usd:',
+      '            result["USD"] = fix_usd',
+      '        return result',
+    ]},
+
+    import_lots: { file: 'stock_move.py', cursor: 11, raw: [
+      '# ~/modules/iia_stock_import_lots/models/stock_move.py',
+      '# Acelera la recepción: permite pegar lotes separados por coma.',
+      '',
+      'from odoo import models',
+      '',
+      '',
+      'class StockMove(models.Model):',
+      '    _inherit = "stock.move"',
+      '',
+      '    def split_lots(self, lots):',
+      '        # Normaliza comas a saltos de línea antes del método nativo.',
+      '        if lots:',
+      '            lots = lots.replace(",", "\\n")',
+      '        return super().split_lots(lots)',
+    ]},
+
+    quant_unrestrict: { file: 'stock_quant.py', cursor: 12, raw: [
+      '# ~/modules/iia_quant_unrestrict/models/stock_quant.py',
+      '# Permite corregir el lote de un quant sin un ajuste de inventario completo.',
+      '',
+      'from odoo import models',
+      '',
+      '',
+      'class StockQuant(models.Model):',
+      '    _inherit = "stock.quant"',
+      '',
+      '    def _get_forbidden_fields_write(self):',
+      '        # Saca lot_id de los campos bloqueados: edición directa y segura.',
+      '        fields = super()._get_forbidden_fields_write()',
+      '        return fields - {"lot_id"}',
+    ]},
+
+    intercompany: { file: 'account_move.py', cursor: 13, raw: [
+      '# ~/modules/iia_intercompany_cancel_sync/models/account_move.py',
+      '# Al cancelar la factura de cliente, cancela también la de proveedor',
+      '# generada automáticamente en la otra empresa del grupo.',
+      '',
+      'from odoo import models',
+      '',
+      '',
+      'class AccountMove(models.Model):',
+      '    _inherit = "account.move"',
+      '',
+      '    def button_cancel(self):',
+      '        res = super().button_cancel()',
+      '        for move in self:',
+      '            mirror = move.auto_invoice_id   # factura espejo en la otra empresa',
+      '            if mirror and mirror.state != "cancel":',
+      '                mirror.with_company(mirror.company_id).button_cancel()',
+      '        return res',
+    ]},
+
+    sua: { file: 'wizard_imss_mensual.py', cursor: 11, raw: [
+      '# ~/modules/iia_custom_sua/wizard/wizard_imss_mensual.py',
+      '# Calcula cuotas IMSS / INFONAVIT del mes y exporta al formato del SUA.',
+      '',
+      'class WizardImssMensual(models.TransientModel):',
+      '    _name = "iia.wizard.imss.mensual"',
+      '    _description = "Cálculo IMSS mensual"',
+      '',
+      '    period_id = fields.Many2one("hr.period", required=True)',
+      '    registro_patronal_id = fields.Many2one("iia.registro.patronal", required=True)',
+      '',
+      '    def action_calcular(self):',
+      '        uma = self.env["iia.valor.uma"]._vigente(self.period_id.date_to)',
+      '        lines = self.env["wizard.imss.nomina.lines"]',
+      '        for emp in self._employees():',
+      '            sbc = emp._sbc(self.period_id)            # salario base de cotización',
+      '            lines.create({',
+      '                "employee_id": emp.id,',
+      '                "cuota_imss": emp._cuota_imss(sbc, uma),',
+      '                "infonavit": emp._descuento_infonavit(sbc),',
+      '                "fonacot": emp._descuento_fonacot(),',
+      '            })',
+      '        return self._open_lines(lines)',
+    ]},
+
+    ptu: { file: 'hr_ptu_wizard.py', cursor: 13, raw: [
+      '# ~/modules/iia_hr_ptu/wizards/hr_ptu_import_wizard.py',
+      '# Reparte la PTU: 50% por días trabajados, 50% por salarios devengados.',
+      '',
+      'class HrPtuWizard(models.TransientModel):',
+      '    _name = "iia.hr.ptu.wizard"',
+      '',
+      '    amount = fields.Monetary(string="Monto a repartir", required=True)',
+      '',
+      '    def action_compute(self):',
+      '        emps = self._eligible_employees()',
+      '        total_days = sum(e.worked_days for e in emps)',
+      '        total_wage = sum(e.earned_wage for e in emps)',
+      '        half = self.amount / 2.0',
+      '        for e in emps:',
+      '            by_days = half * (e.worked_days / total_days)',
+      '            by_wage = half * (e.earned_wage / total_wage)',
+      '            e._register_ptu(by_days + by_wage)',
+    ]},
+
+    timbrado: { file: 'hr_payslip_run.py', cursor: 14, raw: [
+      '# ~/modules/iia_nomina_timbrado_paralelo/models/hr_payslip_run.py',
+      '# Timbra el lote llamando al PAC en paralelo; las escrituras ORM se',
+      '# mantienen en el hilo principal (el cursor de PostgreSQL no es thread-safe).',
+      '',
+      'from concurrent.futures import ThreadPoolExecutor',
+      '',
+      '',
+      'class HrPayslipRun(models.Model):',
+      '    _inherit = "hr.payslip.run"',
+      '',
+      '    def action_timbrar_paralelo(self):',
+      '        slips = self.slip_ids.filtered(lambda s: not s.cfdi_uuid)',
+      '        with ThreadPoolExecutor(max_workers=8) as pool:',
+      '            xmls = list(pool.map(self._call_pac, slips))   # solo I/O al PAC',
+      '        for slip, xml in zip(slips, xmls):                 # writes en serie',
+      '            slip._store_cfdi(xml, fast_mode=True)          # omite PDF/chatter',
+      '        return True',
+    ]},
+  };
+
   function vimRender() {
     const buf = document.getElementById('vimBuffer');
     if (!buf) return;
-    buf.innerHTML = VIM_LINES.map(([n, src]) => {
-      const isCursor = n === 26;
+    const snip = MODULE_SNIPPETS[vimCurrent] || MODULE_SNIPPETS.aged_days;
+    const lines = snip.lines || snip.raw.map((src, i) => [i + 1, pyHi(src)]);
+    const cursor = snip.cursor || 0;
+    buf.innerHTML = lines.map(([n, src]) => {
+      const isCursor = n === cursor;
       return `<div class="line${isCursor ? ' is-cursor' : ''}"><span class="ln">${n}</span><span class="src">${src || ' '}</span></div>`;
     }).join('');
     buf.scrollTop = 0;
+    // Actualiza la pestaña activa + status bar con el archivo del módulo.
+    const tab = vim.el?.querySelector('.vim__tab.is-active');
+    if (tab) tab.textContent = snip.file;
+    const fileEl = vim.el?.querySelector('.vim__file');
+    if (fileEl) fileEl.textContent = snip.file;
+    const meta = document.getElementById('vimMeta');
+    if (meta) meta.textContent = `utf-8 · py · ${lines.length} ln · 100%`;
   }
+
+  // Clic en una fila de módulos con [data-vim] -> abre su código en vim.
+  document.querySelectorAll('.ls__row[data-vim]').forEach(row => {
+    const key = row.dataset.vim;
+    if (!MODULE_SNIPPETS[key]) return;
+    row.classList.add('ls__row--vim');
+    row.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      openVim(key);
+    });
+  });
 
   /* ── Hire overlay ──────────────────────────────────────── */
   const hire = makeOverlayToggle('hireOverlay', 'hire-open', 'HIRE');
@@ -1263,8 +1484,171 @@
     }
   });
 
+  /* ── Interactive shell (hero) ──────────────────────────── */
+  function initShell() {
+    const input = document.getElementById('shellInput');
+    const log = document.getElementById('shellLog');
+    const line = document.querySelector('.shell__inputline');
+    if (!input || !log) return;
+
+    const shHistory = [];
+    let shIdx = 0;
+    const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const t = (key, fb) => (window.i18n && window.i18n.t(key)) || fb;
+
+    function print(html, cls) {
+      const div = document.createElement('div');
+      div.className = 'shell__line' + (cls ? ' shell__line--' + cls : '');
+      div.innerHTML = html;
+      log.appendChild(div);
+      log.scrollTop = log.scrollHeight;
+    }
+    function printCmd(cmd) { print('<span class="shell__ps">$</span>' + esc(cmd), 'cmd'); }
+    function goto(sel, label) {
+      const target = document.querySelector(sel);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return '→ ' + esc(label);
+    }
+
+    // Comandos que devuelven texto (HTML) o disparan un overlay.
+    const COMMANDS = {
+      help() {
+        return 'navegación: <span class="ansi-cyan">about · experience · modules · projects · skills · education · contact</span><br>'
+             + 'programas:  <span class="ansi-cyan">hire · man · htop · rubik · build · branches · history · vim &lt;módulo&gt;</span><br>'
+             + 'sistema:    <span class="ansi-cyan">ls · cat about · whoami · neofetch · date · uname · echo · theme · lang · clear</span><br>'
+             + 'enlaces:    <span class="ansi-cyan">gh · linkedin · cv</span>';
+      },
+      ls() { return '<span class="ansi-blue">about.md  experience/  modules/  projects.json  skills.list  education.man  contact</span>'; },
+      whoami() { return 'jesus'; },
+      id() { return 'uid=1000(jesus) gid=1000(devs) groups=27(sudo),999(odoo)'; },
+      pwd() { return '/home/jesus'; },
+      uname() { return 'Linux portfolio 6.x x86_64 GNU/Linux · RHEL certified'; },
+      date() { return esc(document.getElementById('topbarClock')?.textContent || new Date().toString()); },
+      neofetch() {
+        return [
+          'os        Linux x86_64 · RHEL Certified',
+          'stack     Python · PostgreSQL · Odoo 17/18/19',
+          'specialty CFDI · ERP · REST · XML-RPC',
+          'uptime    ' + esc(t('neofetch_uptime', '23 módulos · 10 clientes · 3 certs')),
+        ].join('<br>');
+      },
+      about() { return [t('about_desc1', ''), t('about_desc2', '')].filter(Boolean).map(esc).join('<br>'); },
+      skills() { return goto('#skills', t('cmd_skills', 'skills')); },
+      projects() { return goto('#projects', t('cmd_projects', 'projects')); },
+      experience() { return goto('#experience', t('cmd_experience', 'experience')); },
+      modules() { return goto('#modules', t('cmd_modules', 'modules')); },
+      education() { return goto('#education', t('cmd_education', 'education')); },
+      contact() { return goto('#contact', t('cmd_contact', 'contact')); },
+      cv() { document.getElementById('btnCv')?.click(); return 'wget cv.pdf … ✓'; },
+      hire() { openHire(); return './hire --info-pack'; },
+      man() { openMan(); return 'man jesus'; },
+      htop() { openHtop(); return 'htop'; },
+      rubik() { openRubik(); return './rubik'; },
+      build() { openBuild(); return './build --all'; },
+      branches() { openBranches(); return 'git branch -v'; },
+      colorscheme() { openScheme(); return ':colorscheme'; },
+      gh() { window.open('https://github.com/jesusgarzag', '_blank', 'noopener'); return 'github.com/jesusgarzag ↗'; },
+      linkedin() { window.open('https://www.linkedin.com/in/jesusgarzacia', '_blank', 'noopener'); return '/in/jesusgarzacia ↗'; },
+      fortune() { return esc(FORTUNES[Math.floor(Math.random() * FORTUNES.length)]); },
+      exit() { return 'No hay salida 😄 (Esc cierra los overlays)'; },
+      sl() { return '🚂💨  choo choo — (¿quisiste decir <span class="ansi-cyan">ls</span>?)'; },
+    };
+    // Alias de comandos.
+    const ALIAS = { git: 'branches', github: 'gh', mail: 'contact', certs: 'education', exp: 'experience', historia: 'history' };
+
+    function run(raw) {
+      const argv = raw.trim().split(/\s+/);
+      let cmd = (argv.shift() || '').toLowerCase();
+      const arg = argv.join(' ');
+      if (ALIAS[cmd]) cmd = ALIAS[cmd];
+      if (cmd === '') return;
+
+      if (cmd === 'clear') { log.innerHTML = ''; return; }
+      if (cmd === 'history') { openHistory(); print('history'); return; }
+      if (cmd === 'echo') { print(esc(arg) || ' '); return; }
+      if (cmd === 'ls' && /mod/.test(arg)) { print(goto('#modules', 'modules/')); return; }
+      if (cmd === 'cat') {
+        const f = (argv[0] || '').replace('.md', '').replace('/', '');
+        if (f === 'about') print(COMMANDS.about());
+        else if (!f) print('uso: cat &lt;archivo&gt;', 'err');
+        else print('cat: ' + esc(argv[0]) + ': No such file or directory', 'err');
+        return;
+      }
+      if (cmd === 'theme') {
+        if (arg === 'light' || arg === 'dark') { window.scheme?.set(arg); print('theme → ' + arg); }
+        else { document.getElementById('themeToggle')?.click(); print('theme toggled'); }
+        return;
+      }
+      if (cmd === 'lang') {
+        const l = (argv[0] || '').toLowerCase();
+        if (l === 'es' || l === 'en') { window.i18n?.set(l); print('lang → ' + l); }
+        else print('uso: lang [es|en]', 'err');
+        return;
+      }
+      if (cmd === 'vim') {
+        const key = (argv[0] || 'aged_days').replace(/\.py$/, '');
+        openVim(key);
+        print('vim ~/modules/' + esc(key));
+        return;
+      }
+      if (cmd === 'sudo') {
+        if (argv[0] === 'hire') { openHire(); print('[sudo] acceso concedido · ./hire'); }
+        else print('jesus is not in the sudoers file. This incident will be reported. 👀', 'err');
+        return;
+      }
+
+      const fn = COMMANDS[cmd];
+      if (typeof fn === 'function') {
+        const out = fn(arg);
+        if (Array.isArray(out)) out.forEach(o => print(o));
+        else if (out != null) print(out);
+      } else {
+        print(esc(cmd) + ': command not found — escribe <span class="ansi-cyan">help</span>', 'err');
+      }
+    }
+
+    function submit() {
+      const raw = input.value;
+      printCmd(raw);
+      if (raw.trim()) shHistory.push(raw);
+      shIdx = shHistory.length;
+      input.value = '';
+      run(raw);
+    }
+
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); submit(); return; }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (shHistory.length && shIdx > 0) { shIdx--; input.value = shHistory[shIdx]; }
+        return;
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (shIdx < shHistory.length - 1) { shIdx++; input.value = shHistory[shIdx]; }
+        else { shIdx = shHistory.length; input.value = ''; }
+        return;
+      }
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        const cur = input.value.trim().toLowerCase();
+        if (!cur) return;
+        const names = Object.keys(COMMANDS).concat(Object.keys(ALIAS));
+        const matches = names.filter(k => k.startsWith(cur));
+        if (matches.length === 1) input.value = matches[0];
+        else if (matches.length > 1) print(matches.sort().join('  '), 'sys');
+        return;
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l') { e.preventDefault(); log.innerHTML = ''; }
+    });
+
+    // Clic en cualquier parte de la línea enfoca el input.
+    line?.addEventListener('click', () => input.focus());
+  }
+
   /* ── Boot ──────────────────────────────────────────────── */
   initTyping();
+  initShell();
   renderHistory();
   showFortune();
   updateStatus();
