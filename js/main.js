@@ -183,16 +183,7 @@
     });
   });
 
-  // Open the first ls__group by default on desktop
-  if (window.matchMedia('(min-width: 768px)').matches) {
-    document.querySelector('.ls__group')?.classList.add('is-open');
-    const firstHead = document.querySelector('.ls__group-head');
-    if (firstHead) {
-      firstHead.setAttribute('aria-expanded', 'true');
-      const icon = firstHead.querySelector('.ls__group-icon');
-      if (icon) icon.textContent = '▾';
-    }
-  }
+  // Todos los grupos de módulos arrancan colapsados (el usuario los abre con clic).
 
   /* ── Live clock (Monterrey, UTC-6) ─────────────────────── */
   const clockEl = document.getElementById('topbarClock');

@@ -177,6 +177,7 @@
 
   function openPalette() {
     if (!palette) return;
+    overlayLastFocus = document.activeElement;
     palette.classList.add('is-open');
     document.body.classList.add('palette-open');
     document.body.style.overflow = 'hidden';
@@ -192,6 +193,7 @@
     document.body.classList.remove('palette-open');
     document.body.style.overflow = '';
     setMode('NORMAL');
+    restoreFocus();
   }
 
   function pushHistoryEntry(commandText) {
@@ -283,6 +285,45 @@
     runCommand(cmd);
   }
 
+  /* ── Focus trap (a11y) para overlays modales ───────────── */
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  let overlayLastFocus = null;   // a dónde devolver el foco al cerrar
+
+  function getOpenModal() {
+    return document.querySelector('[role="dialog"][aria-modal="true"].is-open');
+  }
+  function modalFocusables(modal) {
+    // solo elementos realmente visibles
+    return Array.from(modal.querySelectorAll(FOCUSABLE))
+      .filter(el => el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+  }
+  function focusFirstIn(modal) {
+    requestAnimationFrame(() => {
+      if (!modal.classList.contains('is-open')) return;
+      const f = modalFocusables(modal);
+      (f[0] || modal).focus?.();
+    });
+  }
+  function restoreFocus() {
+    if (overlayLastFocus && typeof overlayLastFocus.focus === 'function') overlayLastFocus.focus();
+    overlayLastFocus = null;
+  }
+  // Atrapa Tab / Shift+Tab dentro del overlay modal abierto.
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const modal = getOpenModal();
+    if (!modal) return;
+    const f = modalFocusables(modal);
+    if (!f.length) { e.preventDefault(); modal.focus?.(); return; }
+    const first = f[0], last = f[f.length - 1];
+    const active = document.activeElement;
+    if (e.shiftKey) {
+      if (active === first || !modal.contains(active)) { e.preventDefault(); last.focus(); }
+    } else {
+      if (active === last || !modal.contains(active)) { e.preventDefault(); first.focus(); }
+    }
+  });
+
   /* ── Generic overlay helpers ───────────────────────────── */
   function makeOverlayToggle(id, bodyClass, modeLabel) {
     const el = document.getElementById(id);
@@ -290,10 +331,12 @@
       el,
       open() {
         if (!el) return;
+        overlayLastFocus = document.activeElement;
         el.classList.add('is-open');
         document.body.classList.add(bodyClass);
         setMode(modeLabel);
         document.body.style.overflow = 'hidden';
+        focusFirstIn(el);
       },
       close() {
         if (!el) return;
@@ -301,6 +344,7 @@
         document.body.classList.remove(bodyClass);
         setMode('NORMAL');
         document.body.style.overflow = '';
+        restoreFocus();
       },
       isOpen: () => el?.classList.contains('is-open'),
     };
@@ -360,10 +404,12 @@
 
   function openBranches() {
     if (!branches) return;
+    overlayLastFocus = document.activeElement;
     branches.classList.add('is-open');
     document.body.classList.add('branches-open');
     setMode('BRANCH');
     document.body.style.overflow = 'hidden';
+    focusFirstIn(branches);
   }
 
   function closeBranches() {
@@ -372,6 +418,7 @@
     document.body.classList.remove('branches-open');
     setMode('NORMAL');
     document.body.style.overflow = '';
+    restoreFocus();
   }
 
   if (openBranchesBtn) openBranchesBtn.addEventListener('click', openBranches);
