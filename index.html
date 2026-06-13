@@ -124,9 +124,9 @@
         "@type": "ListItem", "position": 3,
         "item": {
           "@type": "SoftwareSourceCode",
-          "name": "EDI IKIGAI — REST API",
+          "name": "EDI IKIGAI — Avisos a Middleware (Webhook 944/945)",
           "programmingLanguage": "Python",
-          "runtimePlatform": "Odoo 17",
+          "runtimePlatform": "Odoo 19",
           "applicationCategory": "BusinessApplication",
           "author": { "@type": "Person", "name": "Jesús Gerardo Garza García" }
         }
@@ -759,12 +759,12 @@
               <span class="ls__group-arrow" aria-hidden="true">›</span>
             </button>
             <div class="ls__group-body">
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
+              <div class="ls__row" data-vim="edi">
+                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v19</span></div>
                 <div>
-                  <div class="ls__name" data-i18n="mod_edi">EDI IKIGAI — REST API</div>
-                  <div class="ls__desc" data-i18n="mod_edi_desc">Conectó SAP y Odoo eliminando la captura manual de facturas. Endpoint REST con API keys hasheadas con SHA-256.</div>
-                  <div class="ls__tags"><span class="chip">REST API</span><span class="chip">SHA-256</span><span class="chip">Bearer Auth</span><span class="chip">EDI</span></div>
+                  <div class="ls__name" data-i18n="mod_edi">EDI IKIGAI — Avisos a Middleware (944/945)</div>
+                  <div class="ls__desc" data-i18n="mod_edi_desc">Integró el almacén de Odoo con SAP vía el middleware IKIGAI sin que Odoo arme el EDI. Al validar un albarán, Odoo dispara un webhook "edi.ready" (944 recepción / 945 salida / 947 / 852) con token e idempotencia; el middleware consulta Odoo, genera el X12 y lo envía por AS2. Incluye bitácora request/response, llave de idempotencia única y reintento por cron.</div>
+                  <div class="ls__tags"><span class="chip">Webhook</span><span class="chip">Idempotencia</span><span class="chip">X12 944/945</span><span class="chip">AS2</span><span class="chip">ir.cron</span></div>
                 </div>
               </div>
             </div>
@@ -843,14 +843,14 @@
 
           <details class="case">
             <summary class="case__summary">
-              <span class="case__title" data-i18n="case_edi_title">Ikigai · Integración EDI SAP → Odoo</span>
-              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
+              <span class="case__title" data-i18n="case_edi_title">Ikigai · Avisos EDI de Odoo al middleware (SAP)</span>
+              <span class="case__hint" data-i18n="case_expand_hint">ver detalle</span>
             </summary>
             <div class="case__body">
-              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_edi_problem">Alta manual de facturas entre sistemas, con errores de captura y latencia operativa.</span></p>
-              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_edi_solution">Desarrollé endpoint REST autenticado con API keys hasheadas SHA-256, búsqueda por prefijo O(1) y trazabilidad en chatter para auditoría integral.</span></p>
-              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_edi_stack">Python · REST API · SHA-256 · Odoo chatter</span></p>
-              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_edi_metrics">Eliminación de captura duplicada · reducción drástica de errores de transcripción</span></p>
+              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_edi_problem">Sincronizar movimientos de almacén con SAP por EDI sin cargar a Odoo con la complejidad de armar y transmitir los documentos X12.</span></p>
+              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_edi_solution">Diseñé el lado Odoo del protocolo de avisos: al validar albaranes se dispara un webhook "edi.ready" (944/945/947/852) con token e idempotencia; el middleware consulta Odoo, genera el X12 y lo envía por AS2. Agregué bitácora con evidencia request/response, llave de idempotencia única y reintento por cron que no duplica.</span></p>
+              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_edi_stack">Python · stock · requests (webhook) · idempotencia · ir.cron · X12/AS2</span></p>
+              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_edi_metrics">Cero EDI duplicados por idempotencia · reintento automático de fallos transitorios · trazabilidad completa de cada aviso</span></p>
             </div>
           </details>
 
@@ -864,6 +864,32 @@
               <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_stock_solution">Implementé algoritmo de boundary-crossing que reconstruye estado por fecha de corte, revirtiendo movimientos posteriores y contemplando transferencias internas y kits.</span></p>
               <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_stock_stack">Python · stock.quant · stock.move.line · BOM kits</span></p>
               <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_stock_metrics">Auditorías más rápidas y confiables · reducción de ajustes por diferencias no explicadas</span></p>
+            </div>
+          </details>
+
+          <details class="case">
+            <summary class="case__summary">
+              <span class="case__title" data-i18n="case_sua_title">Recavisa · Cumplimiento IMSS y exportación al SUA</span>
+              <span class="case__hint" data-i18n="case_expand_hint">ver detalle</span>
+            </summary>
+            <div class="case__body">
+              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_sua_problem">El cálculo de cuotas IMSS, INFONAVIT y FONACOT se hacía fuera de Odoo y se recapturaba en el SUA, con riesgo de diferencias y retrabajo cada mes y bimestre.</span></p>
+              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_sua_solution">Construí un módulo con wizards de cálculo mensual y bimestral, simulación, valor UMA y registro patronal, que exporta el CFDI de nómina al formato del SUA para conciliar directo contra el sistema del IMSS.</span></p>
+              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_sua_stack">Python · om_hr_payroll · IMSS / INFONAVIT / FONACOT · UMA · wizards</span></p>
+              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_sua_metrics">Cálculo y exportación dentro de Odoo · conciliación directa contra el SUA · menos recaptura manual</span></p>
+            </div>
+          </details>
+
+          <details class="case">
+            <summary class="case__summary">
+              <span class="case__title" data-i18n="case_timbrado_title">Avalia · Timbrado de nómina masivo en paralelo</span>
+              <span class="case__hint" data-i18n="case_expand_hint">ver detalle</span>
+            </summary>
+            <div class="case__body">
+              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_timbrado_problem">Timbrar lotes grandes de nómina tardaba demasiado: cada recibo llamaba al PAC en serie y bloqueaba la operación.</span></p>
+              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_timbrado_solution">Paralelicé las llamadas al PAC con un pool de hilos manteniendo las escrituras ORM en el hilo principal (el cursor de PostgreSQL no es thread-safe), con modo rápido que omite PDF/chatter inmediato y una acción planificada que genera los PDFs pendientes.</span></p>
+              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_timbrado_stack">Python · ThreadPoolExecutor · PAC l10n_mx · ir.cron</span></p>
+              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_timbrado_metrics">Timbrado masivo mucho más rápido en lotes grandes · la operación no se bloquea durante el proceso</span></p>
             </div>
           </details>
         </div>
@@ -1467,7 +1493,7 @@ $ jesus.garza --see-projects <span class="dim"># scroll to cat projects.json</sp
           <tr data-cpu="5"> <td>1007</td><td>interenter</td><td class="cpu"> 5.1</td><td> 4.0</td><td>1:30:08</td><td>odoo-bin -d interenter · almacén</td></tr>
           <tr data-cpu="4"> <td>1008</td><td>fgh</td><td class="cpu"> 4.2</td><td> 3.5</td><td>0:58:14</td><td>odoo-bin -d fgh · ventas</td></tr>
           <tr data-cpu="3"> <td>1009</td><td>invent</td><td class="cpu"> 3.0</td><td> 2.8</td><td>0:42:51</td><td>odoo-bin -d invent · compras</td></tr>
-          <tr data-cpu="2"> <td>1010</td><td>ikigai</td><td class="cpu"> 2.7</td><td> 2.1</td><td>0:31:07</td><td>edi-api · sap → odoo</td></tr>
+          <tr data-cpu="2"> <td>1010</td><td>ikigai</td><td class="cpu"> 2.7</td><td> 2.1</td><td>0:31:07</td><td>ikigai-edi · odoo → middleware (944/945)</td></tr>
         </tbody>
       </table>
 
