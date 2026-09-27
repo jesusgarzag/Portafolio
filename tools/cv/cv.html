@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CV · Jesús Gerardo Garza García</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<style>
+@font-face { font-family: "Fraunces"; font-weight: 300; font-style: normal; font-display: block; src: url("https://cdn.jsdelivr.net/npm/@fontsource/fraunces@5/files/fraunces-latin-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 400; font-style: normal; font-display: block; src: url("https://cdn.jsdelivr.net/npm/@fontsource/fraunces@5/files/fraunces-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 500; font-style: normal; font-display: block; src: url("https://cdn.jsdelivr.net/npm/@fontsource/fraunces@5/files/fraunces-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 400; font-style: italic; font-display: block; src: url("https://cdn.jsdelivr.net/npm/@fontsource/fraunces@5/files/fraunces-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Geist"; font-weight: 400; font-style: normal; font-display: block; src: url("https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RnOMImpnf.ttf") format("truetype"); }
+@font-face { font-family: "Geist"; font-weight: 500; font-style: normal; font-display: block; src: url("https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RruMImpnf.ttf") format("truetype"); }
+@font-face { font-family: "Geist"; font-weight: 600; font-style: normal; font-display: block; src: url("https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RQuQImpnf.ttf") format("truetype"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: block; src: url("https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 500; font-style: normal; font-display: block; src: url("https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 600; font-style: normal; font-display: block; src: url("https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-latin-600-normal.woff2") format("woff2"); }
+@page { size: letter; margin: 0; }
+:root {
+  --ink: #15171c;
+  --ink-2: #363a42;
+  --ink-3: #5c6068;
+  --ink-4: #8b8e94;
+  --line: #e6e0d4;
+  --line-2: #d4ccbd;
+  --paper: #ffffff;
+  --paper-2: #f8f4ec;
+  --accent: #c63d24;
+  --accent-soft: #fbece6;
+  --jade: #0d7658;
+  --gold: #8f6410;
+  --blue: #2b58c4;
+  --violet: #7445cc;
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Geist", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #d9d4c9; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.5;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-kerning: normal;
+}
+a { color: inherit; text-decoration: none; }
+.page {
+  position: relative;
+  isolation: isolate;
+  width: 8.5in;
+  height: 11in;
+  margin: 24px auto;
+  padding: 0.5in 0.56in 0.5in;
+  background: var(--paper);
+  overflow: hidden;
+  break-after: page;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+.page:last-child { break-after: auto; }
+@media print {
+  html { background: none; }
+  .page { margin: 0; box-shadow: none; }
+}
+.edge {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent), var(--gold) 55%, var(--jade));
+}
+.watermark {
+  position: absolute;
+  z-index: -1;
+  top: -190px;
+  right: -210px;
+  width: 560px;
+  height: 560px;
+  pointer-events: none;
+}
+.mono { font-family: var(--mono); }
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 8.6px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.eyebrow b { color: var(--accent); font-weight: 600; }
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--ink-4);
+}
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 118px;
+  gap: 22px;
+  align-items: start;
+}
+.name {
+  margin-top: 9px;
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.name i { font-style: normal; color: var(--accent); }
+.tag {
+  margin-top: 9px;
+  max-width: 560px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.tag em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14.2px;
+  color: var(--accent);
+}
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 15px;
+  margin-top: 11px;
+  font-size: 10.8px;
+  color: var(--ink-2);
+}
+.contact span b {
+  margin-right: 5px;
+  font-family: var(--mono);
+  font-size: 7.6px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+.contact a { border-bottom: 1px solid var(--line-2); }
+.seal { width: 118px; height: 118px; display: block; margin-top: 4px; }
+.seal text {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -1px;
+  fill: var(--ink);
+}
+.band {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 16px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px dashed var(--line-2);
+}
+.band > div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 3px;
+  padding: 10px 10px 9px 0;
+}
+.band > div + div {
+  padding-left: 13px;
+  border-left: 1px dashed var(--line-2);
+}
+.band dd {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.band dd.hot { color: var(--accent); font-weight: 400; }
+.band dt {
+  font-family: var(--mono);
+  font-size: 7.8px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.band__note {
+  margin-top: 5px;
+  font-family: var(--mono);
+  font-size: 7.6px;
+  color: var(--ink-4);
+}
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 206px;
+  gap: 28px;
+  margin-top: 18px;
+}
+.sec + .sec { margin-top: 16px; }
+.side .sec + .sec { margin-top: 12px; }
+.sec__t {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.sec__t::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  align-self: center;
+}
+.summary {
+  font-size: 12.3px;
+  line-height: 1.56;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.summary strong { color: var(--ink); font-weight: 600; }
+.job + .job { margin-top: 13px; }
+.job__h {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 1px 12px;
+}
+.job__role {
+  font-family: var(--serif);
+  font-size: 15.6px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.job__when {
+  font-family: var(--mono);
+  font-size: 8.8px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.job__org {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+.list { margin-top: 6px; list-style: none; }
+.list li {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr);
+  font-size: 11.5px;
+  line-height: 1.48;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.list li + li { margin-top: 3px; }
+.list li::before {
+  content: "";
+  width: 7px;
+  height: 1px;
+  margin: 0.72em 0 0 1px;
+  background: var(--accent);
+}
+.list strong { color: var(--ink); font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip {
+  padding: 1px 7px;
+  border: 1px solid var(--line-2);
+  border-radius: 99px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.chip--hot { border-color: #e8b9ab; color: var(--accent); background: var(--accent-soft); }
+.stack dt {
+  font-family: var(--mono);
+  font-size: 7.8px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.stack dd {
+  margin: 1px 0 5px;
+  font-size: 10.6px;
+  line-height: 1.48;
+  color: var(--ink-2);
+}
+.stack dd:last-child { margin-bottom: 0; }
+.langbar {
+  display: flex;
+  height: 7px;
+  gap: 2px;
+  overflow: hidden;
+  border-radius: 99px;
+}
+.langbar span { height: 100%; }
+.langs { margin-top: 7px; list-style: none; }
+.langs li {
+  display: grid;
+  grid-template-columns: 9px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.4px;
+  color: var(--ink-2);
+}
+.langs li + li { margin-top: 1px; }
+.langs i { width: 7px; height: 7px; border-radius: 50%; }
+.langs b { font-family: var(--mono); font-size: 9.4px; font-weight: 500; color: var(--ink); }
+.langs small { font-family: var(--mono); font-size: 8.4px; color: var(--ink-4); margin-left: 5px; }
+.langs__note { margin-top: 6px; font-size: 9.6px; line-height: 1.4; color: var(--ink-3); }
+.qr {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px 8px 8px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--paper-2);
+}
+.qr svg { width: 66px; height: 66px; display: block; }
+.qr p { font-size: 9.8px; line-height: 1.4; color: var(--ink-2); }
+.qr p strong { display: block; margin-bottom: 2px; font-family: var(--serif); font-size: 12.6px; font-weight: 500; line-height: 1.2; color: var(--ink); }
+.qr p span { display: block; margin-top: 3px; font-family: var(--mono); font-size: 8.2px; color: var(--accent); }
+.foot {
+  position: absolute;
+  left: 0.56in;
+  right: 0.56in;
+  bottom: 0.3in;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 7px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 7.6px;
+  color: var(--ink-4);
+}
+.foot b { color: var(--accent); font-weight: 500; }
+.mini {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--ink);
+}
+.mini__n {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+.mini__n i { font-style: normal; color: var(--accent); }
+.mini__r {
+  font-family: var(--mono);
+  font-size: 8.4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.cases-h { margin-top: 16px; }
+.lead2 {
+  margin-top: -3px;
+  font-size: 11.2px;
+  color: var(--ink-3);
+}
+.cases {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 10px;
+}
+.case {
+  display: flex;
+  flex-direction: column;
+  padding: 11px 13px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  break-inside: avoid;
+}
+.case__k {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.case__k b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 14px;
+  padding: 0 4px;
+  border-radius: 99px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.case__t {
+  margin-top: 5px;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+.case__t em { font-style: italic; color: var(--accent); font-weight: 400; }
+.case__d {
+  margin-top: 4px;
+  font-size: 10.6px;
+  line-height: 1.46;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.case__f {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  margin-top: auto;
+  padding-top: 6px;
+  font-family: var(--mono);
+  font-size: 8.6px;
+  color: var(--ink-3);
+}
+.case__f span b { color: var(--ink); font-weight: 600; font-size: 9.6px; margin-right: 4px; }
+.case--qr {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  background: var(--paper-2);
+}
+.case--qr svg { flex: none; width: 82px; height: 82px; }
+.case--qr p { font-size: 10.6px; line-height: 1.45; color: var(--ink-2); }
+.case--qr p strong { display: block; font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.case--qr p span { display: block; margin-top: 4px; font-family: var(--mono); font-size: 8.8px; color: var(--accent); }
+.tri {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 24px;
+  margin-top: 18px;
+}
+.tri .sec + .sec { margin-top: 0; }
+.edu__deg {
+  font-family: var(--serif);
+  font-size: 14.6px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.edu__sch { margin-top: 2px; font-size: 10.6px; line-height: 1.4; color: var(--ink-3); }
+.creds { margin-top: 6px; list-style: none; }
+.creds li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 4px 0;
+  border-top: 1px dashed var(--line);
+  font-size: 10.6px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.tri .creds { margin-top: 0; }
+.tri .creds li:first-child { border-top: 0; }
+.creds b {
+  font-family: var(--mono);
+  font-size: 8.6px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.creds span:last-child { font-family: var(--mono); font-size: 8.6px; color: var(--ink-4); white-space: nowrap; }
+.quote {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  margin-top: 16px;
+  padding: 11px 16px 11px 12px;
+  border-left: 2px solid var(--accent);
+  background: var(--paper-2);
+  border-radius: 0 10px 10px 0;
+}
+.quote::before {
+  content: "\201C";
+  grid-row: 1 / span 2;
+  margin-top: -6px;
+  font-family: var(--serif);
+  font-size: 40px;
+  line-height: 1;
+  color: var(--accent);
+}
+.quote p,
+.quote cite { grid-column: 2; }
+.quote p {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.quote cite {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 8.2px;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+</style>
+</head>
+<body>
+<main id="cv"></main>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var lang = params.get('lang') === 'en' ? 'en' : 'es';
+  document.documentElement.lang = lang;
+  var SITE = 'https://jesusgarza.pages.dev/';
+  var C = {
+    es: {
+      title: 'CV · Jesús Gerardo Garza García · Desarrollador Odoo',
+      eyebrow: '<b>CV</b> Desarrollador Odoo · Monterrey, México',
+      tag: 'Desarrollador Odoo especializado en <em>localización mexicana</em>: CFDI 4.0 y sus complementos, nómina e IMSS, tesorería y conciliación bancaria, EDI e integraciones sobre Odoo 17, 18 y 19.',
+      c: { mail: 'Correo', web: 'Portafolio', li: 'LinkedIn', gh: 'GitHub', loc: 'Ubicación', locV: 'Monterrey, N.L., México', lang: 'Idiomas', langV: 'Español nativo · inglés avanzado' },
+      band: [['91', 'módulos entregados', 1], ['22', 'empresas en México'], ['52,201', 'líneas de Python'], ['265', 'pruebas automatizadas'], ['38', 'módulos en Odoo 19']],
+      bandNote: 'Octubre de 2025 a septiembre de 2026 · verificado módulo por módulo en el historial de git · solo módulos donde soy autor principal',
+      sProfile: 'Perfil',
+      profile: 'Licenciado en Ciencias Computacionales por la UANL. Diseño y construyo el software que sostiene la operación de empresas mexicanas sobre Odoo: lo que tiene que <strong>cuadrar con el SAT, pagarse a tiempo y timbrarse sin errores</strong>. Trabajo de punta a punta, desde el requerimiento con el cliente hasta las pruebas automatizadas y el soporte en producción, con código probado para que otros lo mantengan.',
+      sXp: 'Experiencia',
+      jobs: [
+        {
+          role: 'Consultor técnico y desarrollador Odoo',
+          when: 'Ago 2025 — hoy',
+          org: 'Integra Informática Administrativa · Monterrey, N.L.',
+          items: [
+            '<strong>91 módulos para 22 empresas</strong> en Odoo 17, 18 y 19: contabilidad, CFDI, nómina e IMSS, tesorería, inventario, ventas e integraciones.',
+            'Localización mexicana de punta a punta: CFDI 4.0 y complementos, DIOT, XML del SAT, Banxico y DOF, pedimentos, IMSS, INFONAVIT, FONACOT, SUA y PTU.',
+            'Integraciones con webhooks idempotentes, API REST y XML-RPC, <strong>EDI X12 por AS2 hacia SAP</strong> e IA (Google Gemini) con salida validada.',
+            'Tesorería para 10 bancos mexicanos con conciliación automática y <strong>217 pruebas</strong> que cuidan que cada peso cuadre.',
+            'Migraciones a Odoo 19 y módulos que devuelven funciones que la versión eliminó; reportes QWeb y Excel a la medida.',
+            'Soporte y diagnóstico en producción sobre Odoo.sh: logs, correcciones y despliegues sin detener la operación.'
+          ]
+        },
+        {
+          role: 'Programador full stack',
+          when: 'Ene — Jun 2025',
+          org: 'Biblioteca FCFM · Universidad Autónoma de Nuevo León',
+          items: [
+            'Tres sistemas en producción: préstamos, control de asistencia e inventario bibliográfico.',
+            'Flask, SQL Server y SQLite, autenticación con bcrypt, tableros con Chart.js y reportes PDF y Excel.',
+            'Aplicación de escritorio con escaneo de códigos de barras, empaquetada con PyInstaller.'
+          ]
+        }
+      ],
+      sSpec: 'Especialidad',
+      spec: [['CFDI 4.0', 1], ['Complemento de pagos', 1], ['Hidrocarburos y Petrolíferos'], ['Nómina e IMSS', 1], ['SUA · IDSE'], ['PTU'], ['INFONAVIT · FONACOT'], ['DIOT'], ['Pedimentos'], ['Banxico · DOF'], ['Conciliación bancaria', 1], ['EDI X12 · AS2'], ['SEPOMEX']],
+      sStack: 'Herramientas',
+      stack: [['Odoo', 'ORM · OWL · QWeb · l10n_mx_edi · hr_payroll · account · stock · mail · ir.cron'], ['Backend y datos', 'Python · PostgreSQL · SQL · xlsxwriter · openpyxl · requests · Flask · Pandas'], ['Integración', 'REST · webhooks · XML-RPC · EDI X12 · AS2 · Banxico SIE · Google Gemini'], ['Operación', 'Odoo.sh · Linux · Red Hat · Docker · Git · Ansible · JavaScript']],
+      sCode: 'Código por lenguaje',
+      codeNote: '78,925 líneas propias en los 91 módulos.',
+      qrT: 'Míralo funcionando',
+      qrD: 'Siete casos animados y el catálogo de los 91 módulos.',
+      foot: ['CV · Jesús Gerardo Garza García', 'Actualizado el 26 de septiembre de 2026'],
+      page: 'Página',
+      miniR: 'Casos destacados · certificaciones',
+      sRecog: 'Reconocimientos',
+      sCases: 'Casos destacados',
+      casesLead: 'Problemas reales de clientes, resueltos en producción. Cada uno tiene su explicación animada en el portafolio.',
+      cases: [
+        { k: 'Tesorería · Odoo 19 · FGH, Ikigai, MACSA, Mager', t: 'Diez bancos, <em>una sola verdad</em>.', d: 'Parsers para 10 bancos y reimportación sin duplicados; contraparte por CLABE, cuenta, RFC o nombre con respaldo de IA (Gemini, JSON validado y umbral de confianza); conciliación por suma de subconjuntos con poda, complemento de pago automático y flujo a 30 días.', f: [['14,729', 'líneas'], ['217', 'pruebas'], ['10', 'bancos']] },
+        { k: 'Integraciones · Odoo 19 · Ikigai a SAP', t: 'Odoo avisa. <em>El X12 viaja solo</em>.', d: 'Al validar un albarán se registra un aviso con llave idempotente y restricción única; un webhook despierta al middleware, que arma el X12 944, 945, 947 o 852 y lo envía por AS2. Bitácora de request, response y MDN, y reintentos por cron.', f: [['1,296', 'líneas'], ['4', 'documentos X12'], ['0', 'duplicados']] },
+        { k: 'CFDI 4.0 · Odoo 18 y 19', t: 'El XML que el SAT <em>sí acepta</em>.', d: 'Complemento de Hidrocarburos y Petrolíferos con validación de permiso CNE; leyendas IMMEX; guardas contra timbrar a XAXX010101000. Cuando el PAC empezó a rechazar complementos de pago (CRP20268, CRP20274), el recálculo de BaseDR e ImporteDR salió en tres días.', f: [['8', 'módulos CFDI'], ['3', 'días de respuesta']] },
+        { k: 'Nómina · IMSS y SUA · Odoo 18 y 19', t: 'Cuotas obrero-patronales, <em>día por día</em>.', d: 'Cálculo diario con la UMA vigente, tope de 25 UMA, excedente sobre 3 UMA y tramos por cambio de salario; cesantía y vejez por rango; archivos IDSE y SUA validados y confronta contra la cédula del IMSS y FONACOT.', f: [['10,839', 'líneas'], ['13', 'conceptos de cuota']] },
+        { k: 'Nómina · PTU · Odoo 18 · Avalia', t: 'Una persona, tres empresas, <em>un solo reparto</em>.', d: 'Union-find con compresión de caminos para unificar registros por CURP, RFC o NSS entre razones sociales; reparto 50 % por días y 50 % por salario con tope anual, y salvaguarda que detiene el cálculo si los centavos no son de redondeo.', f: [['2,717', 'líneas'], ['3', 'identificadores']] },
+        { k: 'Contabilidad · Tipo de cambio · Odoo 18', t: 'El tipo de cambio, <em>con la fecha correcta</em>.', d: 'Odoo registraba el FIX con un día de desfase frente al DOF. El módulo consulta la serie SF43718 en la API SIE de Banxico y registra la fecha correcta; si Banxico no responde, conserva el comportamiento nativo.', f: [['SF43718', 'serie Banxico'], ['0', 'días de desfase']] },
+        { k: 'Clientes · Direcciones · Odoo 17', t: 'Direcciones que <em>sí existen</em>.', d: 'Código postal contra el catálogo SEPOMEX local, estado sin acentos y ciudad con similitud difusa (umbral 0.86). En la tienda en línea, un CP que no corresponde al estado bloquea el checkout.', f: [['0.86', 'umbral de similitud'], ['0', 'APIs externas']] }
+      ],
+      qr2T: 'Los siete casos, animados',
+      qr2D: 'Cada caso se explica en menos de un minuto, con capítulos y el código real del módulo.',
+      sEdu: 'Formación',
+      degree: 'Licenciatura en Ciencias Computacionales',
+      school: 'Universidad Autónoma de Nuevo León · Facultad de Ciencias Físico Matemáticas',
+      recog: [['EGEL', 'Testimonio de Desempeño Sobresaliente · CENEVAL', '2025'], ['UANL', 'Carta de reconocimiento por tres sistemas para la biblioteca', '2025']],
+      sCert: 'Certificaciones Red Hat',
+      certs: [['RH124', 'Red Hat System Administration I', '2024'], ['RH134', 'Red Hat System Administration II', '2024'], ['RH294', 'Linux Automation with Ansible', '2024']],
+      quote: 'Demostró ser un elemento muy valioso por su gran responsabilidad y atención al detalle. Su iniciativa y compromiso superaron las expectativas, logrando mejoras significativas en los procesos internos de nuestra Biblioteca.',
+      quoteBy: 'Subdirectora de Calidad e Innovación Educativa · FCFM, UANL'
+    },
+    en: {
+      title: 'Résumé · Jesús Gerardo Garza García · Odoo developer',
+      eyebrow: '<b>CV</b> Odoo developer · Monterrey, Mexico',
+      tag: 'Odoo developer specialized in <em>Mexican localization</em>: CFDI 4.0 e-invoicing and its complements, payroll and social security (IMSS), treasury and bank reconciliation, EDI and integrations on Odoo 17, 18 and 19.',
+      c: { mail: 'Email', web: 'Portfolio', li: 'LinkedIn', gh: 'GitHub', loc: 'Location', locV: 'Monterrey, N.L., Mexico', lang: 'Languages', langV: 'Spanish native · English advanced' },
+      band: [['91', 'modules shipped', 1], ['22', 'companies in Mexico'], ['52,201', 'lines of Python'], ['265', 'automated tests'], ['38', 'modules on Odoo 19']],
+      bandNote: 'October 2025 to September 2026 · verified module by module against the git history · only modules where I am the main author',
+      sProfile: 'Profile',
+      profile: 'B.Sc. in Computer Science from UANL. I design and build the software that keeps Mexican companies running on Odoo: the parts that must <strong>reconcile with the tax authority (SAT), get paid on time and stamp without errors</strong>. I work end to end, from requirements with the client to automated tests and production support, with tested code that others can maintain.',
+      sXp: 'Experience',
+      jobs: [
+        {
+          role: 'Technical consultant and Odoo developer',
+          when: 'Aug 2025 — today',
+          org: 'Integra Informática Administrativa · Monterrey, Mexico',
+          items: [
+            '<strong>91 modules for 22 companies</strong> on Odoo 17, 18 and 19: accounting, CFDI, payroll and IMSS, treasury, inventory, sales and integrations.',
+            'End-to-end Mexican localization: CFDI 4.0 and complements, DIOT, SAT XML, Banxico and DOF, customs entries, IMSS, INFONAVIT, FONACOT, SUA and profit sharing.',
+            'Integrations with idempotent webhooks, REST and XML-RPC APIs, <strong>X12 EDI over AS2 to SAP</strong> and AI (Google Gemini) with validated output.',
+            'Treasury for 10 Mexican banks with automatic reconciliation and <strong>217 tests</strong> making sure every peso reconciles.',
+            'Migrations to Odoo 19 and modules that bring back features the new version removed; custom QWeb and Excel reports.',
+            'Production support and troubleshooting on Odoo.sh: logs, fixes and deployments without stopping operations.'
+          ]
+        },
+        {
+          role: 'Full-stack developer',
+          when: 'Jan — Jun 2025',
+          org: 'FCFM Library · Universidad Autónoma de Nuevo León',
+          items: [
+            'Three systems in production: loans, attendance control and library inventory.',
+            'Flask, SQL Server and SQLite, bcrypt authentication, Chart.js dashboards and PDF and Excel reports.',
+            'Desktop app with barcode scanning, packaged with PyInstaller.'
+          ]
+        }
+      ],
+      sSpec: 'Focus areas',
+      spec: [['CFDI 4.0', 1], ['Payment complement', 1], ['Hydrocarbons & fuels'], ['Payroll & IMSS', 1], ['SUA · IDSE'], ['Profit sharing (PTU)'], ['INFONAVIT · FONACOT'], ['DIOT'], ['Customs entries'], ['Banxico · DOF'], ['Bank reconciliation', 1], ['X12 EDI · AS2'], ['SEPOMEX']],
+      sStack: 'Tools',
+      stack: [['Odoo', 'ORM · OWL · QWeb · l10n_mx_edi · hr_payroll · account · stock · mail · ir.cron'], ['Backend & data', 'Python · PostgreSQL · SQL · xlsxwriter · openpyxl · requests · Flask · Pandas'], ['Integration', 'REST · webhooks · XML-RPC · X12 EDI · AS2 · Banxico SIE · Google Gemini'], ['Operations', 'Odoo.sh · Linux · Red Hat · Docker · Git · Ansible · JavaScript']],
+      sCode: 'Code by language',
+      codeNote: '78,925 lines of my own code across the 91 modules.',
+      qrT: 'See it working',
+      qrD: 'Seven animated case studies and the catalog of all 91 modules.',
+      foot: ['Résumé · Jesús Gerardo Garza García', 'Updated September 26, 2026'],
+      page: 'Page',
+      miniR: 'Selected work · certifications',
+      sRecog: 'Recognition',
+      sCases: 'Selected work',
+      casesLead: 'Real client problems, solved in production. Each one has an animated walkthrough on the portfolio.',
+      cases: [
+        { k: 'Treasury · Odoo 19 · FGH, Ikigai, MACSA, Mager', t: 'Ten banks, <em>one source of truth</em>.', d: 'Parsers for 10 banks with duplicate-free re-imports; counterparty matching by CLABE, account, RFC or name with an AI fallback (Gemini, validated JSON and a confidence threshold); pruned subset-sum reconciliation, automatic payment complements and a 30-day cash-flow forecast.', f: [['14,729', 'lines'], ['217', 'tests'], ['10', 'banks']] },
+        { k: 'Integrations · Odoo 19 · Ikigai to SAP', t: 'Odoo notifies. <em>The X12 travels on its own</em>.', d: 'Validating a picking records a notice with an idempotency key and a unique constraint; a webhook wakes the middleware, which builds the X12 944, 945, 947 or 852 and sends it over AS2. Request, response and MDN are logged, with cron retries.', f: [['1,296', 'lines'], ['4', 'X12 documents'], ['0', 'duplicates']] },
+        { k: 'CFDI 4.0 · Odoo 18 and 19', t: 'The XML the SAT <em>actually accepts</em>.', d: 'Hydrocarbons & Fuels complement with CNE permit validation; IMMEX tax legends; guards against stamping to XAXX010101000. When the PAC started rejecting payment complements (CRP20268, CRP20274), the BaseDR and ImporteDR fix shipped in three days.', f: [['8', 'CFDI modules'], ['3', 'days to respond']] },
+        { k: 'Payroll · IMSS and SUA · Odoo 18 and 19', t: 'Social security contributions, <em>day by day</em>.', d: 'Daily calculation with the UMA in force, a 25-UMA cap, excess over 3 UMA and tranches when the salary changes; employer old-age rate by salary band; validated IDSE and SUA files and reconciliation against the IMSS statement and FONACOT.', f: [['10,839', 'lines'], ['13', 'contribution concepts']] },
+        { k: 'Payroll · Profit sharing · Odoo 18 · Avalia', t: 'One person, three companies, <em>one payout</em>.', d: 'Union-find with path compression to merge records sharing CURP, RFC or social security number across legal entities; 50% by days and 50% by salary with an annual cap, and a safeguard that stops the run if the cents are not just rounding.', f: [['2,717', 'lines'], ['3', 'identifiers']] },
+        { k: 'Accounting · FX rate · Odoo 18', t: 'The exchange rate, <em>on the right date</em>.', d: 'Odoo recorded the FIX rate one day off from the official gazette. The module queries series SF43718 from Banxico’s SIE API and records the right date; if Banxico doesn’t answer, native behavior is kept.', f: [['SF43718', 'Banxico series'], ['0', 'days of offset']] },
+        { k: 'Customers · Addresses · Odoo 17', t: 'Addresses that <em>actually exist</em>.', d: 'ZIP code checked against a local SEPOMEX catalog, state compared accent-insensitively and city with fuzzy similarity (0.86 threshold). In the online store, a ZIP that doesn’t match the state blocks checkout.', f: [['0.86', 'similarity threshold'], ['0', 'external APIs']] }
+      ],
+      qr2T: 'All seven cases, animated',
+      qr2D: 'Each case is explained in under a minute, with chapters and the module’s real code.',
+      sEdu: 'Education',
+      degree: 'B.Sc. in Computer Science',
+      school: 'Universidad Autónoma de Nuevo León · School of Physical and Mathematical Sciences',
+      recog: [['EGEL', 'Outstanding Performance Award · EGEL-CENEVAL', '2025'], ['UANL', 'Recognition letter for three systems built for the library', '2025']],
+      sCert: 'Red Hat certifications',
+      certs: [['RH124', 'Red Hat System Administration I', '2024'], ['RH134', 'Red Hat System Administration II', '2024'], ['RH294', 'Linux Automation with Ansible', '2024']],
+      quote: 'He proved to be a very valuable member thanks to his great sense of responsibility and attention to detail. His initiative and commitment exceeded expectations, bringing significant improvements to our Library’s internal processes.',
+      quoteBy: 'Deputy Director of Quality and Educational Innovation · FCFM, UANL'
+    }
+  };
+  var T = C[lang];
+  document.title = T.title;
+  var LANGS = [['Python', 52201, '#2b58c4'], ['XML · QWeb', 19319, '#8f6410'], ['CSS · SCSS', 4845, '#0d7658'], ['JavaScript · OWL', 2560, '#7445cc']];
+  var TOTAL = LANGS.reduce(function (a, l) { return a + l[1]; }, 0);
+  var TAU = Math.PI * 2;
+
+  function curve(cx, cy, fn, steps) {
+    var d = '';
+    for (var i = 0; i < steps; i++) {
+      var t = i / steps * TAU;
+      var r = fn(t);
+      d += (i ? 'L' : 'M') + Math.round(cx + Math.cos(t) * r) + ' ' + Math.round(cy + Math.sin(t) * r);
+    }
+    return d + 'Z';
+  }
+
+  function sealSVG() {
+    var S = 1000, R = S / 2;
+    var band = '', ros = '', inn = '';
+    for (var k = 0; k < 10; k++) {
+      var ph = k / 10 * TAU / 18;
+      band += curve(R, R, function (t) { return R * (0.865 + 0.05 * Math.sin(36 * t + ph * 36) * Math.cos(3 * t + k * 0.05)); }, 432);
+    }
+    for (var j = 0; j < 10; j++) {
+      var rot = j / 10 * TAU / 14;
+      ros += curve(R, R, function (t) { var u = t + rot; return R * (0.55 + 0.19 * Math.cos(14 * u) * Math.cos(u * 2 + j * 0.02) + 0.02 * Math.sin(42 * u)); }, 504);
+    }
+    for (var m = 0; m < 12; m++) {
+      var rr = m / 12 * TAU / 9;
+      inn += curve(R, R, function (t) { var u = t + rr; return R * (0.26 + 0.1 * Math.sin(9 * u) + 0.035 * Math.cos(18 * u + m * 0.3)); }, 324);
+    }
+    return '<svg class="seal" viewBox="0 0 ' + S + ' ' + S + '" aria-hidden="true">' +
+      '<path d="' + band + '" fill="none" stroke="#15171c" stroke-opacity=".3" stroke-width="1.6"/>' +
+      '<circle cx="500" cy="500" r="397" fill="none" stroke="#15171c" stroke-opacity=".5" stroke-width="2.4"/>' +
+      '<circle cx="500" cy="500" r="470" fill="none" stroke="#15171c" stroke-opacity=".5" stroke-width="2.4"/>' +
+      '<path d="' + ros + '" fill="none" stroke="#0d7658" stroke-opacity=".5" stroke-width="1.6"/>' +
+      '<path d="' + inn + '" fill="none" stroke="#c63d24" stroke-opacity=".62" stroke-width="1.6"/>' +
+      '<circle cx="500" cy="500" r="104" fill="#fff"/>' +
+      '<text x="500" y="548" text-anchor="middle" font-size="138">JG</text></svg>';
+  }
+
+  function watermarkSVG() {
+    var S = 1000, R = S / 2, d = '';
+    for (var k = 0; k < 18; k++) {
+      var ph = k / 18 * TAU / 24;
+      d += curve(R, R, function (t) { return R * (0.8 + 0.07 * Math.sin(24 * t + ph * 24) * Math.cos(2 * t + k * 0.04)); }, 480);
+    }
+    return '<svg class="watermark" viewBox="0 0 ' + S + ' ' + S + '" aria-hidden="true"><path d="' + d + '" fill="none" stroke="#0d7658" stroke-opacity=".09" stroke-width="1"/></svg>';
+  }
+
+  function qrSVG(url) {
+    if (!window.qrcode) return '';
+    var q = qrcode(0, 'M');
+    q.addData(url);
+    q.make();
+    var n = q.getModuleCount();
+    var p = '';
+    for (var r = 0; r < n; r++) {
+      var c = 0;
+      while (c < n) {
+        if (q.isDark(r, c)) {
+          var s = c;
+          while (c < n && q.isDark(r, c)) c++;
+          p += 'M' + s + ' ' + r + 'h' + (c - s) + 'v1h-' + (c - s) + 'z';
+        } else c++;
+      }
+    }
+    return '<svg viewBox="-1 -1 ' + (n + 2) + ' ' + (n + 2) + '" shape-rendering="crispEdges" aria-hidden="true"><rect x="-1" y="-1" width="' + (n + 2) + '" height="' + (n + 2) + '" fill="#fff"/><path d="' + p + '" fill="#15171c"/></svg>';
+  }
+
+  function list(items) { return '<ul class="list">' + items.map(function (i) { return '<li><span>' + i + '</span></li>'; }).join('') + '</ul>'; }
+
+  function foot(n) {
+    return '<footer class="foot"><span>' + T.foot[0] + ' · <a href="' + SITE + '">jesusgarza.pages.dev</a></span><span>' + T.foot[1] + '</span><span><b>' + T.page + ' ' + n + '</b> / 2</span></footer>';
+  }
+
+  function contact(label, value, href) {
+    return '<span><b>' + label + '</b>' + (href ? '<a href="' + href + '">' + value + '</a>' : value) + '</span>';
+  }
+
+  var p1 = '<section class="page">' + watermarkSVG() + '<div class="edge"></div>' +
+    '<header class="head"><div>' +
+    '<p class="eyebrow">' + T.eyebrow + '</p>' +
+    '<h1 class="name">Jesús Gerardo Garza García<i>.</i></h1>' +
+    '<p class="tag">' + T.tag + '</p>' +
+    '<p class="contact">' +
+    contact(T.c.mail, 'jesusgarzacia@hotmail.com', 'mailto:jesusgarzacia@hotmail.com') +
+    contact(T.c.web, 'jesusgarza.pages.dev', SITE) +
+    contact(T.c.li, 'linkedin.com/in/jesusgarzacia', 'https://www.linkedin.com/in/jesusgarzacia') +
+    contact(T.c.gh, 'github.com/jesusgarzag', 'https://github.com/jesusgarzag') +
+    contact(T.c.loc, T.c.locV) +
+    contact(T.c.lang, T.c.langV) +
+    '</p></div>' + sealSVG() + '</header>' +
+    '<dl class="band">' + T.band.map(function (b) { return '<div><dt>' + b[1] + '</dt><dd' + (b[2] ? ' class="hot"' : '') + '>' + b[0] + '</dd></div>'; }).join('') + '</dl>' +
+    '<p class="band__note">' + T.bandNote + '</p>' +
+    '<div class="cols"><div class="main">' +
+    '<section class="sec"><h2 class="sec__t">' + T.sProfile + '</h2><p class="summary">' + T.profile + '</p></section>' +
+    '<section class="sec"><h2 class="sec__t">' + T.sXp + '</h2>' + T.jobs.map(function (j) {
+      return '<article class="job"><div class="job__h"><h3 class="job__role">' + j.role + '</h3><span class="job__when">' + j.when + '</span><p class="job__org">' + j.org + '</p></div>' + list(j.items) + '</article>';
+    }).join('') + '</section>' +
+    '<section class="sec"><h2 class="sec__t">' + T.sEdu + '</h2><div class="job__h"><h3 class="job__role">' + T.degree + '</h3><span class="job__when">2021 — 2025</span><p class="job__org">' + T.school + '</p></div></section>' +
+    '</div><aside class="side">' +
+    '<section class="sec"><h2 class="sec__t">' + T.sSpec + '</h2><div class="chips">' + T.spec.map(function (s) { return '<span class="chip' + (s[1] ? ' chip--hot' : '') + '">' + s[0] + '</span>'; }).join('') + '</div></section>' +
+    '<section class="sec"><h2 class="sec__t">' + T.sStack + '</h2><dl class="stack">' + T.stack.map(function (s) { return '<dt>' + s[0] + '</dt><dd>' + s[1] + '</dd>'; }).join('') + '</dl></section>' +
+    '<section class="sec"><h2 class="sec__t">' + T.sCode + '</h2><div class="langbar">' + LANGS.map(function (l) { return '<span style="width:' + (l[1] / TOTAL * 100).toFixed(2) + '%;background:' + l[2] + '"></span>'; }).join('') + '</div><ul class="langs">' + LANGS.map(function (l) { return '<li><i style="background:' + l[2] + '"></i><span>' + l[0] + '<small>' + l[1].toLocaleString('en-US') + '</small></span><b>' + (l[1] / TOTAL * 100).toFixed(1) + '%</b></li>'; }).join('') + '</ul><p class="langs__note">' + T.codeNote + '</p></section>' +
+    '<section class="sec"><a class="qr" href="' + SITE + '#casos">' + qrSVG(SITE + '#casos') + '<p><strong>' + T.qrT + '</strong>' + T.qrD + '<span>jesusgarza.pages.dev</span></p></a></section>' +
+    '</aside></div>' + foot(1) + '</section>';
+
+  var p2 = '<section class="page"><div class="edge"></div>' +
+    '<header class="mini"><p class="mini__n">Jesús Gerardo Garza García<i>.</i></p><p class="mini__r">' + T.miniR + '</p></header>' +
+    '<section class="sec cases-h"><h2 class="sec__t">' + T.sCases + '</h2><p class="lead2">' + T.casesLead + '</p>' +
+    '<div class="cases">' + T.cases.map(function (c, i) {
+      return '<article class="case"><p class="case__k"><b>0' + (i + 1) + '</b>' + c.k + '</p><h3 class="case__t">' + c.t + '</h3><p class="case__d">' + c.d + '</p><p class="case__f">' + c.f.map(function (f) { return '<span><b>' + f[0] + '</b>' + f[1] + '</span>'; }).join('') + '</p></article>';
+    }).join('') +
+    '<a class="case case--qr" href="' + SITE + '#casos">' + qrSVG(SITE + '#casos') + '<p><strong>' + T.qr2T + '</strong>' + T.qr2D + '<span>jesusgarza.pages.dev/#casos</span></p></a>' +
+    '</div></section>' +
+    '<div class="tri"><section class="sec"><h2 class="sec__t">' + T.sRecog + '</h2><ul class="creds">' + T.recog.map(function (r) { return '<li><b>' + r[0] + '</b><span>' + r[1] + '</span><span>' + r[2] + '</span></li>'; }).join('') + '</ul></section>' +
+    '<section class="sec"><h2 class="sec__t">' + T.sCert + '</h2><ul class="creds">' + T.certs.map(function (r) { return '<li><b>' + r[0] + '</b><span>' + r[1] + '</span><span>' + r[2] + '</span></li>'; }).join('') + '</ul></section></div>' +
+    '<blockquote class="quote"><p>' + T.quote + '</p><cite>' + T.quoteBy + '</cite></blockquote>' +
+    foot(2) + '</section>';
+
+  document.getElementById('cv').innerHTML = p1 + p2;
+
+  var faces = ['300 12px Fraunces', '400 12px Fraunces', '500 12px Fraunces', 'italic 400 12px Fraunces', '400 12px Geist', '500 12px Geist', '600 12px Geist', '400 12px "JetBrains Mono"', '500 12px "JetBrains Mono"', '600 12px "JetBrains Mono"'];
+  Promise.all(faces.map(function (f) { return document.fonts.load(f); })).then(function () { return document.fonts.ready; }).then(function () {
+    window.__cvFonts = faces.filter(function (f) { return !document.fonts.check(f); });
+    window.__cvOverflow = Array.prototype.map.call(document.querySelectorAll('.page'), function (pg) {
+      var limit = pg.getBoundingClientRect().bottom - 0.5 * 96;
+      var worst = -999;
+      pg.querySelectorAll('.main, .side, .cases, .tri, .quote').forEach(function (el) {
+        worst = Math.max(worst, el.getBoundingClientRect().bottom - limit);
+      });
+      return Math.round(worst);
+    });
+    window.__cvReady = true;
+  });
+})();
+</script>
+</body>
+</html>
