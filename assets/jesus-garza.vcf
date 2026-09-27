@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Garza García;Jesús Gerardo;;;
+FN:Jesús Garza
+TITLE:Desarrollador Odoo
+EMAIL;TYPE=INTERNET:jesusgarzacia@hotmail.com
+URL:https://jesusgarza.pages.dev/
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/jesusgarzacia
+X-SOCIALPROFILE;TYPE=github:https://github.com/jesusgarzag
+ADR;TYPE=WORK:;;;Monterrey;Nuevo León;;México
+NOTE:Odoo · CFDI 4.0 · IMSS · Tesorería · EDI
+END:VCARD

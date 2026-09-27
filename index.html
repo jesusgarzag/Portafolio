@@ -1,1842 +1,913 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jesús Garza | Backend Developer</title>
-  <meta name="description" content="Desarrollador Odoo con 23+ módulos en producción para 10 empresas. Python, PostgreSQL, OWL, CFDI y APIs REST.">
-  <meta name="keywords" content="Odoo Developer, Python, PostgreSQL, OWL, CFDI, REST API, Backend Developer, Módulos Odoo, ERP, XML-RPC">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jesús Garza · Desarrollador Odoo para México</title>
+  <meta name="description" content="Desarrollador Odoo especializado en localización mexicana: CFDI 4.0 y complementos, nómina e IMSS, tesorería, EDI e integraciones. 91 módulos entregados a 22 empresas.">
   <meta name="author" content="Jesús Gerardo Garza García">
   <meta name="google-site-verification" content="UH-ryH3ItbHpqrZ2tg2jyNeRqvWJ-3Q_sSFZ9Xyanlc">
-  <meta name="theme-color" content="#0c0c0d">
-
+  <meta name="theme-color" content="#07090c" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://jesusgarza.pages.dev/">
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
-  <link rel="apple-touch-icon" href="assets/icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
 
-  <link rel="canonical" href="https://jesusgarza.pages.dev/">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Jesús Garza | Odoo Developer">
-  <meta property="og:description" content="23+ custom Odoo modules in production for 10 companies. Python, PostgreSQL, OWL, CFDI and REST APIs.">
-  <meta property="og:image" content="assets/images/portafolio_es.jpg">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Jesús Garza">
+  <meta property="og:title" content="Jesús Garza · Desarrollador Odoo para México">
+  <meta property="og:description" content="91 módulos Odoo para 22 empresas: CFDI 4.0, nómina e IMSS, tesorería, EDI e integraciones. Casos explicados en video.">
+  <meta property="og:image" content="https://jesusgarza.pages.dev/assets/images/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jesús Garza, desarrollador Odoo para México">
   <meta property="og:url" content="https://jesusgarza.pages.dev/">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jesús Garza | Odoo Developer">
-  <meta name="twitter:description" content="23+ custom Odoo modules in production for 10 companies. Python, PostgreSQL, OWL, CFDI and REST APIs.">
-  <meta name="twitter:image" content="assets/images/portafolio_es.jpg">
+  <meta name="twitter:title" content="Jesús Garza · Desarrollador Odoo para México">
+  <meta name="twitter:description" content="91 módulos Odoo para 22 empresas: CFDI 4.0, nómina e IMSS, tesorería, EDI e integraciones.">
+  <meta name="twitter:image" content="https://jesusgarza.pages.dev/assets/images/og.jpg">
 
-  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Jesús Gerardo Garza García",
-    "jobTitle": "Odoo Developer",
+    "alternateName": "Jesús Garza",
+    "jobTitle": "Desarrollador Odoo",
     "url": "https://jesusgarza.pages.dev/",
-    "email": "jesusgarzacia@hotmail.com",
-    "sameAs": [
-      "https://github.com/jesusgarzag",
-      "https://www.linkedin.com/in/jesusgarzacia"
-    ],
-    "knowsAbout": ["Odoo", "Python", "PostgreSQL", "OWL", "CFDI", "REST API", "XML-RPC"],
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Universidad Autónoma de Nuevo León"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Monterrey",
-      "addressRegion": "NL",
-      "addressCountry": "MX"
-    },
-    "workLocation": {
-      "@type": "Place",
-      "name": "Remote · Monterrey, MX"
-    },
-    "hasOccupation": {
-      "@type": "Occupation",
-      "name": "Odoo Backend Developer",
-      "occupationLocation": { "@type": "City", "name": "Monterrey" },
-      "skills": "Python, PostgreSQL, Odoo ORM, Owl, XML-RPC, QWeb, CFDI, REST API, Linux, Red Hat"
-    },
+    "email": "mailto:jesusgarzacia@hotmail.com",
+    "image": "https://jesusgarza.pages.dev/assets/images/og.jpg",
+    "sameAs": ["https://github.com/jesusgarzag", "https://www.linkedin.com/in/jesusgarzacia"],
+    "worksFor": { "@type": "Organization", "name": "Integra Informática Administrativa" },
+    "knowsAbout": ["Odoo", "Python", "PostgreSQL", "OWL", "QWeb", "CFDI 4.0", "Complemento de pago", "IMSS", "SUA", "PTU", "Conciliación bancaria", "EDI X12", "AS2", "Webhooks", "XML-RPC", "Google Gemini"],
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad Autónoma de Nuevo León" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Monterrey", "addressRegion": "NL", "addressCountry": "MX" },
     "hasCredential": [
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "Red Hat System Administration I (RH124)",
-        "credentialCategory": "certification",
-        "recognizedBy": { "@type": "Organization", "name": "Red Hat" },
-        "dateCreated": "2024"
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "Red Hat System Administration II (RH134)",
-        "credentialCategory": "certification",
-        "recognizedBy": { "@type": "Organization", "name": "Red Hat" },
-        "dateCreated": "2024"
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "Red Hat Enterprise Linux Automation with Ansible (RH294)",
-        "credentialCategory": "certification",
-        "recognizedBy": { "@type": "Organization", "name": "Red Hat" },
-        "dateCreated": "2024"
-      }
+      { "@type": "EducationalOccupationalCredential", "name": "Red Hat System Administration I (RH124)", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Red Hat" } },
+      { "@type": "EducationalOccupationalCredential", "name": "Red Hat System Administration II (RH134)", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Red Hat" } },
+      { "@type": "EducationalOccupationalCredential", "name": "Red Hat Enterprise Linux Automation with Ansible (RH294)", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Red Hat" } },
+      { "@type": "EducationalOccupationalCredential", "name": "Testimonio de Desempeño Sobresaliente EGEL Ciencias Computacionales", "recognizedBy": { "@type": "Organization", "name": "CENEVAL" } }
     ]
   }
   </script>
-
-  <!-- Featured Odoo modules as CreativeWork list -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Featured Odoo Modules",
-    "description": "Custom Odoo modules in production for 10 companies in Mexico.",
-    "numberOfItems": 23,
+    "name": "Módulos Odoo destacados",
+    "numberOfItems": 91,
     "itemListElement": [
-      {
-        "@type": "ListItem", "position": 1,
-        "item": {
-          "@type": "SoftwareSourceCode",
-          "name": "Suite de Reportes Financieros — Grupo Avalia",
-          "programmingLanguage": "Python",
-          "runtimePlatform": "Odoo 18",
-          "applicationCategory": "BusinessApplication",
-          "author": { "@type": "Person", "name": "Jesús Gerardo Garza García" }
-        }
-      },
-      {
-        "@type": "ListItem", "position": 2,
-        "item": {
-          "@type": "SoftwareSourceCode",
-          "name": "Control de Cumplimiento Aduanal",
-          "programmingLanguage": "Python",
-          "runtimePlatform": "Odoo 17",
-          "applicationCategory": "BusinessApplication",
-          "author": { "@type": "Person", "name": "Jesús Gerardo Garza García" }
-        }
-      },
-      {
-        "@type": "ListItem", "position": 3,
-        "item": {
-          "@type": "SoftwareSourceCode",
-          "name": "EDI IKIGAI — Avisos a Middleware (Webhook 944/945)",
-          "programmingLanguage": "Python",
-          "runtimePlatform": "Odoo 19",
-          "applicationCategory": "BusinessApplication",
-          "author": { "@type": "Person", "name": "Jesús Gerardo Garza García" }
-        }
-      }
+      { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareSourceCode", "name": "Tesorería", "programmingLanguage": "Python", "runtimePlatform": "Odoo 19" } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareSourceCode", "name": "Avisos EDI 944/945/947/852 a SAP", "programmingLanguage": "Python", "runtimePlatform": "Odoo 19" } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareSourceCode", "name": "Complemento CFDI de Hidrocarburos y Petrolíferos", "programmingLanguage": "Python", "runtimePlatform": "Odoo 18" } },
+      { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareSourceCode", "name": "Cumplimiento IMSS en Odoo 19", "programmingLanguage": "Python", "runtimePlatform": "Odoo 19" } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareSourceCode", "name": "Cálculo de PTU", "programmingLanguage": "Python", "runtimePlatform": "Odoo 18" } }
     ]
   }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="fetch" href="i18n/es.json" crossorigin="anonymous">
-  <link rel="preload" as="fetch" href="i18n/en.json" crossorigin="anonymous">
-
-  <link href="css/base.css" rel="stylesheet">
-  <link href="css/terminal.css" rel="stylesheet">
-  <link href="css/layout.css" rel="stylesheet">
-  <link href="css/components.css" rel="stylesheet">
-  <link href="css/responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400..700&display=swap">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.remove('no-js');
+      d.classList.add('js');
+      var t = null;
+      try { t = localStorage.getItem('theme') || localStorage.getItem('colorscheme'); } catch (e) {}
+      if (t === 'solarized') t = 'light';
+      if (t && t !== 'light') t = 'dark';
+      if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.setAttribute('data-theme', t);
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('reduced');
+      try { if (sessionStorage.getItem('introSeen') === '1') d.classList.add('intro-skip'); } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/player.css">
+  <link rel="stylesheet" href="css/terminal.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
+  <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
-  <!-- ════════════════════════════════════════════════════
-       TOP BAR (window chrome)
-       ════════════════════════════════════════════════════ -->
-  <header class="topbar">
-    <div class="topbar__left">
-      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open menu" aria-expanded="false">
-        <span class="sidebar-toggle__open" aria-hidden="true">≡</span>
-        <span class="sidebar-toggle__close" aria-hidden="true">×</span>
-      </button>
-      <div class="topbar__dots" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </div>
+  <div class="intro" id="intro" aria-hidden="true">
+    <canvas class="intro__seal" id="introSeal" width="320" height="320"></canvas>
+    <div class="intro__meta mono">
+      <span data-i18n="intro_stamp">Timbrando portafolio</span>
+      <span class="intro__uuid" id="introUuid">00000000-0000-4000-8000-000000000000</span>
     </div>
-    <div class="topbar__title">
-      <span>jesus@portfolio: ~</span>
-      <span class="topbar__sep" aria-hidden="true">·</span>
-      <span class="topbar__clock" id="topbarClock" aria-live="off">--:--:--</span>
-    </div>
-    <div class="topbar__right">
-      <div class="topbar__lang" role="group" aria-label="Language">
-        <button class="is-active" data-lang="es" aria-pressed="true">ES</button>
-        <button data-lang="en" aria-pressed="false">EN</button>
+  </div>
+
+  <header class="hdr" id="hdr">
+    <div class="hdr__inner wrap">
+      <a class="brand" href="#top" aria-label="Jesús Garza, inicio">
+        <svg class="brand__seal" viewBox="0 0 40 40" aria-hidden="true"><use href="#seal-mini"/></svg>
+        <span class="brand__name">Jesús Garza</span>
+      </a>
+      <nav class="nav" aria-label="Principal" data-i18n-attr="aria-label:nav_label">
+        <a href="#impacto" data-nav="impacto"><span class="nav__n mono">01</span><span data-i18n="nav_impact">Impacto</span></a>
+        <a href="#casos" data-nav="casos"><span class="nav__n mono">02</span><span data-i18n="nav_cases">Casos</span></a>
+        <a href="#modulos" data-nav="modulos"><span class="nav__n mono">03</span><span data-i18n="nav_modules">Módulos</span></a>
+        <a href="#perfil" data-nav="perfil"><span class="nav__n mono">04</span><span data-i18n="nav_profile">Perfil</span></a>
+        <a href="#contacto" data-nav="contacto"><span class="nav__n mono">05</span><span data-i18n="nav_contact">Contacto</span></a>
+      </nav>
+      <div class="hdr__tools">
+        <div class="seg" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang_label">
+          <button type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="icon-btn" id="themeBtn" aria-label="Cambiar tema" data-i18n-attr="aria-label:theme_label">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor"/></svg>
+        </button>
+        <button type="button" class="icon-btn icon-btn--wide" id="paletteBtn" aria-label="Abrir paleta de comandos" data-i18n-attr="aria-label:palette_label">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu" data-i18n-attr="aria-label:menu_label">
+          <span></span><span></span>
+        </button>
       </div>
-      <button class="topbar__btn" id="paletteOpen" aria-label="Open command palette">
-        <span aria-hidden="true">❯_</span>
-        <span class="kbd">Ctrl K</span>
-      </button>
-      <button class="topbar__btn" id="cheatsheetOpen" aria-label="Open keyboard cheatsheet">
-        <span aria-hidden="true">?</span>
-        <span class="kbd">/</span>
-      </button>
-      <button class="topbar__btn" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
-        <span aria-hidden="true">◐</span>
-        <span data-i18n="theme_toggle">TEMA</span>
-      </button>
     </div>
   </header>
 
-  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__nav" aria-label="Menú">
+      <a href="#impacto"><span class="mono">01</span><span data-i18n="nav_impact">Impacto</span></a>
+      <a href="#casos"><span class="mono">02</span><span data-i18n="nav_cases">Casos</span></a>
+      <a href="#modulos"><span class="mono">03</span><span data-i18n="nav_modules">Módulos</span></a>
+      <a href="#perfil"><span class="mono">04</span><span data-i18n="nav_profile">Perfil</span></a>
+      <a href="#contacto"><span class="mono">05</span><span data-i18n="nav_contact">Contacto</span></a>
+    </nav>
+    <div class="menu__foot">
+      <a class="btn btn--ghost" data-cv href="assets/certificados/cv_es.pdf" download><span data-i18n="cta_cv">Descargar CV</span></a>
+      <span class="microtext" aria-hidden="true">jesus garza · desarrollador odoo · monterrey · mexico · cfdi 4.0 · imss · sat · banxico · sepomex · jesus garza · desarrollador odoo · monterrey · mexico</span>
+    </div>
+  </div>
 
-  <!-- ════════════════════════════════════════════════════
-       PAGE
-       ════════════════════════════════════════════════════ -->
-  <div class="page">
+  <main id="main">
 
-    <!-- ────────── SIDEBAR ────────── -->
-    <aside class="sidebar" id="sidebar" aria-label="Navigation">
-      <div class="sidebar__brand">
-        <span class="sidebar__logo">jesus<span class="accent">.garza</span></span>
-        <span class="sidebar__role" data-i18n="backend_dev">Desarrollador Backend</span>
-        <span class="sidebar__status" data-i18n="status_available">Disponible para trabajar</span>
-        <span class="sidebar__working">
-          <span class="sidebar__working-key" data-i18n="now_working_label">now_working:</span>
-          <span class="sidebar__working-val">módulo IMSS/SUA · Recavisa</span>
-        </span>
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <div class="hero__art" aria-hidden="true">
+        <canvas class="hero__canvas" id="seal"></canvas>
+        <svg class="hero__ring" viewBox="0 0 1000 1000">
+          <defs>
+            <path id="ringPath" d="M500,500 m-452,0 a452,452 0 1,1 904,0 a452,452 0 1,1 -904,0"/>
+            <path id="ringPath2" d="M500,500 m-392,0 a392,392 0 1,1 784,0 a392,392 0 1,1 -784,0"/>
+          </defs>
+          <g class="hero__ring-a">
+            <text><textPath href="#ringPath" id="ringText" data-i18n="ring_a">JESÚS GERARDO GARZA GARCÍA · DESARROLLADOR ODOO · MONTERREY, NUEVO LEÓN · CFDI 4.0 · IMSS · SUA · SAT · BANXICO · SEPOMEX · EDI X12 · JESÚS GERARDO GARZA GARCÍA · DESARROLLADOR ODOO · MONTERREY, NUEVO LEÓN · CFDI 4.0 · IMSS · SUA ·</textPath></text>
+          </g>
+          <g class="hero__ring-b">
+            <text><textPath href="#ringPath2" data-i18n="ring_b">91 MÓDULOS · 22 EMPRESAS · ODOO 17 · 18 · 19 · 265 PRUEBAS · 52,201 LÍNEAS DE PYTHON · 91 MÓDULOS · 22 EMPRESAS · ODOO 17 · 18 · 19 · 265 PRUEBAS ·</textPath></text>
+          </g>
+        </svg>
+        <div class="hero__mono">
+          <span class="hero__mono-jg serif">JG</span>
+          <span class="hero__mono-sub mono" data-i18n="hero_seal">Sello digital</span>
+        </div>
       </div>
 
-      <nav class="cmdlist" aria-label="Commands">
-        <span class="cmdlist__label" data-i18n="nav_label">// Navegación</span>
-
-        <a href="#about" class="cmd is-active" data-section="about">
-          <span class="cmd__name">cat about.md</span>
-        </a>
-        <a href="#experience" class="cmd" data-section="experience">
-          <span class="cmd__name">tree experience/</span>
-        </a>
-        <a href="#modules" class="cmd" data-section="modules">
-          <span class="cmd__name">ls -la modules/</span>
-        </a>
-        <a href="#projects" class="cmd" data-section="projects">
-          <span class="cmd__name">cat projects.json</span>
-        </a>
-        <a href="#skills" class="cmd" data-section="skills">
-          <span class="cmd__name">pacman -Q tech</span>
-        </a>
-        <a href="#education" class="cmd" data-section="education">
-          <span class="cmd__name">man certifications</span>
-        </a>
-        <a href="#contact" class="cmd" data-section="contact">
-          <span class="cmd__name">mail jesus</span>
-        </a>
-
-        <span class="cmdlist__label" data-i18n="archive_label">// Archivo</span>
-        <button type="button" class="cmd cmd--util" id="openBranches">
-          <span class="cmd__name">git branch -v</span>
-          <span class="cmd__hint"><kbd>Ctrl B</kbd></span>
-        </button>
-      </nav>
-
-      <div class="sidebar__bottom">
-        <a href="#" class="sidebar__cv" id="btnCv" download>
-          <span data-i18n="download_cv">Descargar CV</span>
-        </a>
-        <div class="sidebar__socials" aria-label="Social">
-          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
-          <a href="mailto:jesusgarzacia@hotmail.com" aria-label="Email">@</a>
+      <div class="hero__inner wrap">
+        <p class="eyebrow hero__eyebrow" data-hero>
+          <span data-i18n="hero_eyebrow">Desarrollador Odoo · Monterrey, MX</span>
+        </p>
+        <h1 class="hero__name display" id="heroTitle" data-hero>
+          <span class="split-line"><span>Jesús</span></span>
+          <span class="split-line"><span>Garza<span class="hero__dot">.</span></span></span>
+        </h1>
+        <p class="hero__claim serif" data-hero>
+          <span data-i18n="hero_claim_a">Hago que Odoo hable con</span>
+          <span class="rot" id="rot" aria-live="off"><span class="rot__word">el SAT</span></span><span class="hero__claim-end">.</span>
+        </p>
+        <p class="hero__lead lead" data-hero data-i18n="hero_lead">
+          Diseño y construyo módulos para la localización mexicana: CFDI 4.0 y sus complementos, nómina e IMSS, tesorería y conciliación bancaria, EDI e integraciones. En el último año entregué <strong>91 módulos a 22 empresas</strong>.
+        </p>
+        <div class="hero__cta" data-hero>
+          <a class="btn btn--primary" href="#casos" data-play-first>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+            <span data-i18n="cta_cases">Ver casos en video</span>
+          </a>
+          <a class="btn btn--ghost" data-cv href="assets/certificados/cv_es.pdf" download>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="cta_cv">Descargar CV</span>
+          </a>
+          <a class="btn btn--text" href="#contacto"><span data-i18n="cta_contact">Escríbeme</span><span class="btn__arrow" aria-hidden="true">→</span></a>
         </div>
-        <p class="sidebar__meta">
-          <span data-i18n="sidebar_loc">Monterrey, MX</span><br>
-          <span>v2.0.0 · 2026</span>
+        <p class="hero__status mono" data-hero>
+          <span class="dot dot--live" aria-hidden="true"></span>
+          <span data-i18n="hero_status">Disponible para proyectos · respuesta en español o inglés</span>
         </p>
       </div>
-    </aside>
 
-    <!-- ────────── MAIN ────────── -->
-    <main class="page__main" id="main">
+      <div class="hero__bottom wrap">
+        <dl class="hero__stats" data-hero>
+          <div class="hstat"><dt data-i18n="hs_modules">módulos entregados</dt><dd class="serif tnum" data-count="91">91</dd></div>
+          <div class="hstat"><dt data-i18n="hs_clients">empresas</dt><dd class="serif tnum" data-count="22">22</dd></div>
+          <div class="hstat"><dt data-i18n="hs_py">líneas de Python</dt><dd class="serif tnum" data-count="52201">52,201</dd></div>
+          <div class="hstat"><dt data-i18n="hs_tests">pruebas automatizadas</dt><dd class="serif tnum" data-count="265">265</dd></div>
+          <div class="hstat"><dt data-i18n="hs_v19">ya en Odoo 19</dt><dd class="serif tnum" data-count="38">38</dd></div>
+        </dl>
+        <div class="hero__folio mono" aria-hidden="true">
+          <span><b data-i18n="folio_label">Folio fiscal</b> <span id="folioUuid">7c1e5a0b-91a2-4f22-8b52-201026500091</span></span>
+          <span class="hero__folio-seal" id="folioSeal">||1.1|JG|2026-09-26T00:00:00|ODOO|MX||</span>
+        </div>
+      </div>
+    </section>
 
-      <!-- ── HERO ───────────────────────────────────── -->
-      <section class="hero" id="top">
-        <div class="hero__prompt" aria-hidden="true">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd typed" data-typed="whoami"></span>
+    <div class="guilloche-band" aria-hidden="true"></div>
+
+    <section class="sec impact" id="impacto" aria-labelledby="impTitle">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow" data-reveal><b>§ 01</b> <span data-i18n="imp_eyebrow">Un año en números</span></p>
+          <h2 class="h2" id="impTitle" data-split data-i18n="imp_title">Noventa y un módulos. <em>Veintidós</em> empresas. Doce meses.</h2>
+          <p class="lead" data-reveal data-i18n="imp_lead">Desde octubre de 2025 escribo el software que sostiene la operación de empresas mexicanas sobre Odoo 17, 18 y 19: lo que tiene que cuadrar con el SAT, pagarse a tiempo y timbrarse sin errores.</p>
+        </header>
+
+        <div class="metrics">
+          <article class="metric" data-reveal style="--d:.0s">
+            <span class="metric__serial mono">A-0091</span>
+            <p class="metric__num serif tnum" data-count="91">91</p>
+            <p class="metric__label" data-i18n="m1_label">módulos entregados</p>
+            <p class="metric__note" data-i18n="m1_note">De octubre de 2025 a septiembre de 2026, verificados uno por uno en el historial de git.</p>
+          </article>
+          <article class="metric" data-reveal style="--d:.06s">
+            <span class="metric__serial mono">A-0022</span>
+            <p class="metric__num serif tnum" data-count="22">22</p>
+            <p class="metric__label" data-i18n="m2_label">empresas en México</p>
+            <p class="metric__note" data-i18n="m2_note">De uno a dieciocho módulos por empresa, en contabilidad, nómina, almacén y ventas.</p>
+          </article>
+          <article class="metric" data-reveal style="--d:.12s">
+            <span class="metric__serial mono">A-2201</span>
+            <p class="metric__num serif tnum" data-count="52201">52,201</p>
+            <p class="metric__label" data-i18n="m3_label">líneas de Python</p>
+            <p class="metric__note" data-i18n="m3_note">78,925 contando vistas XML, OWL y estilos. Código propio, sin contar módulos de terceros.</p>
+          </article>
+          <article class="metric" data-reveal style="--d:.18s">
+            <span class="metric__serial mono">A-0265</span>
+            <p class="metric__num serif tnum" data-count="265">265</p>
+            <p class="metric__label" data-i18n="m4_label">pruebas automatizadas</p>
+            <p class="metric__note" data-i18n="m4_note">217 solo en Tesorería: matriz de conciliación, invariantes contables y paridad con el comportamiento nativo.</p>
+          </article>
+          <article class="metric" data-reveal style="--d:.24s">
+            <span class="metric__serial mono">A-0038</span>
+            <p class="metric__num serif tnum" data-count="38">38</p>
+            <p class="metric__label" data-i18n="m5_label">módulos en Odoo 19</p>
+            <p class="metric__note" data-i18n="m5_note">Además de 23 en Odoo 18 y 30 en Odoo 17, incluidas funciones que Odoo 19 eliminó y había que devolver.</p>
+          </article>
+          <article class="metric" data-reveal style="--d:.3s">
+            <span class="metric__serial mono">A-0010</span>
+            <p class="metric__num serif tnum" data-count="10">10</p>
+            <p class="metric__label" data-i18n="m6_label">bancos mexicanos integrados</p>
+            <p class="metric__note" data-i18n="m6_note">Banorte, BBVA, Santander, BanBajío, Banregio, Inbursa, Afirme, Bancrea, Banco Base y STP.</p>
+          </article>
         </div>
 
-        <h1 class="hero__name">Jesús Garza<span class="accent">_</span></h1>
-        <p class="hero__role" data-i18n="hero_role">Backend Engineer · Python · Odoo</p>
-        <p class="hero__tag" data-i18n="hero_desc">
-          Desarrollador Odoo con 23+ módulos en producción para 10 empresas.
-          Python, PostgreSQL, OWL, CFDI y APIs REST.
-        </p>
+        <figure class="cadence" data-reveal>
+          <figcaption class="cadence__head">
+            <div>
+              <p class="eyebrow eyebrow--plain" data-i18n="cad_eyebrow">Ritmo de entrega</p>
+              <p class="cadence__title serif" data-i18n="cad_title">Módulos nuevos por mes y acumulado</p>
+            </div>
+            <div class="cadence__legend mono">
+              <span><i class="cadence__sw cadence__sw--bar"></i><span data-i18n="cad_bar">nuevos en el mes</span></span>
+              <span><i class="cadence__sw cadence__sw--line"></i><span data-i18n="cad_line">acumulado</span></span>
+            </div>
+          </figcaption>
+          <div class="cadence__chart" id="cadenceChart" role="group" aria-label="Gráfica de módulos por mes" data-i18n-attr="aria-label:cad_aria"></div>
+          <div class="cadence__tip" id="cadenceTip" hidden></div>
+        </figure>
 
-        <div class="neofetch">
-          <pre class="neofetch__ascii" aria-hidden="true">
-   ▄▄▄▄▄▄▄
-  █ ┌───┐ █
-  █ │ J │ █     jesus@portfolio
-  █ │ G │ █     ─────────────────
-  █ └───┘ █
-   ▀▀▀▀▀▀▀</pre>
-          <div class="neofetch__list">
-            <div class="neofetch__row"><span class="neofetch__key">os</span><span class="neofetch__val">Linux x86_64 · RHEL Certified</span></div>
-            <div class="neofetch__row"><span class="neofetch__key">stack</span><span class="neofetch__val">Python · PostgreSQL · Odoo 17/18/19</span></div>
-            <div class="neofetch__row"><span class="neofetch__key">specialty</span><span class="neofetch__val">CFDI · ERP · REST · XML-RPC</span></div>
-            <div class="neofetch__row"><span class="neofetch__key">shell</span><span class="neofetch__val">/bin/zsh · vim · tmux</span></div>
-            <div class="neofetch__row"><span class="neofetch__key">location</span><span class="neofetch__val">Monterrey, MX · UTC-6</span></div>
-            <div class="neofetch__row"><span class="neofetch__key">uptime</span><span class="neofetch__val" data-i18n="neofetch_uptime">23 módulos · 10 clientes · 3 certs</span></div>
-            <div class="neofetch__row"><span class="neofetch__key">last_push</span><span class="neofetch__val" id="ghLastPush"><span class="dim">checking github...</span></span></div>
+        <div class="clients" data-reveal>
+          <div class="clients__head">
+            <p class="eyebrow eyebrow--plain" data-i18n="cl_eyebrow">Empresas que usan mi código</p>
+            <p class="clients__note muted" data-i18n="cl_note">Número de módulos entregados a cada una.</p>
+          </div>
+          <ul class="clients__grid" id="clientsGrid"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec cases" id="casos" aria-labelledby="casesTitle">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow" data-reveal><b>§ 02</b> <span data-i18n="cases_eyebrow">Casos explicados</span></p>
+          <h2 class="h2" id="casesTitle" data-split data-i18n="cases_title">Cómo funciona, <em>en menos de un minuto</em>.</h2>
+          <p class="lead" data-reveal data-i18n="cases_lead">Siete problemas reales, animados paso a paso con los datos y las reglas de cada módulo. Dale play, salta entre capítulos o deja que corran solos.</p>
+        </header>
+
+        <nav class="cases__index" aria-label="Casos" data-reveal data-i18n-attr="aria-label:cases_eyebrow">
+          <a href="#caso-tesoreria"><span class="mono">01</span><span data-i18n="ci_1">Tesorería</span></a>
+          <a href="#caso-edi"><span class="mono">02</span><span data-i18n="ci_2">EDI a SAP</span></a>
+          <a href="#caso-cfdi"><span class="mono">03</span><span data-i18n="ci_3">CFDI</span></a>
+          <a href="#caso-imss"><span class="mono">04</span><span data-i18n="ci_4">IMSS</span></a>
+          <a href="#caso-ptu"><span class="mono">05</span><span data-i18n="ci_5">PTU</span></a>
+          <a href="#caso-banxico"><span class="mono">06</span><span data-i18n="ci_6">Banxico</span></a>
+          <a href="#caso-sepomex"><span class="mono">07</span><span data-i18n="ci_7">SEPOMEX</span></a>
+        </nav>
+
+        <article class="case" id="caso-tesoreria" aria-labelledby="c1Title">
+          <div class="case__text">
+            <p class="case__kicker mono" data-reveal><span class="case__no">01</span><span data-i18n="c1_kicker">Tesorería · Odoo 19 · FGH, Ikigai, MACSA, Mager</span></p>
+            <h3 class="h3" id="c1Title" data-split data-i18n="c1_title">Diez bancos, <em>una sola verdad</em>.</h3>
+            <p class="case__problem" data-reveal data-i18n="c1_problem">Cada banco exporta un formato distinto, muchos depósitos llegan sin nombre y conciliar contra facturas a mano no escala.</p>
+            <ul class="case__list" data-reveal>
+              <li data-i18n="c1_b1">Parsers para 10 bancos con detección por nombre de archivo y reimportación sin duplicados.</li>
+              <li data-i18n="c1_b2">Contraparte por CLABE, cuenta, RFC o nombre; si no aparece, extracción con IA (Gemini) con JSON validado y umbral de confianza.</li>
+              <li data-i18n="c1_b3">Conciliación automática por suma de subconjuntos con poda: una combinación exacta concilia; varias se marcan como ambiguas para revisión humana.</li>
+              <li data-i18n="c1_b4">Tolerancias de faltante y excedente por empresa, complemento de pago automático y proyección de flujo a 30 días.</li>
+            </ul>
+            <dl class="case__facts" data-reveal>
+              <div><dt data-i18n="f_lines">líneas</dt><dd class="serif tnum">14,729</dd></div>
+              <div><dt data-i18n="f_tests">pruebas</dt><dd class="serif tnum">217</dd></div>
+              <div><dt data-i18n="f_banks">bancos</dt><dd class="serif tnum">10</dd></div>
+            </dl>
+            <div class="case__actions" data-reveal>
+              <button type="button" class="btn btn--ghost btn--sm" data-code="tesoreria"><span class="btn__ico mono" aria-hidden="true">&lt;/&gt;</span><span data-i18n="btn_code">Ver código real</span></button>
+            </div>
+          </div>
+          <div class="case__media" data-reveal>
+            <div class="player" data-scene="tesoreria" id="player-tesoreria"></div>
+          </div>
+        </article>
+
+        <article class="case case--flip" id="caso-edi" aria-labelledby="c2Title">
+          <div class="case__text">
+            <p class="case__kicker mono" data-reveal><span class="case__no">02</span><span data-i18n="c2_kicker">Integraciones · Odoo 19 · Ikigai → SAP</span></p>
+            <h3 class="h3" id="c2Title" data-split data-i18n="c2_title">Odoo avisa. <em>El X12 viaja solo.</em></h3>
+            <p class="case__problem" data-reveal data-i18n="c2_problem">Cada entrada y salida de almacén tenía que llegar a SAP como EDI X12 por AS2, sin cargarle a Odoo el protocolo y sin duplicar un solo documento.</p>
+            <ul class="case__list" data-reveal>
+              <li data-i18n="c2_b1">Al validar un albarán se registra un aviso con llave idempotente <code>modelo:id:documento:ready</code> y restricción única.</li>
+              <li data-i18n="c2_b2">Webhook <code>edi.ready</code> con token en el header; 202 y 200 cuentan como acuse.</li>
+              <li data-i18n="c2_b3">El middleware consulta Odoo, arma el X12 944, 945, 947 o 852 y lo envía por AS2; Odoo guarda request, response y MDN.</li>
+              <li data-i18n="c2_b4">Reintento por cron con la misma llave; los 400 y 401 no se reintentan porque requieren corrección.</li>
+            </ul>
+            <dl class="case__facts" data-reveal>
+              <div><dt data-i18n="f_lines">líneas</dt><dd class="serif tnum">1,296</dd></div>
+              <div><dt data-i18n="f_docs">documentos X12</dt><dd class="serif tnum">4</dd></div>
+              <div><dt data-i18n="f_dupes">duplicados</dt><dd class="serif tnum">0</dd></div>
+            </dl>
+            <div class="case__actions" data-reveal>
+              <button type="button" class="btn btn--ghost btn--sm" data-code="edi"><span class="btn__ico mono" aria-hidden="true">&lt;/&gt;</span><span data-i18n="btn_code">Ver código real</span></button>
+            </div>
+          </div>
+          <div class="case__media" data-reveal>
+            <div class="player" data-scene="edi" id="player-edi"></div>
+          </div>
+        </article>
+
+        <article class="case" id="caso-cfdi" aria-labelledby="c3Title">
+          <div class="case__text">
+            <p class="case__kicker mono" data-reveal><span class="case__no">03</span><span data-i18n="c3_kicker">Facturación electrónica · CFDI 4.0 · Odoo 18 y 19</span></p>
+            <h3 class="h3" id="c3Title" data-split data-i18n="c3_title">El XML que el SAT <em>sí acepta</em>.</h3>
+            <p class="case__problem" data-reveal data-i18n="c3_problem">Cada complemento del SAT llega con reglas nuevas, y un solo centavo mal redondeado basta para que el PAC rechace el timbrado.</p>
+            <ul class="case__list" data-reveal>
+              <li data-i18n="c3_b1">Complemento de Hidrocarburos y Petrolíferos: nodo HidroYPetro por concepto, obligatorio desde el 24 de abril de 2026, con validación de permiso CNE (CCHYP107) y SubProducto (CCHYP110).</li>
+              <li data-i18n="c3_b2">Leyendas fiscales para transferencias virtuales entre empresas IMMEX.</li>
+              <li data-i18n="c3_b3">El 15 de septiembre de 2026 el PAC empezó a rechazar complementos de pago (CRP20268 y CRP20274). Tres días después, el módulo recalculaba BaseDR, ImporteDR y totales con los decimales de la moneda.</li>
+              <li data-i18n="c3_b4">Guardas contra el timbrado accidental a XAXX010101000 cuando al cliente le falta RFC o código postal.</li>
+            </ul>
+            <dl class="case__facts" data-reveal>
+              <div><dt data-i18n="f_cfdi">módulos CFDI</dt><dd class="serif tnum">8</dd></div>
+              <div><dt data-i18n="f_days">días de respuesta</dt><dd class="serif tnum">3</dd></div>
+              <div><dt data-i18n="f_rules">reglas SAT</dt><dd class="serif tnum">CCHYP</dd></div>
+            </dl>
+            <div class="case__actions" data-reveal>
+              <button type="button" class="btn btn--ghost btn--sm" data-code="cfdi,hidro"><span class="btn__ico mono" aria-hidden="true">&lt;/&gt;</span><span data-i18n="btn_code">Ver código real</span></button>
+            </div>
+          </div>
+          <div class="case__media" data-reveal>
+            <div class="player" data-scene="cfdi" id="player-cfdi"></div>
+          </div>
+        </article>
+
+        <article class="case case--flip" id="caso-imss" aria-labelledby="c4Title">
+          <div class="case__text">
+            <p class="case__kicker mono" data-reveal><span class="case__no">04</span><span data-i18n="c4_kicker">Nómina · IMSS y SUA · Odoo 18 y 19</span></p>
+            <h3 class="h3" id="c4Title" data-split data-i18n="c4_title">Cuotas obrero-patronales, <em>día por día</em>.</h3>
+            <p class="case__problem" data-reveal data-i18n="c4_problem">Las cuotas del IMSS se calculaban fuera de Odoo y se recapturaban en el SUA: diferencias cada mes, retrabajo cada bimestre.</p>
+            <ul class="case__list" data-reveal>
+              <li data-i18n="c4_b1">Cálculo por día con la UMA vigente, SBC topado a 25 UMA y excedente sobre 3 UMA, dividido en tramos cuando cambia el salario.</li>
+              <li data-i18n="c4_b2">Cesantía y vejez patronal con la tasa que corresponde al rango del salario, desde la tabla de parámetros vigente.</li>
+              <li data-i18n="c4_b3">Archivos de ancho fijo para IDSE y SUA, validando NSS, CURP y registro patronal antes de exportar.</li>
+              <li data-i18n="c4_b4">Confronta contra la cédula del IMSS y contra FONACOT que marca cada diferencia por trabajador.</li>
+            </ul>
+            <dl class="case__facts" data-reveal>
+              <div><dt data-i18n="f_lines">líneas</dt><dd class="serif tnum">10,839</dd></div>
+              <div><dt data-i18n="f_branches">conceptos de cuota</dt><dd class="serif tnum">13</dd></div>
+              <div><dt data-i18n="f_files">archivos IMSS</dt><dd class="serif tnum">IDSE·SUA</dd></div>
+            </dl>
+            <div class="case__actions" data-reveal>
+              <button type="button" class="btn btn--ghost btn--sm" data-code="imss"><span class="btn__ico mono" aria-hidden="true">&lt;/&gt;</span><span data-i18n="btn_code">Ver código real</span></button>
+            </div>
+          </div>
+          <div class="case__media" data-reveal>
+            <div class="player" data-scene="imss" id="player-imss"></div>
+          </div>
+        </article>
+
+        <article class="case" id="caso-ptu" aria-labelledby="c5Title">
+          <div class="case__text">
+            <p class="case__kicker mono" data-reveal><span class="case__no">05</span><span data-i18n="c5_kicker">Nómina · PTU · Odoo 18 · Avalia</span></p>
+            <h3 class="h3" id="c5Title" data-split data-i18n="c5_title">Una persona, tres empresas, <em>un solo reparto</em>.</h3>
+            <p class="case__problem" data-reveal data-i18n="c5_problem">En un grupo con varias razones sociales la misma persona aparece con registros distintos, y la PTU terminaba duplicada o partida.</p>
+            <ul class="case__list" data-reveal>
+              <li data-i18n="c5_b1">Union-find con compresión de caminos: dos registros son la misma persona si comparten CURP, RFC o NSS, aunque sea de forma indirecta.</li>
+              <li data-i18n="c5_b2">50 % por días trabajados y 50 % por salario devengado con tope anual.</li>
+              <li data-i18n="c5_b3">Ajuste de centavos al mayor reparto con salvaguarda: si la diferencia no es de redondeo, el cálculo se detiene antes de pagar.</li>
+              <li data-i18n="c5_b4">Importador desde Excel, envío directo a nómina y PDF por empleado.</li>
+            </ul>
+            <dl class="case__facts" data-reveal>
+              <div><dt data-i18n="f_lines">líneas</dt><dd class="serif tnum">2,717</dd></div>
+              <div><dt data-i18n="f_split">reparto</dt><dd class="serif tnum">50/50</dd></div>
+              <div><dt data-i18n="f_ids">identificadores</dt><dd class="serif tnum">3</dd></div>
+            </dl>
+            <div class="case__actions" data-reveal>
+              <button type="button" class="btn btn--ghost btn--sm" data-code="ptu"><span class="btn__ico mono" aria-hidden="true">&lt;/&gt;</span><span data-i18n="btn_code">Ver código real</span></button>
+            </div>
+          </div>
+          <div class="case__media" data-reveal>
+            <div class="player" data-scene="ptu" id="player-ptu"></div>
+          </div>
+        </article>
+
+        <div class="clips">
+          <article class="case case--clip" id="caso-banxico" aria-labelledby="c6Title">
+            <div class="case__text">
+              <p class="case__kicker mono" data-reveal><span class="case__no">06</span><span data-i18n="c6_kicker">Contabilidad · Tipo de cambio · Odoo 18</span></p>
+              <h3 class="h3" id="c6Title" data-split data-i18n="c6_title">El tipo de cambio, <em>con la fecha correcta</em>.</h3>
+              <p class="case__problem" data-reveal data-i18n="c6_problem">Odoo registraba el FIX de Banxico con la fecha de aplicación y el DOF lo publica con la del día anterior. Un día de desfase basta para descuadrar CFDI y contabilidad.</p>
+              <div class="case__actions" data-reveal>
+                <button type="button" class="btn btn--ghost btn--sm" data-code="banxico"><span class="btn__ico mono" aria-hidden="true">&lt;/&gt;</span><span data-i18n="btn_code">Ver código real</span></button>
+              </div>
+            </div>
+            <div class="case__media" data-reveal>
+              <div class="player player--clip" data-scene="banxico" id="player-banxico"></div>
+            </div>
+          </article>
+
+          <article class="case case--clip" id="caso-sepomex" aria-labelledby="c7Title">
+            <div class="case__text">
+              <p class="case__kicker mono" data-reveal><span class="case__no">07</span><span data-i18n="c7_kicker">Clientes · Direcciones · Odoo 17</span></p>
+              <h3 class="h3" id="c7Title" data-split data-i18n="c7_title">Direcciones que <em>sí existen</em>.</h3>
+              <p class="case__problem" data-reveal data-i18n="c7_problem">Códigos postales de un estado con colonias de otro y ciudades con errores de dedo: direcciones que después rompen la facturación y las entregas.</p>
+              <div class="case__actions" data-reveal>
+                <button type="button" class="btn btn--ghost btn--sm" data-code="sepomex"><span class="btn__ico mono" aria-hidden="true">&lt;/&gt;</span><span data-i18n="btn_code">Ver código real</span></button>
+              </div>
+            </div>
+            <div class="case__media" data-reveal>
+              <div class="player player--clip" data-scene="sepomex" id="player-sepomex"></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec ledger" id="modulos" aria-labelledby="ledTitle">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow" data-reveal><b>§ 03</b> <span data-i18n="led_eyebrow">Estado de cuenta</span></p>
+          <h2 class="h2" id="ledTitle" data-split data-i18n="led_title">Todo lo que he entregado, <em>movimiento por movimiento</em>.</h2>
+          <p class="lead" data-reveal data-i18n="led_lead">Cada renglón es un módulo real con su fecha de alta, cliente, versión de Odoo y líneas de código. Filtra por área o versión, o busca por nombre.</p>
+        </header>
+
+        <div class="stmt" data-reveal>
+          <div class="stmt__top">
+            <div class="stmt__bank">
+              <svg class="stmt__seal" viewBox="0 0 40 40" aria-hidden="true"><use href="#seal-mini"/></svg>
+              <div>
+                <p class="stmt__title mono" data-i18n="st_title">Estado de cuenta de módulos</p>
+                <p class="stmt__sub mono" data-i18n="st_sub">Banco de código · Monterrey, N.L.</p>
+              </div>
+            </div>
+            <dl class="stmt__meta mono">
+              <div><dt data-i18n="st_holder">Titular</dt><dd>Jesús Gerardo Garza García</dd></div>
+              <div><dt data-i18n="st_period">Periodo</dt><dd data-i18n="st_period_v">01 OCT 2025 — 26 SEP 2026</dd></div>
+              <div><dt data-i18n="st_account">Cuenta</dt><dd>0091 · 0022 · 52201</dd></div>
+            </dl>
+          </div>
+          <dl class="stmt__sum">
+            <div><dt data-i18n="st_open">Saldo inicial</dt><dd class="serif tnum">0</dd></div>
+            <div><dt data-i18n="st_in">Altas del periodo</dt><dd class="serif tnum">+91</dd></div>
+            <div><dt data-i18n="st_loc">Líneas de código</dt><dd class="serif tnum">78,925</dd></div>
+            <div><dt data-i18n="st_tests">Pruebas</dt><dd class="serif tnum">265</dd></div>
+            <div class="stmt__close"><dt data-i18n="st_close">Saldo final</dt><dd class="serif tnum"><span>91</span> <small data-i18n="st_modules">módulos</small></dd></div>
+          </dl>
+          <div class="stamp" id="ledgerStamp" aria-hidden="true">
+            <span class="stamp__top mono" data-i18n="stamp_top">SAT · Revisado</span>
+            <span class="stamp__main serif" data-i18n="stamp_main">Timbrado</span>
+            <span class="stamp__date mono">26 · SEP · 2026</span>
           </div>
         </div>
 
-        <!-- ── Interactive shell ── -->
-        <section class="shell" id="shell" aria-label="Terminal interactiva">
-          <div class="shell__log" id="shellLog" aria-live="polite">
-            <div class="shell__line shell__line--sys" data-i18n="shell_welcome">Mini-shell interactiva. Escribe <b>help</b> para ver los comandos.</div>
-          </div>
-          <label class="shell__inputline" for="shellInput">
-            <span class="prompt">
-              <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-            </span>
-            <input type="text" class="shell__input" id="shellInput" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Comando">
+        <div class="areas" id="areasBar" data-reveal></div>
+
+        <div class="ltools" data-reveal>
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <input type="search" id="ledgerSearch" autocomplete="off" spellcheck="false" placeholder="Buscar: CFDI, nómina, lotes, Treolo…" data-i18n-attr="placeholder:led_search,aria-label:led_search_label" aria-label="Buscar módulos">
           </label>
-          <span class="shell__hint" data-i18n="shell_hint">Escribe un comando (prueba: help, ls, neofetch, sudo hire) · Tab autocompleta · ↑↓ historial</span>
-        </section>
-
-        <div class="hero__cta">
-          <a href="#contact" class="btn btn--primary">
-            <span data-i18n="contact_me">Contáctame</span>
-            <span class="btn__arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="#projects" class="btn btn--ghost">
-            <span data-i18n="view_projects">Ver proyectos</span>
-          </a>
-        </div>
-
-        <div class="contrib" id="contribHost">
-          <div class="contrib__head">
-            <span class="contrib__label" data-i18n="contrib_label">// contributions · last 12 months</span>
-            <span class="contrib__total" id="contribTotal">—</span>
+          <div class="seg seg--lg" role="group" aria-label="Versión de Odoo" id="verSeg" data-i18n-attr="aria-label:led_ver_label">
+            <button type="button" data-ver="all" aria-pressed="true" data-i18n="led_all">Todas</button>
+            <button type="button" data-ver="19" aria-pressed="false">v19</button>
+            <button type="button" data-ver="18" aria-pressed="false">v18</button>
+            <button type="button" data-ver="17" aria-pressed="false">v17</button>
           </div>
-          <div class="contrib__grid" id="contribGrid" aria-label="GitHub contributions heatmap"></div>
-          <div class="contrib__foot">
-            <span class="contrib__hint" data-i18n="contrib_less">menos</span>
-            <span class="contrib__legend">
-              <span class="contrib__cell" data-level="0"></span>
-              <span class="contrib__cell" data-level="1"></span>
-              <span class="contrib__cell" data-level="2"></span>
-              <span class="contrib__cell" data-level="3"></span>
-              <span class="contrib__cell" data-level="4"></span>
-            </span>
-            <span class="contrib__hint" data-i18n="contrib_more">más</span>
+          <div class="seg seg--lg" role="group" aria-label="Orden" id="sortSeg" data-i18n-attr="aria-label:led_sort_label">
+            <button type="button" data-sort="date" aria-pressed="true" data-i18n="led_sort_date">Recientes</button>
+            <button type="button" data-sort="loc" aria-pressed="false" data-i18n="led_sort_loc">Más grandes</button>
           </div>
         </div>
-      </section>
+        <div class="afilters" id="areaFilters" role="group" aria-label="Área" data-i18n-attr="aria-label:led_area_label"></div>
 
-      <!-- ── ABOUT ──────────────────────────────────── -->
-      <section class="section" id="about" data-reveal>
-        <div class="section__prompt" aria-hidden="true">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">cat about.md</span>
+        <div class="ltable" role="table" aria-label="Módulos" data-i18n-attr="aria-label:led_table_label">
+          <div class="ltable__head mono" role="row">
+            <span role="columnheader" data-i18n="lh_date">Fecha</span>
+            <span role="columnheader" data-i18n="lh_concept">Concepto</span>
+            <span role="columnheader" data-i18n="lh_client">Cliente</span>
+            <span role="columnheader" data-i18n="lh_ver">Ver.</span>
+            <span role="columnheader" class="ltable__num" data-i18n="lh_loc">Líneas</span>
+          </div>
+          <div class="ltable__body" id="ledgerBody" role="rowgroup"></div>
+          <noscript><p class="ltable__empty">El catálogo de módulos requiere JavaScript.</p></noscript>
+        </div>
+        <div class="ledger__foot">
+          <p class="mono muted" id="ledgerCount" aria-live="polite">91 / 91</p>
+          <button type="button" class="btn btn--ghost btn--sm" id="ledgerMore" data-i18n="led_more">Mostrar todos</button>
+        </div>
+        <p class="ledger__note muted" data-i18n="led_note">Solo módulos donde soy autor principal. No incluye módulos de terceros ni mis aportaciones a módulos de otros autores.</p>
+      </div>
+    </section>
+
+    <section class="sec profile" id="perfil" aria-labelledby="profTitle">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow" data-reveal><b>§ 04</b> <span data-i18n="prof_eyebrow">Perfil</span></p>
+          <h2 class="h2" id="profTitle" data-split data-i18n="prof_title">Ciencias computacionales de formación. <em>Odoo</em> de oficio.</h2>
+        </header>
+
+        <div class="profile__grid">
+          <div class="xp">
+            <article class="xp__item" data-reveal>
+              <div class="xp__rail" aria-hidden="true"><span class="xp__node xp__node--live"></span></div>
+              <div class="xp__body">
+                <p class="xp__when mono" data-i18n="xp1_when">Ago 2025 — hoy</p>
+                <h3 class="xp__role serif" data-i18n="xp1_role">Consultor técnico y desarrollador Odoo</h3>
+                <p class="xp__org" data-i18n="xp1_org">Integra Informática Administrativa · Monterrey</p>
+                <ul class="xp__list">
+                  <li data-i18n="xp1_b1">91 módulos para 22 empresas en Odoo 17, 18 y 19: contabilidad, CFDI, nómina e IMSS, tesorería, inventario, ventas e integraciones.</li>
+                  <li data-i18n="xp1_b2">Localización mexicana de punta a punta: CFDI 4.0 y complementos, DIOT, XML del SAT, Banxico y DOF, pedimentos, IMSS, INFONAVIT, FONACOT, SUA y PTU.</li>
+                  <li data-i18n="xp1_b3">Integraciones con webhooks idempotentes, API REST y XML-RPC, EDI X12 por AS2 e IA (Google Gemini) con salida validada.</li>
+                  <li data-i18n="xp1_b4">Migraciones a Odoo 19 y módulos que devuelven funciones que la versión eliminó.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="xp__item" data-reveal>
+              <div class="xp__rail" aria-hidden="true"><span class="xp__node"></span></div>
+              <div class="xp__body">
+                <p class="xp__when mono" data-i18n="xp2_when">Ene — Jun 2025</p>
+                <h3 class="xp__role serif" data-i18n="xp2_role">Programador full stack</h3>
+                <p class="xp__org" data-i18n="xp2_org">Biblioteca FCFM · Universidad Autónoma de Nuevo León</p>
+                <ul class="xp__list">
+                  <li data-i18n="xp2_b1">Tres sistemas en producción: préstamos, control de asistencia e inventario bibliográfico.</li>
+                  <li data-i18n="xp2_b2">Flask, SQL Server y SQLite, autenticación con bcrypt, tableros con Chart.js y reportes PDF y Excel.</li>
+                  <li data-i18n="xp2_b3">Aplicación de escritorio con escaneo de códigos de barras, empaquetada con PyInstaller.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <aside class="creds">
+            <div class="cred cred--edu" data-reveal>
+              <p class="eyebrow eyebrow--plain" data-i18n="edu_eyebrow">Formación</p>
+              <h3 class="cred__title serif" data-i18n="edu_degree">Licenciatura en Ciencias Computacionales</h3>
+              <p class="cred__meta" data-i18n="edu_school">UANL · Facultad de Ciencias Físico Matemáticas · 2021 — 2025</p>
+              <a class="cred__link" href="assets/certificados/EGEL.pdf" target="_blank" rel="noopener">
+                <span class="cred__badge mono">EGEL</span>
+                <span data-i18n="edu_egel">Testimonio de Desempeño Sobresaliente · CENEVAL</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a class="cred__link" href="assets/certificados/carta.pdf" target="_blank" rel="noopener">
+                <span class="cred__badge mono">UANL</span>
+                <span data-i18n="edu_letter">Carta de reconocimiento por tres sistemas para la biblioteca</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="cred" data-reveal>
+              <p class="eyebrow eyebrow--plain" data-i18n="cert_eyebrow">Certificaciones Red Hat · 2024</p>
+              <a class="cred__link" href="assets/certificados/RH124.pdf" target="_blank" rel="noopener"><span class="cred__badge mono">RH124</span><span>System Administration I</span><span aria-hidden="true">↗</span></a>
+              <a class="cred__link" href="assets/certificados/RH134.pdf" target="_blank" rel="noopener"><span class="cred__badge mono">RH134</span><span>System Administration II</span><span aria-hidden="true">↗</span></a>
+              <a class="cred__link" href="assets/certificados/RH294.pdf" target="_blank" rel="noopener"><span class="cred__badge mono">RH294</span><span>Linux Automation with Ansible</span><span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="cred cred--lang" data-reveal>
+              <p class="eyebrow eyebrow--plain" data-i18n="lang_eyebrow">Idiomas</p>
+              <p class="cred__langs"><span data-i18n="lang_es">Español · nativo</span><span data-i18n="lang_en">Inglés · avanzado</span></p>
+            </div>
+          </aside>
         </div>
 
-        <h2 class="section-title">
-          <span class="section-title__num">01_</span><span data-i18n="about">Sobre mí</span>
-        </h2>
-
-        <p class="output" data-i18n="about_desc1">
-          Desarrollador backend Python con experiencia en módulos Odoo, integraciones XML-RPC y bases de datos PostgreSQL. Inglés avanzado.
-        </p>
-        <br>
-        <p class="output" data-i18n="about_desc2">
-          Formación en administración Linux (Red Hat). Enfocado en código limpio que resuelva problemas reales.
-        </p>
-
-        <div class="stats">
-          <div class="stat">
-            <span class="stat__hash">#01</span>
-            <div class="stat__num" data-target="10">0</div>
-            <div class="stat__label" data-i18n="stat_projects">Empresas Atendidas</div>
+        <div class="stack" data-reveal>
+          <div class="stack__head">
+            <p class="eyebrow eyebrow--plain" data-i18n="stack_eyebrow">Lo que escribo, medido en líneas</p>
+            <p class="muted mono stack__total">78,925</p>
           </div>
-          <div class="stat">
-            <span class="stat__hash">#02</span>
-            <div class="stat__num" data-target="23" data-suffix="+">0</div>
-            <div class="stat__label" data-i18n="stat_modules">Módulos Odoo</div>
-          </div>
-          <div class="stat">
-            <span class="stat__hash">#03</span>
-            <div class="stat__num" data-target="3">0</div>
-            <div class="stat__label" data-i18n="stat_certs">Certificaciones Red Hat</div>
-          </div>
-          <div class="stat">
-            <span class="stat__hash">#04</span>
-            <div class="stat__num" data-target="15" data-suffix="+">0</div>
-            <div class="stat__label" data-i18n="stat_tech">Tecnologías</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── EXPERIENCE ─────────────────────────────── -->
-      <section class="section" id="experience" data-reveal>
-        <div class="section__prompt" aria-hidden="true">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">tree experience/ -L 2</span>
-        </div>
-
-        <h2 class="section-title">
-          <span class="section-title__num">02_</span><span data-i18n="experience_title">Experiencia Profesional</span>
-        </h2>
-
-        <div class="tree">
-          <div class="tree__root">experience/</div>
-
-          <div class="tree__branch">
-            <div class="tree__node tree__node--title" data-i18n="exp_odoo_title">Consultor Técnico / Desarrollador Odoo</div>
-            <div class="tree__node tree__node--meta">
-              <span data-i18n="exp_odoo_company">Integra Informática Administrativa</span>
-              <span class="dim"> · </span>
-              <span data-i18n="exp_odoo_period">Ago 2025 — Presente</span>
-              <br>
-              <span data-i18n="exp_odoo_subtitle">Odoo 17/18/19 · Python · PostgreSQL · ORM · Owl · XML-RPC</span>
+          <div class="langbar" id="langBar" role="img" aria-label="Distribución por lenguaje" data-i18n-attr="aria-label:stack_aria"></div>
+          <ul class="langlegend mono" id="langLegend"></ul>
+          <div class="toolbox">
+            <div class="toolbox__col">
+              <p class="toolbox__h mono">Odoo</p>
+              <p class="toolbox__v">ORM · OWL · QWeb · l10n_mx_edi · hr_payroll · account · stock · mail · ir.cron</p>
             </div>
-
-            <div class="tree__line" data-i18n="exp_odoo_1">Reabastecimiento en cascada multi-almacén con sourcing parcial, stock mínimo configurable y transferencias batch</div>
-            <div class="tree__line" data-i18n="exp_odoo_2">Dashboard de postnómina con Owl: vistas múltiples, gauges SVG, tracking de dispersión y filtrado avanzado</div>
-            <div class="tree__line" data-i18n="exp_odoo_3">Integración con Watchdog: monitoreo de directorios, parseo XML/CSV/JSON y creación automática de registros vía XML-RPC</div>
-
-            <div class="tree__hidden" id="exp-odoo-more">
-              <div class="tree__line" data-i18n="exp_odoo_4">Integración CFDI: timbrado automático, detección de bancos mexicanos, layouts bancarios y comprobantes SPEI</div>
-              <div class="tree__line" data-i18n="exp_odoo_5">Reportes QWeb avanzados: pólizas de nómina por departamento, facturación CFDI y dispersión multi-concepto</div>
-              <div class="tree__line" data-i18n="exp_odoo_6">Detección automática de contactos bancarios con normalización Unicode, extracción de RFC y matching difuso</div>
-              <div class="tree__line" data-i18n="exp_odoo_7">Override de procurement core (_run_pull) con resolución dinámica de almacenes y encadenamiento de movimientos</div>
-              <div class="tree__line" data-i18n="exp_odoo_8">API REST con endpoints de dashboard, reconciliación de pagos y generación batch de PDFs</div>
-              <div class="tree__line" data-i18n="exp_odoo_9">Migración de módulos Odoo v17 → v18, adaptando modelos, vistas y componentes Owl</div>
-              <div class="tree__line" data-i18n="exp_odoo_10">Herencia de 6+ modelos estándar (account.move, hr.payslip.run, stock.rule, etc.) con lógica personalizada</div>
+            <div class="toolbox__col">
+              <p class="toolbox__h mono" data-i18n="tb_backend">Backend y datos</p>
+              <p class="toolbox__v">Python · PostgreSQL · SQL · xlsxwriter · openpyxl · requests · Flask · Pandas</p>
             </div>
-
-            <button class="tree__expand" data-target="exp-odoo-more">
-              <span data-i18n="show_more">Ver más</span><span aria-hidden="true">▾</span>
-            </button>
-
-            <div class="tree__chips">
-              <span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">Odoo ORM</span>
-              <span class="chip">Owl</span><span class="chip">XML-RPC</span><span class="chip">QWeb</span>
-              <span class="chip">CFDI</span><span class="chip">Watchdog</span><span class="chip">xlsxwriter</span>
-              <span class="chip">ReportLab</span>
+            <div class="toolbox__col">
+              <p class="toolbox__h mono" data-i18n="tb_integration">Integración</p>
+              <p class="toolbox__v">REST · webhooks · XML-RPC · EDI X12 · AS2 · Banxico SIE · Google Gemini</p>
             </div>
-          </div>
-
-          <div class="tree__branch">
-            <div class="tree__node tree__node--title" data-i18n="exp_ss_title">Programador Full Stack</div>
-            <div class="tree__node tree__node--meta">
-              <span data-i18n="exp_ss_company">Biblioteca FCFM-UANL</span>
-              <span class="dim"> · </span>
-              <span data-i18n="exp_ss_period">Ene 2025 — Jun 2025 · Contrato por proyecto (6 meses)</span>
-              <br>
-              <span data-i18n="exp_ss_subtitle">Flask · SQL Server · SQLite · 3 Sistemas en Producción</span>
-            </div>
-
-            <div class="tree__line" data-i18n="exp_ss_1">Sistema de préstamos: monitoreo en tiempo real, dashboard analítico con Chart.js y cierre automático de sesiones</div>
-            <div class="tree__line" data-i18n="exp_ss_2">Registro de entradas y salidas: autenticación bcrypt, control por roles y reportes de asistencia</div>
-            <div class="tree__line" data-i18n="exp_ss_3">Inventario de libros: app de escritorio con escaneo de código de barras y merge de bases de datos</div>
-
-            <div class="tree__hidden" id="exp-ss-more">
-              <div class="tree__line" data-i18n="exp_ss_4">Reportes PDF y Excel con formato avanzado y análisis de datos con Pandas</div>
-              <div class="tree__line" data-i18n="exp_ss_5">Arquitectura dual SQLite + SQL Server con queries parametrizadas</div>
-              <div class="tree__line" data-i18n="exp_ss_6">Importación masiva desde Excel/CSV con validación y resolución de conflictos</div>
-              <div class="tree__line" data-i18n="exp_ss_7">Despliegue en producción con Waitress y compilación a ejecutables con PyInstaller</div>
-            </div>
-
-            <button class="tree__expand" data-target="exp-ss-more">
-              <span data-i18n="show_more">Ver más</span><span aria-hidden="true">▾</span>
-            </button>
-
-            <div class="tree__chips">
-              <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">SQL Server</span>
-              <span class="chip">SQLite</span><span class="chip">Pandas</span><span class="chip">ReportLab</span>
-              <span class="chip">Chart.js</span><span class="chip">bcrypt</span><span class="chip">Tkinter</span>
+            <div class="toolbox__col">
+              <p class="toolbox__h mono" data-i18n="tb_ops">Operación</p>
+              <p class="toolbox__v">Odoo.sh · Linux · Red Hat · Docker · Git · Ansible · JavaScript</p>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- ── MODULES ────────────────────────────────── -->
-      <section class="section" id="modules" data-reveal>
-        <div class="section__prompt" aria-hidden="true">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">ls -la modules/odoo/ | grep -E "v1[789]"</span>
-        </div>
-
-        <h2 class="section-title">
-          <span class="section-title__num">03_</span><span data-i18n="odoo_modules_title">Módulos Odoo</span>
-        </h2>
-
-        <p class="ls__total">
-          <span class="ansi-green">total 23</span>
-          <span class="dim"> — </span>
-          <span data-i18n="mod_clients">10 clientes</span>
-          <span class="dim"> · </span>
-          <span data-i18n="mod_areas">6 áreas funcionales</span>
-        </p>
-
-        <div class="summary">
-          <span class="chip chip--accent">v17 / v18 / v19</span>
-          <span class="chip" data-i18n="mod_total">23 módulos</span>
-          <span class="chip" data-i18n="mod_clients">10 clientes</span>
-          <span class="chip" data-i18n="mod_areas">6 áreas funcionales</span>
-        </div>
-
-        <h3 class="subsection-title" data-i18n="mod_clients_title">Empresas Atendidas</h3>
-        <div class="clients">
-          <div class="clients__track">
-            <span class="client-pill"><span class="client-pill__name">Avalia</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_avalia_short">Finanzas</span></span>
-            <span class="client-pill"><span class="client-pill__name">Dimex</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_dimex_short">Fiscal</span></span>
-            <span class="client-pill"><span class="client-pill__name">Casa Guerra</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_casaguerra_short">Facturación</span></span>
-            <span class="client-pill"><span class="client-pill__name">Cosesa</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_cosesa_short">Contabilidad</span></span>
-            <span class="client-pill"><span class="client-pill__name">Forrajera Elizondo</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_forrajera_short">Inventario</span></span>
-            <span class="client-pill"><span class="client-pill__name">Recavisa</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_recavisa_short">Aduanas</span></span>
-            <span class="client-pill"><span class="client-pill__name">Interenter</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_interenter_short">Almacén</span></span>
-            <span class="client-pill"><span class="client-pill__name">FGH</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_fgh_short">Ventas</span></span>
-            <span class="client-pill"><span class="client-pill__name">Invent</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_invent_short">Compras</span></span>
-            <span class="client-pill"><span class="client-pill__name">Ikigai</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_ikigai_short">API/EDI</span></span>
-            <!-- duplicate for seamless loop -->
-            <span class="client-pill"><span class="client-pill__name">Avalia</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_avalia_short">Finanzas</span></span>
-            <span class="client-pill"><span class="client-pill__name">Dimex</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_dimex_short">Fiscal</span></span>
-            <span class="client-pill"><span class="client-pill__name">Casa Guerra</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_casaguerra_short">Facturación</span></span>
-            <span class="client-pill"><span class="client-pill__name">Cosesa</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_cosesa_short">Contabilidad</span></span>
-            <span class="client-pill"><span class="client-pill__name">Forrajera Elizondo</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_forrajera_short">Inventario</span></span>
-            <span class="client-pill"><span class="client-pill__name">Recavisa</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_recavisa_short">Aduanas</span></span>
-            <span class="client-pill"><span class="client-pill__name">Interenter</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_interenter_short">Almacén</span></span>
-            <span class="client-pill"><span class="client-pill__name">FGH</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_fgh_short">Ventas</span></span>
-            <span class="client-pill"><span class="client-pill__name">Invent</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_invent_short">Compras</span></span>
-            <span class="client-pill"><span class="client-pill__name">Ikigai</span><span class="client-pill__sep">·</span><span class="client-pill__area" data-i18n="client_ikigai_short">API/EDI</span></span>
+        <div class="side">
+          <div class="side__head" data-reveal>
+            <p class="eyebrow eyebrow--plain" data-i18n="side_eyebrow">Antes de Odoo</p>
+            <p class="muted" data-i18n="side_note">Sistemas propios que siguen en línea.</p>
           </div>
-        </div>
-
-        <div class="ls">
-
-          <!-- Group: accounting -->
-          <div class="ls__group">
-            <button class="ls__group-head" type="button" aria-expanded="false">
-              <span class="ls__group-icon">▸</span>
-              <span>
-                <span class="ls__group-name" data-i18n="mod_cat_accounting">Contabilidad y Cumplimiento Fiscal</span>
-                <span class="ls__group-count" data-i18n="mod_cat_accounting_count">6 módulos · Avalia, Dimex, Casa Guerra, Cosesa</span>
-              </span>
-              <span class="ls__group-arrow" aria-hidden="true">›</span>
-            </button>
-            <div class="ls__group-body">
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_formatos">Suite de Reportes Financieros — Grupo Avalia</div>
-                  <div class="ls__desc" data-i18n="mod_formatos_desc">Automatizó la generación de 9 reportes fiscales para un grupo financiero que administra pensiones y nómina de +500 beneficiarios.</div>
-                  <div class="ls__tags"><span class="chip">QWeb</span><span class="chip">openpyxl</span><span class="chip">OWL</span><span class="chip">CFDI</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_bank_balance">Control de Conciliación Bancaria</div>
-                  <div class="ls__desc" data-i18n="mod_bank_balance_desc">Resolvió un problema crítico donde Odoo mostraba saldos bancarios vacíos al depender de la conciliación nativa.</div>
-                  <div class="ls__tags"><span class="chip">mail.thread</span><span class="chip">openpyxl</span><span class="chip">Bidirectional Sync</span></div>
-                </div>
-              </div>
-              <div class="ls__row" data-vim="aged_days">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_aged_days">Visibilidad de Cartera Vencida</div>
-                  <div class="ls__desc" data-i18n="mod_aged_days_desc">Dio a cobranza visibilidad instantánea de los días vencidos por factura — información crítica para flujo de efectivo que Odoo omite.</div>
-                  <div class="ls__tags"><span class="chip">Report Engine</span><span class="chip">Hooks</span><span class="chip">Custom Expressions</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_base_efectivo">Corrección Fiscal de Anticipos — DIOT</div>
-                  <div class="ls__desc" data-i18n="mod_base_efectivo_desc">Evitó declaraciones incorrectas ante el SAT que arriesgaban multas fiscales. Override de _compute_max_date() para forzar la fecha del flujo real de efectivo.</div>
-                  <div class="ls__tags"><span class="chip">account.partial.reconcile</span><span class="chip">DIOT</span><span class="chip">SAT</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_anticipo">Reconocimiento Automático de IVA en Anticipos</div>
-                  <div class="ls__desc" data-i18n="mod_anticipo_desc">Automatizó un proceso manual mensual que causaba errores en la DIOT. Override de action_post() para generar asientos de base efectivo al registrar anticipos.</div>
-                  <div class="ls__tags"><span class="chip">action_post</span><span class="chip">Cash Basis</span><span class="chip">Tax Tags</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_rep">Comprobante de Pago con Cumplimiento SAT</div>
-                  <div class="ls__desc" data-i18n="mod_rep_desc">Reemplazó el formato genérico de Odoo con un REP profesional que cumple 100% los requisitos del SAT. Parsing de XML CFDI 4.0 con namespaces y complemento Pagos20.</div>
-                  <div class="ls__tags"><span class="chip">CFDI 4.0</span><span class="chip">XML Parsing</span><span class="chip">Pagos20</span></div>
-                </div>
-              </div>
-              <div class="ls__row" data-vim="currency">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_currency">Corrección de Tipo de Cambio MX (Banxico/DOF)</div>
-                  <div class="ls__desc" data-i18n="mod_currency_desc">Alineó el tipo de cambio con la fecha del DOF para evitar diferencias en CFDI y contabilidad. Banxico etiqueta el Fix (SF43718) con la fecha de aplicación; el módulo consulta la API SIE de Banxico y resta un día para empatar con la publicación oficial del DOF.</div>
-                  <div class="ls__tags"><span class="chip">Banxico SIE API</span><span class="chip">currency_rate_live</span><span class="chip">DOF</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_mxreports">Reportes SAT XML — Complementario y Pólizas</div>
-                  <div class="ls__desc" data-i18n="mod_mxreports_desc">Cubrió requerimientos del SAT en auditorías y devoluciones. Genera el Balance de Comprobación Complementario (TipoEnvio="C" con FechaModBal) y las Pólizas Contables del periodo por tipo de solicitud: fiscalización, compulsa, devolución y compensación.</div>
-                  <div class="ls__tags"><span class="chip">l10n_mx_reports</span><span class="chip">SAT XML</span><span class="chip">Pólizas</span></div>
-                </div>
-              </div>
-              <div class="ls__row" data-vim="intercompany">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_intercompany">Sincronización de Cancelación Intercompañía</div>
-                  <div class="ls__desc" data-i18n="mod_intercompany_desc">Eliminó facturas de proveedor huérfanas tras cancelar ventas entre empresas del grupo. Cuando se cancela una factura de cliente que generó una factura de proveedor intercompañía, propaga la cancelación a la otra empresa de forma automática.</div>
-                  <div class="ls__tags"><span class="chip">account.move</span><span class="chip">Intercompany</span><span class="chip">button_cancel</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Group: payroll -->
-          <div class="ls__group">
-            <button class="ls__group-head" type="button" aria-expanded="false">
-              <span class="ls__group-icon">▸</span>
-              <span>
-                <span class="ls__group-name" data-i18n="mod_cat_payroll">Nómina y Recursos Humanos</span>
-                <span class="ls__group-count" data-i18n="mod_cat_payroll_count">3 módulos · Avalia, Casa Guerra</span>
-              </span>
-              <span class="ls__group-arrow" aria-hidden="true">›</span>
-            </button>
-            <div class="ls__group-body">
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_holidays">Gestión Automatizada de Vacaciones</div>
-                  <div class="ls__desc" data-i18n="mod_holidays_desc">Eliminó consultas manuales de saldo que RH respondía decenas de veces al mes. Reporte QWeb en formato media carta con áreas de firma.</div>
-                  <div class="ls__tags"><span class="chip">QWeb</span><span class="chip">Computed</span><span class="chip">hr.leave</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_payroll_report">Reportes de Nómina Auto-configurables</div>
-                  <div class="ls__desc" data-i18n="mod_payroll_report_desc">Un solo reporte que se adapta a cualquier estructura salarial sin intervención de desarrollo. Columnas generadas dinámicamente desde reglas salariales.</div>
-                  <div class="ls__tags"><span class="chip">xlsxwriter</span><span class="chip">Dynamic Columns</span><span class="chip">Wizard</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_odessa">Integración Nómina ↔ Caja de Ahorro</div>
-                  <div class="ls__desc" data-i18n="mod_odessa_desc">Eliminó horas de captura manual cada quincena entre dos sistemas. 3 wizards especializados y 5 reglas de nómina.</div>
-                  <div class="ls__tags"><span class="chip">MOPER</span><span class="chip">3 Wizards</span><span class="chip">Salary Rules</span></div>
-                </div>
-              </div>
-              <div class="ls__row" data-vim="sua">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_sua">Cálculo y Exportación IMSS / SUA</div>
-                  <div class="ls__desc" data-i18n="mod_sua_desc">Centralizó el cumplimiento IMSS de un patrón dentro de Odoo. Wizards de cálculo mensual y bimestral (IMSS, INFONAVIT, FONACOT), simulación, valor UMA y registro patronal, con exportación de CFDI de nómina al formato del SUA para conciliar contra el sistema del IMSS.</div>
-                  <div class="ls__tags"><span class="chip">IMSS</span><span class="chip">INFONAVIT</span><span class="chip">FONACOT</span><span class="chip">UMA</span><span class="chip">8 Wizards</span></div>
-                </div>
-              </div>
-              <div class="ls__row" data-vim="ptu">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_ptu">Cálculo de PTU</div>
-                  <div class="ls__desc" data-i18n="mod_ptu_desc">Automatizó el reparto anual de utilidades que se hacía en hojas de cálculo. Calcula la Participación de los Trabajadores en las Utilidades por días trabajados y salarios devengados, con importador desde Excel e integración con reglas de nómina y CFDI.</div>
-                  <div class="ls__tags"><span class="chip">PTU</span><span class="chip">Salary Rules</span><span class="chip">Excel Import</span></div>
-                </div>
-              </div>
-              <div class="ls__row" data-vim="timbrado">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v18</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_timbrado">Timbrado de Nómina en Paralelo</div>
-                  <div class="ls__desc" data-i18n="mod_timbrado_desc">Aceleró el timbrado masivo de nómina que se atoraba en lotes grandes. Procesa las llamadas al PAC de forma concurrente manteniendo las escrituras ORM en el hilo principal, con modo rápido (omite PDF/chatter inmediato) y una acción planificada que genera los PDFs pendientes.</div>
-                  <div class="ls__tags"><span class="chip">ThreadPoolExecutor</span><span class="chip">PAC</span><span class="chip">ir.cron</span><span class="chip">Performance</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Group: inventory -->
-          <div class="ls__group">
-            <button class="ls__group-head" type="button" aria-expanded="false">
-              <span class="ls__group-icon">▸</span>
-              <span>
-                <span class="ls__group-name" data-i18n="mod_cat_inventory">Inventario y Almacén</span>
-                <span class="ls__group-count" data-i18n="mod_cat_inventory_count">4 módulos · Forrajera Elizondo, Recavisa, Interenter</span>
-              </span>
-              <span class="ls__group-arrow" aria-hidden="true">›</span>
-            </button>
-            <div class="ls__group-body">
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_stock_location">Trazabilidad de Inventario Multi-ubicación</div>
-                  <div class="ls__desc" data-i18n="mod_stock_location_desc">Resolvió una limitación de Odoo que solo mostraba totales agregados. Algoritmo de boundary-crossing con soporte para BOMs fantasma (kits).</div>
-                  <div class="ls__tags"><span class="chip">Boundary-crossing</span><span class="chip">stock.quant</span><span class="chip">BOM Kits</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_pedimento">Control de Cumplimiento Aduanal</div>
-                  <div class="ls__desc" data-i18n="mod_pedimento_desc">Previene multas aduanales al detectar facturas timbradas sin pedimento en el XML. Auto-refresh vía override de web_search_read().</div>
-                  <div class="ls__tags"><span class="chip">web_search_read</span><span class="chip">_auto_init</span><span class="chip">CFDI</span></div>
-                </div>
-              </div>
-              <div class="ls__row" data-vim="quant_unrestrict">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v19</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_quant_unrestrict">Corrección Rápida de Lotes en Inventario</div>
-                  <div class="ls__desc" data-i18n="mod_quant_unrestrict_desc">Eliminó un proceso de 15+ minutos por corrección. Override quirúrgico de _get_forbidden_fields_write() — solución mínima de 4 líneas.</div>
-                  <div class="ls__tags"><span class="chip">_get_forbidden_fields</span><span class="chip">stock.quant</span></div>
-                </div>
-              </div>
-              <div class="ls__row" data-vim="import_lots">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v19</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_import_lots">Recepción Masiva de Series/Lotes</div>
-                  <div class="ls__desc" data-i18n="mod_import_lots_desc">Aceleró la recepción en almacén eliminando la captura uno por uno. Override de split_lots() en stock.move retrocompatible.</div>
-                  <div class="ls__tags"><span class="chip">split_lots</span><span class="chip">stock.move</span><span class="chip">UX</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Group: sales -->
-          <div class="ls__group">
-            <button class="ls__group-head" type="button" aria-expanded="false">
-              <span class="ls__group-icon">▸</span>
-              <span>
-                <span class="ls__group-name" data-i18n="mod_cat_sales">Ventas y Compras</span>
-                <span class="ls__group-count" data-i18n="mod_cat_sales_count">2 módulos · FGH, Invent</span>
-              </span>
-              <span class="ls__group-arrow" aria-hidden="true">›</span>
-            </button>
-            <div class="ls__group-body">
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_catalogo">Gestión Inteligente de Catálogo de Productos</div>
-                  <div class="ls__desc" data-i18n="mod_catalogo_desc">Resolvió la saturación de selectores que confundía al equipo de ventas con +35,000 productos. Override de _name_search() con filtrado por contexto.</div>
-                  <div class="ls__tags"><span class="chip">_name_search</span><span class="chip">Context</span><span class="chip">Dynamic Domain</span></div>
-                </div>
-              </div>
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v17</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_proyecto">Automatización de Compras a Proyectos</div>
-                  <div class="ls__desc" data-i18n="mod_proyecto_desc">Eliminó pasos manuales en el flujo compra→proyecto. Cadena automatizada PO → Picking → Moves → Confirmación.</div>
-                  <div class="ls__tags"><span class="chip">analytic_distribution</span><span class="chip">stock.picking</span><span class="chip">Automation</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Group: api -->
-          <div class="ls__group">
-            <button class="ls__group-head" type="button" aria-expanded="false">
-              <span class="ls__group-icon">▸</span>
-              <span>
-                <span class="ls__group-name" data-i18n="mod_cat_api">Integraciones y API</span>
-                <span class="ls__group-count" data-i18n="mod_cat_api_count">1 módulo · Ikigai</span>
-              </span>
-              <span class="ls__group-arrow" aria-hidden="true">›</span>
-            </button>
-            <div class="ls__group-body">
-              <div class="ls__row" data-vim="edi">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v19</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_edi">EDI IKIGAI — Avisos a Middleware (944/945)</div>
-                  <div class="ls__desc" data-i18n="mod_edi_desc">Integró el almacén de Odoo con SAP vía el middleware IKIGAI sin que Odoo arme el EDI. Al validar un albarán, Odoo dispara un webhook "edi.ready" (944 recepción / 945 salida / 947 / 852) con token e idempotencia; el middleware consulta Odoo, genera el X12 y lo envía por AS2. Incluye bitácora request/response, llave de idempotencia única y reintento por cron.</div>
-                  <div class="ls__tags"><span class="chip">Webhook</span><span class="chip">Idempotencia</span><span class="chip">X12 944/945</span><span class="chip">AS2</span><span class="chip">ir.cron</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Group: uiux -->
-          <div class="ls__group">
-            <button class="ls__group-head" type="button" aria-expanded="false">
-              <span class="ls__group-icon">▸</span>
-              <span>
-                <span class="ls__group-name" data-i18n="mod_cat_uiux">Herramientas UI/UX</span>
-                <span class="ls__group-count" data-i18n="mod_cat_uiux_count">1 módulo · Interenter</span>
-              </span>
-              <span class="ls__group-arrow" aria-hidden="true">›</span>
-            </button>
-            <div class="ls__group-body">
-              <div class="ls__row">
-                <div class="ls__row-meta"><span class="ls__perm">-rw-r--r--</span><span class="ls__owner">jesus</span><span class="ls__size">v19</span></div>
-                <div>
-                  <div class="ls__name" data-i18n="mod_columns">Restauración de Usabilidad en Órdenes</div>
-                  <div class="ls__desc" data-i18n="mod_columns_desc">Patch de componentes OWL sobre ProductLabelSectionAndNoteListRender.getActiveColumns(), respetando el sistema de optional fields nativo.</div>
-                  <div class="ls__tags"><span class="chip">OWL Patch</span><span class="chip">getActiveColumns</span><span class="chip">Mixin</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <p class="ls__extra" data-i18n="mod_extra">+ 3 módulos complementarios: automatización de impuestos en productos nuevos, validación de precios de proveedor con 35 puntos de control, y flujo de remisión integrado en entregas.</p>
-
-        <h3 class="subsection-title" data-i18n="success_cases_title">Casos de éxito</h3>
-        <p class="output success-cases__intro" data-i18n="success_cases_intro">
-          Resumen ejecutivo de entregables con impacto medible en operaciones, cumplimiento y flujo de caja.
-        </p>
-
-        <div class="success-cases" id="successCases">
-          <details class="case">
-            <summary class="case__summary">
-              <span class="case__title" data-i18n="case_avalia_title">Avalia · Conciliación bancaria con visibilidad operativa</span>
-              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
-            </summary>
-            <div class="case__body">
-              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_avalia_problem">Tesorería dependía de conciliaciones manuales y Odoo mostraba saldos incompletos durante el día.</span></p>
-              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_avalia_solution">Diseñé un módulo de sincronización bidireccional con protección anti-loop por contexto, importación masiva desde Excel y auditoría con mail.thread para trazar cada ajuste.</span></p>
-              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_avalia_stack">Python · Odoo ORM · openpyxl · mail.thread</span></p>
-              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_avalia_metrics">-70% tiempo de conciliación diaria · 0 saldos vacíos en cierre · +100% trazabilidad de cambios</span></p>
-            </div>
-          </details>
-
-          <details class="case">
-            <summary class="case__summary">
-              <span class="case__title" data-i18n="case_pedimento_title">Recavisa · Cumplimiento aduanal CFDI + pedimentos</span>
-              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
-            </summary>
-            <div class="case__body">
-              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_pedimento_problem">Facturas timbradas sin pedimento detectadas tarde, con riesgo real de sanción y retrabajo contable.</span></p>
-              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_pedimento_solution">Implementé validaciones sobre XML CFDI en tiempo de consulta, alertas visuales por severidad y migración segura de SQL VIEW a modelo ORM para mantener compatibilidad evolutiva.</span></p>
-              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_pedimento_stack">Python · l10n_mx_edi · XML parsing · web_search_read override</span></p>
-              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_pedimento_metrics">Detección temprana antes de cierre mensual · 0 incidencias críticas de pedimento tras despliegue</span></p>
-            </div>
-          </details>
-
-          <details class="case">
-            <summary class="case__summary">
-              <span class="case__title" data-i18n="case_payroll_title">Casa Guerra · Reporte de nómina auto-configurable</span>
-              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
-            </summary>
-            <div class="case__body">
-              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_payroll_problem">Cada cambio en reglas salariales exigía soporte técnico para rehacer formatos de reporte.</span></p>
-              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_payroll_solution">Construí un generador dinámico de columnas basado en salary rules con exportación xlsxwriter, filtros por periodo/empresa y orden lógico por tipo de percepción.</span></p>
-              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_payroll_stack">Python · hr_payroll · xlsxwriter · wizard patterns</span></p>
-              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_payroll_metrics">De horas a minutos por reporte · 0 ajustes manuales de formato en operación regular</span></p>
-            </div>
-          </details>
-
-          <details class="case">
-            <summary class="case__summary">
-              <span class="case__title" data-i18n="case_edi_title">Ikigai · Avisos EDI de Odoo al middleware (SAP)</span>
-              <span class="case__hint" data-i18n="case_expand_hint">ver detalle</span>
-            </summary>
-            <div class="case__body">
-              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_edi_problem">Sincronizar movimientos de almacén con SAP por EDI sin cargar a Odoo con la complejidad de armar y transmitir los documentos X12.</span></p>
-              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_edi_solution">Diseñé el lado Odoo del protocolo de avisos: al validar albaranes se dispara un webhook "edi.ready" (944/945/947/852) con token e idempotencia; el middleware consulta Odoo, genera el X12 y lo envía por AS2. Agregué bitácora con evidencia request/response, llave de idempotencia única y reintento por cron que no duplica.</span></p>
-              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_edi_stack">Python · stock · requests (webhook) · idempotencia · ir.cron · X12/AS2</span></p>
-              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_edi_metrics">Cero EDI duplicados por idempotencia · reintento automático de fallos transitorios · trazabilidad completa de cada aviso</span></p>
-            </div>
-          </details>
-
-          <details class="case">
-            <summary class="case__summary">
-              <span class="case__title" data-i18n="case_stock_title">Forrajera Elizondo · Trazabilidad por ubicación</span>
-              <span class="case__hint" data-i18n="case_expand_hint">toggle</span>
-            </summary>
-            <div class="case__body">
-              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_stock_problem">El equipo no podía auditar inventario histórico por ubicación: solo había totales agregados.</span></p>
-              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_stock_solution">Implementé algoritmo de boundary-crossing que reconstruye estado por fecha de corte, revirtiendo movimientos posteriores y contemplando transferencias internas y kits.</span></p>
-              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_stock_stack">Python · stock.quant · stock.move.line · BOM kits</span></p>
-              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_stock_metrics">Auditorías más rápidas y confiables · reducción de ajustes por diferencias no explicadas</span></p>
-            </div>
-          </details>
-
-          <details class="case">
-            <summary class="case__summary">
-              <span class="case__title" data-i18n="case_sua_title">Recavisa · Cumplimiento IMSS y exportación al SUA</span>
-              <span class="case__hint" data-i18n="case_expand_hint">ver detalle</span>
-            </summary>
-            <div class="case__body">
-              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_sua_problem">El cálculo de cuotas IMSS, INFONAVIT y FONACOT se hacía fuera de Odoo y se recapturaba en el SUA, con riesgo de diferencias y retrabajo cada mes y bimestre.</span></p>
-              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_sua_solution">Construí un módulo con wizards de cálculo mensual y bimestral, simulación, valor UMA y registro patronal, que exporta el CFDI de nómina al formato del SUA para conciliar directo contra el sistema del IMSS.</span></p>
-              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_sua_stack">Python · om_hr_payroll · IMSS / INFONAVIT / FONACOT · UMA · wizards</span></p>
-              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_sua_metrics">Cálculo y exportación dentro de Odoo · conciliación directa contra el SUA · menos recaptura manual</span></p>
-            </div>
-          </details>
-
-          <details class="case">
-            <summary class="case__summary">
-              <span class="case__title" data-i18n="case_timbrado_title">Avalia · Timbrado de nómina masivo en paralelo</span>
-              <span class="case__hint" data-i18n="case_expand_hint">ver detalle</span>
-            </summary>
-            <div class="case__body">
-              <p><strong data-i18n="case_problem_label">Problema:</strong> <span data-i18n="case_timbrado_problem">Timbrar lotes grandes de nómina tardaba demasiado: cada recibo llamaba al PAC en serie y bloqueaba la operación.</span></p>
-              <p><strong data-i18n="case_solution_label">Solución técnica:</strong> <span data-i18n="case_timbrado_solution">Paralelicé las llamadas al PAC con un pool de hilos manteniendo las escrituras ORM en el hilo principal (el cursor de PostgreSQL no es thread-safe), con modo rápido que omite PDF/chatter inmediato y una acción planificada que genera los PDFs pendientes.</span></p>
-              <p><strong data-i18n="case_stack_label">Stack:</strong> <span data-i18n="case_timbrado_stack">Python · ThreadPoolExecutor · PAC l10n_mx · ir.cron</span></p>
-              <p><strong data-i18n="case_metrics_label">Métricas:</strong> <span data-i18n="case_timbrado_metrics">Timbrado masivo mucho más rápido en lotes grandes · la operación no se bloquea durante el proceso</span></p>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <!-- ── PROJECTS ───────────────────────────────── -->
-      <section class="section" id="projects" data-reveal>
-        <div class="section__prompt" aria-hidden="true">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">cat projects.json | jq</span>
-        </div>
-
-        <h2 class="section-title">
-          <span class="section-title__num">04_</span><span data-i18n="projects">Proyectos Destacados</span>
-        </h2>
-
-        <div class="projects" data-reveal-stagger>
-          <a href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank" rel="noopener" class="project">
-            <div class="project__head">
-              <span class="project__brace">{</span>
-              <span class="project__id">// 0x01</span>
-            </div>
-            <div class="project__title">
-              <span data-i18n="book_management">Gestión de Libros de Acervo</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </div>
-            <div class="project__field">
-              <span class="project__key">"desc":</span>
-              <span class="project__val project__val--str" data-i18n="book_desc">Sistema web con 13+ endpoints para gestión de préstamos, monitoreo en tiempo real, dashboard analítico con Chart.js, reportes PDF/Excel, importación masiva y APScheduler.</span>
-            </div>
-            <div class="project__field">
-              <span class="project__key">"stack":</span>
-              <div class="project__tech">
-                <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">SQL Server</span>
-                <span class="chip">Pandas</span><span class="chip">Chart.js</span>
-              </div>
-            </div>
-            <span class="project__brace">}</span>
-          </a>
-
-          <a href="https://rtimer.pages.dev/" target="_blank" rel="noopener" class="project">
-            <div class="project__head">
-              <span class="project__brace">{</span>
-              <span class="project__id">// 0x02</span>
-            </div>
-            <div class="project__title">
-              <span data-i18n="timer-title">Cronómetro para Cubo Rubik</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </div>
-            <div class="project__field">
-              <span class="project__key">"desc":</span>
-              <span class="project__val project__val--str" data-i18n="timer-desc">Cronómetro web en React para speedcubing con inspección, estadísticas, visualización 2D y personalización.</span>
-            </div>
-            <div class="project__field">
-              <span class="project__key">"stack":</span>
-              <div class="project__tech">
-                <span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">Responsive</span>
-              </div>
-            </div>
-            <span class="project__brace">}</span>
-          </a>
-
-          <a href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank" rel="noopener" class="project">
-            <div class="project__head">
-              <span class="project__brace">{</span>
-              <span class="project__id">// 0x03</span>
-            </div>
-            <div class="project__title">
-              <span data-i18n="attendance">Registro de Entradas y Salidas</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </div>
-            <div class="project__field">
-              <span class="project__key">"desc":</span>
-              <span class="project__val project__val--str" data-i18n="attendance_desc">Sistema de control de asistencias con autenticación bcrypt, roles Admin/Usuario, estadísticas, reportes Excel/PDF y cierre automático.</span>
-            </div>
-            <div class="project__field">
-              <span class="project__key">"stack":</span>
-              <div class="project__tech">
-                <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">SQL Server</span>
-                <span class="chip">bcrypt</span><span class="chip">Pandas</span>
-              </div>
-            </div>
-            <span class="project__brace">}</span>
-          </a>
-
-          <a href="assets/demo/demo.mp4" target="_blank" rel="noopener" class="project">
-            <div class="project__head">
-              <span class="project__brace">{</span>
-              <span class="project__id">// 0x04</span>
-            </div>
-            <div class="project__title">
-              <span data-i18n="inventory">Inventario de Libros</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </div>
-            <div class="project__field">
-              <span class="project__key">"desc":</span>
-              <span class="project__val project__val--str" data-i18n="inventory_desc">App de escritorio con escaneo de código de barras, búsqueda con normalización Unicode, merge de bases de datos y exportación a 5 reportes Excel.</span>
-            </div>
-            <div class="project__field">
-              <span class="project__key">"stack":</span>
-              <div class="project__tech">
-                <span class="chip">Python</span><span class="chip">Tkinter</span><span class="chip">SQLite</span>
-                <span class="chip">Pandas</span><span class="chip">PyInstaller</span>
-              </div>
-            </div>
-            <span class="project__brace">}</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- ── SKILLS ─────────────────────────────────── -->
-      <section class="section" id="skills" data-reveal>
-        <div class="section__prompt" aria-hidden="true">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">pacman -Qq | grep tech</span>
-        </div>
-
-        <h2 class="section-title">
-          <span class="section-title__num">05_</span><span data-i18n="tech_skills">Habilidades Técnicas</span>
-        </h2>
-
-        <div class="langs">
-          <span class="langs__label" data-i18n="stack_label">// stack · líneas de código por lenguaje</span>
-          <div class="langs__bar" role="img" aria-label="Distribución de lenguajes: Python 58%, XML/QWeb 22%, JavaScript/OWL 9%, HTML/CSS 6%, SQL 3%, Shell 2%">
-            <span class="langs__seg" style="--w:58%;--c:var(--ansi-blue)"></span>
-            <span class="langs__seg" style="--w:22%;--c:var(--ansi-yellow)"></span>
-            <span class="langs__seg" style="--w:9%;--c:var(--ansi-magenta)"></span>
-            <span class="langs__seg" style="--w:6%;--c:var(--ansi-green)"></span>
-            <span class="langs__seg" style="--w:3%;--c:var(--ansi-cyan)"></span>
-            <span class="langs__seg" style="--w:2%;--c:var(--ansi-red)"></span>
-          </div>
-          <ul class="langs__legend">
-            <li><span class="langs__dot" style="--c:var(--ansi-blue)"></span>Python <b>58.0%</b></li>
-            <li><span class="langs__dot" style="--c:var(--ansi-yellow)"></span>XML / QWeb <b>22.0%</b></li>
-            <li><span class="langs__dot" style="--c:var(--ansi-magenta)"></span>JavaScript / OWL <b>9.0%</b></li>
-            <li><span class="langs__dot" style="--c:var(--ansi-green)"></span>HTML / CSS <b>6.0%</b></li>
-            <li><span class="langs__dot" style="--c:var(--ansi-cyan)"></span>SQL <b>3.0%</b></li>
-            <li><span class="langs__dot" style="--c:var(--ansi-red)"></span>Shell <b>2.0%</b></li>
-          </ul>
-        </div>
-
-        <div class="skills">
-          <div class="skills__group">
-            <h3 data-i18n="backend_databases">Backend & Bases de Datos</h3>
-            <div class="skills__list">
-              <span class="skill">Python</span><span class="skill">Odoo</span><span class="skill">Flask</span>
-              <span class="skill">PostgreSQL</span><span class="skill">SQL Server</span><span class="skill">XML-RPC</span>
-              <span class="skill">Pandas</span>
-            </div>
-          </div>
-          <div class="skills__group">
-            <h3 data-i18n="web_development">Desarrollo Web</h3>
-            <div class="skills__list">
-              <span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span>
-              <span class="skill">React</span><span class="skill">Owl</span><span class="skill">QWeb</span>
-            </div>
-          </div>
-          <div class="skills__group">
-            <h3 data-i18n="devops_tools">DevOps & Herramientas</h3>
-            <div class="skills__list">
-              <span class="skill">Git</span><span class="skill">GitHub</span><span class="skill">Linux</span>
-              <span class="skill">Red Hat</span><span class="skill">Docker</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── EDUCATION ──────────────────────────────── -->
-      <section class="section" id="education" data-reveal>
-        <div class="section__prompt" aria-hidden="true">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">man certifications</span>
-        </div>
-
-        <h2 class="section-title">
-          <span class="section-title__num">06_</span><span data-i18n="education">Formación</span>
-        </h2>
-
-        <div class="education">
-          <div class="education__degree" data-i18n="degree">Licenciatura en Ciencias Computacionales</div>
-          <div class="education__inst" data-i18n="university">Universidad Autónoma de Nuevo León, Facultad de Ciencias Físico Matemáticas</div>
-          <div class="education__period">2021 — 2025</div>
-        </div>
-
-        <h3 class="subsection-title" data-i18n="certifications">Certificaciones Técnicas</h3>
-        <div class="cert-list">
-          <div class="cert">
-            <span class="cert__id">RH124</span>
-            <span class="cert__name" data-i18n="rh124">Red Hat System Administration I (RH124)</span>
-            <span class="cert__year">2024</span>
-            <a href="assets/certificados/RH124.pdf" target="_blank" rel="noopener" class="cert__link">PDF →</a>
-          </div>
-          <div class="cert">
-            <span class="cert__id">RH134</span>
-            <span class="cert__name" data-i18n="rh134">Red Hat System Administration II (RH134)</span>
-            <span class="cert__year">2024</span>
-            <a href="assets/certificados/RH134.pdf" target="_blank" rel="noopener" class="cert__link">PDF →</a>
-          </div>
-          <div class="cert">
-            <span class="cert__id">RH294</span>
-            <span class="cert__name" data-i18n="rh294">Red Hat Enterprise Linux Automation with Ansible (RH294)</span>
-            <span class="cert__year">2024</span>
-            <a href="assets/certificados/RH294.pdf" target="_blank" rel="noopener" class="cert__link">PDF →</a>
-          </div>
-        </div>
-
-        <h3 class="subsection-title" data-i18n="recognitions">Reconocimientos</h3>
-        <div class="recognitions">
-          <div class="recognition">
-            <div class="recognition__title" data-i18n="recommendation">Reconocimiento por la elaboración de 3 sistemas para biblioteca</div>
-            <div class="recognition__desc" data-i18n="recommendation_desc">Reconocimiento por la elaboración de los sistemas: Entradas y Salidas, Registro de Libros de Acervo e Inventario de Libros.</div>
-            <a href="assets/certificados/carta.pdf" target="_blank" rel="noopener" class="recognition__link">
-              <span data-i18n="view_letter">Ver Carta</span> →
+          <div class="side__grid">
+            <a class="proj" href="https://gestion-de-libros-de-acervo.onrender.com/" target="_blank" rel="noopener" data-reveal>
+              <span class="proj__n mono">P-01</span>
+              <h3 class="proj__t serif" data-i18n="p1_t">Gestión de libros de acervo</h3>
+              <p class="proj__d" data-i18n="p1_d">Préstamos con monitoreo en tiempo real, tablero analítico, reportes PDF y Excel e importación masiva.</p>
+              <p class="proj__s mono">Flask · SQL Server · Pandas · Chart.js</p>
+              <span class="proj__go" aria-hidden="true">↗</span>
             </a>
-          </div>
-          <div class="recognition">
-            <div class="recognition__title" data-i18n="egel_award">EGEL-CENEVAL</div>
-            <div class="recognition__desc" data-i18n="egel_desc">Testimonio de Desempeño Sobresaliente en el EGEL de Ciencias Computacionales, otorgado por CENEVAL.</div>
-            <a href="assets/certificados/EGEL.pdf" target="_blank" rel="noopener" class="recognition__link">
-              <span data-i18n="view_certificate">Ver Reconocimiento</span> →
+            <a class="proj" href="https://registros-entradas-salidas-dqkv.onrender.com/" target="_blank" rel="noopener" data-reveal style="--d:.06s">
+              <span class="proj__n mono">P-02</span>
+              <h3 class="proj__t serif" data-i18n="p2_t">Registro de entradas y salidas</h3>
+              <p class="proj__d" data-i18n="p2_d">Control de asistencia con roles, estadísticas, reportes y cierre automático de sesiones.</p>
+              <p class="proj__s mono">Flask · SQL Server · bcrypt</p>
+              <span class="proj__go" aria-hidden="true">↗</span>
+            </a>
+            <a class="proj" href="assets/demo/demo.mp4" target="_blank" rel="noopener" data-reveal style="--d:.12s">
+              <span class="proj__n mono">P-03</span>
+              <h3 class="proj__t serif" data-i18n="p3_t">Inventario de libros</h3>
+              <p class="proj__d" data-i18n="p3_d">Aplicación de escritorio con escaneo de códigos, búsqueda sin acentos, fusión de bases y cinco reportes.</p>
+              <p class="proj__s mono">Tkinter · SQLite · PyInstaller</p>
+              <span class="proj__go" aria-hidden="true">▶</span>
+            </a>
+            <a class="proj" href="https://rtimer.pages.dev/" target="_blank" rel="noopener" data-reveal style="--d:.18s">
+              <span class="proj__n mono">P-04</span>
+              <h3 class="proj__t serif" data-i18n="p4_t">Cronómetro para speedcubing</h3>
+              <p class="proj__d" data-i18n="p4_d">Timer web con inspección, estadísticas y visualización del cubo.</p>
+              <p class="proj__s mono">React · JavaScript</p>
+              <span class="proj__go" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
 
-        <h3 class="subsection-title" data-i18n="testimonials">Testimonios</h3>
-        <div class="testimonial">
-          <span class="testimonial__quote-mark" aria-hidden="true">"</span>
-          <p class="testimonial__text" data-i18n="testimonial1_text">
-            "Jesús Garza demostró ser un elemento muy valioso por su gran responsabilidad y atención al detalle. Su iniciativa y compromiso superaron las expectativas, logrando mejoras significativas en los procesos internos de nuestra Biblioteca."
-          </p>
-          <p class="testimonial__author">
-            <strong data-i18n="testimonial1_name">Dra. Aleida Magdalena Gil González</strong>
-            <br>
-            <span data-i18n="testimonial1_position">Subdirectora de Calidad e Innovación Educativa, FCFM - UANL</span>
-          </p>
-        </div>
-      </section>
+        <figure class="quote" data-reveal>
+          <span class="quote__mark serif" aria-hidden="true">“</span>
+          <blockquote class="quote__text serif" data-i18n="q_text">Demostró ser un elemento muy valioso por su gran responsabilidad y atención al detalle. Su iniciativa y compromiso superaron las expectativas, logrando mejoras significativas en los procesos internos de nuestra Biblioteca.</blockquote>
+          <figcaption class="quote__by">
+            <strong>Dra. Aleida Magdalena Gil González</strong>
+            <span data-i18n="q_role">Subdirectora de Calidad e Innovación Educativa · FCFM, UANL</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
 
-      <!-- ── CONTACT ────────────────────────────────── -->
-      <section class="section" id="contact" data-reveal>
-        <div class="section__prompt" aria-hidden="true">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">mail jesus@portfolio</span>
-        </div>
+    <section class="sec contact" id="contacto" aria-labelledby="ctTitle">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow" data-reveal><b>§ 05</b> <span data-i18n="ct_eyebrow">Contacto</span></p>
+          <h2 class="h2" id="ctTitle" data-split data-i18n="ct_title">¿Tu Odoo tiene que <em>cumplir</em> con algo?</h2>
+          <p class="lead" data-reveal data-i18n="ct_lead">Módulos nuevos, migraciones a Odoo 19, complementos que el PAC rechaza o una nómina que no cuadra con el IMSS. Cuéntame qué necesitas.</p>
+        </header>
 
-        <h2 class="section-title">
-          <span class="section-title__num">07_</span><span data-i18n="contact_title">Trabajemos juntos</span>
-        </h2>
-
-        <p class="output" data-i18n="contact_intro">
-          ¿Tienes un proyecto en mente o quieres colaborar? No dudes en contactarme.
-        </p>
-
-        <div class="contact-links">
-          <a href="mailto:jesusgarzacia@hotmail.com" class="contact-link">
-            <span class="contact-link__key">mail</span>
-            <span class="contact-link__val">jesusgarzacia@hotmail.com</span>
-            <span class="contact-link__arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener" class="contact-link">
-            <span class="contact-link__key">github</span>
-            <span class="contact-link__val">github.com/jesusgarzag</span>
-            <span class="contact-link__arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener" class="contact-link">
-            <span class="contact-link__key">linkedin</span>
-            <span class="contact-link__val">linkedin.com/in/jesusgarzacia</span>
-            <span class="contact-link__arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <form class="mail" id="form-contacto" action="https://formspree.io/f/xzzgdodw" method="POST">
-          <div class="mail__header">
-            <div class="mail__header-row">
-              <label class="mail__label" for="mail-from">From:</label>
-              <input class="mail__input" type="text" id="mail-from" name="name" required
-                     placeholder="Tu nombre">
+        <div class="contact__grid">
+          <form class="cfdi" id="form-contacto" action="https://formspree.io/f/xzzgdodw" method="POST" data-reveal novalidate>
+            <div class="cfdi__head">
+              <div>
+                <p class="cfdi__type mono" data-i18n="form_type">Solicitud de propuesta</p>
+                <p class="cfdi__serie mono"><span data-i18n="form_serie">Serie P · Folio</span> <span id="formFolio">0001</span></p>
+              </div>
+              <div class="cfdi__rfc mono">
+                <span data-i18n="form_to">Receptor</span>
+                <strong>Jesús Garza</strong>
+              </div>
             </div>
-            <div class="mail__header-row">
-              <label class="mail__label" for="mail-reply">Reply:</label>
-              <input class="mail__input" type="email" id="mail-reply" name="email" required
-                     placeholder="tu@email.com">
+            <div class="cfdi__grid">
+              <label class="field">
+                <span class="field__l mono" data-i18n="form_name">Emisor · tu nombre</span>
+                <input class="field__i" type="text" name="name" required autocomplete="name" placeholder="Nombre y empresa" data-i18n-attr="placeholder:form_name_ph">
+              </label>
+              <label class="field">
+                <span class="field__l mono" data-i18n="form_email">Correo de respuesta</span>
+                <input class="field__i" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="tu@empresa.com" data-i18n-attr="placeholder:form_email_ph">
+              </label>
+              <label class="field field--full">
+                <span class="field__l mono" data-i18n="form_subject">Concepto · asunto</span>
+                <input class="field__i" type="text" name="affair" required placeholder="Migración a Odoo 19, CFDI, nómina…" data-i18n-attr="placeholder:form_subject_ph">
+              </label>
+              <label class="field field--full">
+                <span class="field__l mono" data-i18n="form_msg">Descripción</span>
+                <textarea class="field__i field__i--ta" name="message" rows="5" required placeholder="Cuéntame el problema, la versión de Odoo y para cuándo lo necesitas." data-i18n-attr="placeholder:form_msg_ph"></textarea>
+              </label>
             </div>
-            <div class="mail__header-row">
-              <label class="mail__label" for="mail-subject">Subject:</label>
-              <input class="mail__input" type="text" id="mail-subject" name="affair" required
-                     placeholder="Asunto del mensaje">
+            <div class="cfdi__foot">
+              <p class="cfdi__hint mono"><span data-i18n="form_hint">Enviar con</span> <kbd>Ctrl</kbd>+<kbd>Enter</kbd></p>
+              <button type="submit" class="btn btn--primary" id="formSubmit">
+                <span class="btn__label" data-i18n="form_send">Timbrar y enviar</span>
+                <span class="btn__arrow" aria-hidden="true">→</span>
+              </button>
             </div>
-          </div>
-          <div class="mail__body">
-            <textarea class="mail__textarea" id="mail-body" name="message" rows="6" required
-                      placeholder="Escribe tu mensaje aquí..."></textarea>
-          </div>
-          <div class="mail__foot">
-            <span class="mail__hint">
-              <span data-i18n="mail_hint_send">Enviar</span> <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
-            </span>
-            <button type="submit" class="btn btn--primary" id="mailSubmit">
-              <span class="mail__btn-label" data-i18n="send_message">Enviar Mensaje</span>
-              <span class="btn__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-          <div class="mail__status" id="mailStatus" role="status" aria-live="polite" hidden></div>
-        </form>
-      </section>
+            <p class="cfdi__status" id="formStatus" role="status" aria-live="polite" hidden></p>
+            <div class="cfdi__stamp" id="formStamp" aria-hidden="true">
+              <span class="mono" data-i18n="form_stamped">Timbrado</span>
+              <strong class="mono" id="formUuid">—</strong>
+            </div>
+            <div class="cfdi__micro microtext" aria-hidden="true">sello digital del emisor · cadena original del complemento de certificación digital del sat · sello digital del emisor · cadena original del complemento de certificación digital del sat</div>
+          </form>
 
-      <!-- ── FOOTER ─────────────────────────────────── -->
-      <footer class="footer">
-        <span class="footer__exit" data-i18n="footer_exit">exit 0</span>
-        <span id="copyright"></span>
-      </footer>
-
-    </main>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       COLORSCHEME PICKER
-       ════════════════════════════════════════════════════ -->
-  <div class="scheme-picker" id="schemePicker" role="dialog" aria-modal="true" aria-label="Color scheme">
-    <div class="scheme-picker__box">
-      <header class="scheme-picker__head">
-        <div class="branches__prompt">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">:colorscheme</span>
-        </div>
-        <button class="branches__close" id="closeScheme" aria-label="Close">×</button>
-      </header>
-      <div class="scheme-picker__list" id="schemeList">
-        <button class="scheme" data-scheme="dark">
-          <span class="scheme__bar"
-            style="--c1:#0c0c0d;--c2:#141416;--c3:#1a1a1c;--c4:#e6b450;--c5:#7fb069;"></span>
-          <span class="scheme__name">terminal-dark</span>
-          <span class="scheme__desc">default · ámbar cálido</span>
-        </button>
-        <button class="scheme" data-scheme="light">
-          <span class="scheme__bar"
-            style="--c1:#faf9f6;--c2:#f0eee8;--c3:#e8e6df;--c4:#a86a2c;--c5:#4a7a3a;"></span>
-          <span class="scheme__name">terminal-light</span>
-          <span class="scheme__desc">paper · solarized-ish</span>
-        </button>
-        <button class="scheme" data-scheme="nord">
-          <span class="scheme__bar"
-            style="--c1:#2e3440;--c2:#3b4252;--c3:#434c5e;--c4:#88c0d0;--c5:#a3be8c;"></span>
-          <span class="scheme__name">nord</span>
-          <span class="scheme__desc">arctic · frost cyan</span>
-        </button>
-        <button class="scheme" data-scheme="gruvbox">
-          <span class="scheme__bar"
-            style="--c1:#282828;--c2:#32302f;--c3:#3c3836;--c4:#fabd2f;--c5:#b8bb26;"></span>
-          <span class="scheme__name">gruvbox</span>
-          <span class="scheme__desc">retro · warm yellow</span>
-        </button>
-        <button class="scheme" data-scheme="dracula">
-          <span class="scheme__bar"
-            style="--c1:#282a36;--c2:#343746;--c3:#44475a;--c4:#bd93f9;--c5:#50fa7b;"></span>
-          <span class="scheme__name">dracula</span>
-          <span class="scheme__desc">vibrant · purple</span>
-        </button>
-        <button class="scheme" data-scheme="tokyo-night">
-          <span class="scheme__bar"
-            style="--c1:#1a1b26;--c2:#1f2335;--c3:#24283b;--c4:#7aa2f7;--c5:#9ece6a;"></span>
-          <span class="scheme__name">tokyo-night</span>
-          <span class="scheme__desc">night · electric blue</span>
-        </button>
-        <button class="scheme" data-scheme="catppuccin">
-          <span class="scheme__bar"
-            style="--c1:#1e1e2e;--c2:#181825;--c3:#313244;--c4:#f5c2e7;--c5:#a6e3a1;"></span>
-          <span class="scheme__name">catppuccin</span>
-          <span class="scheme__desc">mocha · pastel pink</span>
-        </button>
-        <button class="scheme" data-scheme="solarized">
-          <span class="scheme__bar"
-            style="--c1:#fdf6e3;--c2:#f0eacf;--c3:#eee8d5;--c4:#b58900;--c5:#859900;"></span>
-          <span class="scheme__name">solarized</span>
-          <span class="scheme__desc">light · ethan schoonover</span>
-        </button>
-      </div>
-      <footer class="branches__foot">
-        <span class="branches__hint"><kbd>Esc</kbd> <span data-i18n="branches_close">cerrar</span></span>
-        <span class="branches__count">8 schemes</span>
-      </footer>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       BUILD LOG — `./build`
-       ════════════════════════════════════════════════════ -->
-  <div class="build" id="buildOverlay" role="dialog" aria-modal="true" aria-label="Build log">
-    <div class="build__box">
-      <header class="build__head">
-        <div class="branches__prompt">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">./build --all</span>
-        </div>
-        <button class="branches__close" id="closeBuild" aria-label="Close">×</button>
-      </header>
-      <div class="build__log" id="buildLog" aria-live="polite"></div>
-      <footer class="build__foot" id="buildFoot">
-        <span class="build__status">queued</span>
-      </footer>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       VIM — `vim ~/modules/...`
-       ════════════════════════════════════════════════════ -->
-  <div class="vim" id="vimOverlay" role="dialog" aria-modal="true" aria-label="Vim">
-    <div class="vim__box">
-      <header class="vim__tabs">
-        <span class="vim__tab is-active">aged_days.py</span>
-        <span class="vim__tab">__manifest__.py</span>
-        <span class="vim__tab">report.xml</span>
-        <button class="branches__close" id="closeVim" aria-label="Close" style="margin-left:auto;">×</button>
-      </header>
-      <pre class="vim__buffer" id="vimBuffer"></pre>
-      <footer class="vim__status">
-        <span class="vim__mode">NORMAL</span>
-        <span class="vim__file">aged_days.py</span>
-        <span class="vim__meta" id="vimMeta">utf-8 · py · ln 42 · 100%</span>
-      </footer>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       HIRE — `./hire`
-       ════════════════════════════════════════════════════ -->
-  <div class="hire" id="hireOverlay" role="dialog" aria-modal="true" aria-label="Hire info">
-    <div class="hire__box">
-      <header class="hire__head">
-        <div class="branches__prompt">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">./hire --info-pack</span>
-        </div>
-        <button class="branches__close" id="closeHire" aria-label="Close">×</button>
-      </header>
-      <div class="hire__body">
-        <h3 class="hire__title">Info pack para reclutadores</h3>
-        <dl class="hire__grid">
-          <dt>role</dt>           <dd>Backend Engineer · Odoo Specialist</dd>
-          <dt>availability</dt>   <dd><span class="hire__pill hire__pill--ok">accepting work</span></dd>
-          <dt>modes</dt>          <dd>remote · hybrid (MTY) · part-time · freelance</dd>
-          <dt>location</dt>       <dd>Monterrey, MX · UTC-6 · willing to overlap PT/CT/ET</dd>
-          <dt>languages</dt>      <dd>Spanish (native) · English (advanced, C1)</dd>
-          <dt>core stack</dt>     <dd>Python · PostgreSQL · Odoo 17/18/19 · Owl · QWeb · XML-RPC</dd>
-          <dt>specialty</dt>      <dd>Mexican localization (CFDI 4.0, SAT, DIOT, REP, pedimentos, PTU)</dd>
-          <dt>experience</dt>     <dd>23+ modules in production · 10 companies · 6 functional areas</dd>
-          <dt>certifications</dt> <dd>Red Hat RHCSA (RH124 + RH134) · Ansible (RH294)</dd>
-          <dt>education</dt>      <dd>BSc Computer Science · UANL FCFM · EGEL Outstanding</dd>
-        </dl>
-        <h3 class="hire__title hire__title--mt">Quick links</h3>
-        <div class="hire__links">
-          <a href="mailto:jesusgarzacia@hotmail.com" class="hire__link">$ <span class="ansi-cyan">mail</span> · jesusgarzacia@hotmail.com</a>
-          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener" class="hire__link">$ <span class="ansi-cyan">linkedin</span> · /in/jesusgarzacia</a>
-          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener" class="hire__link">$ <span class="ansi-cyan">gh</span> · /jesusgarzag</a>
-          <a href="#" class="hire__link" id="hireCv">$ <span class="ansi-cyan">cv</span> · download résumé (es / en)</a>
+          <aside class="reach" data-reveal>
+            <a class="reach__row" href="mailto:jesusgarzacia@hotmail.com">
+              <span class="reach__k mono">mail</span>
+              <span class="reach__v">jesusgarzacia@hotmail.com</span>
+              <button type="button" class="reach__copy mono" data-copy="jesusgarzacia@hotmail.com" data-i18n="copy">copiar</button>
+            </a>
+            <a class="reach__row" href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener">
+              <span class="reach__k mono">linkedin</span>
+              <span class="reach__v">/in/jesusgarzacia</span>
+              <span class="reach__go" aria-hidden="true">↗</span>
+            </a>
+            <a class="reach__row" href="https://github.com/jesusgarzag" target="_blank" rel="noopener">
+              <span class="reach__k mono">github</span>
+              <span class="reach__v">/jesusgarzag</span>
+              <span class="reach__go" aria-hidden="true">↗</span>
+            </a>
+            <div class="reach__cv">
+              <a class="btn btn--ghost btn--sm" href="assets/certificados/cv_es.pdf" download><span>CV · ES</span></a>
+              <a class="btn btn--ghost btn--sm" href="assets/certificados/cv_en.pdf" download><span>CV · EN</span></a>
+            </div>
+            <div class="qr">
+              <img class="qr__img" src="assets/vcard-qr.svg" width="132" height="132" alt="Código QR con mi tarjeta de contacto" data-i18n-attr="alt:qr_alt">
+              <div>
+                <p class="qr__t serif" data-i18n="qr_t">Guarda mi contacto</p>
+                <p class="qr__d muted" data-i18n="qr_d">Escanéalo con la cámara del teléfono: agrega nombre, correo y enlaces a tus contactos.</p>
+                <a class="qr__dl mono" href="assets/jesus-garza.vcf" download data-i18n="qr_dl">o descarga la tarjeta .vcf</a>
+              </div>
+            </div>
+            <p class="reach__where mono"><span class="dot dot--live" aria-hidden="true"></span><span id="localTime">Monterrey · UTC−6</span></p>
+          </aside>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- ════════════════════════════════════════════════════
-       MAN PAGE — `man jesus`
-       ════════════════════════════════════════════════════ -->
-  <div class="man" id="manPage" role="dialog" aria-modal="true" aria-label="man jesus">
-    <div class="man__box">
-      <header class="man__topbar">
-        <span class="man__title">JESUS(1)</span>
-        <span class="man__title">User Commands</span>
-        <span class="man__title">JESUS(1)</span>
-        <button class="branches__close" id="closeMan" aria-label="Close" style="position:absolute;right:12px;top:8px;">×</button>
-      </header>
-
-      <article class="man__body">
-
-        <h3 class="man__sec">NAME</h3>
-        <p class="man__p"><b>jesus.garza</b> — backend developer specialized in Odoo and Python ecosystems.</p>
-
-        <h3 class="man__sec">SYNOPSIS</h3>
-        <pre class="man__pre">jesus.garza [<i>OPTIONS</i>] &lt;<i>project</i>&gt; [<i>arguments</i>...]</pre>
-
-        <h3 class="man__sec">DESCRIPTION</h3>
-        <p class="man__p">
-          <b>jesus.garza</b> is a Mexican backend developer (b. Monterrey, NL).
-          Builds custom modules and integrations for the Odoo ERP, with a focus on Mexican
-          fiscal compliance (CFDI 4.0, SAT, DIOT), customs (pedimentos), payroll, and
-          inventory traceability. Reads Linux man pages for fun.
-        </p>
-        <p class="man__p">
-          Currently maintains <b>23+ modules</b> in production for <b>10 companies</b>,
-          across Odoo versions <b>17, 18 and 19</b>.
-        </p>
-
-        <h3 class="man__sec">OPTIONS</h3>
-        <dl class="man__dl">
-          <dt>-l, --language</dt>   <dd>Spanish (native), English (advanced).</dd>
-          <dt>-s, --stack</dt>      <dd>Python · PostgreSQL · Odoo ORM · Owl · QWeb · XML-RPC · REST.</dd>
-          <dt>-c, --certifications</dt><dd>RH124 · RH134 · RH294 (Ansible). EGEL-CENEVAL Outstanding.</dd>
-          <dt>-t, --timezone</dt>   <dd>America/Monterrey · UTC-6.</dd>
-          <dt>--available</dt>      <dd>Currently accepting work.</dd>
-        </dl>
-
-        <h3 class="man__sec">EXAMPLES</h3>
-        <pre class="man__pre">$ jesus.garza --hire        <span class="dim"># initiate contact via mail</span>
-$ jesus.garza --see-modules <span class="dim"># scroll to ls -la modules/</span>
-$ jesus.garza --see-projects <span class="dim"># scroll to cat projects.json</span></pre>
-
-        <h3 class="man__sec">FILES</h3>
-        <pre class="man__pre"><span class="ansi-cyan">~/about.md</span>          biography &amp; intro
-<span class="ansi-cyan">~/experience/</span>       roles, dates, responsibilities
-<span class="ansi-cyan">~/modules/odoo/</span>     23 production-grade Odoo modules
-<span class="ansi-cyan">~/projects.json</span>     side projects (open source &amp; web)
-<span class="ansi-cyan">~/.cv.pdf</span>           résumé (es / en)</pre>
-
-        <h3 class="man__sec">ENVIRONMENT</h3>
-        <dl class="man__dl">
-          <dt>EDITOR</dt>     <dd>vim</dd>
-          <dt>SHELL</dt>      <dd>/bin/zsh</dd>
-          <dt>TERM</dt>       <dd>xterm-256color · tmux</dd>
-          <dt>LANG</dt>       <dd>es_MX.UTF-8</dd>
-        </dl>
-
-        <h3 class="man__sec">DIAGNOSTICS</h3>
-        <p class="man__p">
-          Exits <b>0</b> when the deliverable matches the spec, edge cases included.
-          Exits <b>1</b> when the spec is wrong; opens an issue, suggests a fix, ships the fix.
-        </p>
-
-        <h3 class="man__sec">SEE ALSO</h3>
-        <p class="man__p">
-          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener">github(1)</a>,
-          <a href="https://www.linkedin.com/in/jesusgarzacia" target="_blank" rel="noopener">linkedin(1)</a>,
-          <a href="mailto:jesusgarzacia@hotmail.com">mail(1)</a>
-        </p>
-
-        <h3 class="man__sec">BUGS</h3>
-        <p class="man__p">
-          Occasionally writes overly clever Odoo overrides. Report at
-          <a href="https://github.com/jesusgarzag" target="_blank" rel="noopener">github.com/jesusgarzag</a>.
-        </p>
-
-        <h3 class="man__sec">AUTHOR</h3>
-        <p class="man__p">Jesús Gerardo Garza García &lt;jesusgarzacia@hotmail.com&gt;</p>
-
-        <p class="man__footer">Monterrey · 2026 &nbsp;·&nbsp; JESUS(1)</p>
-      </article>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       HTOP — fake top with 10 client processes
-       ════════════════════════════════════════════════════ -->
-  <div class="htop" id="htopOverlay" role="dialog" aria-modal="true" aria-label="htop">
-    <div class="htop__box">
-      <header class="htop__head">
-        <div class="branches__prompt">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">htop</span>
-        </div>
-        <button class="branches__close" id="closeHtop" aria-label="Close">×</button>
-      </header>
-
-      <div class="htop__bars">
-        <div class="htop__bar"><span>CPU[</span><span class="htop__bar-track" data-load="62"></span><span class="htop__bar-num">62.0%</span><span>]</span></div>
-        <div class="htop__bar"><span>MEM[</span><span class="htop__bar-track" data-load="48"></span><span class="htop__bar-num">3.8/8.0G</span><span>]</span></div>
-        <div class="htop__meta">
-          <span>Tasks: <b>10</b></span>
-          <span>Load: 1.07 1.12 1.05</span>
-          <span>Uptime: 17m · 10c · 6a</span>
+  <footer class="ftr">
+    <div class="guilloche-band" aria-hidden="true"></div>
+    <div class="wrap ftr__inner">
+      <div class="ftr__brand">
+        <svg class="ftr__seal" viewBox="0 0 40 40" aria-hidden="true"><use href="#seal-mini"/></svg>
+        <div>
+          <p class="serif ftr__name">Jesús Garza</p>
+          <p class="muted" data-i18n="ftr_role">Desarrollador Odoo para México</p>
         </div>
       </div>
-
-      <table class="htop__table" aria-label="Client processes">
-        <thead>
-          <tr>
-            <th>PID</th><th>USER</th><th>CPU%</th><th>MEM%</th><th>TIME+</th><th class="htop__name-col">COMMAND</th>
-          </tr>
-        </thead>
-        <tbody id="htopRows">
-          <tr data-cpu="22"><td>1001</td><td>avalia</td><td class="cpu">22.4</td><td>14.1</td><td>9:32:11</td><td>odoo-bin -d avalia · finanzas</td></tr>
-          <tr data-cpu="14"><td>1002</td><td>dimex</td><td class="cpu">14.3</td><td>10.7</td><td>4:18:45</td><td>odoo-bin -d dimex · fiscal</td></tr>
-          <tr data-cpu="11"><td>1003</td><td>casaguerra</td><td class="cpu">11.2</td><td> 8.5</td><td>3:55:09</td><td>odoo-bin -d casaguerra · facturación</td></tr>
-          <tr data-cpu="9"> <td>1004</td><td>cosesa</td><td class="cpu"> 9.1</td><td> 6.3</td><td>2:41:00</td><td>odoo-bin -d cosesa · contabilidad</td></tr>
-          <tr data-cpu="8"> <td>1005</td><td>forrajera</td><td class="cpu"> 8.4</td><td> 5.9</td><td>2:12:33</td><td>odoo-bin -d forrajera · inventario</td></tr>
-          <tr data-cpu="7"> <td>1006</td><td>recavisa</td><td class="cpu"> 7.6</td><td> 5.2</td><td>1:55:22</td><td>odoo-bin -d recavisa · aduanas</td></tr>
-          <tr data-cpu="5"> <td>1007</td><td>interenter</td><td class="cpu"> 5.1</td><td> 4.0</td><td>1:30:08</td><td>odoo-bin -d interenter · almacén</td></tr>
-          <tr data-cpu="4"> <td>1008</td><td>fgh</td><td class="cpu"> 4.2</td><td> 3.5</td><td>0:58:14</td><td>odoo-bin -d fgh · ventas</td></tr>
-          <tr data-cpu="3"> <td>1009</td><td>invent</td><td class="cpu"> 3.0</td><td> 2.8</td><td>0:42:51</td><td>odoo-bin -d invent · compras</td></tr>
-          <tr data-cpu="2"> <td>1010</td><td>ikigai</td><td class="cpu"> 2.7</td><td> 2.1</td><td>0:31:07</td><td>ikigai-edi · odoo → middleware (944/945)</td></tr>
-        </tbody>
-      </table>
-
-      <footer class="htop__foot">
-        <span><kbd>F1</kbd> Help</span>
-        <span><kbd>F3</kbd> Search</span>
-        <span><kbd>F5</kbd> Tree</span>
-        <span><kbd>F9</kbd> Kill</span>
-        <span><kbd>F10</kbd>/<kbd>q</kbd>/<kbd>Esc</kbd> Quit</span>
-      </footer>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       BRANCH PICKER (other portfolio versions)
-       ════════════════════════════════════════════════════ -->
-  <div class="branches" id="branches" role="dialog" aria-modal="true" aria-label="Other portfolio versions">
-    <div class="branches__box">
-      <header class="branches__head">
-        <div class="branches__prompt">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">git branch -v</span>
-        </div>
-        <button class="branches__close" id="closeBranches" aria-label="Close">×</button>
-      </header>
-
-      <p class="branches__intro" data-i18n="branches_intro">
-        Cada rama es una versión completa del portafolio. Selecciona una para visitarla.
-      </p>
-
-      <div class="branches__list">
-
-        <!-- v3 terminal — current -->
-        <a class="branch is-current" href="https://jesusgarza.pages.dev/" target="_blank" rel="noopener">
-          <div class="branch__side">
-            <span class="branch__marker">*</span>
-            <span class="branch__hash">a3e7c91</span>
-          </div>
-          <div class="branch__main">
-            <header class="branch__head">
-              <span class="branch__name">terminal</span>
-              <span class="branch__tag">v3 · 2026</span>
-            </header>
-            <p class="branch__desc" data-i18n="branch_terminal_desc">
-              Sesión de terminal. Tipografía mono, command palette (Ctrl+K), prompts y status bar tipo vim.
-            </p>
-            <pre class="branch__ascii" aria-hidden="true">┌── jesus@portfolio:~ ──────┐
-│ $ whoami                  │
-│ &gt; Jesús Garza<span class="accent">_</span>             │
-│ ── neofetch ──            │
-│ os    Linux x86_64        │
-│ stack Python · Odoo       │
-└───────────────────────────┘</pre>
-            <span class="branch__cta" data-i18n="branch_current">// versión actual</span>
-          </div>
-        </a>
-
-        <!-- v2 minimalist -->
-        <a class="branch" href="https://minimalist.jesusgarza.pages.dev/" target="_blank" rel="noopener">
-          <div class="branch__side">
-            <span class="branch__marker">·</span>
-            <span class="branch__hash">e588c67</span>
-          </div>
-          <div class="branch__main">
-            <header class="branch__head">
-              <span class="branch__name">minimalist</span>
-              <span class="branch__tag">v2 · 2025</span>
-            </header>
-            <p class="branch__desc" data-i18n="branch_minimalist_desc">
-              Editorial. Secciones full-width, mucho espacio en blanco, sin decoración. Tipografía como protagonista.
-            </p>
-            <pre class="branch__ascii" aria-hidden="true">┌───────────────────────────┐
-│                           │
-│      Jesús Garza          │
-│      ─────────────        │
-│      Backend Developer    │
-│                           │
-│      ── about ──          │
-│      ── work ──           │
-└───────────────────────────┘</pre>
-            <span class="branch__cta">checkout →</span>
-          </div>
-        </a>
-
-        <!-- v1 gateway -->
-        <a class="branch" href="https://gateway.jesusgarza.pages.dev/" target="_blank" rel="noopener">
-          <div class="branch__side">
-            <span class="branch__marker">·</span>
-            <span class="branch__hash">f4de20f</span>
-          </div>
-          <div class="branch__main">
-            <header class="branch__head">
-              <span class="branch__name">gateway</span>
-              <span class="branch__tag">v1 · 2024</span>
-            </header>
-            <p class="branch__desc" data-i18n="branch_gateway_desc">
-              Split-panel sticky-left. Portal a dimensiones paralelas: WebGL Fluids (Navier-Stokes) y WebGPU Tubes.
-            </p>
-            <pre class="branch__ascii" aria-hidden="true">┌─────────────┬─────────────┐
-│             │             │
-│   panel     │   content   │
-│   sticky    │   scrolls   │
-│             │             │
-│   ◈ DIMS    │  ── about ──│
-│             │  ── work  ──│
-└─────────────┴─────────────┘</pre>
-            <span class="branch__cta">checkout →</span>
-          </div>
-        </a>
-
-      </div>
-
-      <footer class="branches__foot">
-        <span class="branches__hint">
-          <kbd>Esc</kbd> <span data-i18n="branches_close">cerrar</span>
-        </span>
-        <span class="branches__hint">
-          <kbd>Ctrl B</kbd> <span data-i18n="branches_toggle">alternar</span>
-        </span>
-        <span class="branches__count">3 branches</span>
-      </footer>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       RUBIK'S CUBE 2x2 — interactive
-       ════════════════════════════════════════════════════ -->
-  <div class="rubik" id="rubikOverlay" role="dialog" aria-modal="true" aria-label="Rubik cube" data-rb-mode="2">
-    <div class="rubik__box">
-      <header class="rubik__head">
-        <div class="branches__prompt">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">./rubik</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:var(--sp-2);">
-          <div class="rubik__mode" role="group" aria-label="Cube size">
-            <button data-rb-mode="2" class="is-active" aria-pressed="true">2×2</button>
-            <button data-rb-mode="3" aria-pressed="false">3×3</button>
-          </div>
-          <button class="branches__close" id="closeRubik" aria-label="Close">×</button>
-        </div>
-      </header>
-
-      <div class="rubik__stage">
-        <div class="rubik__scene">
-          <div class="rubik__cubies" id="rubikCubies"></div>
-        </div>
-      </div>
-
-      <div class="rubik__bar">
-        <div class="rubik__moves" id="rubikMovePad">
-          <button data-move="U">U</button>   <button data-move="Up">U'</button>
-          <button data-move="D">D</button>   <button data-move="Dp">D'</button>
-          <button data-move="L">L</button>   <button data-move="Lp">L'</button>
-          <button data-move="R">R</button>   <button data-move="Rp">R'</button>
-          <button data-move="F">F</button>   <button data-move="Fp">F'</button>
-          <button data-move="B">B</button>   <button data-move="Bp">B'</button>
-          <button data-move="M"  data-slice>M</button>   <button data-move="Mp" data-slice>M'</button>
-          <button data-move="E"  data-slice>E</button>   <button data-move="Ep" data-slice>E'</button>
-          <button data-move="S"  data-slice>S</button>   <button data-move="Sp" data-slice>S'</button>
-        </div>
-        <div class="rubik__actions">
-          <button class="btn btn--ghost" id="rubikScramble">scramble</button>
-          <button class="btn btn--ghost" id="rubikSolve">solve</button>
-          <button class="btn btn--ghost" id="rubikReset">reset</button>
-        </div>
-        <div class="rubik__stats">
-          <span class="rubik__stat"><span class="rubik__stat-key">time:</span> <span id="rubikTime">00:00.00</span></span>
-          <span class="rubik__stat"><span class="rubik__stat-key">pb:</span> <span id="rubikPB">—</span></span>
-          <span class="rubik__stat"><span class="rubik__stat-key">moves:</span> <span id="rubikCount">0</span></span>
-          <span class="rubik__stat"><span class="rubik__stat-key">last:</span> <span id="rubikLast">—</span></span>
-        </div>
-      </div>
-
-      <footer class="branches__foot">
-        <span class="branches__hint" data-i18n="rubik_hint_keys">teclas U D L R F B · shift = inverso · S=scramble · 0=reset</span>
-      </footer>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       DEV PANEL (logo x5 click)
-       ════════════════════════════════════════════════════ -->
-  <div class="dev-panel" id="devPanel" role="dialog" aria-label="Dev stats">
-    <div class="dev-panel__head">
-      <span>// dev_panel</span>
-      <span class="dev-panel__close" id="closeDev" role="button" aria-label="Close">×</span>
-    </div>
-    <dl class="dev-panel__body">
-      <dt>scheme</dt><dd id="devScheme">dark</dd>
-      <dt>lang</dt><dd id="devLang">es</dd>
-      <dt>viewport</dt><dd id="devVp">—</dd>
-      <dt>dpr</dt><dd id="devDpr">—</dd>
-      <dt>load</dt><dd id="devLoad">—</dd>
-      <dt>html bytes</dt><dd id="devHtml">—</dd>
-      <dt>memory</dt><dd id="devMem">—</dd>
-      <dt>connection</dt><dd id="devConn">—</dd>
-      <div class="dev-panel__row">
-        <small>build: <span id="devBuild">terminal v3.0 · 2026</span></small>
-      </div>
-    </dl>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       KEYBOARD CHEATSHEET
-       ════════════════════════════════════════════════════ -->
-  <div class="cheatsheet" id="cheatsheetOverlay" role="dialog" aria-modal="true" aria-label="Keyboard cheatsheet">
-    <div class="cheatsheet__box">
-      <header class="cheatsheet__head">
-        <div class="branches__prompt">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">help --keys</span>
-        </div>
-        <button class="branches__close" id="closeCheatsheet" aria-label="Close">×</button>
-      </header>
-
-      <div class="cheatsheet__grid">
-        <section class="cheatsheet__group">
-          <h3 data-i18n="cheat_cat_overlays">Overlays</h3>
-          <ul>
-            <li><span><kbd>Ctrl</kbd>+<kbd>K</kbd></span><span data-i18n="cheat_palette">Command palette</span></li>
-            <li><span><kbd>Ctrl</kbd>+<kbd>B</kbd></span><span data-i18n="cheat_branches">Branch picker</span></li>
-            <li><span><kbd>Ctrl</kbd>+<kbd>H</kbd></span><span data-i18n="cheat_history">History overlay</span></li>
-            <li><span><kbd>?</kbd> o <kbd>/</kbd></span><span data-i18n="cheat_help">Este cheatsheet</span></li>
-            <li><span><kbd>Esc</kbd></span><span data-i18n="cheat_escape">Cerrar overlay activo</span></li>
-            <li><span><kbd>q</kbd></span><span data-i18n="cheat_q_htop">Salir de htop</span></li>
+      <div class="ftr__cols">
+        <div>
+          <p class="ftr__h mono" data-i18n="ftr_versions">Versiones de este sitio</p>
+          <ul class="ftr__list">
+            <li><span class="ftr__cur mono">v4</span> <span data-i18n="ftr_v4">sello · actual</span></li>
+            <li><a href="https://terminal.jesusgarza.pages.dev/" target="_blank" rel="noopener"><span class="mono">v3</span> terminal</a></li>
+            <li><a href="https://minimalist.jesusgarza.pages.dev/" target="_blank" rel="noopener"><span class="mono">v2</span> minimalist</a></li>
+            <li><a href="https://gateway.jesusgarza.pages.dev/" target="_blank" rel="noopener"><span class="mono">v1</span> gateway</a></li>
           </ul>
-        </section>
-
-        <section class="cheatsheet__group">
-          <h3 data-i18n="cheat_cat_navigation">Navegación</h3>
-          <ul>
-            <li><span><kbd>↑</kbd><kbd>↓</kbd></span><span data-i18n="cheat_arrows">Mover selección</span></li>
-            <li><span><kbd>Enter</kbd></span><span data-i18n="cheat_enter">Ejecutar comando seleccionado</span></li>
-            <li><span><kbd>Ctrl</kbd>+<kbd>Enter</kbd></span><span data-i18n="cheat_send_mail">Enviar formulario de contacto</span></li>
-          </ul>
-        </section>
-
-        <section class="cheatsheet__group">
-          <h3 data-i18n="cheat_cat_rubik">Rubik</h3>
-          <ul>
-            <li><span><kbd>U D L R F B</kbd></span><span data-i18n="cheat_rubik_faces">Giros de cara</span></li>
-            <li><span><kbd>Shift</kbd>+<kbd>U...B</kbd></span><span data-i18n="cheat_rubik_prime">Giro inverso</span></li>
-            <li><span><kbd>M E S</kbd></span><span data-i18n="cheat_rubik_slice">Slices en 3x3</span></li>
-            <li><span><kbd>Space</kbd></span><span data-i18n="cheat_rubik_scramble">Scramble</span></li>
-            <li><span><kbd>0</kbd></span><span data-i18n="cheat_rubik_reset">Reset</span></li>
-            <li><span><kbd>Double Click</kbd></span><span data-i18n="cheat_rubik_recenter">Recentrar cámara</span></li>
-            <li><span><kbd>Drag</kbd></span><span data-i18n="cheat_rubik_drag">Rotar cámara</span></li>
-          </ul>
-        </section>
-
-        <section class="cheatsheet__group">
-          <h3 data-i18n="cheat_cat_easter">Easter eggs</h3>
-          <ul>
-            <li><span><kbd>↑↑↓↓←→←→BA</kbd></span><span data-i18n="cheat_konami">Modo CRT</span></li>
-            <li><span><kbd>Logo ×5</kbd></span><span data-i18n="cheat_logo">Abrir dev panel</span></li>
-            <li><span><kbd>fortune</kbd></span><span data-i18n="cheat_fortune">Quote aleatoria al cargar</span></li>
-          </ul>
-        </section>
-      </div>
-
-      <footer class="branches__foot">
-        <span class="branches__hint"><kbd>Esc</kbd> <span data-i18n="branches_close">cerrar</span></span>
-        <span class="branches__count" data-i18n="cheat_total">17 shortcuts</span>
-      </footer>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════
-       COMMAND HISTORY
-       ════════════════════════════════════════════════════ -->
-  <div class="history" id="historyOverlay" role="dialog" aria-modal="true" aria-label="Command history">
-    <div class="history__box">
-      <header class="history__head">
-        <div class="branches__prompt">
-          <span class="prompt">
-            <span class="prompt__user">jesus</span><span class="prompt__at">@</span><span class="prompt__host">portfolio</span><span class="prompt__sep">:</span><span class="prompt__path">~</span><span class="prompt__sym">$</span>
-          </span>
-          <span class="prompt__cmd">history</span>
         </div>
-        <button class="branches__close" id="closeHistory" aria-label="Close">×</button>
-      </header>
-
-      <div class="history__body">
-        <p class="history__empty" id="historyEmpty" data-i18n="history_empty">Aún no ejecutas comandos desde el palette.</p>
-        <ol class="history__list" id="historyList"></ol>
+        <div>
+          <p class="ftr__h mono" data-i18n="ftr_shortcuts">Atajos</p>
+          <ul class="ftr__list">
+            <li><kbd>Ctrl</kbd> <kbd>K</kbd> <span data-i18n="ftr_k">paleta de comandos</span></li>
+            <li><kbd>`</kbd> <span data-i18n="ftr_console">consola</span></li>
+            <li><kbd>K</kbd> <span data-i18n="ftr_space">pausar el video visible</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="ftr__h mono" data-i18n="ftr_made">Hecho a mano</p>
+          <p class="ftr__made muted" data-i18n="ftr_made_v">HTML, CSS y JavaScript sin frameworks. Animaciones con GSAP, guilloché generado en canvas.</p>
+        </div>
       </div>
+    </div>
+    <div class="wrap ftr__base">
+      <span class="mono muted" id="copyright">© 2026 Jesús Garza</span>
+      <span class="microtext ftr__micro" aria-hidden="true">||1.1|jesus garza|desarrollador odoo|monterrey|cfdi 4.0|imss|sua|sat|banxico|sepomex|edi x12|as2|91 modulos|22 empresas||</span>
+      <a class="mono muted ftr__top" href="#top" data-i18n="ftr_top">Volver arriba ↑</a>
+    </div>
+  </footer>
 
-      <footer class="branches__foot">
-        <span class="branches__hint"><kbd>↑</kbd><kbd>↓</kbd> <span data-i18n="history_nav">navegar</span></span>
-        <span class="branches__hint"><kbd>Enter</kbd> <span data-i18n="history_run">ejecutar</span></span>
-        <span class="branches__hint"><kbd>Esc</kbd> <span data-i18n="branches_close">cerrar</span></span>
+  <div class="dialog code" id="codeDialog" role="dialog" aria-modal="true" aria-labelledby="codeTitle" hidden>
+    <div class="dialog__scrim" data-close></div>
+    <div class="dialog__box code__box">
+      <header class="code__head">
+        <div class="code__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <p class="code__file mono" id="codeTitle">archivo.py</p>
+        <div class="code__tabs" id="codeTabs" role="tablist"></div>
+        <button type="button" class="code__copy mono" id="codeCopy" data-i18n="copy">copiar</button>
+        <button type="button" class="icon-btn code__x" data-close aria-label="Cerrar" data-i18n-attr="aria-label:close">×</button>
+      </header>
+      <pre class="code__pre" id="codePre" tabindex="0"><code id="codeBody"></code></pre>
+      <footer class="code__foot mono">
+        <span data-i18n="code_note">Fragmento del código real del módulo, con nombres internos genéricos.</span>
+        <span id="codeMeta">python</span>
       </footer>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════════════════
-       STATUS BAR (vim-style)
-       ════════════════════════════════════════════════════ -->
-  <div class="statusbar" id="statusbar">
-    <div class="statusbar__left">
-      <span class="statusbar__mode" id="statusMode">NORMAL</span>
-      <span class="statusbar__sep">·</span>
-      <span id="statusFile">portfolio.md</span>
-    </div>
-    <div class="statusbar__center">
-      <span id="statusBranch">★ main</span>
-      <span class="statusbar__sep">·</span>
-      <span id="statusInfo">UTF-8 · LF · MD</span>
-    </div>
-    <div class="statusbar__right">
-      <span id="statusLine">ln 1, col 1</span>
-      <span class="statusbar__sep">·</span>
-      <span id="statusPct">0%</span>
+  <div class="dialog palette" id="palette" role="dialog" aria-modal="true" aria-label="Paleta de comandos" data-i18n-attr="aria-label:palette_label" hidden>
+    <div class="dialog__scrim" data-close></div>
+    <div class="dialog__box palette__box">
+      <label class="palette__field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input type="text" id="paletteInput" autocomplete="off" spellcheck="false" placeholder="Escribe un comando o busca un módulo…" data-i18n-attr="placeholder:palette_ph" role="combobox" aria-expanded="true" aria-controls="paletteList" aria-autocomplete="list">
+        <kbd>Esc</kbd>
+      </label>
+      <ul class="palette__list" id="paletteList" role="listbox"></ul>
+      <footer class="palette__foot mono">
+        <span><kbd>↑</kbd><kbd>↓</kbd> <span data-i18n="pal_nav">navegar</span></span>
+        <span><kbd>Enter</kbd> <span data-i18n="pal_run">ejecutar</span></span>
+        <span><kbd>`</kbd> <span data-i18n="ftr_console">consola</span></span>
+      </footer>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════════════════
-       COMMAND PALETTE
-       ════════════════════════════════════════════════════ -->
-  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette">
-    <div class="palette__box">
-      <div class="palette__input-row">
-        <input type="text" class="palette__input" id="paletteInput"
-               placeholder="Type a command..." autocomplete="off">
-      </div>
-      <div class="palette__list" id="paletteList"></div>
-      <div class="palette__hint">
-        <span class="palette__hint-group"><kbd>↑</kbd><kbd>↓</kbd><span>navigate</span></span>
-        <span class="palette__hint-group"><kbd>Enter</kbd><span>run</span></span>
-        <span class="palette__hint-group"><kbd>Esc</kbd><span>close</span></span>
-      </div>
+  <div class="console" id="console" role="dialog" aria-modal="false" aria-label="Consola" hidden>
+    <div class="console__bar mono">
+      <span class="console__title">jesus@sello: ~</span>
+      <button type="button" class="console__x" id="consoleClose" aria-label="Cerrar consola" data-i18n-attr="aria-label:close">×</button>
     </div>
+    <div class="console__log mono" id="consoleLog" aria-live="polite"></div>
+    <label class="console__line mono">
+      <span class="console__ps">jesus@sello:~$</span>
+      <input type="text" id="consoleInput" autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="Comando">
+    </label>
   </div>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/terminal.js"></script>
-  <script src="js/main.js"></script>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="seal-mini" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
+        <circle cx="20" cy="20" r="15.2" fill="none" stroke="currentColor" stroke-width=".6" stroke-dasharray="1.2 1.6" opacity=".7"/>
+        <g fill="none" stroke="var(--accent)" stroke-width=".55" opacity=".95">
+          <ellipse cx="20" cy="20" rx="12.5" ry="5.2"/>
+          <ellipse cx="20" cy="20" rx="12.5" ry="5.2" transform="rotate(30 20 20)"/>
+          <ellipse cx="20" cy="20" rx="12.5" ry="5.2" transform="rotate(60 20 20)"/>
+          <ellipse cx="20" cy="20" rx="12.5" ry="5.2" transform="rotate(90 20 20)"/>
+          <ellipse cx="20" cy="20" rx="12.5" ry="5.2" transform="rotate(120 20 20)"/>
+          <ellipse cx="20" cy="20" rx="12.5" ry="5.2" transform="rotate(150 20 20)"/>
+        </g>
+        <circle cx="20" cy="20" r="6.4" fill="var(--bg)"/>
+        <text x="20" y="22.6" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="7.4" font-weight="600" fill="currentColor">JG</text>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/MotionPathPlugin.min.js" defer></script>
+  <script src="js/vendor/DrawSVGPlugin.min.js" defer></script>
+  <script src="js/vendor/SplitText.min.js" defer></script>
+  <script src="js/vendor/ScrambleTextPlugin.min.js" defer></script>
+  <script src="js/vendor/CustomEase.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/guilloche.js" defer></script>
+  <script src="js/player.js" defer></script>
+  <script src="js/scenes/tesoreria.js" defer></script>
+  <script src="js/scenes/edi.js" defer></script>
+  <script src="js/scenes/cfdi.js" defer></script>
+  <script src="js/scenes/imss.js" defer></script>
+  <script src="js/scenes/ptu.js" defer></script>
+  <script src="js/scenes/banxico.js" defer></script>
+  <script src="js/scenes/sepomex.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/terminal.js" defer></script>
 </body>
 </html>

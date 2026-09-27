@@ -1,27 +1,19 @@
 {
-  "name": "Jesús Garza · Backend Developer",
-  "short_name": "jesus.garza",
-  "description": "Portafolio de Jesús Garza · Odoo Developer · Python · PostgreSQL · CFDI · REST APIs",
+  "name": "Jesús Garza · Desarrollador Odoo",
+  "short_name": "Jesús Garza",
+  "description": "Desarrollador Odoo para México: CFDI 4.0, nómina e IMSS, tesorería, EDI e integraciones. 91 módulos para 22 empresas.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#0c0c0d",
-  "theme_color": "#0c0c0d",
+  "orientation": "any",
+  "background_color": "#07090c",
+  "theme_color": "#07090c",
   "lang": "es-MX",
-  "categories": ["productivity", "developer", "portfolio"],
+  "categories": ["business", "developer", "portfolio"],
   "icons": [
-    {
-      "src": "assets/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/icon-maskable.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "maskable"
-    }
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
   ]
 }

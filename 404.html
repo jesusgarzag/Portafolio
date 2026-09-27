@@ -2,177 +2,181 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 | jesus@portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folio no encontrado · Jesús Garza</title>
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07090c">
+  <link rel="icon" type="image/svg+xml" href="/assets/icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Geist:wght@400..600&family=JetBrains+Mono:wght@400..600&display=swap">
   <style>
     :root {
-      --bg: #0c0c0d;
-      --bg-soft: #141416;
-      --text: #ededed;
-      --dim: #8f8f98;
-      --accent: #e6b450;
-      --error: #e07b7b;
-      --border: rgba(255, 255, 255, 0.16);
+      color-scheme: dark;
+      --bg: #07090c;
+      --bg-1: #0b0e13;
+      --fg: #ede7da;
+      --fg-2: #b9b3a6;
+      --fg-3: #858177;
+      --line: rgba(237, 231, 218, 0.12);
+      --accent: #ff5b3a;
     }
-
+    @media (prefers-color-scheme: light) {
+      :root {
+        color-scheme: light;
+        --bg: #f3eee4;
+        --bg-1: #ece6da;
+        --fg: #15171c;
+        --fg-2: #3c3f46;
+        --fg-3: #686a6e;
+        --line: rgba(21, 23, 28, 0.14);
+        --accent: #d8432a;
+      }
+    }
     * { box-sizing: border-box; }
-
+    html, body { height: 100%; }
     body {
       margin: 0;
-      min-height: 100vh;
       display: grid;
       place-items: center;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(230, 180, 80, 0.12), transparent 38%),
-        radial-gradient(circle at 78% 82%, rgba(127, 163, 216, 0.12), transparent 32%),
-        var(--bg);
-      color: var(--text);
-      font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", monospace;
-      padding: 20px;
+      padding: 24px 16px;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+      overflow: hidden;
     }
-
-    .nf {
-      width: min(760px, 100%);
-      border: 1px solid var(--border);
-      background: rgba(12, 12, 13, 0.9);
-      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
-      padding: 22px;
+    .rose {
+      position: fixed;
+      width: min(120vmin, 980px);
+      aspect-ratio: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.22;
+      animation: spin 120s linear infinite;
+      pointer-events: none;
     }
-
-    .nf__head {
-      color: var(--dim);
-      font-size: 12px;
+    @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .rose { animation: none; } }
+    .doc {
+      position: relative;
+      width: min(560px, 100%);
+      padding: 36px 32px 30px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: color-mix(in srgb, var(--bg-1) 88%, transparent);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    .k {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 18px;
+      color: var(--fg-3);
     }
-
-    .line {
-      margin: 0;
-      white-space: pre-wrap;
-      word-break: break-word;
-      line-height: 1.7;
-      font-size: 15px;
+    .k b { color: var(--accent); font-weight: 600; }
+    h1 {
+      margin: 18px 0 12px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 380;
+      font-size: clamp(2.6rem, 8vw, 3.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
     }
-
-    .prompt { color: var(--accent); }
-    .path { color: var(--text); }
-    .error { color: var(--error); }
-    .dim { color: var(--dim); }
-
-    .cmd {
-      display: flex;
+    h1 em { color: var(--accent); font-weight: 340; }
+    p { margin: 0; color: var(--fg-2); line-height: 1.6; }
+    .path {
+      margin-top: 18px;
+      padding: 12px 14px;
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 13px;
+      color: var(--fg-3);
+      overflow-wrap: anywhere;
+    }
+    .btn {
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px dashed var(--border);
-    }
-
-    .cmd__input {
-      flex: 1;
-      border: 0;
-      border-bottom: 1px dashed var(--border);
-      background: transparent;
-      color: var(--text);
-      font: inherit;
-      font-size: 15px;
-      padding: 4px 0;
-      outline: 0;
-    }
-
-    .cmd__input:focus {
-      border-bottom-color: var(--accent);
-    }
-
-    .cmd__btn {
-      border: 1px solid var(--border);
-      background: var(--bg-soft);
-      color: var(--text);
-      font: inherit;
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 8px 12px;
-      cursor: pointer;
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-
-    .cmd__btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .hint {
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--dim);
-    }
-
-    .hint a {
-      color: var(--accent);
+      margin-top: 24px;
+      height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #120604;
+      font-weight: 600;
       text-decoration: none;
-      border-bottom: 1px dashed transparent;
     }
-
-    .hint a:hover {
-      border-bottom-color: var(--accent);
+    .stamp {
+      position: absolute;
+      top: 26px;
+      right: 22px;
+      padding: 8px 14px 6px;
+      border: 3px double var(--accent);
+      border-radius: 10px;
+      color: var(--accent);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transform: rotate(-9deg);
+      opacity: 0.9;
     }
-
-    .shake {
-      animation: shake 0.25s linear 1;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-3px); }
-      75% { transform: translateX(3px); }
+    @media (max-width: 520px) {
+      .doc { padding: 40px 22px 26px; }
+      .stamp {
+        top: -18px;
+        right: 16px;
+        font-size: 11px;
+        background: var(--bg-1);
+      }
     }
   </style>
 </head>
 <body>
-  <main class="nf" aria-labelledby="nfTitle">
-    <div class="nf__head" id="nfTitle">404 :: not found</div>
-
-    <p class="line"><span class="prompt">$</span> cat <span class="path" id="missingPath">/unknown</span></p>
-    <p class="line error" id="errorLine">cat: /unknown: No such file or directory</p>
-
-    <form class="cmd" id="cdForm">
-      <span class="prompt" aria-hidden="true">$</span>
-      <input class="cmd__input" id="cdInput" autocomplete="off" spellcheck="false" value="cd /" aria-label="Terminal command">
-      <button class="cmd__btn" type="submit">run</button>
-    </form>
-
-    <p class="hint">Tip: enter <span class="dim">cd /</span> or go to <a href="/">/</a></p>
+  <svg class="rose" viewBox="0 0 400 400" aria-hidden="true">
+    <g fill="none" stroke="#3dd6a3" stroke-width=".6" id="petals"></g>
+    <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width=".8"/>
+  </svg>
+  <main class="doc">
+    <span class="stamp" id="stamp">No encontrado</span>
+    <p class="k"><b>404</b> · <span id="k">Folio fiscal inexistente</span></p>
+    <h1 id="t">Este documento <em>no existe</em>.</h1>
+    <p id="d">La dirección que buscas no está timbrada en este sitio. Revisa el enlace o vuelve al inicio.</p>
+    <p class="path" id="path">/</p>
+    <a class="btn" href="/" id="b">Volver al inicio <span aria-hidden="true">→</span></a>
   </main>
-
   <script>
     (function () {
-      var path = (location.pathname || '/') + (location.search || '') + (location.hash || '');
-      var safePath = path || '/';
-      var missingPath = document.getElementById('missingPath');
-      var errorLine = document.getElementById('errorLine');
-      var form = document.getElementById('cdForm');
-      var input = document.getElementById('cdInput');
-
-      if (missingPath) missingPath.textContent = safePath;
-      if (errorLine) errorLine.textContent = 'cat: ' + safePath + ': No such file or directory';
-
-      form.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        var raw = (input.value || '').trim();
-        var cmd = raw.replace(/\s+/g, ' ');
-        if (cmd === 'cd /' || cmd === 'cd ~' || cmd === 'cd') {
-          location.href = '/';
-          return;
+      var g = document.getElementById('petals');
+      var ns = 'http://www.w3.org/2000/svg';
+      for (var k = 0; k < 24; k++) {
+        var p = document.createElementNS(ns, 'path');
+        var d = '';
+        for (var i = 0; i <= 720; i++) {
+          var t = i / 720 * Math.PI * 2;
+          var r = 110 + 60 * Math.cos(12 * (t + k * 0.011)) * Math.cos(2 * t);
+          d += (i ? 'L' : 'M') + (200 + Math.cos(t) * r).toFixed(1) + ',' + (200 + Math.sin(t) * r).toFixed(1);
         }
-        form.classList.remove('shake');
-        void form.offsetWidth;
-        form.classList.add('shake');
-      });
-
-      setTimeout(function () { input.focus(); input.select(); }, 40);
+        p.setAttribute('d', d + 'Z');
+        g.appendChild(p);
+      }
+      var path = location.pathname + location.search;
+      document.getElementById('path').textContent = path || '/';
+      var en = /^en/i.test(navigator.language || '');
+      try { var s = localStorage.getItem('preferredLanguage'); if (s) en = s === 'en'; } catch (e) {}
+      if (en) {
+        document.documentElement.lang = 'en';
+        document.title = 'Folio not found · Jesús Garza';
+        document.getElementById('stamp').textContent = 'Not found';
+        document.getElementById('k').textContent = 'Nonexistent tax folio';
+        document.getElementById('t').innerHTML = 'This document <em>doesn’t exist</em>.';
+        document.getElementById('d').textContent = 'The address you are looking for isn’t stamped on this site. Check the link or go back home.';
+        document.getElementById('b').innerHTML = 'Back to home <span aria-hidden="true">→</span>';
+      }
     })();
   </script>
 </body>
